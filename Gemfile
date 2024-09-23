@@ -13,6 +13,7 @@ gem "jquery-rails"
 gem "lograge", "~> 0.12"
 gem "pg"
 gem "pry-rails"
+gem "pry-byebug"
 gem "mini_racer"
 gem "puma", "~> 6.4"
 gem "rollbar"
@@ -29,6 +30,8 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console", ">= 3.3.0"
+  gem "htmlbeautifier"
+  gem "solargraph"
 end
 
 group :development, :test do
