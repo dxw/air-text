@@ -1,5 +1,5 @@
 {
-  "name": "rails-template",
+  "name": "air-text",
   "private": true,
   "scripts": {
     "lint:css": "npx stylelint \"app/**/*css\"",

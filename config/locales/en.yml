@@ -32,5 +32,5 @@
 en:
   app:
     # TODO: Set new application name
-    name: "Rails Template"
+    name: "airTEXT"
   hello: "Hello world"

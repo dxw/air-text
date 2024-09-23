@@ -14,8 +14,8 @@ services:
     env_file:
        - .env.development.local
     environment:
-      # TODO: Update rails-template with application name
-      DATABASE_URL: postgres://postgres:password@db:5432/rails-template-development
+      # TODO: Update air-text with application name
+      DATABASE_URL: postgres://postgres:password@db:5432/air-text-development
       AUTOMATICALLY_FIX_LINTING: "true"
     volumes:
       - .:/srv/app
@@ -29,8 +29,8 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
-      # TODO: Update rails-template with application name
-      POSTGRES_DB: rails-template-development
+      # TODO: Update air-text with application name
+      POSTGRES_DB: air-text-development
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOST_AUTH_METHOD: trust

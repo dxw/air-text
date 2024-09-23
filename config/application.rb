@@ -9,7 +9,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 # TODO: Name the application
-module RailsTemplate
+module AirText
   class Application < Rails::Application
     config.generators do |g|
       g.test_framework :rspec,

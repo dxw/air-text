@@ -12,5 +12,5 @@ cd "$(dirname "$0")/../.."
 # in the background and then use attach to create an interactive prompt.
 docker compose up --detach
 
-# TODO: Repace 'rails-template' with application name
-docker attach rails-template_web_1
+# TODO: Repace 'air-text' with application name
+docker attach air-text_web_1
