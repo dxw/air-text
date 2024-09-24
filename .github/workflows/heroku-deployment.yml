@@ -5,7 +5,7 @@ on:
     branches:
       - develop
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -19,6 +19,7 @@ jobs:
 
   slackNotification:
     name: Slack Notification
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +27,9 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          # SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_USERNAME: deploy_bot
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           # SLACK_ICON: https://github.com/rtCamp.png?size=48
-          # SLACK_MESSAGE: 'Post Content :rocket:'
-          # SLACK_TITLE: Post Title
+          SLACK_TITLE: New deployment
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_ICON_EMOJI: ':ship:'
