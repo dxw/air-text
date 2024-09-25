@@ -24,6 +24,9 @@
 *.sh
 *.txt
 *.gz
+*.map
 /public/assets/*
+leaflet.js
+leaflet.css
 /coverage
 .ruby-lsp/
