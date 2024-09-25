@@ -2,11 +2,14 @@
 <section class="container">
   <div class="row">
     <aside class="col">
-      <%= image_tag("dxw-logo-512x512.png") %>
+      <%= image_tag("dxw-logo-512x512.png", class: "pop-me") %>
     </aside>
     <article class="col">
       <h1>airTEXT</h1>
       <p>Welcome to the rebuild of airTEXT</p>
+      <p>
+        <%= link_to "View map", map_path, data: { turbo: false } =%>
+      </p>
       <p>Please refer to the project's <%= link_to "README", "https://github.com/dxw/air-text", target: :blank %> on Github for further information.
         <h2>Helpful links</h2>
         <ul>
