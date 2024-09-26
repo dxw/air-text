@@ -3,30 +3,53 @@ document.addEventListener("turbolinks:load", function () {
 
   if (mapEle) {
     const bigBenLatLng = [51.510357, -0.116773];
-    const map = L.map("map").setView(bigBenLatLng, 10);
 
-    const cercOptions = {
+    const osmBaseUrl = "https://ows.mundialis.de/services/service?";
+    const airTextBaseUrl = "https://airtext.info/geoserver/wms?";
+
+    const airTextOptions = {
       layers: "london:Total",
-      time: "2024-09-25",
+      time: "2024-09-26",
       format: "image/png",
       transparency: true, // term used by CERC
-      styles: "daqiTotal",
-      // styles: "daqiTotal_linear"
-      //   we heard: "This can provide a more detailed map, at the expense of
-      //   less clearly defined bands."
     };
-    const osmOptions = {
+
+    const mergeAirTextOptions = (options) => {
+      return Object.assign({}, airTextOptions, options);
+    };
+
+    const discreteAir = L.tileLayer.wms(
+      airTextBaseUrl,
+      mergeAirTextOptions({ styles: "daqiTotal" })
+    );
+
+    const linearAir = L.tileLayer.wms(
+      airTextBaseUrl,
+      mergeAirTextOptions({ styles: "daqiTotal_linear" })
+    );
+
+    const osm = L.tileLayer.wms(osmBaseUrl, {
       layers: "OSM-Overlay-WMS",
       format: "image/png",
       transparent: true, // standard term (?) used by Leaflet and OSM
+    });
+
+    const baseMaps = {
+      Discrete: discreteAir,
+      Linear: linearAir,
+    };
+    const overlayMaps = {
+      OSM: osm,
     };
 
-    // compose the map using our WMS layers
-    L.tileLayer
-      .wms("https://airtext.info/geoserver/wms?", cercOptions)
-      .addTo(map);
-    L.tileLayer
-      .wms("https://ows.mundialis.de/services/service?", osmOptions)
-      .addTo(map);
+    const map = L.map("map", {
+      center: bigBenLatLng,
+      zoom: 10,
+      layers: [discreteAir, osm],
+    });
+
+    baseMaps.Discrete.addTo(map);
+    overlayMaps.OSM.addTo(map);
+    L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
   }
 });
