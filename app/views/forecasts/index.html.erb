@@ -1,0 +1,43 @@
+<section class="container">
+  <div class="row">
+    <article class="col">
+      <h1>Forecasts</h1>
+      <%= govuk_table do |table|
+        table.with_caption(size: 'm', text: "Three day forecast for #{@forecast["zone_name"]}")
+
+        table.with_head do |head|
+        head.with_row do |row|
+        row.with_cell(text: '')
+        row.with_cell(text: Date.parse(@dates[0]).to_formatted_s(:short))
+        row.with_cell(text: Date.parse(@dates[1]).to_formatted_s(:short))
+        row.with_cell(text: Date.parse(@dates[2]).to_formatted_s(:short))
+        
+        end; end; table.with_body do |body|
+        body.with_row do |row|
+        row.with_cell(text: 'Air pollution')
+        @forecast["forecasts"].map { | forecast| 
+          row.with_cell(text: forecast["total_status"].capitalize)
+        }
+        end;
+        body.with_row do |row|
+        row.with_cell(text: 'UV')
+        @forecast["forecasts"].map { | forecast| 
+          row.with_cell(text: forecast["uv"])
+        }
+        end;
+        body.with_row do |row|
+          row.with_cell(text: 'Pollen')
+          @forecast["forecasts"].map { | forecast| 
+            row.with_cell(text: forecast["pollen"])
+          }
+        end;
+        body.with_row do |row|
+          row.with_cell(text: 'Temperature')
+          @forecast["forecasts"].map { | forecast| 
+          row.with_cell(text: "#{forecast["temp_min"].round}-#{forecast["temp_max"].round}°C")
+          }
+        end;
+        end; end %>
+    </article>
+  </div>
+</section>
