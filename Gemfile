@@ -21,6 +21,7 @@ gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "terser"
 gem "govuk-components"
+gem "govuk_design_system_formbuilder"
 
 group :development do
   gem "better_errors"
