@@ -12,4 +12,8 @@ class ForecastZone
 
     "Area"
   end
+
+  def inspect
+    "#<#{self.class.name} @id=#{id} @name=#{name} @type=#{@type}>"
+  end
 end

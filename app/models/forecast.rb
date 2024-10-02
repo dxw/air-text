@@ -10,4 +10,18 @@ class Forecast
     @pollen = attrs.fetch(:pollen)
     @temperature = attrs.fetch(:temperature)
   end
+
+  def inspect
+    attr_values = [
+      "@obtained_at=#{obtained_at}",
+      "@forecast_for=#{forecast_for}",
+      "@zone=#{zone.inspect}",
+      "@air_pollution=#{air_pollution.inspect}",
+      "@uv=#{uv}",
+      "@pollen=#{pollen}",
+      "@temperature=#{temperature.inspect}"
+    ]
+
+    "#<#{self.class.name} #{attr_values.join(" ")}>"
+  end
 end

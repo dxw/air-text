@@ -5,4 +5,8 @@ class TemperaturePrediction
     @min = min
     @max = max
   end
+
+  def inspect
+    "#<#{self.class.name} @min=#{min} @max=#{max}>"
+  end
 end
