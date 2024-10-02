@@ -29,28 +29,39 @@
         row.with_cell(text: Date.parse(@dates[2]).to_formatted_s(:short))
 
         end; end; table.with_body do |body|
-        body.with_row do |row|
+        body.with_row(html_attributes: {class: "air-pollution"}) do |row|
         row.with_cell(text: 'Air pollution')
         @forecast["forecasts"].map { | forecast|
-          row.with_cell(text: forecast["total_status"].capitalize)
+          row.with_cell(
+            text: forecast["total_status"].capitalize,
+            html_attributes: { "data-date" => forecast['forecast_date']}
+          )
         }
         end;
-        body.with_row do |row|
+        body.with_row(html_attributes: {class: "uv"}) do |row|
         row.with_cell(text: 'UV')
         @forecast["forecasts"].map { | forecast|
-          row.with_cell(text: forecast["uv"])
+          row.with_cell(
+            text: forecast["uv"],
+            html_attributes: { "data-date" => forecast['forecast_date']}
+          )
         }
         end;
-        body.with_row do |row|
+        body.with_row(html_attributes: {class: "pollen"}) do |row|
           row.with_cell(text: 'Pollen')
           @forecast["forecasts"].map { | forecast|
-            row.with_cell(text: forecast["pollen"])
+            row.with_cell(text: forecast["pollen"],
+              html_attributes: { "data-date" => forecast['forecast_date']}
+            )
           }
         end;
-        body.with_row do |row|
+        body.with_row(html_attributes: {class: "temperature"}) do |row|
           row.with_cell(text: 'Temperature')
           @forecast["forecasts"].map { | forecast|
-          row.with_cell(text: "#{forecast["temp_min"].round}-#{forecast["temp_max"].round}°C")
+            row.with_cell(
+              text: "#{forecast["temp_min"].round}-#{forecast["temp_max"].round}°C",
+              html_attributes: { "data-date" => forecast['forecast_date']}
+            )
           }
         end;
         end; end %>
