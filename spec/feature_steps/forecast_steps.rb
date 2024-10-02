@@ -30,14 +30,63 @@ module ForecastSteps
 
   def and_i_see_local_air_quality_information
     expect(page).to have_content("Three day forecast for Haringey")
-    within first(".govuk-table__row") do
-      page.all("td").each_with_index do |td, index|
-        if index == 0
-          expect(td).to have_content("Air pollution")
-        else
-          expect(td).to have_content("Low")
-        end
+  end
+
+  def and_i_see_predicted_air_pollution_status_for_each_day
+    expect_prediction(day: :today, category: :air_pollution, value: :high)
+    expect_prediction(day: :tomorrow, category: :air_pollution, value: :moderate)
+    expect_prediction(day: :day_after_tomorrow, category: :air_pollution, value: :very_high)
+  end
+
+  def expect_prediction(day:, category:, value:)
+    within(prediction_category(category)) do
+      within("td[data-date='#{date(day)}']") do
+        expect(page).to have_content(content_for(category: category, value: value))
       end
+    end
+  end
+
+  def prediction_category(category)
+    case category
+    when :air_pollution
+      ".air-pollution"
+    else
+      NotImplementedError("We need to extend to handle the category #{category}")
+    end
+  end
+
+  def date(day)
+    case day
+    when :today
+      Date.today.to_s
+    when :tomorrow
+      Date.tomorrow.to_s
+    when :day_after_tomorrow
+      (Date.today + 2.days).to_s
+    end
+  end
+
+  def content_for(category:, value:)
+    case category
+    when :air_pollution
+      content_for_air_pollution(value)
+    else
+      NotImplementedError("We need to extend for content for category #{category}")
+    end
+  end
+
+  def content_for_air_pollution(value)
+    case value
+    when :low
+      "Low"
+    when :moderate
+      "Moderate"
+    when :high
+      "High"
+    when :very_high
+      "Very high"
+    else
+      raise "unexpected value #{value}"
     end
   end
 end

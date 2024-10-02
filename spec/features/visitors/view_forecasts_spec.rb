@@ -25,5 +25,6 @@ RSpec.feature "Forecasts page" do
     when_i_select_view_forecasts
     then_i_see_the_forecasts_page
     and_i_see_local_air_quality_information
+    and_i_see_predicted_air_pollution_status_for_each_day
   end
 end
