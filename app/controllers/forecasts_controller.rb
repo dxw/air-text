@@ -6,5 +6,6 @@ class ForecastsController < ApplicationController
 
     @dates = @forecast["forecasts"].map { |day_forecast| day_forecast["forecast_date"] }
     @zones = JSON.parse(File.read("#{Rails.root}/config/list-of-zones.json"))
+    @alerts = []
   end
 end
