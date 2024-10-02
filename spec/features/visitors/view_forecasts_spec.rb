@@ -26,25 +26,4 @@ RSpec.feature "Forecasts page" do
     then_i_see_the_forecasts_page
     and_i_see_local_air_quality_information
   end
-
-  def when_i_select_view_forecasts
-    click_link("View forecasts")
-  end
-
-  def then_i_see_the_forecasts_page
-    expect(page).to have_content("Forecasts")
-  end
-
-  def and_i_see_local_air_quality_information
-    expect(page).to have_content("Three day forecast for Haringey")
-    within first(".govuk-table__row") do
-      page.all("td").each_with_index do |td, index|
-        if index == 0
-          expect(td).to have_content("Air pollution")
-        else
-          expect(td).to have_content("Low")
-        end
-      end
-    end
-  end
 end
