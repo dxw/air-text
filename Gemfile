@@ -53,4 +53,5 @@ group :test do
   gem "selenium-webdriver"
   gem "simplecov"
   gem "climate_control"
+  gem "webmock"
 end
