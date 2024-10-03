@@ -65,5 +65,23 @@ RSpec.describe ForecastsController do
 
       expect(response).to render_template("show")
     end
+
+    it "asks the forecasts for any alerts and assigns to instance variable" do
+      air_quality_alert = double("air quality alert")
+      forecast_1 = instance_double(Forecast, alerts: [])
+      forecast_2 = instance_double(Forecast, alerts: [air_quality_alert])
+
+      allow(CercApiClient).to receive(:forecasts_for).and_return([
+        forecast_1,
+        forecast_2
+      ])
+
+      get :show
+
+      expect(forecast_1).to have_received(:alerts)
+      expect(forecast_2).to have_received(:alerts)
+
+      expect(assigns(:air_quality_alerts)).to eq([air_quality_alert])
+    end
   end
 end

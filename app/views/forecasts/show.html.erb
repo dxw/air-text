@@ -3,7 +3,7 @@
     <article class="col">
       <h1>Forecasts</h1>
       <aside class="air-quality-alerts">
-        <% if @alerts.empty? %>
+        <% if @air_quality_alerts.empty? %>
           <%= govuk_notification_banner(
             title_text: "No air quality alerts",
             text: "Enjoy your usual outdoor activities.",

@@ -11,6 +11,14 @@ class Forecast
     @temperature = attrs.fetch(:temperature)
   end
 
+  def alerts
+    [air_quality_alert].compact!
+  end
+
+  def air_quality_alert
+    nil
+  end
+
   # :nocov:
   def inspect
     attr_values = [
