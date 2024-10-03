@@ -15,4 +15,8 @@ class CercApiClient
 
     HTTParty.get("#{base_url}/getforecast/all", query: query)
   end
+
+  def self.forecasts_for(zone)
+    ForecastFactory.build(fetch_data(zone))
+  end
 end

@@ -44,12 +44,25 @@ RSpec.describe ForecastsController do
         }
       JSON
     end
-    it "renders the _show_ template" do
-      allow(CercApiClient).to receive(:fetch_data).and_return(JSON.parse(json))
+
+    let(:forecasts) do
+      ForecastFactory.build(JSON.parse(json))
+    end
+
+    it "obtains forecasts for the default zone (Southwark) from the CercApiClient" do
+      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
 
       get :show
 
-      expect(CercApiClient).to have_received(:fetch_data).with("Southwark")
+      expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
+      expect(response).to render_template("show")
+    end
+
+    it "renders the _show_ template" do
+      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+
+      get :show
+
       expect(response).to render_template("show")
     end
   end

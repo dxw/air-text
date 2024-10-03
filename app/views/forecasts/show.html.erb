@@ -19,48 +19,48 @@
         <button type="submit" data-prevent-double-click="true">View forecast</button>
       </form>
       <%= govuk_table do |table|
-        table.with_caption(size: 'm', text: "Three day forecast for #{@forecast["zone_name"]}")
+        table.with_caption(size: 'm', text: "Three day forecast for #{@forecasts.first.zone.name}")
 
         table.with_head do |head|
         head.with_row do |row|
         row.with_cell(text: '')
-        row.with_cell(text: Date.parse(@dates[0]).to_formatted_s(:short))
-        row.with_cell(text: Date.parse(@dates[1]).to_formatted_s(:short))
-        row.with_cell(text: Date.parse(@dates[2]).to_formatted_s(:short))
+        @forecasts.map { |forecast|
+          row.with_cell(text: forecast.forecast_for.to_formatted_s(:short))
+        }
 
         end; end; table.with_body do |body|
         body.with_row(html_attributes: {class: "air-pollution"}) do |row|
         row.with_cell(text: 'Air pollution')
-        @forecast["forecasts"].map { | forecast|
+        @forecasts.map { | forecast|
           row.with_cell(
-            text: forecast["total_status"].capitalize,
-            html_attributes: { "data-date" => forecast['forecast_date']}
+            text: forecast.air_pollution.overall_label,
+            html_attributes: { "data-date" => forecast.forecast_for}
           )
         }
         end;
         body.with_row(html_attributes: {class: "uv"}) do |row|
         row.with_cell(text: 'UV')
-        @forecast["forecasts"].map { | forecast|
+        @forecasts.map { | forecast|
           row.with_cell(
-            text: forecast["uv"],
-            html_attributes: { "data-date" => forecast['forecast_date']}
+            text: forecast.uv,
+            html_attributes: { "data-date" => forecast.forecast_for}
           )
         }
         end;
         body.with_row(html_attributes: {class: "pollen"}) do |row|
           row.with_cell(text: 'Pollen')
-          @forecast["forecasts"].map { | forecast|
-            row.with_cell(text: forecast["pollen"],
-              html_attributes: { "data-date" => forecast['forecast_date']}
+          @forecasts.map { | forecast|
+            row.with_cell(text: forecast.pollen,
+              html_attributes: { "data-date" => forecast.forecast_for}
             )
           }
         end;
         body.with_row(html_attributes: {class: "temperature"}) do |row|
           row.with_cell(text: 'Temperature')
-          @forecast["forecasts"].map { | forecast|
+          @forecasts.map { | forecast|
             row.with_cell(
-              text: "#{forecast["temp_min"].round}-#{forecast["temp_max"].round}°C",
-              html_attributes: { "data-date" => forecast['forecast_date']}
+              text: "#{forecast.temperature.min.round}-#{forecast.temperature.max.round}°C",
+              html_attributes: { "data-date" => forecast.forecast_for}
             )
           }
         end;
