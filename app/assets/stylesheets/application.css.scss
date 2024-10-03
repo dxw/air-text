@@ -21,3 +21,38 @@ $govuk-fonts-path: "govuk-frontend/dist/govuk/assets/fonts/";
 $govuk-page-width: 1100px;
 
 @import "govuk-frontend/dist/govuk/all";
+
+.air-quality-alerts {
+  list-style-type: none;
+  margin-bottom: 2rem;
+}
+
+.air-quality-alert {
+  padding-bottom: 1rem;
+}
+
+.air-quality-alert .heading {
+  background-color: white;
+  padding: 1rem;
+}
+
+.air-quality-alert .body {
+  padding: 1rem;
+}
+
+.air-quality-alert .guidance {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.air-quality-alert.alert-level-high {
+  background-color: #febfca;
+}
+
+.air-quality-alert.alert-level-moderate {
+  background-color: #f4e9b6;
+}
+
+.air-quality-alert.alert-level-very-high {
+  background-color: #dfb4ed;
+}

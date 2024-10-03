@@ -2,15 +2,21 @@
   <div class="row">
     <article class="col">
       <h1>Forecasts</h1>
-      <aside class="air-quality-alerts">
-        <% if @air_quality_alerts.empty? %>
-          <%= govuk_notification_banner(
-            title_text: "No air quality alerts",
-            text: "Enjoy your usual outdoor activities.",
-            success: true
-          ) %>
-        <% end %>
-      </aside>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <aside class="air-quality-alerts">
+            <% if @air_quality_alerts.empty? %>
+              <%= govuk_notification_banner(
+                title_text: "No air quality alerts",
+                text: "Enjoy your usual outdoor activities.",
+                success: true
+              ) %>
+            <% else %>
+              <%= render partial: "air_quality_alerts", locals: {alerts: @air_quality_alerts} %>
+            <% end %>
+          </aside>
+        </div>
+      </div>
       <form method="GET" action="<%= forecast_path %>">
         <label for="zone">
           Which area are you interested in?
