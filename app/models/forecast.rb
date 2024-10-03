@@ -11,6 +11,7 @@ class Forecast
     @temperature = attrs.fetch(:temperature)
   end
 
+  # :nocov:
   def inspect
     attr_values = [
       "@obtained_at=#{obtained_at}",
@@ -24,4 +25,5 @@ class Forecast
 
     "#<#{self.class.name} #{attr_values.join(" ")}>"
   end
+  # :nocov:
 end

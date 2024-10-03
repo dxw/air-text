@@ -13,7 +13,9 @@ class ForecastZone
     "Area"
   end
 
+  # :nocov:
   def inspect
     "#<#{self.class.name} @id=#{id} @name=#{name} @type=#{@type}>"
   end
+  # :nocov:
 end

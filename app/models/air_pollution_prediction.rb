@@ -28,6 +28,7 @@ class AirPollutionPrediction
     ActiveSupport::Inflector.upcase_first(@overall_label.downcase)
   end
 
+  # :nocov:
   def inspect
     attr_values = [
       "@forecasted_at=#{forecasted_at}",
@@ -41,4 +42,5 @@ class AirPollutionPrediction
 
     "#<#{self.class.name} #{attr_values.join(" ")}>"
   end
+  # :nocov:
 end
