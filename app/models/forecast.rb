@@ -12,11 +12,13 @@ class Forecast
   end
 
   def alerts
-    [air_quality_alert].compact!
+    [air_quality_alert].compact
   end
 
   def air_quality_alert
-    nil
+    return if air_pollution.overall_label.downcase == "low"
+
+    AirQualityAlert.new(self)
   end
 
   # :nocov:
