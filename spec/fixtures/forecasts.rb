@@ -1,6 +1,6 @@
 module Fixtures
   class << self
-    def build_forecast(day:, air_pollution_status:)
+    def build_forecast(day:, air_pollution_status:, uv_level:, pollen_level:, min_temperature:, max_temperature:)
       <<~JSON
         {
           "NO2": 1,
@@ -9,15 +9,15 @@ module Fixtures
           "PM2.5": 1,
           "forecast_date": "#{forecast_date_for(day)}",
           "non_pollution_version": null,
-          "pollen": -999,
+          "pollen": #{pollen_level},
           "pollution_version": 202410011407,
           "rain_am": 1.31,
           "rain_pm": 3.01,
-          "temp_max": 14.0,
-          "temp_min": 10.4,
+          "temp_max": #{max_temperature},
+          "temp_min": #{min_temperature},
           "total": "#{total_for(air_pollution_status)}",
           "total_status": "#{total_status_for(air_pollution_status)}",
-          "uv": 1,
+          "uv": #{uv_level},
           "wind_am": 5.3,
           "wind_pm": 6.0
         }

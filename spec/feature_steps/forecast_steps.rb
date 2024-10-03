@@ -1,14 +1,14 @@
 module ForecastSteps
   def given_a_forecast_for_today
-    forecasts << Fixtures.build_forecast(day: :today, air_pollution_status: :high)
+    forecasts << Fixtures.build_forecast(day: :today, air_pollution_status: :high, uv_level: 1, pollen_level: 4, min_temperature: 0.5, max_temperature: 2.4)
   end
 
   def and_a_forecast_for_tomorrow
-    forecasts << Fixtures.build_forecast(day: :tomorrow, air_pollution_status: :moderate)
+    forecasts << Fixtures.build_forecast(day: :tomorrow, air_pollution_status: :moderate, uv_level: 2, pollen_level: 5, min_temperature: 2.7, max_temperature: 4.0)
   end
 
   def and_a_forecast_for_the_day_after_tomorrow
-    forecasts << Fixtures.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high)
+    forecasts << Fixtures.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high, uv_level: 3, pollen_level: 6, min_temperature: 5.2, max_temperature: 5.9)
   end
 
   def forecasts
@@ -38,6 +38,24 @@ module ForecastSteps
     expect_prediction(day: :day_after_tomorrow, category: :air_pollution, value: :very_high)
   end
 
+  def and_i_see_predicted_uv_level_for_each_day
+    expect_prediction(day: :today, category: :uv, value: 1)
+    expect_prediction(day: :tomorrow, category: :uv, value: 2)
+    expect_prediction(day: :day_after_tomorrow, category: :uv, value: 3)
+  end
+
+  def and_i_see_predicted_pollen_level_for_each_day
+    expect_prediction(day: :today, category: :pollen, value: 4)
+    expect_prediction(day: :tomorrow, category: :pollen, value: 5)
+    expect_prediction(day: :day_after_tomorrow, category: :pollen, value: 6)
+  end
+
+  def and_i_see_predicted_temperature_for_each_day
+    expect_prediction(day: :today, category: :temperature, value: "1-2°C")
+    expect_prediction(day: :tomorrow, category: :temperature, value: "3-4°C")
+    expect_prediction(day: :day_after_tomorrow, category: :temperature, value: "5-6°C")
+  end
+
   def expect_prediction(day:, category:, value:)
     within(prediction_category(category)) do
       within("td[data-date='#{date(day)}']") do
@@ -47,11 +65,10 @@ module ForecastSteps
   end
 
   def prediction_category(category)
-    case category
-    when :air_pollution
+    if category == :air_pollution
       ".air-pollution"
     else
-      NotImplementedError("We need to extend to handle the category #{category}")
+      ".#{category}"
     end
   end
 
@@ -67,11 +84,10 @@ module ForecastSteps
   end
 
   def content_for(category:, value:)
-    case category
-    when :air_pollution
+    if category == :air_pollution
       content_for_air_pollution(value)
     else
-      NotImplementedError("We need to extend for content for category #{category}")
+      value
     end
   end
 
