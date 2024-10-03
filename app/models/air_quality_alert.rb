@@ -3,6 +3,12 @@ class AirQualityAlert
     @forecast = forecast
   end
 
+  TAG_COLOURS = {
+    moderate: :yellow,
+    high: :red,
+    very_high: :purple
+  }
+
   def date
     @forecast.forecast_for
   end
@@ -13,5 +19,11 @@ class AirQualityAlert
 
   def score
     @forecast.air_pollution.overall_score
+  end
+
+  def tag_colour
+    TAG_COLOURS.fetch(
+      ActiveSupport::Inflector.parameterize(level, separator: "_").to_sym
+    )
   end
 end
