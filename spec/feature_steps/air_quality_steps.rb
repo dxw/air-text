@@ -1,26 +1,26 @@
 module AirQualitySteps
   def given_an_air_pollution_prediction_for_today_w_high_warning_status
-    forecasts << Fixtures.build_forecast(day: :today, air_pollution_status: :high)
+    forecasts << Fixtures::API.build_forecast(day: :today, air_pollution_status: :high)
   end
 
   def and_an_air_pollution_prediction_for_tomorrow_w_moderate_warning_status
-    forecasts << Fixtures.build_forecast(day: :tomorrow, air_pollution_status: :moderate)
+    forecasts << Fixtures::API.build_forecast(day: :tomorrow, air_pollution_status: :moderate)
   end
 
   def and_an_air_pollution_prediction_for_day_after_tomorrow_w_v_high_warning_status
-    forecasts << Fixtures.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high)
+    forecasts << Fixtures::API.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high)
   end
 
   def given_an_air_pollution_prediction_for_today_w_low_status
-    forecasts << Fixtures.build_forecast(day: :today, air_pollution_status: :low)
+    forecasts << Fixtures::API.build_forecast(day: :today, air_pollution_status: :low)
   end
 
   def and_an_air_pollution_prediction_for_tomorrow_w_low_warning_status
-    forecasts << Fixtures.build_forecast(day: :tomorrow, air_pollution_status: :low)
+    forecasts << Fixtures::API.build_forecast(day: :tomorrow, air_pollution_status: :low)
   end
 
   def and_an_air_pollution_prediction_for_day_after_tomorrow_w_low_warning_status
-    forecasts << Fixtures.build_forecast(day: :day_after_tomorrow, air_pollution_status: :low)
+    forecasts << Fixtures::API.build_forecast(day: :day_after_tomorrow, air_pollution_status: :low)
   end
 
   def when_i_look_at_the_forecasts
@@ -51,7 +51,7 @@ module AirQualitySteps
   end
 
   def and_the_response_from_cercs_api_is_stubbed_accordingly
-    forecast_response = Fixtures.forecast_wrapper_around(@forecasts)
+    forecast_response = Fixtures::API.forecast_wrapper_around(@forecasts)
     HttpStubs.stub_forecasts_with(forecast_response)
   end
 end
