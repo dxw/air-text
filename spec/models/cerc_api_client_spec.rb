@@ -19,4 +19,15 @@ RSpec.describe CercApiClient do
       })
     end
   end
+
+  describe "#forecasts_for" do
+    it "calls the ForecastFactory's build method with data from fetch_data" do
+      forecast_data = {"some forecast key": "some forecast data"}
+      allow(CercApiClient).to receive(:fetch_data).and_return(forecast_data)
+      allow(ForecastFactory).to receive(:build)
+
+      CercApiClient.forecasts_for("North London")
+      expect(ForecastFactory).to have_received(:build).with(forecast_data)
+    end
+  end
 end
