@@ -2,6 +2,16 @@
   <div class="row">
     <article class="col">
       <h1>Forecasts</h1>
+      <form method="GET" action="<%= forecast_path %>">
+      
+      <label for="zone">
+          Which area are you interested in?
+        </label>
+         <%= select_tag :zone, options_for_select(@zones), prompt: 'Select an area' %>
+
+        <button type="submit" data-prevent-double-click="true">View forecast</button>
+      </form>
+
       <%= govuk_table do |table|
         table.with_caption(size: 'm', text: "Three day forecast for #{@forecast["zone_name"]}")
 
