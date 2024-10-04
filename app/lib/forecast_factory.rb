@@ -28,7 +28,7 @@ class ForecastFactory
           overall_label: forecast.fetch("total_status")
         ),
 
-        uv: forecast.fetch("uv"),
+        uv: UvPrediction.new(forecast.fetch("uv")),
         pollen: forecast.fetch("pollen"),
         temperature: TemperaturePrediction.new(
           min: forecast.fetch("temp_min"),
