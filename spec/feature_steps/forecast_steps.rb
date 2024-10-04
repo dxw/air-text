@@ -39,9 +39,9 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_for_each_day
-    expect_prediction(day: :today, category: :uv, value: 1)
-    expect_prediction(day: :tomorrow, category: :uv, value: 2)
-    expect_prediction(day: :day_after_tomorrow, category: :uv, value: 3)
+    expect_prediction(day: :today, category: :uv, value: "Low - No action required. You can safely stay outside.")
+    expect_prediction(day: :tomorrow, category: :uv, value: "Low - No action required. You can safely stay outside.")
+    expect_prediction(day: :day_after_tomorrow, category: :uv, value: "Low - No action required. You can safely stay outside.")
   end
 
   def and_i_see_predicted_pollen_level_for_each_day

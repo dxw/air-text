@@ -48,7 +48,7 @@
         row.with_cell(text: 'UV')
         @forecasts.map { | forecast|
           row.with_cell(
-            text: forecast.uv,
+            text: "#{forecast.uv.label} - #{forecast.uv.guidance}",
             html_attributes: { "data-date" => forecast.forecast_for}
           )
         }
