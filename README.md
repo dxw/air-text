@@ -54,6 +54,11 @@ To manage sensitive environment variables:
    which should never be checked into Git. This file will look something like
    `ROLLBAR_TOKEN=123456789`
 
+### Required environment variables
+
+- `CERC_API_HOST_URL`: find the URL of the CERC API host in the 1Password vault
+- `CERC_API_KEY`: find the API key in the 1Password vault
+
 ## Access
 
 TODO: Where can people find the service and the different environments?
