@@ -1,0 +1,44 @@
+<div class="govuk-grid-row">
+  <ol class="air-quality-alerts">
+    <% alerts.each do |alert| %>
+      <div class="govuk-grid-column-one-third">
+        <% alert_classes =
+          ["alert-level-#{ ActiveSupport::Inflector.parameterize(alert.level)}",
+          "alert-score-#{alert.score}"]
+          .join(" ")
+        %>
+        <li
+          class="air-quality-alert <%= alert_classes %>"
+          data-alert-date=<%= alert.date %>
+        >
+          <div class="heading">
+            <%= govuk_tag(
+              text: alert.level.upcase,
+              colour: alert.tag_colour.to_s,
+              html_attributes: { class: "alert-level" }
+              )
+            %>
+            (<%= alert.score %> / 10)
+          </div>
+          <p class= "govuk-body body">
+            There is a
+            <%= alert.level.upcase %>
+            air quality alert for
+            <%= alert.date.strftime("%d %b %Y") %>
+          </p>
+          <%= govuk_details(
+            summary_text: t(
+              "air_quality_alert.#{ActiveSupport::Inflector.parameterize(
+                alert.level, separator: '_'
+              )}.guidance.title"),
+            text: t(
+              "air_quality_alert.#{ActiveSupport::Inflector.parameterize(
+                alert.level, separator: '_'
+              )}.guidance.detail_html"),
+            html_attributes: {class: "guidance"}
+          ) %>
+        </li>
+      </div>
+    <% end %>
+  </ol>
+</div>

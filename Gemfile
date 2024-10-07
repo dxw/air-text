@@ -21,6 +21,7 @@ gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "terser"
 gem "govuk-components"
+gem "httparty"
 
 group :development do
   gem "better_errors"
@@ -52,4 +53,5 @@ group :test do
   gem "selenium-webdriver"
   gem "simplecov"
   gem "climate_control"
+  gem "webmock"
 end

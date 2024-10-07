@@ -34,3 +34,34 @@ en:
     # TODO: Set new application name
     name: "airTEXT"
   hello: "Hello world"
+  air_quality_alert:
+    moderate:
+      guidance:
+        title: Action may be required
+        detail_html:
+          Adults and children with lung problems, and adults with heart
+          problems, who experience symptoms, should <b>think about reducing</b>
+          strenuous physical activity, particularly outdoors.
+    high:
+      guidance:
+        title: Action required
+        detail_html:
+          <b>Think about reducing activity</b>, particularly outdoors, if you
+          have discomfort such as sore eyes, a cough or sore
+          throat.<br/><br/>Older people, adults and children with lung problems,
+          and adults with heart problems should <b>reduce</b> strenuous physical
+          activity, particularly outdoors, and especially if they experience
+          symptoms.<br/><br/>People with asthma may need to use their reliever
+          inhaler more often, but remember to never exceed the stated dose or
+          take more than your doctor has advised
+    very_high:
+      guidance:
+        title: Action required
+        detail_html:
+          Everyone should <b>reduce</b> strenuous physical activity,
+          particularly outdoors and especially if you experience symptoms such
+          as a cough or sore throat.<br/><br/>Older people, adults and children
+          with lung problems, and adults with heart problems should <b>avoid</b>
+          strenuous physical activity.<br/><br/>People with asthma may need to
+          use their reliever inhaler more often, but remember to never exceed
+          the stated dose or take more than your doctor has advised.

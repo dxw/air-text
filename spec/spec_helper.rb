@@ -20,6 +20,9 @@ require "simplecov"
 SimpleCov.minimum_coverage 99
 SimpleCov.start "rails"
 
+require "webmock/rspec"
+WebMock.disable_net_connect!(allow_localhost: true)
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -72,7 +75,7 @@ RSpec.configure do |config|
 
   # This setting enables warnings. It's recommended, but in some cases may
   # be too noisy due to issues in dependencies.
-  config.warnings = true
+  config.warnings = false
 
   # Many RSpec users commonly either run the entire suite or an individual
   # file, and it's useful to allow more verbose output when running an

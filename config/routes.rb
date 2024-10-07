@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "map", to: "map#show"
 
-  get :forecasts, to: "forecasts#index"
+  get :forecast, to: "forecasts#show"
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
   # hostname, redirect us to the canonical hostname with the path and query string present

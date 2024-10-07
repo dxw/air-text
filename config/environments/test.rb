@@ -62,6 +62,10 @@ Rails.application.configure do
   # Set a css_compressor so sassc-rails does not overwrite the compressor when running the tests
   config.assets.css_compressor = nil
 
+  # So we can load styles more easily when debugging a Capybara integration test
+  # saved to a local file e.g. with #save_and_open_page
+  config.assets.digest = false
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.bullet_logger = true
