@@ -7,10 +7,7 @@ RSpec.describe Forecast do
       let(:forecast) do
         FactoryBot.build(
           :forecast,
-          air_pollution: FactoryBot.build(
-            :air_pollution_prediction,
-            overall_label: "HIGH"
-          )
+          air_pollution: FactoryBot.build(:air_pollution_prediction, :high)
         )
       end
 
@@ -23,10 +20,7 @@ RSpec.describe Forecast do
       let(:forecast) do
         FactoryBot.build(
           :forecast,
-          air_pollution: FactoryBot.build(
-            :air_pollution_prediction,
-            overall_label: "LOW"
-          )
+          air_pollution: FactoryBot.build(:air_pollution_prediction, :low)
         )
       end
 
@@ -40,14 +34,11 @@ RSpec.describe Forecast do
     let(:alert) { double("air quality alert") }
     before { allow(AirQualityAlert).to receive(:new).and_return(alert) }
 
-    context "when the air pollution overall status is LOW" do
+    context "when the air pollution overall DAQI level is LOW" do
       let(:forecast) do
         FactoryBot.build(
           :forecast,
-          air_pollution: FactoryBot.build(
-            :air_pollution_prediction,
-            overall_label: "LOW"
-          )
+          air_pollution: FactoryBot.build(:air_pollution_prediction, :low)
         )
       end
 
@@ -56,15 +47,12 @@ RSpec.describe Forecast do
       end
     end
 
-    context "when the air pollution overall status not LOW" do
-      ["MODERATE", "HIGH", "VERY HIGH"].each do |status|
+    context "when the air pollution overall DAQI level is not LOW" do
+      [:moderate, :high, :very_high].each do |daqi_level|
         let(:forecast) do
           FactoryBot.build(
             :forecast,
-            air_pollution: FactoryBot.build(
-              :air_pollution_prediction,
-              overall_label: status
-            )
+            air_pollution: FactoryBot.build(:air_pollution_prediction, daqi_level)
           )
         end
 

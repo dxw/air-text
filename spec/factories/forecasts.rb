@@ -11,8 +11,8 @@
 #   @particulate_matter_10=1
 #   @particulate_matter_2_5=1
 #   @ozone=2
-#   @overall_score=2
-#   @overall_label=LOW>
+#   @value=2
+#   @daqi_label=LOW>
 # @uv=2
 # @pollen=-999
 # @temperature=#<TemperaturePrediction

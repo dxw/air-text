@@ -16,7 +16,7 @@ module Fixtures
             "rain_pm": 3.01,
             "temp_max": #{max_temp_for(temperature)},
             "temp_min": #{min_temp_for(temperature)},
-            "total": "#{daqi_value_for_level(air_pollution_status)}",
+            "total": #{daqi_value_for_level(air_pollution_status)},
             "total_status": "#{total_status_for(air_pollution_status)}",
             "uv": #{daqi_value_for_level(uv)},
             "wind_am": 5.3,

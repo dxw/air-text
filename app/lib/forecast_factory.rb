@@ -24,8 +24,8 @@ class ForecastFactory
           particulate_matter_10: forecast.fetch("PM10"),
           particulate_matter_2_5: forecast.fetch("PM2.5"),
           ozone: forecast.fetch("O3"),
-          overall_score: forecast.fetch("total"),
-          overall_label: forecast.fetch("total_status")
+          value: forecast.fetch("total"),
+          label: forecast.fetch("total_status")
         ),
 
         uv: UvPrediction.new(forecast.fetch("uv")),

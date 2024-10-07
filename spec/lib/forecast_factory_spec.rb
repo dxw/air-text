@@ -17,7 +17,7 @@ RSpec.describe ForecastFactory do
              "rain_pm" => 0.66,
              "temp_max" => 16.6,
              "temp_min" => 10.0,
-             "total" => 2,
+             "total" => 10,
              "total_status" => "VERY HIGH",
              "uv" => 2,
              "wind_am" => 4.9,
@@ -51,8 +51,9 @@ RSpec.describe ForecastFactory do
         expect(forecast.air_pollution.particulate_matter_10).to eq(1)
         expect(forecast.air_pollution.particulate_matter_2_5).to eq(1)
         expect(forecast.air_pollution.ozone).to eq(2)
-        expect(forecast.air_pollution.overall_score).to eq(2)
-        expect(forecast.air_pollution.overall_label).to eq("Very high")
+        expect(forecast.air_pollution.value).to eq(10)
+        expect(forecast.air_pollution.daqi_label).to eq("Very high")
+        expect(forecast.air_pollution.daqi_level).to eq(:very_high)
 
         expect(forecast.uv.value).to eq(2)
         expect(forecast.uv.daqi_label).to eq("Low")

@@ -39,7 +39,7 @@
         row.with_cell(text: 'Air pollution')
         @forecasts.map { | forecast|
           row.with_cell(
-            text: forecast.air_pollution.overall_label,
+            text: forecast.air_pollution.daqi_label,
             html_attributes: { "data-date" => forecast.forecast_for}
           )
         }

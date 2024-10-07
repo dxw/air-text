@@ -16,7 +16,7 @@ class Forecast
   end
 
   def air_quality_alert
-    return if air_pollution.overall_label.downcase == "low"
+    return if air_pollution.daqi_level == :low
 
     AirQualityAlert.new(self)
   end

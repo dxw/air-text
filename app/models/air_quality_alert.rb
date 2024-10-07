@@ -13,17 +13,19 @@ class AirQualityAlert
     @forecast.forecast_for
   end
 
-  def level
-    @forecast.air_pollution.overall_label
+  def daqi_level
+    @forecast.air_pollution.daqi_level
   end
 
-  def score
-    @forecast.air_pollution.overall_score
+  def daqi_label
+    @forecast.air_pollution.daqi_label
+  end
+
+  def value
+    @forecast.air_pollution.value
   end
 
   def tag_colour
-    TAG_COLOURS.fetch(
-      ActiveSupport::Inflector.parameterize(level, separator: "_").to_sym
-    )
+    TAG_COLOURS.fetch(daqi_level)
   end
 end
