@@ -1,7 +1,7 @@
 module Fixtures
   module API
     class << self
-      def build_forecast(day:, air_pollution_status:, pollen: 4)
+      def build_forecast(day:, air_pollution_status:, pollen: 4, temperature: :normal)
         <<~JSON
           {
             "NO2": 1,
@@ -14,8 +14,8 @@ module Fixtures
             "pollution_version": 202410011407,
             "rain_am": 1.31,
             "rain_pm": 3.01,
-            "temp_max": 14.0,
-            "temp_min": 10.4,
+            "temp_max": #{max_temp_for(temperature)},
+            "temp_min": #{min_temp_for(temperature)},
             "total": "#{total_for(air_pollution_status)}",
             "total_status": "#{total_status_for(air_pollution_status)}",
             "uv": 1,
@@ -23,6 +23,32 @@ module Fixtures
             "wind_pm": 6.0
           }
         JSON
+      end
+
+      def min_temp_for(temperature)
+        case temperature
+        when :cold
+          -5.2
+        when :normal
+          8.9
+        when :hot
+          26.9
+        else
+          raise "temperature: #{temperature} not expected"
+        end
+      end
+
+      def max_temp_for(temperature)
+        case temperature
+        when :cold
+          3.6
+        when :normal
+          16.4
+        when :hot
+          31.1
+        else
+          raise "temperature: #{temperature} not expected"
+        end
       end
 
       def forecast_date_for(day)

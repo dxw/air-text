@@ -3,7 +3,8 @@ module ForecastSteps
     forecasts << Fixtures::API.build_forecast(
       day: :today,
       air_pollution_status: :high,
-      pollen: 4
+      pollen: 4,
+      temperature: :cold
     )
   end
 
@@ -11,7 +12,8 @@ module ForecastSteps
     forecasts << Fixtures::API.build_forecast(
       day: :tomorrow,
       air_pollution_status: :moderate,
-      pollen: 5
+      pollen: 5,
+      temperature: :normal
     )
   end
 
@@ -19,7 +21,8 @@ module ForecastSteps
     forecasts << Fixtures::API.build_forecast(
       day: :day_after_tomorrow,
       air_pollution_status: :very_high,
-      pollen: 6
+      pollen: 6,
+      temperature: :hot
     )
   end
 
@@ -63,9 +66,9 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_temperature_for_each_day
-    expect_prediction(day: :today, category: :temperature, value: "1-2°C")
-    expect_prediction(day: :tomorrow, category: :temperature, value: "3-4°C")
-    expect_prediction(day: :day_after_tomorrow, category: :temperature, value: "5-6°C")
+    expect_prediction(day: :today, category: :temperature, value: "-5-4°C")
+    expect_prediction(day: :tomorrow, category: :temperature, value: "9-16°C")
+    expect_prediction(day: :day_after_tomorrow, category: :temperature, value: "27-31°C")
   end
 
   def expect_prediction(day:, category:, value:)
