@@ -1,7 +1,7 @@
 module Fixtures
   module API
     class << self
-      def build_forecast(day:, air_pollution_status:)
+      def build_forecast(day:, air_pollution_status:, pollen: 4)
         <<~JSON
           {
             "NO2": 1,
@@ -10,7 +10,7 @@ module Fixtures
             "PM2.5": 1,
             "forecast_date": "#{forecast_date_for(day)}",
             "non_pollution_version": null,
-            "pollen": -999,
+            "pollen": #{pollen},
             "pollution_version": 202410011407,
             "rain_am": 1.31,
             "rain_pm": 3.01,

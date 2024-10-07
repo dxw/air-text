@@ -1,14 +1,26 @@
 module ForecastSteps
   def given_a_forecast_for_today
-    forecasts << Fixtures::API.build_forecast(day: :today, air_pollution_status: :high)
+    forecasts << Fixtures::API.build_forecast(
+      day: :today,
+      air_pollution_status: :high,
+      pollen: 4
+    )
   end
 
   def and_a_forecast_for_tomorrow
-    forecasts << Fixtures::API.build_forecast(day: :tomorrow, air_pollution_status: :moderate)
+    forecasts << Fixtures::API.build_forecast(
+      day: :tomorrow,
+      air_pollution_status: :moderate,
+      pollen: 5
+    )
   end
 
   def and_a_forecast_for_the_day_after_tomorrow
-    forecasts << Fixtures::API.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high)
+    forecasts << Fixtures::API.build_forecast(
+      day: :day_after_tomorrow,
+      air_pollution_status: :very_high,
+      pollen: 6
+    )
   end
 
   def forecasts
