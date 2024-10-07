@@ -4,7 +4,8 @@ module ForecastSteps
       day: :today,
       air_pollution_status: :high,
       pollen: 4,
-      temperature: :cold
+      temperature: :cold,
+      uv: :low
     )
   end
 
@@ -13,7 +14,8 @@ module ForecastSteps
       day: :tomorrow,
       air_pollution_status: :moderate,
       pollen: 5,
-      temperature: :normal
+      temperature: :normal,
+      uv: :moderate
     )
   end
 
@@ -22,7 +24,8 @@ module ForecastSteps
       day: :day_after_tomorrow,
       air_pollution_status: :very_high,
       pollen: 6,
-      temperature: :hot
+      temperature: :hot,
+      uv: :high
     )
   end
 
@@ -54,9 +57,9 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_for_each_day
-    expect_prediction(day: :today, category: :uv, value: "Low - No action required. You can safely stay outside.")
-    expect_prediction(day: :tomorrow, category: :uv, value: "Low - No action required. You can safely stay outside.")
-    expect_prediction(day: :day_after_tomorrow, category: :uv, value: "Low - No action required. You can safely stay outside.")
+    expect_prediction(day: :today, category: :uv, value: content_for_uv(:low))
+    expect_prediction(day: :tomorrow, category: :uv, value: content_for_uv(:moderate))
+    expect_prediction(day: :day_after_tomorrow, category: :uv, value: content_for_uv(:high))
   end
 
   def and_i_see_predicted_pollen_level_for_each_day
@@ -118,6 +121,21 @@ module ForecastSteps
       "Very high"
     else
       raise "unexpected value #{value}"
+    end
+  end
+
+  def content_for_uv(value)
+    case value
+    when :low
+      "Low - No action required. You can safely stay outside."
+    when :moderate
+      "Moderate - Protection required. Seek shade during midday hours, cover up and wear suncream."
+    when :high
+      "High - some high UV guidance"
+    when :very_high
+      "Very high- some very high UV guidance"
+    else
+      raise "Unexpected UV value #{value}"
     end
   end
 end

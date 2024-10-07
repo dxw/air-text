@@ -1,7 +1,7 @@
 module Fixtures
   module API
     class << self
-      def build_forecast(day:, air_pollution_status:, pollen: 4, temperature: :normal)
+      def build_forecast(day:, air_pollution_status:, pollen: 4, temperature: :normal, uv: :moderate)
         <<~JSON
           {
             "NO2": 1,
@@ -18,11 +18,26 @@ module Fixtures
             "temp_min": #{min_temp_for(temperature)},
             "total": "#{total_for(air_pollution_status)}",
             "total_status": "#{total_status_for(air_pollution_status)}",
-            "uv": 1,
+            "uv": #{uv_for(uv)},
             "wind_am": 5.3,
             "wind_pm": 6.0
           }
         JSON
+      end
+
+      def uv_for(level)
+        case level
+        when :low
+          [1, 2, 3].sample
+        when :moderate
+          [4, 5, 6].sample
+        when :high
+          [7, 8, 9].sample
+        when :very_high
+          10
+        else
+          raise "UV: level of #{level} not expected"
+        end
       end
 
       def min_temp_for(temperature)
