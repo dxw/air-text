@@ -16,28 +16,13 @@ module Fixtures
             "rain_pm": 3.01,
             "temp_max": #{max_temp_for(temperature)},
             "temp_min": #{min_temp_for(temperature)},
-            "total": "#{total_for(air_pollution_status)}",
+            "total": "#{daqi_value_for_level(air_pollution_status)}",
             "total_status": "#{total_status_for(air_pollution_status)}",
-            "uv": #{uv_for(uv)},
+            "uv": #{daqi_value_for_level(uv)},
             "wind_am": 5.3,
             "wind_pm": 6.0
           }
         JSON
-      end
-
-      def uv_for(level)
-        case level
-        when :low
-          [1, 2, 3].sample
-        when :moderate
-          [4, 5, 6].sample
-        when :high
-          [7, 8, 9].sample
-        when :very_high
-          10
-        else
-          raise "UV: level of #{level} not expected"
-        end
       end
 
       def min_temp_for(temperature)
@@ -81,19 +66,6 @@ module Fixtures
         date.iso8601
       end
 
-      def total_for(air_pollution_status)
-        case air_pollution_status
-        when :low
-          [1, 2, 3].sample
-        when :moderate
-          [4, 5, 6].sample
-        when :high
-          [7, 8, 9].sample
-        when :very_high
-          10
-        end
-      end
-
       def total_status_for(air_pollution_status)
         case air_pollution_status
         when :low
@@ -124,6 +96,21 @@ module Fixtures
             ]
           }
         JSON
+      end
+
+      def daqi_value_for_level(daqi_level)
+        case daqi_level
+        when :low
+          [1, 2, 3].sample
+        when :moderate
+          [4, 5, 6].sample
+        when :high
+          [7, 8, 9].sample
+        when :very_high
+          10
+        else
+          raise "DAQI level of #{level} not known"
+        end
       end
     end
   end
