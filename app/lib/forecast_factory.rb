@@ -29,7 +29,7 @@ class ForecastFactory
         ),
 
         uv: UvPrediction.new(forecast.fetch("uv")),
-        pollen: forecast.fetch("pollen"),
+        pollen: PollenPrediction.new(forecast.fetch("pollen")),
         temperature: TemperaturePrediction.new(
           min: forecast.fetch("temp_min"),
           max: forecast.fetch("temp_max")

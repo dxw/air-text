@@ -34,6 +34,13 @@ en:
     # TODO: Set new application name
     name: "airTEXT"
   hello: "Hello world"
+  prediction:
+    guidance:
+      pollen:
+        low: "Pollen guidance for *low* DAQI level"
+        moderate: "Pollen guidance for *moderate* DAQI level"
+        high: "Pollen guidance for *high* DAQI level"
+        very_high: "Pollen guidance for *very high* DAQI level"
   air_quality_alert:
     moderate:
       guidance:

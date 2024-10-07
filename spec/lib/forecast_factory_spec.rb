@@ -58,7 +58,7 @@ RSpec.describe ForecastFactory do
         expect(forecast.uv.label).to eq("Low")
         expect(forecast.uv.guidance).to eq("No action required. You can safely stay outside.")
 
-        expect(forecast.pollen).to eq(-999)
+        expect(forecast.pollen.value).to eq(-999)
 
         expect(forecast.temperature.min).to eq(10.0)
         expect(forecast.temperature.max).to eq(16.6)

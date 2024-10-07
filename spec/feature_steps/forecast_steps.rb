@@ -3,7 +3,7 @@ module ForecastSteps
     forecasts << Fixtures::API.build_forecast(
       day: :today,
       air_pollution_status: :high,
-      pollen: 4,
+      pollen: :low,
       temperature: :cold,
       uv: :low
     )
@@ -13,7 +13,7 @@ module ForecastSteps
     forecasts << Fixtures::API.build_forecast(
       day: :tomorrow,
       air_pollution_status: :moderate,
-      pollen: 5,
+      pollen: :moderate,
       temperature: :normal,
       uv: :moderate
     )
@@ -23,7 +23,7 @@ module ForecastSteps
     forecasts << Fixtures::API.build_forecast(
       day: :day_after_tomorrow,
       air_pollution_status: :very_high,
-      pollen: 6,
+      pollen: :high,
       temperature: :hot,
       uv: :high
     )
@@ -63,9 +63,9 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_pollen_level_for_each_day
-    expect_prediction(day: :today, category: :pollen, value: 4)
-    expect_prediction(day: :tomorrow, category: :pollen, value: 5)
-    expect_prediction(day: :day_after_tomorrow, category: :pollen, value: 6)
+    expect_prediction(day: :today, category: :pollen, value: content_for_pollen(:low))
+    expect_prediction(day: :tomorrow, category: :pollen, value: content_for_pollen(:moderate))
+    expect_prediction(day: :day_after_tomorrow, category: :pollen, value: content_for_pollen(:high))
   end
 
   def and_i_see_predicted_temperature_for_each_day
@@ -136,6 +136,21 @@ module ForecastSteps
       "Very high- some very high UV guidance"
     else
       raise "Unexpected UV value #{value}"
+    end
+  end
+
+  def content_for_pollen(value)
+    case value
+    when :low
+      "Low - #{I18n.t("prediction.guidance.pollen.#{value}")}"
+    when :moderate
+      "Moderate - #{I18n.t("prediction.guidance.pollen.#{value}")}"
+    when :high
+      "High - #{I18n.t("prediction.guidance.pollen.#{value}")}"
+    when :very_high
+      "Very high - #{I18n.t("prediction.guidance.pollen.#{value}")}"
+    else
+      raise "Unexpected Pollen value #{value}"
     end
   end
 end

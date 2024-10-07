@@ -56,7 +56,8 @@
         body.with_row(html_attributes: {class: "pollen"}) do |row|
           row.with_cell(text: 'Pollen')
           @forecasts.map { | forecast|
-            row.with_cell(text: forecast.pollen,
+            row.with_cell(
+              text: [forecast.pollen.daqi_label, forecast.pollen.guidance].join(" - "),
               html_attributes: { "data-date" => forecast.forecast_for}
             )
           }

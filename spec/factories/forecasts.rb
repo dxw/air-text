@@ -26,7 +26,7 @@ FactoryBot.define do
     zone { FactoryBot.build(:forecast_zone) }
     air_pollution { FactoryBot.build(:air_pollution_prediction) }
     uv { FactoryBot.build(:uv_prediction) }
-    pollen { -999 }
+    pollen { FactoryBot.build(:pollen_prediction) }
     temperature { FactoryBot.build(:temperature_prediction) }
 
     initialize_with {
