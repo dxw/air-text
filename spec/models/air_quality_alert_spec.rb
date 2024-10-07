@@ -2,7 +2,7 @@ RSpec.describe AirQualityAlert do
   let(:forecast) do
     FactoryBot.build(
       :forecast,
-      forecast_for: Date.tomorrow,
+      date: Date.tomorrow,
       air_pollution: FactoryBot.build(:air_pollution_prediction, :high)
     )
   end

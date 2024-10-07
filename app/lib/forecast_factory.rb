@@ -10,7 +10,7 @@ class ForecastFactory
       .map do |forecast|
       Forecast.new({
         obtained_at: obtained_at,
-        forecast_for: Date.parse(forecast.fetch("forecast_date")),
+        date: Date.parse(forecast.fetch("forecast_date")),
 
         zone: ForecastZone.new(
           id: zone.fetch("zone_id"),

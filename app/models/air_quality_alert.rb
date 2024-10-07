@@ -10,7 +10,7 @@ class AirQualityAlert
   }
 
   def date
-    @forecast.forecast_for
+    @forecast.date
   end
 
   def daqi_level

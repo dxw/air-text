@@ -40,7 +40,7 @@ RSpec.describe ForecastFactory do
 
       aggregate_failures do
         expect(forecast.obtained_at).to eq(Time.zone.parse("02-10-2024 15:38"))
-        expect(forecast.forecast_for).to eq(Date.parse("2024-10-02"))
+        expect(forecast.date).to eq(Date.parse("2024-10-02"))
 
         expect(forecast.zone.name).to eq("Southwark")
         expect(forecast.zone.id).to eq(29)

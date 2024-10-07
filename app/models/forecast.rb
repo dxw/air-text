@@ -1,9 +1,9 @@
 class Forecast
-  attr_reader :obtained_at, :forecast_for, :zone, :air_pollution, :uv, :pollen, :temperature
+  attr_reader :obtained_at, :date, :zone, :air_pollution, :uv, :pollen, :temperature
 
   def initialize(attrs)
     @obtained_at = attrs.fetch(:obtained_at)
-    @forecast_for = attrs.fetch(:forecast_for)
+    @date = attrs.fetch(:date)
     @zone = attrs.fetch(:zone)
     @air_pollution = attrs.fetch(:air_pollution)
     @uv = attrs.fetch(:uv)
@@ -25,7 +25,7 @@ class Forecast
   def inspect
     attr_values = [
       "@obtained_at=#{obtained_at}",
-      "@forecast_for=#{forecast_for}",
+      "@date=#{date}",
       "@zone=#{zone.inspect}",
       "@air_pollution=#{air_pollution.inspect}",
       "@uv=#{uv.inspect}",

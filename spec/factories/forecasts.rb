@@ -1,6 +1,6 @@
 # #<Forecast
 # @obtained_at=2024-10-02 15:38:00 +0100
-# @forecast_for=2024-10-02
+# @date=2024-10-02
 # @zone=#<ForecastZone
 #   @id=29
 #   @name=Southwark
@@ -22,7 +22,7 @@
 FactoryBot.define do
   factory :forecast do
     obtained_at { Time.current }
-    forecast_for { Date.tomorrow }
+    date { Date.tomorrow }
     zone { FactoryBot.build(:forecast_zone) }
     air_pollution { FactoryBot.build(:air_pollution_prediction) }
     uv { FactoryBot.build(:uv_prediction) }
@@ -32,7 +32,7 @@ FactoryBot.define do
     initialize_with {
       new(
         obtained_at: obtained_at,
-        forecast_for: forecast_for,
+        date: date,
         zone: zone,
         air_pollution: air_pollution,
         uv: uv,
