@@ -28,7 +28,7 @@ class Forecast
       "@forecast_for=#{forecast_for}",
       "@zone=#{zone.inspect}",
       "@air_pollution=#{air_pollution.inspect}",
-      "@uv=#{uv}",
+      "@uv=#{uv.inspect}",
       "@pollen=#{pollen}",
       "@temperature=#{temperature.inspect}"
     ]

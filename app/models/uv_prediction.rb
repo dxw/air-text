@@ -18,4 +18,10 @@ class UvPrediction
       @guidance = "some very high UV guidance"
     end
   end
+
+  # :nocov:
+  def inspect
+    "#<#{self.class.name} @level=#{level} @label=#{label} @guidance=#{guidance}>"
+  end
+  # :nocov:
 end
