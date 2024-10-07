@@ -1,11 +1,11 @@
 RSpec.describe UvPrediction do
-  describe "#label_text" do
+  describe "#daqi_label and #guidance" do
     context "when the UV level is 1, 2 or 3" do
       [1, 2, 3].each do |value|
         prediction = UvPrediction.new(value)
         it "returns _Low_ with guidance" do
-          expect(prediction.label).to eq("Low")
-          expect(prediction.guidance).to eq("No action required. You can safely stay outside.")
+          expect(prediction.daqi_label).to eq("Low")
+          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.low"))
         end
       end
     end
@@ -14,8 +14,8 @@ RSpec.describe UvPrediction do
       [4, 5, 6].each do |value|
         prediction = UvPrediction.new(value)
         it "returns _Moderate_ with guidance" do
-          expect(prediction.label).to eq("Moderate")
-          expect(prediction.guidance).to eq("Protection required. Seek shade during midday hours, cover up and wear suncream.")
+          expect(prediction.daqi_label).to eq("Moderate")
+          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.moderate"))
         end
       end
     end
@@ -24,8 +24,8 @@ RSpec.describe UvPrediction do
       [7, 8, 9].each do |level|
         prediction = UvPrediction.new(level)
         it "returns _High_ with guidance" do
-          expect(prediction.label).to eq("High")
-          expect(prediction.guidance).to eq("some high UV guidance")
+          expect(prediction.daqi_label).to eq("High")
+          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.high"))
         end
       end
     end
@@ -33,8 +33,8 @@ RSpec.describe UvPrediction do
     context "when the UV level is 10" do
       prediction = UvPrediction.new(10)
       it "returns _Very high_ with guidance" do
-        expect(prediction.label).to eq("Very high")
-        expect(prediction.guidance).to eq("some very high UV guidance")
+        expect(prediction.daqi_label).to eq("Very high")
+        expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.very_high"))
       end
     end
   end

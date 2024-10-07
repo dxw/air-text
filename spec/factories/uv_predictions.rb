@@ -4,13 +4,11 @@
 
 FactoryBot.define do
   factory :uv_prediction do
-    level { 3 }
-    label { "Moderate" }
+    value { 3 }
 
     initialize_with {
       new(
-        level: level,
-        label: label
+        value: value
       )
     }
   end

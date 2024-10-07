@@ -54,8 +54,8 @@ RSpec.describe ForecastFactory do
         expect(forecast.air_pollution.overall_score).to eq(2)
         expect(forecast.air_pollution.overall_label).to eq("Very high")
 
-        expect(forecast.uv.level).to eq(2)
-        expect(forecast.uv.label).to eq("Low")
+        expect(forecast.uv.value).to eq(2)
+        expect(forecast.uv.daqi_label).to eq("Low")
         expect(forecast.uv.guidance).to eq("No action required. You can safely stay outside.")
 
         expect(forecast.pollen.value).to eq(-999)

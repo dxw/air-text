@@ -1,27 +1,40 @@
 class UvPrediction
-  attr_reader :level, :label, :guidance
+  attr_reader :value
 
-  def initialize(level)
-    @level = level
-    case level
+  def initialize(value)
+    @value = value
+  end
+
+  DAQI_LABELS = {
+    low: "Low",
+    moderate: "Moderate",
+    high: "High",
+    very_high: "Very high"
+  }
+
+  def daqi_label
+    DAQI_LABELS.fetch(daqi_level)
+  end
+
+  def daqi_level
+    case @value
     when 1..3
-      @label = "Low"
-      @guidance = "No action required. You can safely stay outside."
+      :low
     when 4..6
-      @label = "Moderate"
-      @guidance = "Protection required. Seek shade during midday hours, cover up and wear suncream."
+      :moderate
     when 7..9
-      @label = "High"
-      @guidance = "some high UV guidance"
+      :high
     else
-      @label = "Very high"
-      @guidance = "some very high UV guidance"
+      :very_high
     end
+  end
+
+  def guidance
+    I18n.t("prediction.guidance.uv.#{daqi_level}")
   end
 
   # :nocov:
   def inspect
-    "#<#{self.class.name} @level=#{level} @label=#{label} @guidance=#{guidance}>"
+    "#<#{self.class.name} @value=#{value}>"
   end
-  # :nocov:
 end

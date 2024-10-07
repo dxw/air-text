@@ -127,13 +127,13 @@ module ForecastSteps
   def content_for_uv(value)
     case value
     when :low
-      "Low - No action required. You can safely stay outside."
+      "Low - #{I18n.t("prediction.guidance.uv.#{value}")}"
     when :moderate
-      "Moderate - Protection required. Seek shade during midday hours, cover up and wear suncream."
+      "Moderate - #{I18n.t("prediction.guidance.uv.#{value}")}"
     when :high
-      "High - some high UV guidance"
+      "High - #{I18n.t("prediction.guidance.uv.#{value}")}"
     when :very_high
-      "Very high- some very high UV guidance"
+      "Very high - #{I18n.t("prediction.guidance.uv.#{value}")}"
     else
       raise "Unexpected UV value #{value}"
     end
