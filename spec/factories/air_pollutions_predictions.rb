@@ -4,8 +4,8 @@
 #   @particulate_matter_10=1
 #   @particulate_matter_2_5=1
 #   @ozone=2
-#   @overall_score=2
-#   @overall_label=LOW>
+#   @value=2
+#   @label=LOW>
 
 FactoryBot.define do
   factory :air_pollution_prediction do
@@ -14,8 +14,44 @@ FactoryBot.define do
     particulate_matter_10 { 1 }
     particulate_matter_2_5 { 2 }
     ozone { 2 }
-    overall_score { 2 }
-    overall_label { "LOW" }
+    value { 2 }
+    label { "LOW" }
+
+    trait :low do
+      value { 2 }
+      label { "LOW" }
+      nitrogen_dioxide { 1 }
+      particulate_matter_10 { 1 }
+      particulate_matter_2_5 { 2 }
+      ozone { 2 }
+    end
+
+    trait :moderate do
+      value { 4 }
+      label { "MODERATE" }
+      nitrogen_dioxide { 4 }
+      particulate_matter_10 { 4 }
+      particulate_matter_2_5 { 4 }
+      ozone { 4 }
+    end
+
+    trait :high do
+      value { 8 }
+      label { "HIGH" }
+      nitrogen_dioxide { 8 }
+      particulate_matter_10 { 8 }
+      particulate_matter_2_5 { 8 }
+      ozone { 8 }
+    end
+
+    trait :very_high do
+      value { 10 }
+      label { "VERY HIGH" }
+      nitrogen_dioxide { 10 }
+      particulate_matter_10 { 10 }
+      particulate_matter_2_5 { 10 }
+      ozone { 10 }
+    end
 
     initialize_with {
       new(
@@ -24,8 +60,8 @@ FactoryBot.define do
         particulate_matter_10: particulate_matter_10,
         particulate_matter_2_5: particulate_matter_2_5,
         ozone: ozone,
-        overall_score: overall_score,
-        overall_label: overall_label
+        value: value,
+        label: label
       )
     }
   end

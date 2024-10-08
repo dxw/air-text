@@ -10,7 +10,7 @@ class ForecastFactory
       .map do |forecast|
       Forecast.new({
         obtained_at: obtained_at,
-        forecast_for: Date.parse(forecast.fetch("forecast_date")),
+        date: Date.parse(forecast.fetch("forecast_date")),
 
         zone: ForecastZone.new(
           id: zone.fetch("zone_id"),
@@ -24,12 +24,12 @@ class ForecastFactory
           particulate_matter_10: forecast.fetch("PM10"),
           particulate_matter_2_5: forecast.fetch("PM2.5"),
           ozone: forecast.fetch("O3"),
-          overall_score: forecast.fetch("total"),
-          overall_label: forecast.fetch("total_status")
+          value: forecast.fetch("total"),
+          label: forecast.fetch("total_status")
         ),
 
         uv: UvPrediction.new(forecast.fetch("uv")),
-        pollen: forecast.fetch("pollen"),
+        pollen: PollenPrediction.new(forecast.fetch("pollen")),
         temperature: TemperaturePrediction.new(
           min: forecast.fetch("temp_min"),
           max: forecast.fetch("temp_max")

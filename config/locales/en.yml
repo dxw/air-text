@@ -34,6 +34,20 @@ en:
     # TODO: Set new application name
     name: "airTEXT"
   hello: "Hello world"
+  prediction:
+    guidance:
+      uv:
+        low: "No action required. You can safely stay outside."
+        moderate:
+          "Protection required. Seek shade during midday hours, cover up and
+          wear suncream."
+        high: "UV guidance for *high* DAQI level"
+        very_high: "UV guidance for *very high* DAQI level"
+      pollen:
+        low: "Pollen guidance for *low* DAQI level"
+        moderate: "Pollen guidance for *moderate* DAQI level"
+        high: "Pollen guidance for *high* DAQI level"
+        very_high: "Pollen guidance for *very high* DAQI level"
   air_quality_alert:
     moderate:
       guidance:

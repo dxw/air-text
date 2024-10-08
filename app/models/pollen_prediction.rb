@@ -1,4 +1,4 @@
-class UvPrediction
+class PollenPrediction
   include DaqiProperties
 
   attr_reader :value
@@ -8,11 +8,12 @@ class UvPrediction
   end
 
   def guidance
-    I18n.t("prediction.guidance.uv.#{daqi_level}")
+    I18n.t("prediction.guidance.pollen.#{daqi_level}")
   end
 
   # :nocov:
   def inspect
     "#<#{self.class.name} @value=#{value}>"
   end
+  # :nocov:
 end

@@ -1,9 +1,8 @@
-# @uv=#<UvPrediction
-#   @level=3
-#   @label_text="Moderate">
+# @pollen=#<PollenPrediction
+#   @value=3
 
 FactoryBot.define do
-  factory :uv_prediction do
+  factory :pollen_prediction do
     value { 3 }
 
     initialize_with {

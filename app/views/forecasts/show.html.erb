@@ -31,7 +31,7 @@
         head.with_row do |row|
         row.with_cell(text: '')
         @forecasts.map { |forecast|
-          row.with_cell(text: forecast.forecast_for.to_formatted_s(:short))
+          row.with_cell(text: forecast.date.to_formatted_s(:short))
         }
 
         end; end; table.with_body do |body|
@@ -39,8 +39,8 @@
         row.with_cell(text: 'Air pollution')
         @forecasts.map { | forecast|
           row.with_cell(
-            text: forecast.air_pollution.overall_label,
-            html_attributes: { "data-date" => forecast.forecast_for}
+            text: forecast.air_pollution.daqi_label,
+            html_attributes: { "data-date" => forecast.date}
           )
         }
         end;
@@ -48,16 +48,17 @@
         row.with_cell(text: 'UV')
         @forecasts.map { | forecast|
           row.with_cell(
-            text: "#{forecast.uv.label} - #{forecast.uv.guidance}",
-            html_attributes: { "data-date" => forecast.forecast_for}
+            text: "#{forecast.uv.daqi_label} - #{forecast.uv.guidance}",
+            html_attributes: { "data-date" => forecast.date}
           )
         }
         end;
         body.with_row(html_attributes: {class: "pollen"}) do |row|
           row.with_cell(text: 'Pollen')
           @forecasts.map { | forecast|
-            row.with_cell(text: forecast.pollen,
-              html_attributes: { "data-date" => forecast.forecast_for}
+            row.with_cell(
+              text: [forecast.pollen.daqi_label, forecast.pollen.guidance].join(" - "),
+              html_attributes: { "data-date" => forecast.date}
             )
           }
         end;
@@ -66,7 +67,7 @@
           @forecasts.map { | forecast|
             row.with_cell(
               text: "#{forecast.temperature.min.round}-#{forecast.temperature.max.round}°C",
-              html_attributes: { "data-date" => forecast.forecast_for}
+              html_attributes: { "data-date" => forecast.date}
             )
           }
         end;
