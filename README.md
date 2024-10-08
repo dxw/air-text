@@ -39,17 +39,6 @@ e.g.
 ./script/no-docker/test
 ```
 
-## Making changes
-
-When making a change, update the [changelog](CHANGELOG.md) using the
-[Keep a Changelog 1.0.0](https://keepachangelog.com/en/1.0.0/) format. Pull
-requests should not be merged before any relevant updates are made.
-
-## Releasing changes
-
-When making a new release, update the [changelog](CHANGELOG.md) in the release
-pull request.
-
 ## Architecture decision records
 
 We use ADRs to document architectural decisions that we make. They can be found
@@ -81,9 +70,13 @@ To manage sensitive environment variables:
 
 ## Access
 
-TODO: Where can people find the service and the different environments?
+The service is deployed to Heroku at
+[https://air-text-3e4548b53179.herokuapp.com/][].
 
 ## Source
 
 This repository was bootstrapped from
 [dxw's `rails-template`](https://github.com/dxw/rails-template).
+
+[https://air-text-3e4548b53179.herokuapp.com/]:
+  https://air-text-3e4548b53179.herokuapp.com/
