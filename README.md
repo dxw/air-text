@@ -4,6 +4,29 @@ This is a rebuild of the airTEXT.info service
 
 1. [Getting started](/doc/getting-started.md)
 
+## Description of the service
+
+A service for providing forecasts and personalised alerts on air quality and
+other environmental factors in:
+
+- Greater London
+- Cambridge
+- the Chelmsford/Colchester area
+
+## Terminology
+
+We aim to use and refine a "ubiquitous language" for use throughout the service.
+We believe that this will optimise our communication and minimise our
+misunderstandings and our cognitive load. We will aim use the same terms in:
+
+- the UI of the service
+- the code we write
+- our sketches and mockups
+- our research sessions
+- our documentation and our presentations to partner organisations
+
+See [./doc/terminology.md][]
+
 ## Tests
 
 ### Local unit and integration tests
@@ -80,3 +103,4 @@ This repository was bootstrapped from
 
 [https://air-text-3e4548b53179.herokuapp.com/]:
   https://air-text-3e4548b53179.herokuapp.com/
+[./doc/terminology.md]: ./doc/terminology.md
