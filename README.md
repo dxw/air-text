@@ -4,19 +4,39 @@ This is a rebuild of the airTEXT.info service
 
 1. [Getting started](/doc/getting-started.md)
 
-## Static code analysis
+## Tests
 
-Run [Brakeman](https://brakemanscanner.org/) to highlight any security
-vulnerabilities:
+### Local unit and integration tests
 
-```bash
-$ brakeman
+#### Fast feedback loop
+
+These tests (Rspec and Capybara) can be run at maximum speed with:
+
+```sh
+bundle exec rspec
 ```
 
-To pipe the results to a file:
+### Full pre-commit checks
 
-```bash
-$ brakeman -o report.text
+Before committing you should run our complete set of checks and tests.
+
+Choose from either the dockerised or undockerised version of the supplied
+comprehensive test script which includes:
+
+- formatting files with `prettier`
+- checking scripts with `shellcheck`
+- linting Ruby files with `standardrb`
+- linting JS with `eslint`
+- linting CSS with `stylelint`
+- running automated test suite with `rspec`
+- running API specs and generating OpenAPI spec via the
+  `rswag_api_tests_with_docs` `rake` task
+- analysing vulnerabilities in Ruby gems with `brakeman`
+
+e.g.
+
+```sh
+./script/no-docker/test
 ```
 
 ## Making changes
