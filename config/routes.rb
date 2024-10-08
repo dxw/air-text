@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   get "health_check" => "application#health_check"
+  get :styled_layout, to: "styled_layouts#show"
+
   root to: "visitors#index"
 
   get "map", to: "map#show"
