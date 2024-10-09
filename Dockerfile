@@ -131,7 +131,6 @@ RUN \
   yarn
 
 COPY eslint.config.mjs ${APP_HOME}/eslint.config.mjs
-COPY .eslintrc.json ${APP_HOME}/.eslintrc.json
 COPY .prettierignore ${APP_HOME}/.prettierignore
 COPY .prettierrc ${APP_HOME}/.prettierrc
 COPY .stylelintrc.json ${APP_HOME}/.stylelintrc.json

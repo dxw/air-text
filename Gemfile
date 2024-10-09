@@ -55,3 +55,5 @@ group :test do
   gem "climate_control"
   gem "webmock"
 end
+
+gem "cssbundling-rails", "~> 1.4"

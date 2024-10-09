@@ -7,7 +7,8 @@
     "lint:format": "prettier --check '**/*'",
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
-    "lint:js:fix": "yarn run lint:js --fix"
+    "lint:js:fix": "yarn run lint:js --fix",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -25,6 +26,9 @@
     "yarn": "1.22.22"
   },
   "dependencies": {
-    "govuk-frontend": "^5.6.0"
+    "autoprefixer": "^10.4.20",
+    "govuk-frontend": "^5.6.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
   }
 }

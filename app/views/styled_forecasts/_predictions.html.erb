@@ -1,0 +1,40 @@
+<dl class="predictions p-4">
+  <div class="prediction py-4 uv border-b border-gray-400">
+    <div class="summary flex flex-row">
+      <dt class="w-1/2">Ultravoilet rays (UV)</dd>
+      <dd class="flex flex-row w-1/2">
+        <div class="daqi-indicator -mt-1 text-green-600 text-2xl">●</div>
+        <div class="daqi-label font-bold ml-1 w-4/5">Low</div>
+        <div class="control"><%= render partial: "shared/icons/chevron_down" %></div>
+      </dd>
+    </div>
+    <div class="details hidden">
+    </div>
+  </div>
+  <div class="prediction py-4 pollen border-b border-gray-400">
+    <div class="summary flex flex-row">
+      <dt class="w-1/2">Pollen</dd>
+      <dd class="flex flex-row w-1/2">
+        <div class=" -mt-1 daqi-indicator text-amber-300 text-2xl">●</div>
+        <div class=" daqi-label font-bold ml-1 w-4/5">Moderate</div>
+        <div class="control"><%= render partial: "shared/icons/chevron_down" %></div>
+      </dd>
+    </div>
+    <div class="details visible  bg-amber-50 p-4 mt-2">
+      <%= render partial: "details" %>
+    </div>
+  </div>
+  <div class="prediction py-4 temperature border-b border-gray-400">
+    <div class="summary flex flex-row">
+      <dt class="w-1/2">Temperature</dd>
+      <dd class="flex flex-row w-1/2">
+        <div class="daqi-indicator -mt-1 text-green-600 text-2xl">●</div>
+        <div class="daqi-label font-bold ml-1 w-4/5">Low</div>
+        <div class="control"><%= render partial: "shared/icons/chevron_down" %></div>
+      </dd>
+    </div>
+    <div class="details hidden">
+    </div>
+  </div>
+</div>
+</dl>
