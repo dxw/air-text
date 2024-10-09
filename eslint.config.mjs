@@ -13,7 +13,7 @@ const compat = new FlatCompat({
 });
 
 export default [{
-    ignores: ["log/", "tmp/", "vendor/", "public/assets", "coverage", "**/leaflet.js"],
+    ignores: ["log/", "tmp/", "vendor/", "public/assets", "app/assets/builds", "coverage", "**/leaflet.js"],
 }, ...compat.extends("eslint:recommended", "prettier"), {
     languageOptions: {
         globals: {
