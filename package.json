@@ -8,11 +8,13 @@
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.11.1",
+    "esbuild": "^0.24.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.0.0",
     "globals": "^15.9.0",
@@ -26,6 +28,7 @@
     "yarn": "1.22.22"
   },
   "dependencies": {
+    "@hotwired/turbo-rails": "^8.0.10",
     "autoprefixer": "^10.4.20",
     "govuk-frontend": "^5.6.0",
     "postcss": "^8.4.47",

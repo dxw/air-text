@@ -17,7 +17,8 @@ gem "puma", "~> 6.4"
 gem "rollbar"
 gem "rails", "~> 7.2"
 gem "sass-rails", "~> 6.0"
-gem "turbolinks", "~> 5"
+gem "turbolinks", "~> 5" # we'll remove this once we've migrated to ESbuilt assets
+gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "terser"
 gem "govuk-components"
@@ -57,3 +58,5 @@ group :test do
 end
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "jsbundling-rails", "~> 1.3"
