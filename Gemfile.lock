@@ -494,6 +494,7 @@ DEPENDENCIES
   turbo-rails
   turbolinks (~> 5)
   tzinfo-data
+  view_component
   web-console (>= 3.3.0)
   webmock
 
