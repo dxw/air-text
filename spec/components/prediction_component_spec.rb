@@ -7,7 +7,8 @@ RSpec.describe PredictionComponent, type: :component do
     OpenStruct.new(
       name: "Solar Rays",
       daqi_level: :moderate,
-      daqi_label: "Moderate"
+      daqi_label: "Moderate",
+      value: 5
     )
   }
 
@@ -102,6 +103,19 @@ RSpec.describe PredictionComponent, type: :component do
   describe "daqi-label" do
     it "includes the prediction's #daqi_label in .daqi-label" do
       expect(page).to have_css(".daqi-label", text: "Moderate")
+    end
+  end
+
+  describe "details" do
+    it "includes the prediction's #value as .daqi-value" do
+      expect(page).to have_css(".details .daqi-value", text: "Index 5/10")
+    end
+
+    it "includes the prediction's guidance from the translation system" do
+      expect(page).to have_css(
+        ".details .guidance",
+        text: I18n.t("prediction.guidance.solar_rays.moderate")
+      )
     end
   end
 end

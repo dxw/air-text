@@ -27,4 +27,14 @@ class PredictionComponent < ViewComponent::Base
       raise "DAQI level '#{@prediction.daqi_level}' not known"
     end
   end
+
+  def daqi_value_as_index
+    "Index #{@prediction.value}/10"
+  end
+
+  def guidance
+    I18n.t(
+      "prediction.guidance.#{@prediction.name.parameterize(separator: "_")}.#{@prediction.daqi_level}"
+    )
+  end
 end
