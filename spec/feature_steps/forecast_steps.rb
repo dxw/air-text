@@ -42,8 +42,16 @@ module ForecastSteps
     click_link("View forecasts")
   end
 
+  def when_i_select_view_forecasts_v2
+    click_link("View new style forecasts")
+  end
+
   def then_i_see_the_forecasts_page
     expect(page).to have_content("Forecasts")
+  end
+
+  def then_i_see_the_forecasts_page_v2
+    expect(page).to have_content("Air quality forecast")
   end
 
   def and_i_see_local_air_quality_information
@@ -54,6 +62,12 @@ module ForecastSteps
     expect_prediction(day: :today, category: :air_pollution, value: :high)
     expect_prediction(day: :tomorrow, category: :air_pollution, value: :moderate)
     expect_prediction(day: :day_after_tomorrow, category: :air_pollution, value: :very_high)
+  end
+
+  def and_i_see_predicted_air_pollution_status_for_each_day_v2
+    expect_air_pollution_prediction(day: :today, value: :high)
+    expect_air_pollution_prediction(day: :tomorrow, value: :moderate)
+    expect_air_pollution_prediction(day: :day_after_tomorrow, value: :very_high)
   end
 
   def and_i_see_predicted_uv_level_for_each_day
@@ -79,6 +93,12 @@ module ForecastSteps
       within("td[data-date='#{date(day)}']") do
         expect(page).to have_content(content_for(category: category, value: value))
       end
+    end
+  end
+
+  def expect_air_pollution_prediction(day:, value:)
+    within("div[data-date='#{date(day)}']") do
+      expect(page).to have_content(content_for_air_pollution(value))
     end
   end
 
