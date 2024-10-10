@@ -52,4 +52,10 @@ class PredictionComponent < ViewComponent::Base
       "prediction.guidance.#{@prediction.name.parameterize(separator: "_")}.#{@prediction.daqi_level}"
     )
   end
+
+  def visibility
+    return "hidden" if @prediction.daqi_level == :low
+
+    "visible"
+  end
 end

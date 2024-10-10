@@ -118,6 +118,38 @@ RSpec.describe PredictionComponent, type: :component do
       )
     end
 
+    describe "visibility" do
+      context "when the DAQI level is low" do
+        let(:component) {
+          PredictionComponent.new(
+            prediction: OpenStruct.new(name: "Solar Rays", daqi_level: :low)
+          )
+        }
+
+        before { render_inline(component) }
+
+        it "hides the panel" do
+          expect(page).to have_css(".details.hidden")
+        end
+      end
+
+      context "when the DAQI level is NOT low" do
+        [:moderate, :high, :very_high].each do |level|
+          let(:component) {
+            PredictionComponent.new(
+              prediction: OpenStruct.new(name: "Solar Rays", daqi_level: level)
+            )
+          }
+
+          before { render_inline(component) }
+
+          it "shows the panel" do
+            expect(page).to have_css(".details.visible")
+          end
+        end
+      end
+    end
+
     it "includes the details_panel_colour as a class" do
       component = PredictionComponent.new(prediction: prediction)
       expect(page).to have_css(".#{component.details_panel_colour}.details")
