@@ -117,5 +117,70 @@ RSpec.describe PredictionComponent, type: :component do
         text: I18n.t("prediction.guidance.solar_rays.moderate")
       )
     end
+
+    it "includes the details_panel_colour as a class" do
+      component = PredictionComponent.new(prediction: prediction)
+      expect(page).to have_css(".#{component.details_panel_colour}.details")
+    end
+
+    describe "the colour of the details panel (#details_panel_colour)" do
+      context "when the daqi level is low" do
+        let(:component) {
+          PredictionComponent.new(
+            prediction: OpenStruct.new(daqi_level: :low)
+          )
+        }
+        it "uses an green colour" do
+          expect(component.details_panel_colour).to match(/green/)
+        end
+      end
+
+      context "when the daqi level is moderate" do
+        let(:component) {
+          PredictionComponent.new(
+            prediction: OpenStruct.new(daqi_level: :moderate)
+          )
+        }
+        it "uses an amber colour" do
+          expect(component.details_panel_colour).to match(/amber/)
+        end
+      end
+
+      context "when the daqi level is high" do
+        let(:component) {
+          PredictionComponent.new(
+            prediction: OpenStruct.new(daqi_level: :high)
+          )
+        }
+
+        it "uses a red colour" do
+          expect(component.details_panel_colour).to match(/red/)
+        end
+      end
+
+      context "when the daqi level is very high" do
+        let(:component) {
+          PredictionComponent.new(
+            prediction: OpenStruct.new(daqi_level: :very_high)
+          )
+        }
+
+        it "uses a black-ish" do
+          expect(component.details_panel_colour).to match(/stone/)
+        end
+      end
+
+      context "when the daqi level is not known" do
+        let(:component) {
+          PredictionComponent.new(
+            prediction: OpenStruct.new(daqi_level: :unknown)
+          )
+        }
+
+        it "raises an error" do
+          expect { component.details_panel_colour }.to raise_error(/DAQI level 'unknown' not known/)
+        end
+      end
+    end
   end
 end

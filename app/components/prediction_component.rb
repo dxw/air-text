@@ -28,6 +28,21 @@ class PredictionComponent < ViewComponent::Base
     end
   end
 
+  def details_panel_colour
+    case @prediction.daqi_level
+    when :low
+      "bg-green-50"
+    when :moderate
+      "text-amber-50"
+    when :high
+      "text-red-50"
+    when :very_high
+      "text-stone-50"
+    else
+      raise "DAQI level '#{@prediction.daqi_level}' not known"
+    end
+  end
+
   def daqi_value_as_index
     "Index #{@prediction.value}/10"
   end
