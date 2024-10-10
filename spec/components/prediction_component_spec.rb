@@ -6,7 +6,8 @@ RSpec.describe PredictionComponent, type: :component do
   let(:prediction) {
     OpenStruct.new(
       name: "Solar Rays",
-      daqi_level: :moderate
+      daqi_level: :moderate,
+      daqi_label: "Moderate"
     )
   }
 
@@ -95,6 +96,12 @@ RSpec.describe PredictionComponent, type: :component do
     it "includes the daqi_indicator_colour as a class" do
       component = PredictionComponent.new(prediction: prediction)
       expect(page).to have_css(".#{component.daqi_indicator_colour}.daqi-indicator", text: "●")
+    end
+  end
+
+  describe "daqi-label" do
+    it "includes the prediction's #daqi_label in .daqi-label" do
+      expect(page).to have_css(".daqi-label", text: "Moderate")
     end
   end
 end
