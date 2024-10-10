@@ -1,9 +1,10 @@
-<div class="prediction py-4 <%= @prediction.name.parameterize %> border-b border-gray-400">
+<div class="prediction py-4 <%= @prediction.name.parameterize %> <%= @prediction.daqi_level.to_s.parameterize %> border-b border-gray-400">
   <div class="summary flex flex-row">
     <dt class="name w-1/2">
       <%= @prediction.name %>
     </dt>
     <dd class="flex flex-row w-1/2">
+      <div class=" -mt-1 daqi-indicator <%= @prediction.daqi_level.to_s.parameterize %> text-amber-300 text-2xl">●</div>
     </dd>
   </div>
 </div>
