@@ -30,3 +30,4 @@ leaflet.js
 leaflet.css
 /coverage
 .ruby-lsp/
+/app/assets/builds
