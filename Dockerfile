@@ -96,8 +96,7 @@ RUN mkdir -p tmp/pids
 
 RUN \
   if [ "$RAILS_ENV" = "production" ]; then \
-  SECRET_KEY_BASE="secret" \
-  bundle exec rake assets:precompile; \
+  SECRET_KEY_BASE="secret"; \
   fi
 
 # TODO:
@@ -129,6 +128,8 @@ RUN \
   apt-get install -y \
   shellcheck \
   yarn
+
+RUN yarn build:css && yarn build
 
 COPY eslint.config.mjs ${APP_HOME}/eslint.config.mjs
 COPY .prettierignore ${APP_HOME}/.prettierignore
