@@ -4,31 +4,63 @@ This is a rebuild of the airTEXT.info service
 
 1. [Getting started](/doc/getting-started.md)
 
-## Static code analysis
+## Description of the service
 
-Run [Brakeman](https://brakemanscanner.org/) to highlight any security
-vulnerabilities:
+A service for providing forecasts and personalised alerts on air quality and
+other environmental factors in:
 
-```bash
-$ brakeman
+- Greater London
+- Cambridge
+- the Chelmsford/Colchester area
+
+## Terminology
+
+We aim to use and refine a "ubiquitous language" for use throughout the service.
+We believe that this will optimise our communication and minimise our
+misunderstandings and our cognitive load. We will aim use the same terms in:
+
+- the UI of the service
+- the code we write
+- our sketches and mockups
+- our research sessions
+- our documentation and our presentations to partner organisations
+
+See [./doc/terminology.md][]
+
+## Tests
+
+### Local unit and integration tests
+
+#### Fast feedback loop
+
+These tests (Rspec and Capybara) can be run at maximum speed with:
+
+```sh
+bundle exec rspec
 ```
 
-To pipe the results to a file:
+### Full pre-commit checks
 
-```bash
-$ brakeman -o report.text
+Before committing you should run our complete set of checks and tests.
+
+Choose from either the dockerised or undockerised version of the supplied
+comprehensive test script which includes:
+
+- formatting files with `prettier`
+- checking scripts with `shellcheck`
+- linting Ruby files with `standardrb`
+- linting JS with `eslint`
+- linting CSS with `stylelint`
+- running automated test suite with `rspec`
+- running API specs and generating OpenAPI spec via the
+  `rswag_api_tests_with_docs` `rake` task
+- analysing vulnerabilities in Ruby gems with `brakeman`
+
+e.g.
+
+```sh
+./script/no-docker/test
 ```
-
-## Making changes
-
-When making a change, update the [changelog](CHANGELOG.md) using the
-[Keep a Changelog 1.0.0](https://keepachangelog.com/en/1.0.0/) format. Pull
-requests should not be merged before any relevant updates are made.
-
-## Releasing changes
-
-When making a new release, update the [changelog](CHANGELOG.md) in the release
-pull request.
 
 ## Architecture decision records
 
@@ -61,9 +93,14 @@ To manage sensitive environment variables:
 
 ## Access
 
-TODO: Where can people find the service and the different environments?
+The service is deployed to Heroku at
+[https://air-text-3e4548b53179.herokuapp.com/][].
 
 ## Source
 
 This repository was bootstrapped from
 [dxw's `rails-template`](https://github.com/dxw/rails-template).
+
+[https://air-text-3e4548b53179.herokuapp.com/]:
+  https://air-text-3e4548b53179.herokuapp.com/
+[./doc/terminology.md]: ./doc/terminology.md
