@@ -6,6 +6,10 @@ class TemperaturePrediction
     @max = max
   end
 
+  def name
+    "Temperature"
+  end
+
   # :nocov:
   def inspect
     "#<#{self.class.name} @min=#{min} @max=#{max}>"
