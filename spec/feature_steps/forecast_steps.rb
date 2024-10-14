@@ -88,11 +88,29 @@ module ForecastSteps
     expect_prediction(day: :day_after_tomorrow, category: :temperature, value: "27-31°C")
   end
 
+  def and_i_see_predicted_uv_level_v2
+    expect_prediction_v2(category: "ultravoilet-rays-uv", value: "Low")
+  end
+
+  def and_i_see_predicted_pollen_level_v2
+    expect_prediction_v2(category: :pollen, value: "Low")
+  end
+
+  def and_i_see_predicted_temperature_level_v2
+    expect_prediction_v2(category: :temperature, value: "-5°C - 4°C")
+  end
+
   def expect_prediction(day:, category:, value:)
     within(prediction_category(category)) do
       within("td[data-date='#{date(day)}']") do
         expect(page).to have_content(content_for(category: category, value: value))
       end
+    end
+  end
+
+  def expect_prediction_v2(category:, value:)
+    within(".#{category}") do
+      find("dd", text: value)
     end
   end
 
