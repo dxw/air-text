@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get :forecast, to: "forecasts#show"
   get :styled_forecast, to: "styled_forecasts#show"
+  get :update_styled_forecast, to: "styled_forecasts#update"
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
   # hostname, redirect us to the canonical hostname with the path and query string present

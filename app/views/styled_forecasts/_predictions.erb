@@ -1,0 +1,5 @@
+<dl class="predictions p-4">
+  <%= render(PredictionComponent.new(prediction: forecast.uv)) %>
+  <%= render(PredictionComponent.new(prediction: forecast.pollen)) %>
+  <%= render "temperature_prediction", prediction: forecast.temperature %>
+</dl>

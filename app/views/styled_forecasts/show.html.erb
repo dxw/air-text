@@ -1,6 +1,8 @@
 <%= render partial: "styled_forecasts/location" %>
 <%= render partial: "styled_forecasts/forecast_tabs", forecasts: @forecasts %>
-<%= render partial: "styled_forecasts/predictions" %>
+<%= turbo_frame_tag "day_predictions" do %>
+  <%= render partial: "styled_forecasts/predictions", locals: { forecast: @forecasts.first } %>
+<% end %>
 <%= render partial: "sharing" %>
 <%= render partial: "learning" %>
 <%= render partial: "subscribe" %>
