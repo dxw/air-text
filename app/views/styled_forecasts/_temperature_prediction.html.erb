@@ -1,0 +1,9 @@
+  <div class="prediction py-4 temperature border-b border-gray-400">
+    <div class="summary flex flex-row">
+      <dt class="w-1/2"> <%= prediction.name %> </dt>
+      <dd class="flex flex-row w-1/2">
+        <div class="font-bold"><%= "#{prediction.min.round}°C - #{prediction.max.round}" %>°C</div>
+      </dd>
+    </div>
+  </div>
+

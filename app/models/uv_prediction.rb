@@ -7,6 +7,10 @@ class UvPrediction
     @value = value
   end
 
+  def name
+    "Ultravoilet rays (UV)"
+  end
+
   def guidance
     I18n.t("prediction.guidance.uv.#{daqi_level}")
   end

@@ -1,11 +1,11 @@
 <div class="prediction py-4 <%= name_for_class %> <%= daqi_level_for_class %> border-b border-gray-400">
   <div class="summary flex flex-row">
     <dt class="name w-1/2">
-      <%= @prediction.name %>
+      <%= name_for_label %>
     </dt>
     <dd class="flex flex-row w-1/2">
       <div class=" -mt-1 daqi-indicator <%= daqi_level_for_class %> <%= daqi_indicator_colour %> text-2xl">●</div>
-      <div class=" daqi-label font-bold ml-1 w-4/5"><%= @prediction.daqi_label %></div>
+      <div class=" daqi-label font-bold ml-1 w-4/5"><%= daqi_level_for_label %></div>
       <div class="control"><%= render partial: "shared/icons/chevron_down" %></div>
     </dd>
   </div>

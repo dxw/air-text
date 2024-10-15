@@ -7,6 +7,10 @@ class PollenPrediction
     @value = value
   end
 
+  def name
+    "Pollen"
+  end
+
   def guidance
     I18n.t("prediction.guidance.pollen.#{daqi_level}")
   end

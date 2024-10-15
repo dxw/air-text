@@ -25,5 +25,8 @@ RSpec.feature "Forecasts page" do
     when_i_select_view_forecasts_v2
     then_i_see_the_forecasts_page_v2
     and_i_see_predicted_air_pollution_status_for_each_day_v2
+    and_i_see_predicted_uv_level_v2
+    and_i_see_predicted_pollen_level_v2
+    and_i_see_predicted_temperature_level_v2
   end
 end

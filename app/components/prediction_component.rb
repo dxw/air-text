@@ -9,8 +9,16 @@ class PredictionComponent < ViewComponent::Base
     @prediction.name.parameterize
   end
 
+  def name_for_label
+    @prediction.name
+  end
+
   def daqi_level_for_class
     @prediction.daqi_level.to_s.parameterize
+  end
+
+  def daqi_level_for_label
+    @prediction.daqi_label
   end
 
   def daqi_indicator_colour
