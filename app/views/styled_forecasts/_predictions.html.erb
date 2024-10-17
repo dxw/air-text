@@ -1,5 +1,7 @@
-<dl class="predictions p-4">
-  <%= render(PredictionComponent.new(prediction: @forecasts.first.uv)) %>
-  <%= render(PredictionComponent.new(prediction: @forecasts.first.pollen)) %>
-  <%= render "temperature_prediction", prediction: @forecasts.first.temperature %>
-</dl>
+<%= turbo_frame_tag "day_predictions" do %>
+  <dl class="predictions p-4">
+    <%= render(PredictionComponent.new(prediction: forecast.uv)) %>
+    <%= render(PredictionComponent.new(prediction: forecast.pollen)) %>
+    <%= render "temperature_prediction", prediction: forecast.temperature %>
+  </dl>
+<% end %>
