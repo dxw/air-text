@@ -2,10 +2,10 @@
   <header class="text-xl px-4 font-bold">
     Air pollution
   </header>
-  <div class="tabs flex flex-row items-stretch mt-4 m-1 text-xs font-bold ">
-    <%= render "day_tab", forecast: @forecasts.first %>
-    <%= render "day_tab", forecast: @forecasts.second %>
-    <%= render "day_tab", forecast: @forecasts.third %>
+  <div class="tabs flex flex-row items-stretch mt-4 m-1 text-xs font-bold" data-turbo-prefetch="false">
+    <%= render "day_tab", forecast: @forecasts.first, day: :today %>
+    <%= render "day_tab", forecast: @forecasts.second, day: :tomorrow %>
+    <%= render "day_tab", forecast: @forecasts.third, day: :day_after_tomorrow %>
   </div>
   <%= render partial: "map_selector" %>
   <div id="map" class="map w-full bg-green-200 h-80">
