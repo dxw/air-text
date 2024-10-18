@@ -24,4 +24,36 @@ document.addEventListener("DOMContentLoaded", function () {
   pollutantSelectorButton.addEventListener("click", function () {
     pollutantMenu.classList.toggle("hidden");
   });
+
+  const showUvGuidanceButton = document.getElementById(
+    "uv-show-guidance-button"
+  );
+  const hideUvGuidanceButton = document.getElementById(
+    "uv-hide-guidance-button"
+  );
+  const uvGuidance = document.getElementById("uv-guidance");
+
+  [showUvGuidanceButton, hideUvGuidanceButton].forEach((button) => {
+    button.addEventListener("click", function () {
+      showUvGuidanceButton.classList.toggle("hidden");
+      hideUvGuidanceButton.classList.toggle("hidden");
+      uvGuidance.classList.toggle("hidden");
+    });
+  });
+
+  const showPollenGuidanceButton = document.getElementById(
+    "pollen-show-guidance-button"
+  );
+  const hidePollenGuidanceButton = document.getElementById(
+    "pollen-hide-guidance-button"
+  );
+  const pollenGuidance = document.getElementById("pollen-guidance");
+
+  [showPollenGuidanceButton, hidePollenGuidanceButton].forEach((button) => {
+    button.addEventListener("click", function () {
+      showPollenGuidanceButton.classList.toggle("hidden");
+      hidePollenGuidanceButton.classList.toggle("hidden");
+      pollenGuidance.classList.toggle("hidden");
+    });
+  });
 });
