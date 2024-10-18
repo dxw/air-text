@@ -3,13 +3,22 @@
     <dt class="name w-1/2">
       <%= name_for_label %>
     </dt>
-    <dd class="flex flex-row w-1/2">
+    <dd class="flex flex-row w-1/2 justify-between">
+    <div class="flex flex-row">
       <div class=" -mt-1 daqi-indicator <%= daqi_level_for_class %> <%= daqi_indicator_colour %> text-2xl">●</div>
-      <div class=" daqi-label font-bold ml-1 w-4/5"><%= daqi_level_for_label %></div>
-      <div class="control"><%= render partial: "shared/icons/chevron_down" %></div>
+      <div class=" daqi-label font-bold ml-1"><%= daqi_level_for_label %></div>
+      </div>
+      <div class="control">
+        <button id="<%= name_for_class %>-show-guidance-button" class="<%= guidance_visible? ? "hidden" : "visible" %>">
+          <%= render partial: "shared/icons/chevron_down" %>
+        </button>
+        <button id="<%= name_for_class %>-hide-guidance-button" class="<%= !guidance_visible? ? "hidden" : "visible" %>">
+          <%= render partial: "shared/icons/chevron_up" %>
+        </button>
+      </div>
     </dd>
   </div>
-  <div class="details <%= visibility %> <%= details_panel_colour %> p-4 mt-2">
+  <div id="<%= name_for_class %>-guidance" class="details <%= !guidance_visible? ? "hidden" : "visible" %> <%= details_panel_colour %> p-4 mt-2">
     <div class="daqi-value text-lg">
       <%= daqi_value_as_index %>
     </div>
