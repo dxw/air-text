@@ -32,6 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
     pollutantMenu.classList.toggle("hidden");
   });
 
+  pollutantMenu.addEventListener("click", function (e) {
+    const newSelectedPollutant = e.target.innerText;
+    const selectedPollutant = document.getElementById("selected-pollutant");
+    selectedPollutant.innerText = newSelectedPollutant;
+    pollutantMenu.classList.toggle("hidden");
+  });
+
   const showUvGuidanceButton = document.getElementById(
     "uv-show-guidance-button"
   );
