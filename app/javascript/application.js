@@ -8,4 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
   hamburgerMenu.addEventListener("click", function () {
     menuList.classList.toggle("hidden");
   });
+
+  const locationButton = document.getElementById("location-selector-button");
+  const locationList = document.getElementById("location-selector-list");
+
+  locationButton.addEventListener("click", function () {
+    locationList.classList.toggle("hidden");
+  });
 });
