@@ -15,4 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
   locationButton.addEventListener("click", function () {
     locationList.classList.toggle("hidden");
   });
+
+  const pollutantSelectorButton = document.getElementById(
+    "pollutant-selector-button"
+  );
+  const pollutantMenu = document.getElementById("pollutant-selector-menu");
+
+  pollutantSelectorButton.addEventListener("click", function () {
+    pollutantMenu.classList.toggle("hidden");
+  });
 });
