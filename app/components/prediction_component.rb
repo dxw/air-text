@@ -61,9 +61,7 @@ class PredictionComponent < ViewComponent::Base
     )
   end
 
-  def visibility
-    return "hidden" if @prediction.daqi_level == :low
-
-    "visible"
+  def guidance_visible?
+    !(@prediction.daqi_level == :low)
   end
 end

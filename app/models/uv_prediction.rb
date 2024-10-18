@@ -8,7 +8,7 @@ class UvPrediction
   end
 
   def name
-    "Ultravoilet rays (UV)"
+    "UV"
   end
 
   def guidance

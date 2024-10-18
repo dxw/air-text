@@ -89,7 +89,7 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_v2
-    expect_prediction_v2(category: "ultravoilet-rays-uv", value: "Low")
+    expect_prediction_v2(category: "uv", value: "Low")
   end
 
   def and_i_see_predicted_pollen_level_v2
