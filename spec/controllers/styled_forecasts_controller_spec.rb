@@ -53,7 +53,6 @@ RSpec.describe StyledForecastsController do
       get :show
 
       expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
-      expect(response).to render_template("show")
     end
 
     it "renders the _show_ template" do
