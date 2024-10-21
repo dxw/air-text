@@ -12,7 +12,7 @@ class UvPrediction
   end
 
   def guidance
-    I18n.t("prediction.guidance.uv.#{daqi_level}")
+    I18n.t("prediction.guidance.ultravoilet_rays_uv.#{daqi_level}")
   end
 
   # :nocov:

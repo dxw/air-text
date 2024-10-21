@@ -165,13 +165,13 @@ module ForecastSteps
   def content_for_uv(value)
     case value
     when :low
-      "Low - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Low - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
     when :moderate
-      "Moderate - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Moderate - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
     when :high
-      "High - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "High - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
     when :very_high
-      "Very high - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Very high - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
     else
       raise "Unexpected UV value #{value}"
     end
