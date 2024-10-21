@@ -46,6 +46,19 @@ module ForecastSteps
     click_link("View new style forecasts")
   end
 
+  def and_i_switch_to_the_tab_for_tomorrow
+    switch_to_tab_for(:tomorrow)
+  end
+
+  def switch_to_tab_for(day)
+    case day
+    when :tomorrow
+      find(".tab.tomorrow a").click
+    else
+      raise "day: #{day} not expected"
+    end
+  end
+
   def then_i_see_the_forecasts_page
     expect(page).to have_content("Forecasts")
   end
@@ -90,6 +103,18 @@ module ForecastSteps
 
   def and_i_see_predicted_uv_level_v2
     expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
+  end
+
+  def and_i_see_predicted_uv_level_for_tomorrow
+    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
+  end
+
+  def and_i_see_predicted_pollen_level_for_tomorrow
+    expect_styled_prediction(category: :pollen, level: :moderate)
+  end
+
+  def and_i_see_predicted_temperature_level_for_tomorrow
+    expect_styled_prediction(category: :temperature, level: :moderate)
   end
 
   def and_i_see_predicted_pollen_level_v2
