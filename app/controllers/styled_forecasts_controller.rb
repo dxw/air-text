@@ -11,7 +11,11 @@ class StyledForecastsController < ApplicationController
 
     day_forecast = forecast_for_day(params.fetch("day"), forecasts)
 
-    render turbo_stream: turbo_stream.replace("day_predictions", partial: "predictions", locals: {forecast: day_forecast})
+    render turbo_stream: turbo_stream.replace(
+      "day_predictions",
+      partial: "predictions",
+      locals: {forecast: day_forecast}
+    )
   end
 
   def forecast_for_day(day, forecasts)

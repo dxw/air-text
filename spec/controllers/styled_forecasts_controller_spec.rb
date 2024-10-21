@@ -108,14 +108,33 @@ RSpec.describe StyledForecastsController do
       ForecastFactory.build(forecast_from_api)
     end
 
+    let(:tag_builder) do
+      instance_double(Turbo::Streams::TagBuilder, replace: true)
+    end
+
+    before do
+      allow(Turbo::Streams::TagBuilder).to receive(:new).and_return(tag_builder)
+    end
+
     it "returns a predictions partial template within a turbo stream replace element" do
       allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
-      allow(Turbo::Streams::TagBuilder).to receive(:replace)
 
       get :update, params: {day: :tomorrow}
 
       expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
-      expect(Turbo::Streams::TagBuilder).to have_received(:replace).with("day_predictions", partial: "predictions", locals: {forecast: forecasts.second})
+      expect(tag_builder).to have_received(:replace).with(
+        "day_predictions",
+        partial: "predictions",
+        locals: {forecast: forecasts.second}
+      )
+    end
+
+    it "raises a helpful error if an unexpected _day_ is received" do
+      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+
+      expect {
+        get :update, params: {day: :yesterday}
+      }.to raise_error(ArgumentError, "Invalid day: yesterday")
     end
   end
 end
