@@ -102,11 +102,11 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_v2
-    expect_prediction_v2(category: "ultravoilet-rays-uv", value: "Low")
+    expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
   end
 
   def and_i_see_predicted_uv_level_for_tomorrow
-    expect_styled_prediction(category: :"ultravoilet-rays-uv", level: :moderate)
+    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
   end
 
   def and_i_see_predicted_pollen_level_for_tomorrow
@@ -147,7 +147,7 @@ module ForecastSteps
 
   def expect_styled_content_for(category:, level:)
     case category
-    when :"ultravoilet-rays-uv"
+    when :"ultraviolet-rays-uv"
       expect_uv_content_for_level(level)
     when :pollen
       expect_pollen_content_for_level(level)
@@ -162,7 +162,7 @@ module ForecastSteps
     case level
     when :moderate
       expect(page).to have_content("Moderate")
-      expect(page).to have_content(I18n.t("prediction.guidance.ultravoilet_rays_uv.#{level}"))
+      expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
     else
       raise "unexpected level #{level}"
     end
@@ -238,13 +238,13 @@ module ForecastSteps
   def content_for_uv(value)
     case value
     when :low
-      "Low - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
+      "Low - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :moderate
-      "Moderate - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
+      "Moderate - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :high
-      "High - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
+      "High - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :very_high
-      "Very high - #{I18n.t("prediction.guidance.ultravoilet_rays_uv.#{value}")}"
+      "Very high - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     else
       raise "Unexpected UV value #{value}"
     end
