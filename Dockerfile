@@ -127,6 +127,7 @@ RUN \
   apt-get update && \
   apt-get install -y \
   shellcheck \
+  chromium-driver \
   yarn
 
 RUN yarn build:css && yarn build

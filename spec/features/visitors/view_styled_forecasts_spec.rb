@@ -29,4 +29,20 @@ RSpec.feature "Forecasts page" do
     and_i_see_predicted_pollen_level_v2
     and_i_see_predicted_temperature_level_v2
   end
+
+  scenario "See detail for tomorrow", js: true do
+    given_a_forecast_for_today
+    and_a_forecast_for_tomorrow
+    and_a_forecast_for_the_day_after_tomorrow
+    and_the_response_from_cercs_api_is_stubbed_accordingly
+
+    visit root_path
+    when_i_select_view_forecasts_v2
+    and_i_switch_to_the_tab_for_tomorrow
+
+    # then I see that the _tomorrow_ tab is active
+    and_i_see_predicted_uv_level_for_tomorrow
+    and_i_see_predicted_pollen_level_for_tomorrow
+    and_i_see_predicted_temperature_level_for_tomorrow
+  end
 end

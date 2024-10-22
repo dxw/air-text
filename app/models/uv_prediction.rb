@@ -8,11 +8,11 @@ class UvPrediction
   end
 
   def name
-    "Ultravoilet rays (UV)"
+    "Ultraviolet rays (UV)"
   end
 
   def guidance
-    I18n.t("prediction.guidance.uv.#{daqi_level}")
+    I18n.t("prediction.guidance.ultraviolet_rays_uv.#{daqi_level}")
   end
 
   # :nocov:

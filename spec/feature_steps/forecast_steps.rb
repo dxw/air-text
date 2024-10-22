@@ -46,6 +46,19 @@ module ForecastSteps
     click_link("View new style forecasts")
   end
 
+  def and_i_switch_to_the_tab_for_tomorrow
+    switch_to_tab_for(:tomorrow)
+  end
+
+  def switch_to_tab_for(day)
+    case day
+    when :tomorrow
+      find(".tab.tomorrow a").click
+    else
+      raise "day: #{day} not expected"
+    end
+  end
+
   def then_i_see_the_forecasts_page
     expect(page).to have_content("Forecasts")
   end
@@ -89,7 +102,19 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_v2
-    expect_prediction_v2(category: "ultravoilet-rays-uv", value: "Low")
+    expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
+  end
+
+  def and_i_see_predicted_uv_level_for_tomorrow
+    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
+  end
+
+  def and_i_see_predicted_pollen_level_for_tomorrow
+    expect_styled_prediction(category: :pollen, level: :moderate)
+  end
+
+  def and_i_see_predicted_temperature_level_for_tomorrow
+    expect_styled_prediction(category: :temperature, level: :moderate)
   end
 
   def and_i_see_predicted_pollen_level_v2
@@ -111,6 +136,54 @@ module ForecastSteps
   def expect_prediction_v2(category:, value:)
     within(".#{category}") do
       find("dd", text: value)
+    end
+  end
+
+  def expect_styled_prediction(category:, level:)
+    within(".#{category}") do
+      expect_styled_content_for(category:, level:)
+    end
+  end
+
+  def expect_styled_content_for(category:, level:)
+    case category
+    when :"ultraviolet-rays-uv"
+      expect_uv_content_for_level(level)
+    when :pollen
+      expect_pollen_content_for_level(level)
+    when :temperature
+      expect_temperature_content_for_level(level)
+    else
+      raise "category #{category} not implemented"
+    end
+  end
+
+  def expect_uv_content_for_level(level)
+    case level
+    when :moderate
+      expect(page).to have_content("Moderate")
+      expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
+    else
+      raise "unexpected level #{level}"
+    end
+  end
+
+  def expect_pollen_content_for_level(level)
+    case level
+    when :moderate
+      expect(page).to have_content("Moderate")
+      expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
+    else
+      raise "unexpected level #{level}"
+    end
+  end
+
+  def expect_temperature_content_for_level(level)
+    case level
+    when :moderate
+      expect(page).to have_content("9°C - 16°C")
+    else
+      raise "unexpected level #{level}"
     end
   end
 
@@ -165,13 +238,13 @@ module ForecastSteps
   def content_for_uv(value)
     case value
     when :low
-      "Low - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Low - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :moderate
-      "Moderate - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Moderate - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :high
-      "High - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "High - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :very_high
-      "Very high - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Very high - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     else
       raise "Unexpected UV value #{value}"
     end

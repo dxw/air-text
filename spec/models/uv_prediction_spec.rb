@@ -5,7 +5,7 @@ RSpec.describe UvPrediction do
         prediction = UvPrediction.new(value)
         it "returns _Low_ with guidance" do
           expect(prediction.daqi_label).to eq("Low")
-          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.low"))
+          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.ultraviolet_rays_uv.low"))
         end
       end
     end
@@ -15,7 +15,7 @@ RSpec.describe UvPrediction do
         prediction = UvPrediction.new(value)
         it "returns _Moderate_ with guidance" do
           expect(prediction.daqi_label).to eq("Moderate")
-          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.moderate"))
+          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.ultraviolet_rays_uv.moderate"))
         end
       end
     end
@@ -25,7 +25,7 @@ RSpec.describe UvPrediction do
         prediction = UvPrediction.new(level)
         it "returns _High_ with guidance" do
           expect(prediction.daqi_label).to eq("High")
-          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.high"))
+          expect(prediction.guidance).to eq(I18n.t("prediction.guidance.ultraviolet_rays_uv.high"))
         end
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe UvPrediction do
       prediction = UvPrediction.new(10)
       it "returns _Very high_ with guidance" do
         expect(prediction.daqi_label).to eq("Very high")
-        expect(prediction.guidance).to eq(I18n.t("prediction.guidance.uv.very_high"))
+        expect(prediction.guidance).to eq(I18n.t("prediction.guidance.ultraviolet_rays_uv.very_high"))
       end
     end
   end
