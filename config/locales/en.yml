@@ -36,7 +36,7 @@ en:
   hello: "Hello world"
   prediction:
     guidance:
-      uv:
+      ultraviolet_rays_uv:
         low: "No action required. You can safely stay outside."
         moderate:
           "Protection required. Seek shade during midday hours, cover up and

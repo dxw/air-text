@@ -89,7 +89,7 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_v2
-    expect_prediction_v2(category: "ultravoilet-rays-uv", value: "Low")
+    expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
   end
 
   def and_i_see_predicted_pollen_level_v2
@@ -165,13 +165,13 @@ module ForecastSteps
   def content_for_uv(value)
     case value
     when :low
-      "Low - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Low - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :moderate
-      "Moderate - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Moderate - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :high
-      "High - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "High - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     when :very_high
-      "Very high - #{I18n.t("prediction.guidance.uv.#{value}")}"
+      "Very high - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
     else
       raise "Unexpected UV value #{value}"
     end
