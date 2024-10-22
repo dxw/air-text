@@ -114,6 +114,54 @@ module ForecastSteps
     end
   end
 
+  def expect_styled_prediction(category:, level:)
+    within(".#{category}") do
+      expect_styled_content_for(category:, level:)
+    end
+  end
+
+  def expect_styled_content_for(category:, level:)
+    case category
+    when :"ultraviolet-rays-uv"
+      expect_uv_content_for_level(level)
+    when :pollen
+      expect_pollen_content_for_level(level)
+    when :temperature
+      expect_temperature_content_for_level(level)
+    else
+      raise "category #{category} not implemented"
+    end
+  end
+
+  def expect_uv_content_for_level(level)
+    case level
+    when :moderate
+      expect(page).to have_content("Moderate")
+      expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
+    else
+      raise "unexpected level #{level}"
+    end
+  end
+
+  def expect_pollen_content_for_level(level)
+    case level
+    when :moderate
+      expect(page).to have_content("Moderate")
+      expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
+    else
+      raise "unexpected level #{level}"
+    end
+  end
+
+  def expect_temperature_content_for_level(level)
+    case level
+    when :moderate
+      expect(page).to have_content("9°C - 16°C")
+    else
+      raise "unexpected level #{level}"
+    end
+  end
+
   def expect_air_pollution_prediction(day:, value:)
     within("div[data-date='#{date(day)}']") do
       expect(page).to have_content(content_for_air_pollution(value))
