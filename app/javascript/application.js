@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const showUvGuidanceButton = document.getElementById(
-    "uv-show-guidance-button"
+    "ultraviolet-rays-uv-show-guidance-button"
   );
   const hideUvGuidanceButton = document.getElementById(
-    "uv-hide-guidance-button"
+    "ultraviolet-rays-uv-hide-guidance-button"
   );
-  const uvGuidance = document.getElementById("uv-guidance");
+  const uvGuidance = document.getElementById("ultraviolet-rays-uv-guidance");
 
   [showUvGuidanceButton, hideUvGuidanceButton].forEach((button) => {
     button.addEventListener("click", function () {
