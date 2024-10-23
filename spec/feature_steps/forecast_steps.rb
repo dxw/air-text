@@ -50,10 +50,16 @@ module ForecastSteps
     switch_to_tab_for(:tomorrow)
   end
 
+  def and_i_switch_to_the_tab_for_day_after_tomorrow
+    switch_to_tab_for(:day_after_tomorrow)
+  end
+
   def switch_to_tab_for(day)
     case day
     when :tomorrow
       find(".tab.tomorrow a").click
+    when :day_after_tomorrow
+      find(".tab.day_after_tomorrow a").click
     else
       raise "day: #{day} not expected"
     end
@@ -117,6 +123,18 @@ module ForecastSteps
     expect_styled_prediction(category: :temperature, level: :moderate)
   end
 
+  def and_i_see_predicted_uv_level_for_day_after_tomorrow
+    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :high)
+  end
+
+  def and_i_see_predicted_pollen_level_for_day_after_tomorrow
+    expect_styled_prediction(category: :pollen, level: :high)
+  end
+
+  def and_i_see_predicted_temperature_level_for_day_after_tomorrow
+    expect_styled_prediction(category: :temperature, level: :high)
+  end
+
   def and_i_see_predicted_pollen_level_v2
     expect_prediction_v2(category: :pollen, value: "Low")
   end
@@ -163,6 +181,9 @@ module ForecastSteps
     when :moderate
       expect(page).to have_content("Moderate")
       expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
+    when :high
+      expect(page).to have_content("High")
+      expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
     else
       raise "unexpected level #{level}"
     end
@@ -173,6 +194,9 @@ module ForecastSteps
     when :moderate
       expect(page).to have_content("Moderate")
       expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
+    when :high
+      expect(page).to have_content("High")
+      expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
     else
       raise "unexpected level #{level}"
     end
@@ -182,6 +206,8 @@ module ForecastSteps
     case level
     when :moderate
       expect(page).to have_content("9°C - 16°C")
+    when :high
+      expect(page).to have_content("27°C - 31°C")
     else
       raise "unexpected level #{level}"
     end
