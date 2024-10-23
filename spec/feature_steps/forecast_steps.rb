@@ -111,6 +111,27 @@ module ForecastSteps
     expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
   end
 
+  def then_i_see_that_the_tomorrow_tab_is_active
+    expect(page).to have_css(".tab.tomorrow.active")
+
+    expect(page).not_to have_css(".tab.today.active")
+    expect(page).not_to have_css(".tab.day_after_tomorrow.active")
+  end
+
+  def and_i_see_that_the_today_tab_is_active
+    expect(page).to have_css(".tab.today.active")
+
+    expect(page).not_to have_css(".tab.tomorrow.active")
+    expect(page).not_to have_css(".tab.day_after_tomorrow.active")
+  end
+
+  def then_i_see_that_the_day_after_tomorrow_tab_is_active
+    expect(page).to have_css(".tab.day_after_tomorrow.active")
+
+    expect(page).not_to have_css(".tab.today.active")
+    expect(page).not_to have_css(".tab.tomorrow.active")
+  end
+
   def and_i_see_predicted_uv_level_for_tomorrow
     expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
   end

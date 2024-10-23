@@ -24,6 +24,8 @@ RSpec.feature "Forecasts page" do
     visit root_path
     when_i_select_view_forecasts_v2
     then_i_see_the_forecasts_page_v2
+
+    and_i_see_that_the_today_tab_is_active
     and_i_see_predicted_air_pollution_status_for_each_day_v2
     and_i_see_predicted_uv_level_v2
     and_i_see_predicted_pollen_level_v2
@@ -40,7 +42,7 @@ RSpec.feature "Forecasts page" do
     when_i_select_view_forecasts_v2
     and_i_switch_to_the_tab_for_tomorrow
 
-    # then I see that the _tomorrow_ tab is active
+    then_i_see_that_the_tomorrow_tab_is_active
     and_i_see_predicted_uv_level_for_tomorrow
     and_i_see_predicted_pollen_level_for_tomorrow
     and_i_see_predicted_temperature_level_for_tomorrow
@@ -56,7 +58,7 @@ RSpec.feature "Forecasts page" do
     when_i_select_view_forecasts_v2
     and_i_switch_to_the_tab_for_day_after_tomorrow
 
-    # then I see that the _day_after_tomorrow_ tab is active
+    then_i_see_that_the_day_after_tomorrow_tab_is_active
     and_i_see_predicted_uv_level_for_day_after_tomorrow
     and_i_see_predicted_pollen_level_for_day_after_tomorrow
     and_i_see_predicted_temperature_level_for_day_after_tomorrow

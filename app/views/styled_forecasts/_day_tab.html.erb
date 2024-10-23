@@ -1,19 +1,31 @@
-<div class="tab py-4 flex-1 <%= day %> mx-2 px-1 text-center daqi-low border-b-0 border-l-2 border-r-2 border-t-2 border-gray-300" data-date="<%= forecast.date %>" >
-  <%= link_to update_styled_forecast_path(day: day), data: { turbo_frame: "day_predictions" } do %>
-    <div class="day">
-      <%= forecast.date == Date.today ? 'Today' : forecast.date.strftime('%A') %>
-    </div>
-    <div class="date">
-      <%= forecast.date.strftime("%d %B") %>
-    </div>
-    <div class="daqi-marker text-4xl py-2 text-green-600">
-      ●
-    </div>
-    <div class="daqi-label text-base">
-      <%= forecast.air_pollution.label.capitalize %>
-    </div>
-    <div class="daqi-value font-normal">
-      Index <%= forecast.air_pollution.value %>/10
-    </div>
-  <% end %>
-</div>
+<%= tag.div class: "tab py-4 flex-1 #{day} mx-2 px-1 text-center daqi-low border-b-0 border-l-2 border-r-2 border-t-2 border-gray-300 #{day == :today ? "active" : ''}",
+  data: {
+    date: forecast.date.to_s,
+    controller: "tab",
+    "tab-active-class": "active",
+    "tab-target": "day"
+  } do
+  %>
+<%=
+      link_to update_styled_forecast_path(day: day),
+      data: {
+        turbo_frame: "day_predictions",
+        action: "click->tab#switch_tab"
+    } do %>
+  <div class="day">
+    <%= forecast.date == Date.today ? 'Today' : forecast.date.strftime('%A') %>
+  </div>
+  <div class="date">
+    <%= forecast.date.strftime("%d %B") %>
+  </div>
+  <div class="daqi-marker text-4xl py-2 text-green-600">
+    ●
+  </div>
+  <div class="daqi-label text-base">
+    <%= forecast.air_pollution.label.capitalize %>
+  </div>
+  <div class="daqi-value font-normal">
+    Index <%= forecast.air_pollution.value %>/10
+  </div>
+<% end %>
+<% end %>

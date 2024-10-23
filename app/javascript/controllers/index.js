@@ -4,6 +4,5 @@
 
 import { application } from "./application";
 
-import ForecastsController from "./forecasts_controller"
-application.register("forecasts", ForecastsController)
-
+import TabController from "./tab_controller";
+application.register("tab", TabController);
