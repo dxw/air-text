@@ -3,3 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+  @apply border-[3px] border-black border-solid border-b-0 text-black -mb-[3px] bg-white;
+}
