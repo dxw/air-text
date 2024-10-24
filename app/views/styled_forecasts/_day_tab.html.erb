@@ -1,4 +1,4 @@
-<%= tag.div class: "tab py-4 flex-1 #{day} mx-2 px-1 text-center daqi-low border-b-0 border-l-2 border-r-2 border-t-2 border-gray-300 #{day == :today ? "active" : ''}",
+<%= tag.div class: "tab py-4 flex-1 #{day} mx-2 px-1 text-center text-gray-400 daqi-low border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed #{day == :today ? "active" : ''}",
   data: {
     date: forecast.date.to_s,
     controller: "tab",
