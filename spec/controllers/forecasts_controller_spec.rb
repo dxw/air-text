@@ -1,12 +1,4 @@
 RSpec.describe ForecastsController do
-  around do |example|
-    env_vars = {
-      CERC_API_HOST_URL: "https://cerc.example.com",
-      CERC_API_KEY: "SECRET-API-KEY"
-    }
-    ClimateControl.modify(env_vars) { example.run }
-  end
-
   describe "GET :show" do
     let(:forecasts) do
       ForecastFactory.build(
@@ -37,17 +29,17 @@ RSpec.describe ForecastsController do
       )
     end
 
-    it "obtains forecasts for the default zone (Southwark) from the CercApiClient" do
-      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+    it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
+      allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
       get :show
 
-      expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
+      expect(CercForecastService).to have_received(:latest_forecasts_for).with("Southwark")
       expect(response).to render_template("show")
     end
 
     it "renders the _show_ template" do
-      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+      allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
       get :show
 
@@ -59,7 +51,7 @@ RSpec.describe ForecastsController do
       forecast_1 = instance_double(Forecast, alerts: [])
       forecast_2 = instance_double(Forecast, alerts: [air_quality_alert])
 
-      allow(CercApiClient).to receive(:forecasts_for).and_return([
+      allow(CercForecastService).to receive(:latest_forecasts_for).and_return([
         forecast_1,
         forecast_2
       ])
