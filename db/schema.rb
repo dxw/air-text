@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_24_164250) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_28_152137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cached_forecasts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "zone_id", null: false
+    t.datetime "obtained_at", null: false
+    t.jsonb "data", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["zone_id"], name: "index_cached_forecasts_on_zone_id"
+  end
 
   create_table "zones", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
