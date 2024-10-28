@@ -1,4 +1,14 @@
 RSpec.describe CachedForecast do
+  describe "::last" do
+    let!(:first) { FactoryBot.create(:cached_forecast, obtained_at: Time.current - 2.days) }
+    let!(:last) { FactoryBot.create(:cached_forecast, obtained_at: Time.current) }
+    let!(:middle) { FactoryBot.create(:cached_forecast, obtained_at: Time.current - 1.day) }
+
+    it "returns the record with the latest #obtained_at timestamp" do
+      expect(CachedForecast.last).to eq(last)
+    end
+  end
+
   describe "::stale?"
   describe "::latest_for"
   describe "::store" do

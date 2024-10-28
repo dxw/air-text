@@ -1,4 +1,5 @@
 class CachedForecast < ApplicationRecord
+  self.implicit_order_column = "obtained_at"
   belongs_to :zone
   serialize :data
 
