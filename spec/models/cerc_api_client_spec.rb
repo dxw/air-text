@@ -30,4 +30,45 @@ RSpec.describe CercApiClient do
       expect(ForecastFactory).to have_received(:build).with(forecast_data)
     end
   end
+
+  describe "::latest_forecasts" do
+    let(:forecasts_for_all_zones) do
+      {
+        "forecastdate" => "02-10-2024 15:16",
+        "timestamp" => 1727882190223.2139,
+        "zones" => [
+          {
+            "forecasts" => [{}, {}, {}],
+            "zone_id" => 1,
+            "zone_name" => "Barking and Dagenham",
+            "zone_type" => 1
+          },
+          {
+            "forecasts" => [{}, {}, {}],
+            "zone_id" => 2,
+            "zone_name" => "Barnet",
+            "zone_type" => 1
+          }
+        ]
+      }
+    end
+
+    before { allow(HTTParty).to receive(:get).and_return(forecasts_for_all_zones) }
+
+    it "asks the CERC API for 3 days worth of forecasts for each zone" do
+      CercApiClient.latest_forecasts
+
+      expect(HTTParty).to have_received(:get).with("https://example.com/getforecast/all", {
+        query: {
+          "key" => "ABC123",
+          "numdays" => 3,
+          "from" => Date.today
+        }
+      })
+    end
+
+    it "returns 3 daily forecasts for each zone" do
+      expect(CercApiClient.latest_forecasts).to eq(forecasts_for_all_zones)
+    end
+  end
 end

@@ -21,6 +21,14 @@ class CercApiClient
   end
 
   def self.latest_forecasts
-    raise NotImplementedError
+    base_url = ENV.fetch("CERC_API_HOST_URL")
+
+    query = {
+      "from" => Date.today,
+      "numdays" => 3,
+      "key" => ENV.fetch("CERC_API_KEY")
+    }
+
+    HTTParty.get("#{base_url}/getforecast/all", query: query)
   end
 end
