@@ -81,7 +81,7 @@ RSpec.describe StyledForecastsController do
   end
 
   let(:forecasts) do
-    ForecastFactory.build(forecast_from_api)
+    ForecastFactory.build(cerc_forecasts: forecast_from_api)
   end
 
   describe "GET :show" do
@@ -104,7 +104,7 @@ RSpec.describe StyledForecastsController do
 
   describe "GET :update" do
     let(:forecasts) do
-      ForecastFactory.build(forecast_from_api)
+      ForecastFactory.build(cerc_forecasts: forecast_from_api)
     end
 
     let(:tag_builder) do

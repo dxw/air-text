@@ -2,30 +2,31 @@ RSpec.describe ForecastsController do
   describe "GET :show" do
     let(:forecasts) do
       ForecastFactory.build(
-        {"forecastdate" => "01-10-2024 14:40",
-         "timestamp" => 1727793654317.342,
-         "zones" =>
-          [{"forecasts" =>
-            [{"NO2" => 1,
-              "O3" => 2,
-              "PM10" => 1,
-              "PM2.5" => 1,
-              "forecast_date" => "2024-10-01",
-              "non_pollution_version" => nil,
-              "pollen" => -999,
-              "pollution_version" => 202410011407,
-              "rain_am" => 1.31,
-              "rain_pm" => 3.01,
-              "temp_max" => 14.0,
-              "temp_min" => 10.4,
-              "total" => 2,
-              "total_status" => "LOW",
-              "uv" => 1,
-              "wind_am" => 5.3,
-              "wind_pm" => 6.0}],
-            "zone_id" => 14,
-            "zone_name" => "Haringey",
-            "zone_type" => 1}]}
+        cerc_forecasts:
+          {"forecastdate" => "01-10-2024 14:40",
+           "timestamp" => 1727793654317.342,
+           "zones" =>
+            [{"forecasts" =>
+              [{"NO2" => 1,
+                "O3" => 2,
+                "PM10" => 1,
+                "PM2.5" => 1,
+                "forecast_date" => "2024-10-01",
+                "non_pollution_version" => nil,
+                "pollen" => -999,
+                "pollution_version" => 202410011407,
+                "rain_am" => 1.31,
+                "rain_pm" => 3.01,
+                "temp_max" => 14.0,
+                "temp_min" => 10.4,
+                "total" => 2,
+                "total_status" => "LOW",
+                "uv" => 1,
+                "wind_am" => 5.3,
+                "wind_pm" => 6.0}],
+              "zone_id" => 14,
+              "zone_name" => "Haringey",
+              "zone_type" => 1}]}
       )
     end
 

@@ -30,13 +30,17 @@ RSpec.describe ForecastFactory do
     end
 
     it "returns a list of Forecasts from the response returned by CERC's API" do
-      forecasts = ForecastFactory.build(forecast_representation_from_api)
+      forecasts = ForecastFactory.build(
+        cerc_forecasts: forecast_representation_from_api
+      )
 
       expect(forecasts.size).to eq(1)
     end
 
     it "builds each Forecast as expected" do
-      forecast = ForecastFactory.build(forecast_representation_from_api).first
+      forecast = ForecastFactory.build(
+        cerc_forecasts: forecast_representation_from_api
+      ).first
 
       aggregate_failures do
         expect(forecast.obtained_at).to eq(Time.zone.parse("02-10-2024 15:38"))
@@ -121,7 +125,10 @@ RSpec.describe ForecastFactory do
         end
 
         it "builds forecasts for that zone" do
-          forecast = ForecastFactory.build(forecast_representation_from_api, 2).first
+          forecast = ForecastFactory.build(
+            cerc_forecasts: forecast_representation_from_api,
+            zone_id: 2
+          ).first
 
           aggregate_failures do
             expect(forecast.obtained_at).to eq(Time.zone.parse("02-10-2024 15:38"))
@@ -155,7 +162,10 @@ RSpec.describe ForecastFactory do
       context "and the zone ID is NOT present in the forecast_representation" do
         it "raises an error" do
           expect {
-            ForecastFactory.build(forecast_representation_from_api, 12345678)
+            ForecastFactory.build(
+              cerc_forecasts: forecast_representation_from_api,
+              zone_id: 12345678
+            )
           }.to raise_error("Forecast for zone ID '12345678' not found")
         end
       end

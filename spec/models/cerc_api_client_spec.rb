@@ -27,7 +27,7 @@ RSpec.describe CercApiClient do
       allow(ForecastFactory).to receive(:build)
 
       CercApiClient.forecasts_for("North London")
-      expect(ForecastFactory).to have_received(:build).with(forecast_data)
+      expect(ForecastFactory).to have_received(:build).with(cerc_forecasts: forecast_data)
     end
   end
 

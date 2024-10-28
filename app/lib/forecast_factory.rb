@@ -1,8 +1,8 @@
 class ForecastFactory
-  def self.build(forecast_representation, zone_id = nil)
-    obtained_at = Time.zone.parse(forecast_representation.fetch("forecastdate"))
+  def self.build(cerc_forecasts:, zone_id: nil)
+    obtained_at = Time.zone.parse(cerc_forecasts.fetch("forecastdate"))
 
-    zones = forecast_representation.fetch("zones")
+    zones = cerc_forecasts.fetch("zones")
     zone = if zone_id
       fail_if_not_found = proc { raise "Forecast for zone ID '#{zone_id}' not found" }
       zones.find(fail_if_not_found) { |z| zone_id == z["zone_id"] }
