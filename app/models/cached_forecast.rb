@@ -4,6 +4,12 @@ class CachedForecast < ApplicationRecord
   serialize :data
 
   def self.stale?
+    if (latest_record = last)
+      threshold = Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
+      return latest_record.obtained_at < threshold
+    end
+
+    true
   end
 
   def self.latest_for(zone)

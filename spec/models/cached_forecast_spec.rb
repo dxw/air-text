@@ -1,4 +1,8 @@
 RSpec.describe CachedForecast do
+  before do
+    allow(ENV).to receive(:fetch).with("CERC_API_CACHE_LIMIT_MINS").and_return(60)
+  end
+
   describe "::last" do
     let!(:first) { FactoryBot.create(:cached_forecast, obtained_at: Time.current - 2.days) }
     let!(:last) { FactoryBot.create(:cached_forecast, obtained_at: Time.current) }
@@ -9,7 +13,48 @@ RSpec.describe CachedForecast do
     end
   end
 
-  describe "::stale?"
+  describe "::stale?" do
+    def time_at_cache_limit
+      Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
+    end
+
+    context "when the last record is older than the CERC_API_CACHE_LIMIT_MINS" do
+      before do
+        FactoryBot.create(
+          :cached_forecast,
+          obtained_at: time_at_cache_limit - 1.minute
+        )
+      end
+
+      it "returns _true_" do
+        expect(CachedForecast.stale?).to be true
+      end
+    end
+
+    context "when the last record is younger than the CERC_API_CACHE_LIMIT_MINS" do
+      before do
+        FactoryBot.create(
+          :cached_forecast,
+          obtained_at: time_at_cache_limit + 1.minute
+        )
+      end
+
+      it "returns _false_" do
+        expect(CachedForecast.stale?).to be false
+      end
+    end
+
+    context "when there are no records" do
+      before do
+        CachedForecast.delete_all
+      end
+
+      it "returns _true_" do
+        expect(CachedForecast.stale?).to be true
+      end
+    end
+  end
+
   describe "::latest_for"
   describe "::store" do
     let(:active_record_zone) { FactoryBot.create(:zone, cerc_id: 123) }
