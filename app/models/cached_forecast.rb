@@ -3,6 +3,8 @@ class CachedForecast < ApplicationRecord
   belongs_to :zone
   serialize :data
 
+  scope :latest_for, ->(zone) { where("zone_id = ?", zone.id).last }
+
   def self.stale?
     if (latest_record = last)
       threshold = Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
@@ -10,9 +12,6 @@ class CachedForecast < ApplicationRecord
     end
 
     true
-  end
-
-  def self.latest_for(zone)
   end
 
   def self.store(built_forecasts)
