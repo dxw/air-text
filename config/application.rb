@@ -12,6 +12,7 @@ Bundler.require(*Rails.groups)
 module AirText
   class Application < Rails::Application
     config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
       g.test_framework :rspec,
         fixtures: true,
         view_specs: false,
