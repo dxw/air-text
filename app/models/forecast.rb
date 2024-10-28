@@ -29,7 +29,7 @@ class Forecast
       "@zone=#{zone.inspect}",
       "@air_pollution=#{air_pollution.inspect}",
       "@uv=#{uv.inspect}",
-      "@pollen=#{pollen}",
+      "@pollen=#{pollen.inspect}",
       "@temperature=#{temperature.inspect}"
     ]
 

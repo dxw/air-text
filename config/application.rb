@@ -37,5 +37,20 @@ module AirText
     # Make sure the `form_with` helper generates local forms, instead of defaulting
     # to remote and unobtrusive XHR forms
     config.action_view.form_with_generates_remote_forms = false
+
+    config.after_initialize do
+      ActiveRecord.yaml_column_permitted_classes += [
+        ActiveSupport::TimeWithZone,
+        ActiveSupport::TimeZone,
+        Time,
+        Date,
+        Forecast,
+        ForecastZone,
+        AirPollutionPrediction,
+        UvPrediction,
+        PollenPrediction,
+        TemperaturePrediction
+      ]
+    end
   end
 end

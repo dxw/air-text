@@ -1,5 +1,6 @@
 class CachedForecast < ApplicationRecord
   belongs_to :zone
+  serialize :data
 
   def self.stale?
   end
@@ -13,7 +14,8 @@ class CachedForecast < ApplicationRecord
 
     create(
       zone: zone,
-      obtained_at: obtained_at
+      obtained_at: obtained_at,
+      data: built_forecasts
     )
   end
 end

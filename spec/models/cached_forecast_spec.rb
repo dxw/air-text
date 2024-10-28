@@ -40,5 +40,11 @@ RSpec.describe CachedForecast do
 
       expect(cached_forecast.zone).to eq(active_record_zone)
     end
+
+    it "sets #data with the list of built forecasts for serialisation to JSONB" do
+      cached_forecast = CachedForecast.store(built_forecasts)
+
+      expect(cached_forecast.data.inspect).to eq(built_forecasts.inspect)
+    end
   end
 end
