@@ -19,4 +19,8 @@ class CercApiClient
   def self.forecasts_for(zone)
     ForecastFactory.build(fetch_data(zone))
   end
+
+  def self.latest_forecasts
+    raise NotImplementedError
+  end
 end
