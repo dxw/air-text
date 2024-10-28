@@ -1,10 +1,14 @@
 class ForecastFactory
-  def self.build(forecast_representation)
+  def self.build(forecast_representation, zone_id = nil)
     obtained_at = Time.zone.parse(forecast_representation.fetch("forecastdate"))
 
-    zone = forecast_representation
-      .fetch("zones")
-      .first
+    zones = forecast_representation.fetch("zones")
+    zone = if zone_id
+      fail_if_not_found = proc { raise "Forecast for zone ID '#{zone_id}' not found" }
+      zones.find(fail_if_not_found) { |z| zone_id == z["zone_id"] }
+    else
+      zones.first
+    end
 
     zone.fetch("forecasts")
       .map do |forecast|
