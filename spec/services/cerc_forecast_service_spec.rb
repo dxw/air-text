@@ -7,12 +7,47 @@ RSpec.describe CercForecastService do
     before do
       allow(CachedForecast).to receive(:stale?).and_return(true)
       allow(CachedForecast).to receive(:latest_for).and_return(latest_forecast_from_cache)
+      allow(CachedForecast).to receive(:store).and_return(true)
       allow(CercApiClient).to receive(:latest_forecasts).and_return(latest_forecasts_from_api)
     end
 
     context "when the cache is stale" do
+      let(:latest_forecasts_from_api) {
+        {
+          "forecastdate" => "02-10-2024 15:16",
+          "timestamp" => 1727882190223.2139,
+          "zones" => [
+            {
+              "forecasts" => [{}, {}, {}],
+              "zone_id" => 1,
+              "zone_name" => "Barking and Dagenham",
+              "zone_type" => 1
+            },
+            {
+              "forecasts" => [{}, {}, {}],
+              "zone_id" => 2,
+              "zone_name" => "Barnet",
+              "zone_type" => 1
+            }
+          ]
+        }
+      }
+
+      let(:built_forecasts_for_barking) { double("built_forecasts_for_barking") }
+      let(:built_forecasts_for_barnet) { double("built_forecasts_for_barnet") }
+
       before do
         allow(CachedForecast).to receive(:stale?).and_return(true)
+
+        allow(ForecastFactory).to receive(:build).with(
+          cerc_forecasts: latest_forecasts_from_api,
+          zone_id: 1
+        ).and_return(built_forecasts_for_barking)
+
+        allow(ForecastFactory).to receive(:build).with(
+          cerc_forecasts: latest_forecasts_from_api,
+          zone_id: 2
+        ).and_return(built_forecasts_for_barnet)
       end
 
       it "asks the CercApiClient for the latest_forecasts (for all zones)" do
@@ -21,7 +56,26 @@ RSpec.describe CercForecastService do
         expect(CercApiClient).to have_received(:latest_forecasts).with(no_args)
       end
 
-      it "caches a forecast (3 day-forecasts) for each zone"
+      it "builds forecasts for each zone" do
+        CercForecastService.latest_forecasts_for(zone)
+
+        expect(ForecastFactory).to have_received(:build).with(
+          cerc_forecasts: latest_forecasts_from_api,
+          zone_id: 2
+        )
+        expect(ForecastFactory).to have_received(:build).with(
+          cerc_forecasts: latest_forecasts_from_api,
+          zone_id: 1
+        )
+      end
+
+      it "caches a built forecast for each zone" do
+        CercForecastService.latest_forecasts_for(zone)
+
+        expect(CachedForecast).to have_received(:store).with(built_forecasts_for_barking)
+        expect(CachedForecast).to have_received(:store).with(built_forecasts_for_barnet)
+      end
+
       it "returns the new forecast for the given zone"
     end
 

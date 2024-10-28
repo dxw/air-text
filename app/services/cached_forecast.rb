@@ -4,4 +4,7 @@ class CachedForecast
 
   def self.latest_for(zone)
   end
+
+  def self.store(built_forecasts)
+  end
 end
