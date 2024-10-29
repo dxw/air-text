@@ -1,4 +1,12 @@
 RSpec.describe ForecastsController do
+  let(:southwark) { double("Southwark") }
+  let(:barnet) { double("Barnet") }
+
+  before do
+    allow(Zone).to receive(:find_by).and_return(barnet)
+    allow(Zone).to receive(:default).and_return(southwark)
+  end
+
   describe "GET :show" do
     let(:forecasts) do
       ForecastFactory.build(
@@ -30,13 +38,24 @@ RSpec.describe ForecastsController do
       )
     end
 
-    it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
-      allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
+    context "when no zone is given" do
+      it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-      get :show
+        get :show
 
-      expect(CercForecastService).to have_received(:latest_forecasts_for).with("Southwark")
-      expect(response).to render_template("show")
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
+      end
+    end
+
+    context "when zone IS given" do
+      it "obtains forecasts for the given zone from the CercForecastService" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
+
+        get :show, params: {zone: double}
+
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(barnet)
+      end
     end
 
     it "renders the _show_ template" do
