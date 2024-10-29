@@ -89,8 +89,8 @@ module Fixtures
                 "forecasts": [
                   #{forecasts.join(", ")}
                 ],
-                "zone_id": 14,
-                "zone_name": "Haringey",
+                "zone_id": 29,
+                "zone_name": "Southwark",
                 "zone_type": 1
               }
             ]

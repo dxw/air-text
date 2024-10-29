@@ -74,7 +74,7 @@ module ForecastSteps
   end
 
   def and_i_see_local_air_quality_information
-    expect(page).to have_content("Three day forecast for Haringey")
+    expect(page).to have_content("Three day forecast for Southwark")
   end
 
   def and_i_see_predicted_air_pollution_status_for_each_day
