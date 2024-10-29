@@ -76,7 +76,11 @@ RSpec.describe CercForecastService do
         expect(CachedForecast).to have_received(:store).with(built_forecasts_for_barnet)
       end
 
-      it "returns the new forecast for the given zone"
+      it "returns the new forecast for the given zone" do
+        CercForecastService.latest_forecasts_for(zone)
+
+        expect(CachedForecast).to have_received(:latest_for).with(zone)
+      end
     end
 
     context "when the cache is NOT stale" do
