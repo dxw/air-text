@@ -1,4 +1,5 @@
 import L from "leaflet";
+import "@maptiler/leaflet-maptilersdk";
 
 document.addEventListener("turbo:load", function () {
   const mapEle = document.querySelector("#map");
