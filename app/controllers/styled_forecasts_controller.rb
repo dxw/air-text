@@ -1,13 +1,11 @@
 class StyledForecastsController < ApplicationController
   layout "tailwind_layout"
   def show
-    @forecasts = CercApiClient
-      .forecasts_for(params.fetch("zone", "Southwark"))
+    @forecasts = CercForecastService.latest_forecasts_for(zone).data
   end
 
   def update
-    forecasts = CercApiClient
-      .forecasts_for(params.fetch("zone", "Southwark"))
+    forecasts = CercForecastService.latest_forecasts_for(zone).data
 
     day_forecast = forecast_for_day(params.fetch("day"), forecasts)
 
@@ -17,6 +15,8 @@ class StyledForecastsController < ApplicationController
       locals: {forecast: day_forecast}
     )
   end
+
+  private
 
   def forecast_for_day(day, forecasts)
     case day
@@ -29,5 +29,11 @@ class StyledForecastsController < ApplicationController
     else
       raise ArgumentError, "Invalid day: #{day}"
     end
+  end
+
+  def zone
+    return Zone.default unless params[:zone]
+
+    Zone.find_by(cerc_id: params[:zone])
   end
 end
