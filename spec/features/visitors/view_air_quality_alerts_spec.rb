@@ -3,11 +3,12 @@
 #   - As a visitor
 #   - I want to see Air quality alerts for air pollution predictions with warning
 #       statuses above "low"
-RSpec.feature "Air quality alerts" do
+RSpec.feature "Air quality alerts", feature: true do
   around do |example|
     env_vars = {
       CERC_API_HOST_URL: "https://cerc.example.com",
-      CERC_API_KEY: "SECRET-API-KEY"
+      CERC_API_KEY: "SECRET-API-KEY",
+      CERC_API_CACHE_LIMIT_MINS: "60"
     }
     ClimateControl.modify(env_vars) { example.run }
   end

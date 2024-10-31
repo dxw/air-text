@@ -1,100 +1,39 @@
 RSpec.describe StyledForecastsController do
-  around do |example|
-    env_vars = {
-      CERC_API_HOST_URL: "https://cerc.example.com",
-      CERC_API_KEY: "SECRET-API-KEY"
-    }
-    ClimateControl.modify(env_vars) { example.run }
-  end
+  let(:southwark) { double("Southwark") }
+  let(:barnet) { double("Barnet") }
 
-  let(:forecast_from_api) do
-    {
-      "forecastdate" => "01-10-2024 14:40",
-      "timestamp" => 1727793654317.342,
-      "zones" => [
-        {
-          "forecasts" => [
-            {
-              "NO2" => 1,
-              "O3" => 2,
-              "PM10" => 1,
-              "PM2.5" => 1,
-              "forecast_date" => "2024-10-01",
-              "non_pollution_version" => nil,
-              "pollen" => -999,
-              "pollution_version" => 202410011407,
-              "rain_am" => 1.31,
-              "rain_pm" => 3.01,
-              "temp_max" => 14.0,
-              "temp_min" => 10.4,
-              "total" => 2,
-              "total_status" => "LOW",
-              "uv" => 1,
-              "wind_am" => 5.3,
-              "wind_pm" => 6.0
-            },
-            {
-              "NO2" => 1,
-              "O3" => 2,
-              "PM10" => 1,
-              "PM2.5" => 1,
-              "forecast_date" => "2024-10-02",
-              "non_pollution_version" => nil,
-              "pollen" => -999,
-              "pollution_version" => 202410011407,
-              "rain_am" => 1.31,
-              "rain_pm" => 3.01,
-              "temp_max" => 14.0,
-              "temp_min" => 10.4,
-              "total" => 2,
-              "total_status" => "LOW",
-              "uv" => 1,
-              "wind_am" => 5.3,
-              "wind_pm" => 6.0
-            },
-            {
-              "NO2" => 1,
-              "O3" => 2,
-              "PM10" => 1,
-              "PM2.5" => 1,
-              "forecast_date" => "2024-10-03",
-              "non_pollution_version" => nil,
-              "pollen" => -999,
-              "pollution_version" => 202410011407,
-              "rain_am" => 1.31,
-              "rain_pm" => 3.01,
-              "temp_max" => 14.0,
-              "temp_min" => 10.4,
-              "total" => 2,
-              "total_status" => "LOW",
-              "uv" => 1,
-              "wind_am" => 5.3,
-              "wind_pm" => 6.0
-            }
-          ],
-          "zone_id" => 14,
-          "zone_name" => "Haringey",
-          "zone_type" => 1
-        }
-      ]
-    }
+  before do
+    allow(Zone).to receive(:find_by).and_return(barnet)
+    allow(Zone).to receive(:default).and_return(southwark)
   end
 
   let(:forecasts) do
-    ForecastFactory.build(forecast_from_api)
+    FactoryBot.build(:cached_forecast)
   end
 
   describe "GET :show" do
-    it "obtains forecasts for the default zone (Southwark) from the CercApiClient" do
-      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+    context "when NO zone is given" do
+      it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-      get :show
+        get :show
 
-      expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
+      end
+    end
+
+    context "when zone IS given" do
+      it "obtains forecasts for the given zone from the CercForecastService" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
+
+        get :show, params: {zone: double}
+
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(barnet)
+      end
     end
 
     it "renders the _show_ template" do
-      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+      allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
       get :show
 
@@ -103,10 +42,6 @@ RSpec.describe StyledForecastsController do
   end
 
   describe "GET :update" do
-    let(:forecasts) do
-      ForecastFactory.build(forecast_from_api)
-    end
-
     let(:tag_builder) do
       instance_double(Turbo::Streams::TagBuilder, replace: true)
     end
@@ -118,45 +53,45 @@ RSpec.describe StyledForecastsController do
     context "when a recognised _day_ parameter is received" do
       describe "when the day is _today_" do
         it "passes the first forecast to the view" do
-          allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+          allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
           get :update, params: {day: :today}
 
-          expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
+          expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
           expect(tag_builder).to have_received(:replace).with(
             "day_predictions",
             partial: "predictions",
-            locals: {forecast: forecasts.first}
+            locals: {forecast: forecasts.data.first}
           )
         end
       end
 
       describe "when the day is _tomorrow_" do
         it "passes the second forecast to the view" do
-          allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+          allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
           get :update, params: {day: :tomorrow}
 
-          expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
+          expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
           expect(tag_builder).to have_received(:replace).with(
             "day_predictions",
             partial: "predictions",
-            locals: {forecast: forecasts.second}
+            locals: {forecast: forecasts.data.second}
           )
         end
       end
 
       describe "when the day is _day_after_tomorrow_" do
         it "passes the third forecast to the view" do
-          allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+          allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
           get :update, params: {day: :day_after_tomorrow}
 
-          expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
+          expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
           expect(tag_builder).to have_received(:replace).with(
             "day_predictions",
             partial: "predictions",
-            locals: {forecast: forecasts.third}
+            locals: {forecast: forecasts.data.third}
           )
         end
       end
@@ -164,7 +99,7 @@ RSpec.describe StyledForecastsController do
 
     context "when an unrecognised _day_ parameter is received" do
       it "raises a helpful error" do
-        allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
         expect {
           get :update, params: {day: :yesterday}

@@ -1,65 +1,39 @@
 RSpec.describe ForecastsController do
-  around do |example|
-    env_vars = {
-      CERC_API_HOST_URL: "https://cerc.example.com",
-      CERC_API_KEY: "SECRET-API-KEY"
-    }
-    ClimateControl.modify(env_vars) { example.run }
+  let(:southwark) { double("Southwark") }
+  let(:barnet) { double("Barnet") }
+
+  before do
+    allow(Zone).to receive(:find_by).and_return(barnet)
+    allow(Zone).to receive(:default).and_return(southwark)
   end
 
   describe "GET :show" do
-    let(:json) do
-      <<~JSON
-        {
-          "forecastdate": "01-10-2024 14:40",
-          "timestamp": 1727793654317.342,
-          "zones": [
-            {
-              "forecasts": [
-                {
-                  "NO2": 1,
-                  "O3": 2,
-                  "PM10": 1,
-                  "PM2.5": 1,
-                  "forecast_date": "2024-10-01",
-                  "non_pollution_version": null,
-                  "pollen": -999,
-                  "pollution_version": 202410011407,
-                  "rain_am": 1.31,
-                  "rain_pm": 3.01,
-                  "temp_max": 14.0,
-                  "temp_min": 10.4,
-                  "total": 2,
-                  "total_status": "LOW",
-                  "uv": 1,
-                  "wind_am": 5.3,
-                  "wind_pm": 6.0
-                }
-              ],
-              "zone_id": 14,
-              "zone_name": "Haringey",
-              "zone_type": 1
-            }
-          ]
-        }
-      JSON
-    end
-
     let(:forecasts) do
-      ForecastFactory.build(JSON.parse(json))
+      FactoryBot.build(:cached_forecast)
     end
 
-    it "obtains forecasts for the default zone (Southwark) from the CercApiClient" do
-      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+    context "when NO zone is given" do
+      it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-      get :show
+        get :show
 
-      expect(CercApiClient).to have_received(:forecasts_for).with("Southwark")
-      expect(response).to render_template("show")
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
+      end
+    end
+
+    context "when zone IS given" do
+      it "obtains forecasts for the given zone from the CercForecastService" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
+
+        get :show, params: {zone: double}
+
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(barnet)
+      end
     end
 
     it "renders the _show_ template" do
-      allow(CercApiClient).to receive(:forecasts_for).and_return(forecasts)
+      allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
       get :show
 
@@ -68,18 +42,20 @@ RSpec.describe ForecastsController do
 
     it "asks the forecasts for any alerts and assigns to instance variable" do
       air_quality_alert = double("air quality alert")
-      forecast_1 = instance_double(Forecast, alerts: [])
-      forecast_2 = instance_double(Forecast, alerts: [air_quality_alert])
+      forecast_1 = FactoryBot.build(:forecast)
+      forecast_2 = FactoryBot.build(:forecast)
 
-      allow(CercApiClient).to receive(:forecasts_for).and_return([
-        forecast_1,
-        forecast_2
-      ])
+      allow(forecast_1).to receive(:alerts).and_return([])
+      allow(forecast_2).to receive(:alerts).and_return([air_quality_alert])
+
+      cached_forecast = FactoryBot.build(:cached_forecast).tap do |cf|
+        allow(cf).to receive(:data).and_return([forecast_1, forecast_2])
+      end
+
+      allow(CercForecastService).to receive(:latest_forecasts_for)
+        .and_return(cached_forecast)
 
       get :show
-
-      expect(forecast_1).to have_received(:alerts)
-      expect(forecast_2).to have_received(:alerts)
 
       expect(assigns(:air_quality_alerts)).to eq([air_quality_alert])
     end

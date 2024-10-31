@@ -24,6 +24,7 @@ gem "terser"
 gem "govuk-components"
 gem "httparty"
 gem "view_component"
+gem "seed-fu"
 
 group :development do
   gem "better_errors"
