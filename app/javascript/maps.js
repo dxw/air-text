@@ -1,4 +1,5 @@
 import L from "leaflet";
+import "@maptiler/leaflet-maptilersdk";
 
 document.addEventListener("turbo:load", function () {
   const mapEle = document.querySelector("#map");
@@ -8,13 +9,15 @@ document.addEventListener("turbo:load", function () {
 
     const bigBenLatLng = [51.510357, -0.116773];
 
-    const osmBaseUrl = "https://ows.mundialis.de/services/service?";
     const airTextBaseUrl = "https://airtext.info/geoserver/wms?";
+    const todaysDate = new Date().toJSON().slice(0, 10);
+    const maptilerApiKey = mapEle.getAttribute("data-maptiler-api-key");
 
     const airTextOptions = {
       layers: "london:Total",
-      time: "2024-10-09",
+      time: todaysDate,
       format: "image/png",
+      opacity: 0.6,
       transparency: true, // term used by CERC
     };
 
@@ -32,28 +35,27 @@ document.addEventListener("turbo:load", function () {
       mergeAirTextOptions({ styles: "daqiTotal_linear" })
     );
 
-    const osm = L.tileLayer.wms(osmBaseUrl, {
-      layers: "OSM-Overlay-WMS",
-      format: "image/png",
-      transparent: true, // standard term (?) used by Leaflet and OSM
+    const mtLayer = new L.MaptilerLayer({
+      apiKey: maptilerApiKey,
+      style: "positron",
+      transparent: false,
     });
 
-    const baseMaps = {
+    const overlayMaps = {
       Discrete: discreteAir,
       Linear: linearAir,
     };
-    const overlayMaps = {
-      OSM: osm,
+    const baseMaps = {
+      MapTiler: mtLayer,
     };
 
     const map = L.map("map", {
       center: bigBenLatLng,
-      zoom: 10,
-      layers: [discreteAir, osm],
+      zoom: 8,
+      layers: [discreteAir],
     });
+    map.addLayer(mtLayer);
 
-    baseMaps.Discrete.addTo(map);
-    overlayMaps.OSM.addTo(map);
-    L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+    L.control.layers(overlayMaps, baseMaps, { collapsed: false }).addTo(map);
   }
 });

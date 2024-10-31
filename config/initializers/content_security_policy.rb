@@ -12,6 +12,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.img_src :self, :https, :data
   policy.object_src :none
   policy.script_src :self, :https
+  policy.worker_src :self, :blob
 
   # allow styling for the Turbo progress bar
   policy.style_src("'sha256-WAyOw4V+FqDc35lQPyRADLBWbuNK8ahvYEaQIYF1+Ps='", :self, :https)

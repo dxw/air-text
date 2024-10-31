@@ -9,7 +9,8 @@ RSpec.feature "Forecasts page", feature: true do
     env_vars = {
       CERC_API_HOST_URL: "https://cerc.example.com",
       CERC_API_KEY: "SECRET-API-KEY",
-      CERC_API_CACHE_LIMIT_MINS: "60"
+      CERC_API_CACHE_LIMIT_MINS: "60",
+      MAPTILER_API_KEY: "TOPSECRET"
     }
     ClimateControl.modify(env_vars) { example.run }
   end

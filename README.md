@@ -91,6 +91,8 @@ To manage sensitive environment variables:
 - `CERC_API_HOST_URL`: find the URL of the CERC API host in the 1Password vault
 - `CERC_API_KEY`: find the API key in the 1Password vault
 - `CERC_API_CACHE_LIMIT_MINS`: how often we expire our cached forecasts
+- `MAPTILER_API_KEY`: used for vector tiles display within Leaflet. Dev and prod
+  keys are in the 1Password vault
 
 ## Access
 

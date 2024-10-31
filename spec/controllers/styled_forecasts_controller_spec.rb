@@ -1,4 +1,11 @@
 RSpec.describe StyledForecastsController do
+  around do |example|
+    env_vars = {
+      MAPTILER_API_KEY: "TOPSECRET"
+    }
+    ClimateControl.modify(env_vars) { example.run }
+  end
+
   let(:southwark) { double("Southwark") }
   let(:barnet) { double("Barnet") }
 
