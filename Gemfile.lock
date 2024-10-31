@@ -132,9 +132,6 @@ GEM
     diff-lcs (1.5.1)
     docile (1.4.0)
     dotenv (3.1.4)
-    dotenv-rails (3.1.4)
-      dotenv (= 3.1.4)
-      railties (>= 6.1)
     drb (2.2.1)
     e2mmap (0.1.0)
     erubi (1.13.0)
@@ -471,7 +468,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.4)
   cuprite
   database_cleaner
-  dotenv-rails
+  dotenv
   factory_bot_rails
   faker
   govuk-components
