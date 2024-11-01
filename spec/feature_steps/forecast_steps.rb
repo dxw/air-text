@@ -57,9 +57,9 @@ module ForecastSteps
   def switch_to_tab_for(day)
     case day
     when :tomorrow
-      find(".tab.tomorrow a").click
+      find(".tab.tomorrow a").trigger("click")
     when :day_after_tomorrow
-      find(".tab.day_after_tomorrow a").click
+      find(".tab.day_after_tomorrow a").trigger("click")
     else
       raise "day: #{day} not expected"
     end
