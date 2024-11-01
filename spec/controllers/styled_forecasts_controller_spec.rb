@@ -49,58 +49,14 @@ RSpec.describe StyledForecastsController do
   end
 
   describe "GET :update" do
-    let(:tag_builder) do
-      instance_double(Turbo::Streams::TagBuilder, replace: true)
-    end
-
-    before do
-      allow(Turbo::Streams::TagBuilder).to receive(:new).and_return(tag_builder)
-    end
-
     context "when a recognised _day_ parameter is received" do
-      describe "when the day is _today_" do
-        it "passes the first forecast to the view" do
-          allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
+      it "renders the turbo update template" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-          get :update, params: {day: :today}
+        get :update, params: {day: :today}, format: :turbo_stream
 
-          expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
-          expect(tag_builder).to have_received(:replace).with(
-            "day_predictions",
-            partial: "predictions",
-            locals: {forecast: forecasts.data.first}
-          )
-        end
-      end
-
-      describe "when the day is _tomorrow_" do
-        it "passes the second forecast to the view" do
-          allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
-          get :update, params: {day: :tomorrow}
-
-          expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
-          expect(tag_builder).to have_received(:replace).with(
-            "day_predictions",
-            partial: "predictions",
-            locals: {forecast: forecasts.data.second}
-          )
-        end
-      end
-
-      describe "when the day is _day_after_tomorrow_" do
-        it "passes the third forecast to the view" do
-          allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
-          get :update, params: {day: :day_after_tomorrow}
-
-          expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
-          expect(tag_builder).to have_received(:replace).with(
-            "day_predictions",
-            partial: "predictions",
-            locals: {forecast: forecasts.data.third}
-          )
-        end
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
+        expect(response).to render_template("styled_forecasts/update")
       end
     end
 

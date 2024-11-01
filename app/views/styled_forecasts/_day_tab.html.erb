@@ -6,10 +6,8 @@
     "tab-target": "day"
   } do
   %>
-<%=
-      link_to update_styled_forecast_path(day: day),
+<%= link_to update_styled_forecast_path(day: day, format: :turbo_stream),
       data: {
-        turbo_frame: "day_predictions",
         action: "click->tab#switch_tab"
     } do %>
   <div class="day">

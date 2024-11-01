@@ -9,13 +9,11 @@ class StyledForecastsController < ApplicationController
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
     forecasts = CercForecastService.latest_forecasts_for(zone).data
 
-    day_forecast = forecast_for_day(params.fetch("day"), forecasts)
+    @day_forecast = forecast_for_day(params.fetch("day"), forecasts)
 
-    render turbo_stream: turbo_stream.replace(
-      "day_predictions",
-      partial: "predictions",
-      locals: {forecast: day_forecast}
-    )
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private
