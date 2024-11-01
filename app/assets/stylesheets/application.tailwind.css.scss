@@ -5,5 +5,54 @@
 @tailwind utilities;
 
 .active {
-  @apply border-[3px] border-black border-solid border-b-0 text-black -mb-[3px] bg-white;
+  @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+}
+
+.after-today {
+  @apply text-black bg-white;
+}
+
+.daqi-level-1-today,
+.daqi-level-2-today,
+.daqi-level-3-today {
+  @apply text-black bg-white;
+}
+
+.inactive {
+  @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+}
+
+.daqi-level-4-today,
+.daqi-alert-after-today-selected-level-4 {
+  @apply text-black bg-yellow-300;
+}
+
+.daqi-level-5-today,
+.daqi-alert-after-today-selected-level-5 {
+  @apply text-black bg-amber-200;
+}
+
+.daqi-level-6-today,
+.daqi-alert-after-today-selected-level-6 {
+  @apply text-black bg-yellow-500;
+}
+
+.daqi-level-7-today,
+.daqi-alert-after-today-selected-level-7 {
+  @apply text-white bg-orange-500;
+}
+
+.daqi-level-8-today,
+.daqi-alert-after-today-selected-level-8 {
+  @apply text-white bg-red-500;
+}
+
+.daqi-level-9-today,
+.daqi-alert-after-today-selected-level-9 {
+  @apply text-white bg-red-800;
+}
+
+.daqi-level-10-today,
+.daqi-alert-after-today-selected-level-10 {
+  @apply text-white bg-stone-700;
 }
