@@ -20,4 +20,12 @@ class DayTabComponent < ViewComponent::Base
   def daqi_indicator_colour_class
     TAG_COLOURS.fetch(@forecast.air_pollution.value)
   end
+
+  def classes
+    if @day == :today
+      "active daqi-level-#{@forecast.air_pollution.value}-today"
+    else
+      "inactive after-today"
+    end
+  end
 end
