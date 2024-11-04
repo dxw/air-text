@@ -25,7 +25,7 @@ module AirQualitySteps
 
   def when_i_look_at_the_forecasts
     visit root_path
-    click_link("View new style forecasts")
+    click_link("View forecasts")
   end
 
   def expect_to_see_alert_date_for(day)

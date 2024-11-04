@@ -39,7 +39,7 @@ module ForecastSteps
   end
 
   def when_i_select_view_forecasts
-    click_link("View new style forecasts")
+    click_link("View forecasts")
   end
 
   def and_i_switch_to_the_tab_for_tomorrow
@@ -76,7 +76,7 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level
-    expect_prediction(category: "ultraviolet-rays-uv", value: "Low")
+    expect_prediction(category: :"ultraviolet-rays-uv", level: :low)
   end
 
   def then_i_see_that_the_tomorrow_tab_is_active
@@ -134,11 +134,11 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_pollen_level
-    expect_prediction(category: :pollen, value: "Low")
+    expect_prediction(category: :pollen, level: :low)
   end
 
   def and_i_see_predicted_temperature_level
-    expect_prediction(category: :temperature, value: "-5°C - 4°C")
+    expect_prediction(category: :temperature, level: :low)
   end
 
   def expect_prediction(category:, level:)
@@ -162,6 +162,9 @@ module ForecastSteps
 
   def expect_uv_content_for_level(level)
     case level
+    when :low
+      expect(page).to have_content("Low")
+      expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
     when :moderate
       expect(page).to have_content("Moderate")
       expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
@@ -175,6 +178,9 @@ module ForecastSteps
 
   def expect_pollen_content_for_level(level)
     case level
+    when :low
+      expect(page).to have_content("Low")
+      expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
     when :moderate
       expect(page).to have_content("Moderate")
       expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
@@ -188,6 +194,8 @@ module ForecastSteps
 
   def expect_temperature_content_for_level(level)
     case level
+    when :low
+      expect(page).to have_content("-5°C - 4°C")
     when :moderate
       expect(page).to have_content("9°C - 16°C")
     when :high
