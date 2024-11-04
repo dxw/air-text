@@ -23,12 +23,12 @@ module AirQualitySteps
     forecasts << Fixtures::API.build_forecast(day: :day_after_tomorrow, air_pollution_status: :low)
   end
 
-  def when_i_look_at_the_forecasts_v2
+  def when_i_look_at_the_forecasts
     visit root_path
     click_link("View new style forecasts")
   end
 
-  def expect_to_see_alert_date_for_v2(day)
+  def expect_to_see_alert_date_for(day)
     date = case day
     when :today
       Date.today.strftime("%d %b %Y")
@@ -41,7 +41,7 @@ module AirQualitySteps
     expect(page).to have_content("air quality alert for #{date}")
   end
 
-  def expect_to_see_alert_level_v2(level)
+  def expect_to_see_alert_level(level)
     label = case level
     when :moderate
       "Moderate"
@@ -61,18 +61,18 @@ module AirQualitySteps
     )
   end
 
-  def then_i_see_an_air_quality_alert_of_high_for_today_v2
+  def then_i_see_an_air_quality_alert_of_high_for_today
     within(".today[data-date='#{Date.today}']") do
-      expect_to_see_alert_level_v2(:high)
+      expect_to_see_alert_level(:high)
     end
     within(".alert-guidance") do
       expect_to_see_guidance_for(:high)
     end
   end
 
-  def then_i_see_an_air_quality_alert_of_moderate_for_tomorrow_v2
+  def then_i_see_an_air_quality_alert_of_moderate_for_tomorrow
     within(".tomorrow[data-date='#{Date.tomorrow}']") do
-      expect_to_see_alert_level_v2(:moderate)
+      expect_to_see_alert_level(:moderate)
     end
     within(".alert-guidance") do
       expect_to_see_guidance_for(:moderate)
@@ -82,9 +82,9 @@ module AirQualitySteps
     expect(page).not_to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
   end
 
-  def then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow_v2
+  def then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow
     within(".day_after_tomorrow[data-date='#{Date.tomorrow + 1.day}']") do
-      expect_to_see_alert_level_v2(:very_high)
+      expect_to_see_alert_level(:very_high)
     end
     within(".alert-guidance") do
       expect_to_see_guidance_for(:very_high)

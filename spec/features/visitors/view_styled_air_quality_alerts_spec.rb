@@ -24,23 +24,23 @@ RSpec.feature "Air quality alerts", feature: true do
   end
 
   scenario "View air quality alert for today" do
-    when_i_look_at_the_forecasts_v2
-    then_i_see_an_air_quality_alert_of_high_for_today_v2
+    when_i_look_at_the_forecasts
+    then_i_see_an_air_quality_alert_of_high_for_today
   end
 
   scenario "View air quality alert for tomorrow", js: true do
     visit root_path
-    when_i_select_view_forecasts_v2
+    when_i_select_view_forecasts
     and_i_switch_to_the_tab_for_tomorrow
 
-    then_i_see_an_air_quality_alert_of_moderate_for_tomorrow_v2
+    then_i_see_an_air_quality_alert_of_moderate_for_tomorrow
   end
 
   scenario "View air quality alert for the day after tomorrow", js: true do
     visit root_path
-    when_i_select_view_forecasts_v2
+    when_i_select_view_forecasts
     and_i_switch_to_the_tab_for_day_after_tomorrow
 
-    then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow_v2
+    then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow
   end
 end

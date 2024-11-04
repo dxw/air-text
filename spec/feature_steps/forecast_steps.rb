@@ -38,7 +38,7 @@ module ForecastSteps
     HttpStubs.stub_forecasts_with(forecast_response)
   end
 
-  def when_i_select_view_forecasts_v2
+  def when_i_select_view_forecasts
     click_link("View new style forecasts")
   end
 
@@ -61,7 +61,7 @@ module ForecastSteps
     end
   end
 
-  def then_i_see_the_forecasts_page_v2
+  def then_i_see_the_forecasts_page
     expect(page).to have_content("Air quality forecast")
   end
 
@@ -69,14 +69,14 @@ module ForecastSteps
     expect(page).to have_content("Three day forecast for Southwark")
   end
 
-  def and_i_see_predicted_air_pollution_status_for_each_day_v2
+  def and_i_see_predicted_air_pollution_status_for_each_day
     expect_air_pollution_prediction(day: :today, value: :high)
     expect_air_pollution_prediction(day: :tomorrow, value: :moderate)
     expect_air_pollution_prediction(day: :day_after_tomorrow, value: :very_high)
   end
 
-  def and_i_see_predicted_uv_level_v2
-    expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
+  def and_i_see_predicted_uv_level
+    expect_prediction(category: "ultraviolet-rays-uv", value: "Low")
   end
 
   def then_i_see_that_the_tomorrow_tab_is_active
@@ -133,15 +133,15 @@ module ForecastSteps
     expect_styled_prediction(category: :temperature, level: :high)
   end
 
-  def and_i_see_predicted_pollen_level_v2
-    expect_prediction_v2(category: :pollen, value: "Low")
+  def and_i_see_predicted_pollen_level
+    expect_prediction(category: :pollen, value: "Low")
   end
 
-  def and_i_see_predicted_temperature_level_v2
-    expect_prediction_v2(category: :temperature, value: "-5°C - 4°C")
+  def and_i_see_predicted_temperature_level
+    expect_prediction(category: :temperature, value: "-5°C - 4°C")
   end
 
-  def expect_prediction_v2(category:, value:)
+  def expect_prediction(category:, value:)
     within(".#{category}") do
       find("dd", text: value)
     end
