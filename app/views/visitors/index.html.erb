@@ -4,11 +4,10 @@
     <aside class="col">
       <%= image_tag("dxw-logo-512x512.png", class: "pop-me") %>
     </aside>
-    <article class="col">
-      <h1>airTEXT</h1>
-      <p>Welcome to the rebuild of airTEXT</p>
-      <p>
-        <%= link_to "View forecasts", styled_forecast_path, data: { turbo: false } =%>
+    <article>
+      <h1 class="my-1 font-bold">Welcome to the rebuild of airTEXT</h1>
+      <p class="mb-1">
+        <%= link_to "View forecasts", forecast_path, :class=>'home-page-link', data: { turbo: false } =%>
       </p>
       <p>Please refer to the project's <%= link_to "README", "https://github.com/dxw/air-text", target: :blank %> on Github for further information.
         <h2>Helpful links</h2>

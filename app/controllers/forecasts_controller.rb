@@ -1,5 +1,4 @@
-class StyledForecastsController < ApplicationController
-  layout "tailwind_layout"
+class ForecastsController < ApplicationController
   def show
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
     @forecasts = CercForecastService.latest_forecasts_for(zone).data

@@ -1,4 +1,4 @@
-RSpec.describe StyledForecastsController do
+RSpec.describe ForecastsController do
   around do |example|
     env_vars = {
       MAPTILER_API_KEY: "TOPSECRET"
@@ -56,7 +56,7 @@ RSpec.describe StyledForecastsController do
         get :update, params: {day: :today}, format: :turbo_stream
 
         expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
-        expect(response).to render_template("styled_forecasts/update")
+        expect(response).to render_template("forecasts/update")
       end
     end
 

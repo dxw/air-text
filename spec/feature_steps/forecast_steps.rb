@@ -110,27 +110,27 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_for_tomorrow
-    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
+    expect_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
   end
 
   def and_i_see_predicted_pollen_level_for_tomorrow
-    expect_styled_prediction(category: :pollen, level: :moderate)
+    expect_prediction(category: :pollen, level: :moderate)
   end
 
   def and_i_see_predicted_temperature_level_for_tomorrow
-    expect_styled_prediction(category: :temperature, level: :moderate)
+    expect_prediction(category: :temperature, level: :moderate)
   end
 
   def and_i_see_predicted_uv_level_for_day_after_tomorrow
-    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :high)
+    expect_prediction(category: :"ultraviolet-rays-uv", level: :high)
   end
 
   def and_i_see_predicted_pollen_level_for_day_after_tomorrow
-    expect_styled_prediction(category: :pollen, level: :high)
+    expect_prediction(category: :pollen, level: :high)
   end
 
   def and_i_see_predicted_temperature_level_for_day_after_tomorrow
-    expect_styled_prediction(category: :temperature, level: :high)
+    expect_prediction(category: :temperature, level: :high)
   end
 
   def and_i_see_predicted_pollen_level
@@ -141,19 +141,13 @@ module ForecastSteps
     expect_prediction(category: :temperature, value: "-5°C - 4°C")
   end
 
-  def expect_prediction(category:, value:)
+  def expect_prediction(category:, level:)
     within(".#{category}") do
-      find("dd", text: value)
+      expect_content_for(category:, level:)
     end
   end
 
-  def expect_styled_prediction(category:, level:)
-    within(".#{category}") do
-      expect_styled_content_for(category:, level:)
-    end
-  end
-
-  def expect_styled_content_for(category:, level:)
+  def expect_content_for(category:, level:)
     case category
     when :"ultraviolet-rays-uv"
       expect_uv_content_for_level(level)
