@@ -5,8 +5,6 @@ document.addEventListener("turbo:load", function () {
   const mapEle = document.querySelector("#map");
 
   if (mapEle) {
-    console.log("map is on the page");
-
     const bigBenLatLng = [51.510357, -0.116773];
 
     const airTextBaseUrl = "https://airtext.info/geoserver/wms?";
@@ -17,8 +15,7 @@ document.addEventListener("turbo:load", function () {
       layers: "london:Total",
       time: todaysDate,
       format: "image/png",
-      opacity: 0.6,
-      transparency: true, // term used by CERC
+      opacity: 1,
     };
 
     const mergeAirTextOptions = (options) => {
@@ -35,27 +32,47 @@ document.addEventListener("turbo:load", function () {
       mergeAirTextOptions({ styles: "daqiTotal_linear" })
     );
 
-    const mtLayer = new L.MaptilerLayer({
-      apiKey: maptilerApiKey,
-      style: "positron",
-      transparent: false,
-    });
-
-    const overlayMaps = {
-      Discrete: discreteAir,
-      Linear: linearAir,
-    };
-    const baseMaps = {
-      MapTiler: mtLayer,
-    };
-
     const map = L.map("map", {
       center: bigBenLatLng,
       zoom: 8,
       layers: [discreteAir],
     });
-    map.addLayer(mtLayer);
 
-    L.control.layers(overlayMaps, baseMaps, { collapsed: false }).addTo(map);
+    map.createPane("osm");
+    map.getPane("osm").style.zIndex = 999;
+    map.getPane("osm").style.opacity = 0.6;
+
+    const tonerLite = new L.MaptilerLayer({
+      apiKey: maptilerApiKey,
+      style: "toner-v2-lite",
+      pane: "osm",
+    });
+
+    const basicLight = new L.MaptilerLayer({
+      apiKey: maptilerApiKey,
+      style: "basic-v2-light",
+      pane: "osm",
+    });
+
+    const streetsPastel = new L.MaptilerLayer({
+      apiKey: maptilerApiKey,
+      style: "streets-v2-pastel",
+      pane: "osm",
+    });
+
+    map.addLayer(basicLight);
+
+    const baseMaps = {
+      DiscreteColours: discreteAir,
+      LinearColours: linearAir,
+    };
+    const overlayMaps = {
+      TonerLite: tonerLite,
+      BasicLight: basicLight,
+      StreetsPastel: streetsPastel,
+    };
+
+    L.control.layers(baseMaps, null, { collapsed: false }).addTo(map);
+    L.control.layers(overlayMaps, null, { collapsed: false }).addTo(map);
   }
 });
