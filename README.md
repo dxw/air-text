@@ -65,8 +65,8 @@ e.g.
 ## Architecture decision records
 
 We use ADRs to document architectural decisions that we make. They can be found
-in [doc/architecture/decisions](./doc/architecture/decisions/) and contributed to with the
-[adr-tools](https://github.com/npryce/adr-tools).
+in [doc/architecture/decisions](./doc/architecture/decisions/) and contributed
+to with the [adr-tools](https://github.com/npryce/adr-tools).
 
 ## Managing environment variables
 
