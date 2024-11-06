@@ -4,11 +4,11 @@ module AirQualitySteps
   end
 
   def and_an_air_pollution_prediction_for_tomorrow_w_moderate_warning_status
-    forecasts << Fixtures::API.build_forecast(day: :tomorrow, air_pollution_status: :moderate)
+    forecasts << Fixtures::API.build_forecast(day: :tomorrow, air_pollution_status: :moderate, daqi_value: 4)
   end
 
   def and_an_air_pollution_prediction_for_day_after_tomorrow_w_v_high_warning_status
-    forecasts << Fixtures::API.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high)
+    forecasts << Fixtures::API.build_forecast(day: :day_after_tomorrow, air_pollution_status: :very_high, daqi_value: 10)
   end
 
   def given_an_air_pollution_prediction_for_today_w_low_status
@@ -116,6 +116,9 @@ module AirQualitySteps
     within(".alert-guidance") do
       expect_to_see_guidance_for(:moderate)
     end
+
+    expect(page).to have_css(".tab.tomorrow.daqi-alert-after-today-selected-level-4")
+    expect(page).not_to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
   end
 
   def then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow_v2
@@ -125,6 +128,9 @@ module AirQualitySteps
     within(".alert-guidance") do
       expect_to_see_guidance_for(:very_high)
     end
+
+    expect(page).to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
+    expect(page).not_to have_css(".tab.tomorrow.daqi-alert-after-today-selected-level-4")
   end
 
   def and_i_see_an_air_quality_alert_of_moderate_for_tomorrow
