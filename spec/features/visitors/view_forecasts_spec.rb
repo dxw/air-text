@@ -9,7 +9,8 @@ RSpec.feature "Forecasts page", feature: true do
     env_vars = {
       CERC_API_HOST_URL: "https://cerc.example.com",
       CERC_API_KEY: "SECRET-API-KEY",
-      CERC_API_CACHE_LIMIT_MINS: "60"
+      CERC_API_CACHE_LIMIT_MINS: "60",
+      MAPTILER_API_KEY: "TOPSECRET"
     }
     ClimateControl.modify(env_vars) { example.run }
   end
@@ -25,10 +26,43 @@ RSpec.feature "Forecasts page", feature: true do
     visit root_path
     when_i_select_view_forecasts
     then_i_see_the_forecasts_page
-    and_i_see_local_air_quality_information
+
+    and_i_see_that_the_today_tab_is_active
     and_i_see_predicted_air_pollution_status_for_each_day
-    and_i_see_predicted_uv_level_for_each_day
-    and_i_see_predicted_pollen_level_for_each_day
-    and_i_see_predicted_temperature_for_each_day
+    and_i_see_predicted_uv_level
+    and_i_see_predicted_pollen_level
+    and_i_see_predicted_temperature_level
+  end
+
+  scenario "See detail for tomorrow", js: true do
+    given_a_forecast_for_today
+    and_a_forecast_for_tomorrow
+    and_a_forecast_for_the_day_after_tomorrow
+    and_the_response_from_cercs_api_is_stubbed_accordingly
+
+    visit root_path
+    when_i_select_view_forecasts
+    and_i_switch_to_the_tab_for_tomorrow
+
+    then_i_see_that_the_tomorrow_tab_is_active
+    and_i_see_predicted_uv_level_for_tomorrow
+    and_i_see_predicted_pollen_level_for_tomorrow
+    and_i_see_predicted_temperature_level_for_tomorrow
+  end
+
+  scenario "See detail for day after tomorrow", js: true do
+    given_a_forecast_for_today
+    and_a_forecast_for_tomorrow
+    and_a_forecast_for_the_day_after_tomorrow
+    and_the_response_from_cercs_api_is_stubbed_accordingly
+
+    visit root_path
+    when_i_select_view_forecasts
+
+    and_i_switch_to_the_tab_for_day_after_tomorrow
+    then_i_see_that_the_day_after_tomorrow_tab_is_active
+    and_i_see_predicted_uv_level_for_day_after_tomorrow
+    and_i_see_predicted_pollen_level_for_day_after_tomorrow
+    and_i_see_predicted_temperature_level_for_day_after_tomorrow
   end
 end

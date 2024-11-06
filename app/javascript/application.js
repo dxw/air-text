@@ -12,32 +12,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const locationButton = document.getElementById("location-selector-button");
   const locationList = document.getElementById("location-selector-list");
 
-  locationButton.addEventListener("click", function () {
-    locationList.classList.toggle("hidden");
-  });
+  locationButton &&
+    locationButton.addEventListener("click", function () {
+      locationList.classList.toggle("hidden");
+    });
 
-  locationList.addEventListener("click", function (e) {
-    const newSelectedZone = e.target.innerText;
-    const selectedZone = document.getElementById("selected-zone");
-    selectedZone.innerText = newSelectedZone;
-    locationList.classList.toggle("hidden");
-  });
+  locationList &&
+    locationList.addEventListener("click", function (e) {
+      const newSelectedZone = e.target.innerText;
+      const selectedZone = document.getElementById("selected-zone");
+      selectedZone.innerText = newSelectedZone;
+      locationList.classList.toggle("hidden");
+    });
 
   const pollutantSelectorButton = document.getElementById(
     "pollutant-selector-button"
   );
   const pollutantMenu = document.getElementById("pollutant-selector-menu");
 
-  pollutantSelectorButton.addEventListener("click", function () {
-    pollutantMenu.classList.toggle("hidden");
-  });
+  pollutantSelectorButton &&
+    pollutantSelectorButton.addEventListener("click", function () {
+      pollutantMenu.classList.toggle("hidden");
+    });
 
-  pollutantMenu.addEventListener("click", function (e) {
-    const newSelectedPollutant = e.target.innerText;
-    const selectedPollutant = document.getElementById("selected-pollutant");
-    selectedPollutant.innerText = newSelectedPollutant;
-    pollutantMenu.classList.toggle("hidden");
-  });
+  pollutantMenu &&
+    pollutantMenu.addEventListener("click", function (e) {
+      const newSelectedPollutant = e.target.innerText;
+      const selectedPollutant = document.getElementById("selected-pollutant");
+      selectedPollutant.innerText = newSelectedPollutant;
+      pollutantMenu.classList.toggle("hidden");
+    });
 
   const showUvGuidanceButton = document.getElementById(
     "ultraviolet-rays-uv-show-guidance-button"
@@ -48,11 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const uvGuidance = document.getElementById("ultraviolet-rays-uv-guidance");
 
   [showUvGuidanceButton, hideUvGuidanceButton].forEach((button) => {
-    button.addEventListener("click", function () {
-      showUvGuidanceButton.classList.toggle("hidden");
-      hideUvGuidanceButton.classList.toggle("hidden");
-      uvGuidance.classList.toggle("hidden");
-    });
+    button &&
+      button.addEventListener("click", function () {
+        showUvGuidanceButton.classList.toggle("hidden");
+        hideUvGuidanceButton.classList.toggle("hidden");
+        uvGuidance.classList.toggle("hidden");
+      });
   });
 
   const showPollenGuidanceButton = document.getElementById(
@@ -64,11 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const pollenGuidance = document.getElementById("pollen-guidance");
 
   [showPollenGuidanceButton, hidePollenGuidanceButton].forEach((button) => {
-    button.addEventListener("click", function () {
-      showPollenGuidanceButton.classList.toggle("hidden");
-      hidePollenGuidanceButton.classList.toggle("hidden");
-      pollenGuidance.classList.toggle("hidden");
-    });
+    button &&
+      button.addEventListener("click", function () {
+        showPollenGuidanceButton.classList.toggle("hidden");
+        hidePollenGuidanceButton.classList.toggle("hidden");
+        pollenGuidance.classList.toggle("hidden");
+      });
   });
 });
 import "./controllers";

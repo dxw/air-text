@@ -8,32 +8,39 @@ RSpec.feature "Air quality alerts", feature: true do
     env_vars = {
       CERC_API_HOST_URL: "https://cerc.example.com",
       CERC_API_KEY: "SECRET-API-KEY",
-      CERC_API_CACHE_LIMIT_MINS: "60"
+      CERC_API_CACHE_LIMIT_MINS: "60",
+      MAPTILER_API_KEY: "TOPSECRET"
     }
     ClimateControl.modify(env_vars) { example.run }
   end
 
-  include AirQualitySteps
+  include AirQualitySteps, ForecastSteps
 
-  scenario "View air quality alerts" do
+  before do
     given_an_air_pollution_prediction_for_today_w_high_warning_status
     and_an_air_pollution_prediction_for_tomorrow_w_moderate_warning_status
     and_an_air_pollution_prediction_for_day_after_tomorrow_w_v_high_warning_status
     and_the_response_from_cercs_api_is_stubbed_accordingly
-
-    when_i_look_at_the_forecasts
-    then_i_see_an_air_quality_alert_of_high_for_today
-    and_i_see_an_air_quality_alert_of_moderate_for_tomorrow
-    and_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow
   end
 
-  scenario "See confirmation that there are current no air quality alert" do
-    given_an_air_pollution_prediction_for_today_w_low_status
-    and_an_air_pollution_prediction_for_tomorrow_w_low_warning_status
-    and_an_air_pollution_prediction_for_day_after_tomorrow_w_low_warning_status
-    and_the_response_from_cercs_api_is_stubbed_accordingly
-
+  scenario "View air quality alert for today" do
     when_i_look_at_the_forecasts
-    then_i_see_that_there_are_no_current_air_quality_alerts
+    then_i_see_an_air_quality_alert_of_high_for_today
+  end
+
+  scenario "View air quality alert for tomorrow", js: true do
+    visit root_path
+    when_i_select_view_forecasts
+    and_i_switch_to_the_tab_for_tomorrow
+
+    then_i_see_an_air_quality_alert_of_moderate_for_tomorrow
+  end
+
+  scenario "View air quality alert for the day after tomorrow", js: true do
+    visit root_path
+    when_i_select_view_forecasts
+    and_i_switch_to_the_tab_for_day_after_tomorrow
+
+    then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow
   end
 end

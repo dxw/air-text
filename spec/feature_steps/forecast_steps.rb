@@ -42,10 +42,6 @@ module ForecastSteps
     click_link("View forecasts")
   end
 
-  def when_i_select_view_forecasts_v2
-    click_link("View new style forecasts")
-  end
-
   def and_i_switch_to_the_tab_for_tomorrow
     switch_to_tab_for(:tomorrow)
   end
@@ -66,10 +62,6 @@ module ForecastSteps
   end
 
   def then_i_see_the_forecasts_page
-    expect(page).to have_content("Forecasts")
-  end
-
-  def then_i_see_the_forecasts_page_v2
     expect(page).to have_content("Air quality forecast")
   end
 
@@ -78,37 +70,13 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_air_pollution_status_for_each_day
-    expect_prediction(day: :today, category: :air_pollution, value: :high)
-    expect_prediction(day: :tomorrow, category: :air_pollution, value: :moderate)
-    expect_prediction(day: :day_after_tomorrow, category: :air_pollution, value: :very_high)
-  end
-
-  def and_i_see_predicted_air_pollution_status_for_each_day_v2
     expect_air_pollution_prediction(day: :today, value: :high)
     expect_air_pollution_prediction(day: :tomorrow, value: :moderate)
     expect_air_pollution_prediction(day: :day_after_tomorrow, value: :very_high)
   end
 
-  def and_i_see_predicted_uv_level_for_each_day
-    expect_prediction(day: :today, category: :uv, value: content_for_uv(:low))
-    expect_prediction(day: :tomorrow, category: :uv, value: content_for_uv(:moderate))
-    expect_prediction(day: :day_after_tomorrow, category: :uv, value: content_for_uv(:high))
-  end
-
-  def and_i_see_predicted_pollen_level_for_each_day
-    expect_prediction(day: :today, category: :pollen, value: content_for_pollen(:low))
-    expect_prediction(day: :tomorrow, category: :pollen, value: content_for_pollen(:moderate))
-    expect_prediction(day: :day_after_tomorrow, category: :pollen, value: content_for_pollen(:high))
-  end
-
-  def and_i_see_predicted_temperature_for_each_day
-    expect_prediction(day: :today, category: :temperature, value: "-5-4°C")
-    expect_prediction(day: :tomorrow, category: :temperature, value: "9-16°C")
-    expect_prediction(day: :day_after_tomorrow, category: :temperature, value: "27-31°C")
-  end
-
-  def and_i_see_predicted_uv_level_v2
-    expect_prediction_v2(category: "ultraviolet-rays-uv", value: "Low")
+  def and_i_see_predicted_uv_level
+    expect_prediction(category: :"ultraviolet-rays-uv", level: :low)
   end
 
   def then_i_see_that_the_tomorrow_tab_is_active
@@ -142,58 +110,44 @@ module ForecastSteps
   end
 
   def and_i_see_predicted_uv_level_for_tomorrow
-    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
+    expect_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
   end
 
   def and_i_see_predicted_pollen_level_for_tomorrow
-    expect_styled_prediction(category: :pollen, level: :moderate)
+    expect_prediction(category: :pollen, level: :moderate)
   end
 
   def and_i_see_predicted_temperature_level_for_tomorrow
-    expect_styled_prediction(category: :temperature, level: :moderate)
+    expect_prediction(category: :temperature, level: :moderate)
   end
 
   def and_i_see_predicted_uv_level_for_day_after_tomorrow
-    expect_styled_prediction(category: :"ultraviolet-rays-uv", level: :high)
+    expect_prediction(category: :"ultraviolet-rays-uv", level: :high)
   end
 
   def and_i_see_predicted_pollen_level_for_day_after_tomorrow
-    expect_styled_prediction(category: :pollen, level: :high)
+    expect_prediction(category: :pollen, level: :high)
   end
 
   def and_i_see_predicted_temperature_level_for_day_after_tomorrow
-    expect_styled_prediction(category: :temperature, level: :high)
+    expect_prediction(category: :temperature, level: :high)
   end
 
-  def and_i_see_predicted_pollen_level_v2
-    expect_prediction_v2(category: :pollen, value: "Low")
+  def and_i_see_predicted_pollen_level
+    expect_prediction(category: :pollen, level: :low)
   end
 
-  def and_i_see_predicted_temperature_level_v2
-    expect_prediction_v2(category: :temperature, value: "-5°C - 4°C")
+  def and_i_see_predicted_temperature_level
+    expect_prediction(category: :temperature, level: :low)
   end
 
-  def expect_prediction(day:, category:, value:)
-    within(prediction_category(category)) do
-      within("td[data-date='#{date(day)}']") do
-        expect(page).to have_content(content_for(category: category, value: value))
-      end
-    end
-  end
-
-  def expect_prediction_v2(category:, value:)
+  def expect_prediction(category:, level:)
     within(".#{category}") do
-      find("dd", text: value)
+      expect_content_for(category:, level:)
     end
   end
 
-  def expect_styled_prediction(category:, level:)
-    within(".#{category}") do
-      expect_styled_content_for(category:, level:)
-    end
-  end
-
-  def expect_styled_content_for(category:, level:)
+  def expect_content_for(category:, level:)
     case category
     when :"ultraviolet-rays-uv"
       expect_uv_content_for_level(level)
@@ -208,6 +162,9 @@ module ForecastSteps
 
   def expect_uv_content_for_level(level)
     case level
+    when :low
+      expect(page).to have_content("Low")
+      expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
     when :moderate
       expect(page).to have_content("Moderate")
       expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
@@ -221,6 +178,9 @@ module ForecastSteps
 
   def expect_pollen_content_for_level(level)
     case level
+    when :low
+      expect(page).to have_content("Low")
+      expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
     when :moderate
       expect(page).to have_content("Moderate")
       expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
@@ -234,6 +194,8 @@ module ForecastSteps
 
   def expect_temperature_content_for_level(level)
     case level
+    when :low
+      expect(page).to have_content("-5°C - 4°C")
     when :moderate
       expect(page).to have_content("9°C - 16°C")
     when :high

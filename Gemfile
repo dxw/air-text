@@ -5,10 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.5"
 
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", ">= 4.3.1"
 gem "high_voltage"
 gem "jbuilder", "~> 2.11"
-gem "jquery-rails"
 gem "lograge", "~> 0.12"
 gem "pg"
 gem "pry-rails"
@@ -21,7 +19,6 @@ gem "turbolinks", "~> 5" # we'll remove this once we've migrated to ESbuilt asse
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "terser"
-gem "govuk-components"
 gem "httparty"
 gem "view_component"
 gem "seed-fu"

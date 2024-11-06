@@ -1,4 +1,11 @@
 RSpec.describe ForecastsController do
+  around do |example|
+    env_vars = {
+      MAPTILER_API_KEY: "TOPSECRET"
+    }
+    ClimateControl.modify(env_vars) { example.run }
+  end
+
   let(:southwark) { double("Southwark") }
   let(:barnet) { double("Barnet") }
 
@@ -7,11 +14,11 @@ RSpec.describe ForecastsController do
     allow(Zone).to receive(:default).and_return(southwark)
   end
 
-  describe "GET :show" do
-    let(:forecasts) do
-      FactoryBot.build(:cached_forecast)
-    end
+  let(:forecasts) do
+    FactoryBot.build(:cached_forecast)
+  end
 
+  describe "GET :show" do
     context "when NO zone is given" do
       it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
         allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
@@ -39,25 +46,28 @@ RSpec.describe ForecastsController do
 
       expect(response).to render_template("show")
     end
+  end
 
-    it "asks the forecasts for any alerts and assigns to instance variable" do
-      air_quality_alert = double("air quality alert")
-      forecast_1 = FactoryBot.build(:forecast)
-      forecast_2 = FactoryBot.build(:forecast)
+  describe "GET :update" do
+    context "when a recognised _day_ parameter is received" do
+      it "renders the turbo update template" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-      allow(forecast_1).to receive(:alerts).and_return([])
-      allow(forecast_2).to receive(:alerts).and_return([air_quality_alert])
+        get :update, params: {day: :today}, format: :turbo_stream
 
-      cached_forecast = FactoryBot.build(:cached_forecast).tap do |cf|
-        allow(cf).to receive(:data).and_return([forecast_1, forecast_2])
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
+        expect(response).to render_template("forecasts/update")
       end
+    end
 
-      allow(CercForecastService).to receive(:latest_forecasts_for)
-        .and_return(cached_forecast)
+    context "when an unrecognised _day_ parameter is received" do
+      it "raises a helpful error" do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-      get :show
-
-      expect(assigns(:air_quality_alerts)).to eq([air_quality_alert])
+        expect {
+          get :update, params: {day: :yesterday}
+        }.to raise_error(ArgumentError, "Invalid day: yesterday")
+      end
     end
   end
 end
