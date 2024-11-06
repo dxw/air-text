@@ -4,5 +4,8 @@
 
 import { application } from "./application";
 
+import PredictionController from "./prediction_controller";
+application.register("prediction", PredictionController);
+
 import TabController from "./tab_controller";
 application.register("tab", TabController);
