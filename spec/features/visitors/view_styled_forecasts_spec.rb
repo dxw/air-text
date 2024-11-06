@@ -58,8 +58,8 @@ RSpec.feature "Forecasts page", feature: true do
 
     visit root_path
     when_i_select_view_forecasts_v2
-    and_i_switch_to_the_tab_for_day_after_tomorrow
 
+    and_i_switch_to_the_tab_for_day_after_tomorrow
     then_i_see_that_the_day_after_tomorrow_tab_is_active
     and_i_see_predicted_uv_level_for_day_after_tomorrow
     and_i_see_predicted_pollen_level_for_day_after_tomorrow

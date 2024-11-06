@@ -29,6 +29,46 @@ FactoryBot.define do
     pollen { FactoryBot.build(:pollen_prediction) }
     temperature { FactoryBot.build(:temperature_prediction) }
 
+    trait :air_pollution_level_1 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 1) }
+    end
+
+    trait :air_pollution_level_2 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 2) }
+    end
+
+    trait :air_pollution_level_3 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 3) }
+    end
+
+    trait :air_pollution_level_4 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 4) }
+    end
+
+    trait :air_pollution_level_5 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 5) }
+    end
+
+    trait :air_pollution_level_6 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 6) }
+    end
+
+    trait :air_pollution_level_7 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 7) }
+    end
+
+    trait :air_pollution_level_8 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 8) }
+    end
+
+    trait :air_pollution_level_9 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 9) }
+    end
+
+    trait :air_pollution_level_10 do
+      air_pollution { FactoryBot.build(:air_pollution_prediction, 10) }
+    end
+
     initialize_with {
       new(
         obtained_at: obtained_at,

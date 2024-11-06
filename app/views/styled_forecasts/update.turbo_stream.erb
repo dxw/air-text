@@ -1,0 +1,2 @@
+<%= turbo_stream.replace("day_predictions", partial: "predictions", locals: {forecast: @day_forecast}) %>
+<%= turbo_stream.replace("alert_guidance", partial: "alert_guidance", locals: {air_pollution_prediction: @day_forecast}) %>

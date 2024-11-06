@@ -57,9 +57,9 @@ module ForecastSteps
   def switch_to_tab_for(day)
     case day
     when :tomorrow
-      find(".tab.tomorrow a").click
+      find(".tab.tomorrow a").trigger("click")
     when :day_after_tomorrow
-      find(".tab.day_after_tomorrow a").click
+      find(".tab.day_after_tomorrow a").trigger("click")
     else
       raise "day: #{day} not expected"
     end
@@ -114,6 +114,9 @@ module ForecastSteps
   def then_i_see_that_the_tomorrow_tab_is_active
     expect(page).to have_css(".tab.tomorrow.active")
 
+    expect(page).to have_css(".tab.today.inactive")
+    expect(page).to have_css(".tab.day_after_tomorrow.inactive")
+
     expect(page).not_to have_css(".tab.today.active")
     expect(page).not_to have_css(".tab.day_after_tomorrow.active")
   end
@@ -121,12 +124,18 @@ module ForecastSteps
   def and_i_see_that_the_today_tab_is_active
     expect(page).to have_css(".tab.today.active")
 
+    expect(page).to have_css(".tab.tomorrow.inactive")
+    expect(page).to have_css(".tab.day_after_tomorrow.inactive")
+
     expect(page).not_to have_css(".tab.tomorrow.active")
     expect(page).not_to have_css(".tab.day_after_tomorrow.active")
   end
 
   def then_i_see_that_the_day_after_tomorrow_tab_is_active
     expect(page).to have_css(".tab.day_after_tomorrow.active")
+
+    expect(page).to have_css(".tab.today.inactive")
+    expect(page).to have_css(".tab.tomorrow.inactive")
 
     expect(page).not_to have_css(".tab.today.active")
     expect(page).not_to have_css(".tab.tomorrow.active")

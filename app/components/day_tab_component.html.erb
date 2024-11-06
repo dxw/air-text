@@ -1,0 +1,33 @@
+<%= tag.div class: "tab py-4 flex-1 #{@day} mx-2 px-1 text-center #{classes}",
+  data: {
+    date: @forecast.date.to_s,
+    controller: "tab",
+    "tab-active-class": "active",
+    "tab-inactive-class": "inactive",
+    "tab-target": "dayPrediction"
+  } do
+  %>
+<%= link_to update_styled_forecast_path(day: @day, format: :turbo_stream),
+      data: {
+        action: "click->tab#switch_tab"
+    } do %>
+  <div class="day" data-tab-target="day">
+    <%= @forecast.date == Date.today ? 'Today' : @forecast.date.strftime('%A') %>
+  </div>
+  <div class="date">
+    <%= @forecast.date.strftime("%d %B") %>
+  </div>
+  <div class="daqi-symbol flex justify-center items-center daqi-marker text-4xl py-2 h-14">
+    <div class="size-9 rounded-full <%= daqi_indicator_colour_class %>"></div>
+    <% if @forecast.air_pollution.value > 3 %>
+      <%= render partial: "shared/icons/exclamation_triangle", locals: {forecast: @forecast} %>
+    <% end %>
+  </div>
+  <div class="daqi-label text-base">
+    <%= @forecast.air_pollution.label.capitalize %>
+  </div>
+  <div class="daqi-value font-normal" data-tab-target="daqiValue">
+    Index <%= @forecast.air_pollution.value %>/10
+  </div>
+<% end %>
+<% end %>
