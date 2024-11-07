@@ -25,6 +25,7 @@
 *.txt
 *.gz
 *.map
+*.mermaid
 /public/assets/*
 leaflet.js
 leaflet.css
