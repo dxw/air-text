@@ -84,6 +84,8 @@ GEM
       rouge (>= 1.0.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
+    binding_of_caller (1.0.1)
+      debug_inspector (>= 1.2.0)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     brakeman (6.2.2)
@@ -125,6 +127,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.4)
+    debug_inspector (1.2.0)
     diff-lcs (1.5.1)
     docile (1.4.0)
     dotenv (3.1.4)
@@ -441,10 +444,12 @@ PLATFORMS
   arm64-darwin-23
   arm64-darwin-24
   x86_64-darwin-21
+  x86_64-darwin-24
   x86_64-linux
 
 DEPENDENCIES
   better_errors
+  binding_of_caller
   bootsnap (>= 1.1.0)
   brakeman
   bullet

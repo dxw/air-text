@@ -35,6 +35,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "binding_of_caller"
   gem "brakeman"
   gem "bullet"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
