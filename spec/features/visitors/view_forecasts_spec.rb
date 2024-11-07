@@ -140,5 +140,41 @@ RSpec.feature "Forecasts page", feature: true do
         expect_prediction(category: :temperature, level: :high)
       end
     end
+
+    describe "Viewing pollen prediction" do
+      context "when the pollen level is a positive number" do
+        before do
+          forecasts = [
+            Fixtures::API.zone_forecast(day: :today),
+            Fixtures::API.zone_forecast(day: :tomorrow),
+            Fixtures::API.zone_forecast(day: :day_after_tomorrow)
+          ]
+          stub_cerc_api_with(forecasts)
+        end
+
+        it "shows the pollen prediction" do
+          view_forecasts
+
+          expect(page).to have_css(".pollen")
+        end
+      end
+
+      context "when the pollen level is -999" do
+        before do
+          forecasts = [
+            Fixtures::API.zone_forecast(day: :today).merge("pollen" => -999),
+            Fixtures::API.zone_forecast(day: :tomorrow),
+            Fixtures::API.zone_forecast(day: :day_after_tomorrow)
+          ]
+          stub_cerc_api_with(forecasts)
+        end
+
+        it "does not show the pollen prediction" do
+          view_forecasts
+
+          expect(page).not_to have_css(".pollen")
+        end
+      end
+    end
   end
 end

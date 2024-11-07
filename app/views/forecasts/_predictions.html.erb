@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "day_predictions" do %>
   <dl class="predictions p-4">
     <%= render(PredictionComponent.new(prediction: forecast.uv)) %>
-    <%= render(PredictionComponent.new(prediction: forecast.pollen)) %>
+    <%= render(PredictionComponent.new(prediction: forecast.pollen)) if forecast.pollen.valid? %>
     <%= render "temperature_prediction", prediction: forecast.temperature %>
   </dl>
 <% end %>
