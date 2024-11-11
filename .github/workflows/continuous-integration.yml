@@ -2,6 +2,8 @@
 # https://github.com/<org>/<repo>/actions
 on:
   pull_request:
+    branches:
+      - master
   push:
 
 jobs:
