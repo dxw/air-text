@@ -1,5 +1,5 @@
 class AirQualityAlert
-  def initialize(forecast)
+  def initialize(forecast:)
     @forecast = forecast
   end
 

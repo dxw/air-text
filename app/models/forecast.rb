@@ -18,7 +18,7 @@ class Forecast
   def air_quality_alert
     return if air_pollution.daqi_level == :low
 
-    AirQualityAlert.new(self)
+    AirQualityAlert.new(forecast: self)
   end
 
   # :nocov:

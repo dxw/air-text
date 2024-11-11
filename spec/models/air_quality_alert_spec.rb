@@ -7,7 +7,7 @@ RSpec.describe AirQualityAlert do
     )
   end
 
-  let(:alert) { AirQualityAlert.new(forecast) }
+  let(:alert) { AirQualityAlert.new(forecast: forecast) }
 
   describe "date" do
     it "returns the associated forecast's date" do
@@ -24,7 +24,7 @@ RSpec.describe AirQualityAlert do
         )
       end
 
-      let(:alert) { AirQualityAlert.new(forecast) }
+      let(:alert) { AirQualityAlert.new(forecast: forecast) }
 
       it "returns _yellow_" do
         expect(alert.tag_colour).to eq(:yellow)
@@ -39,7 +39,7 @@ RSpec.describe AirQualityAlert do
         )
       end
 
-      let(:alert) { AirQualityAlert.new(forecast) }
+      let(:alert) { AirQualityAlert.new(forecast: forecast) }
 
       it "returns _red_" do
         expect(alert.tag_colour).to eq(:red)
@@ -54,7 +54,7 @@ RSpec.describe AirQualityAlert do
         )
       end
 
-      let(:alert) { AirQualityAlert.new(forecast) }
+      let(:alert) { AirQualityAlert.new(forecast: forecast) }
 
       it "returns _purple_" do
         expect(alert.tag_colour).to eq(:purple)
