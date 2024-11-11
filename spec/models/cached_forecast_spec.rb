@@ -1,6 +1,7 @@
 RSpec.describe CachedForecast do
-  before do
-    allow(ENV).to receive(:fetch).with("CERC_API_CACHE_LIMIT_MINS").and_return(60)
+  around do |example|
+    env_vars = {CERC_API_CACHE_LIMIT_MINS: "60"}
+    ClimateControl.modify(env_vars) { example.run }
   end
 
   describe "::last" do
