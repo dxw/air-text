@@ -1,6 +1,6 @@
 module ForecastSteps
   def given_a_forecast_for_today
-    forecasts << Fixtures::API.build_forecast(
+    forecasts << Fixtures::API.zone_forecast(
       day: :today,
       air_pollution_status: :high,
       pollen: :low,
@@ -10,7 +10,7 @@ module ForecastSteps
   end
 
   def and_a_forecast_for_tomorrow
-    forecasts << Fixtures::API.build_forecast(
+    forecasts << Fixtures::API.zone_forecast(
       day: :tomorrow,
       air_pollution_status: :moderate,
       pollen: :moderate,
@@ -20,7 +20,7 @@ module ForecastSteps
   end
 
   def and_a_forecast_for_the_day_after_tomorrow
-    forecasts << Fixtures::API.build_forecast(
+    forecasts << Fixtures::API.zone_forecast(
       day: :day_after_tomorrow,
       air_pollution_status: :very_high,
       pollen: :high,
@@ -34,7 +34,7 @@ module ForecastSteps
   end
 
   def and_the_response_from_cercs_api_is_stubbed_accordingly
-    forecast_response = Fixtures::API.forecast_wrapper_around(@forecasts)
+    forecast_response = Fixtures::API.all_forecasts(@forecasts)
     HttpStubs.stub_forecasts_with(forecast_response)
   end
 
