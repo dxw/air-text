@@ -1,7 +1,7 @@
 RSpec.describe ForecastZone do
   describe "#type" do
-    let(:borough) { ForecastZone.new(type: 1, name: double, id: double) }
-    let(:area) { ForecastZone.new(type: 2, name: double, id: double) }
+    let(:borough) { FactoryBot.build(:forecast_zone, type: 1) }
+    let(:area) { FactoryBot.build(:forecast_zone, type: 2) }
 
     context "when set to 1" do
       it "returns the label 'London Borough'" do
