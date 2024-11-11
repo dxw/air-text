@@ -5,16 +5,6 @@
 #   As a visitor who has chosen a particular zone
 #   I want to see warnings and alerts for both pollutants and non-pollutants for 3 days
 RSpec.feature "Forecasts page", feature: true do
-  around do |example|
-    env_vars = {
-      CERC_API_HOST_URL: "https://cerc.example.com",
-      CERC_API_KEY: "SECRET-API-KEY",
-      CERC_API_CACHE_LIMIT_MINS: "60",
-      MAPTILER_API_KEY: "TOPSECRET"
-    }
-    ClimateControl.modify(env_vars) { example.run }
-  end
-
   include ForecastSteps
 
   scenario "See forecasts for 3 days" do
