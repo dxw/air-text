@@ -3,6 +3,10 @@
 Dir[Rails.root.join("spec", "feature_steps", "**", "*.rb")].sort.each { |f| require f }
 
 require "capybara/cuprite"
+require "capybara/rspec"
+require "capybara-screenshot/rspec"
+
+Capybara::Screenshot.prune_strategy = {keep: 20}
 Capybara.default_max_wait_time = 5
 Capybara.disable_animation = true
 Capybara.javascript_driver = :cuprite
