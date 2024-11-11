@@ -6,10 +6,6 @@ FactoryBot.define do
   factory :uv_prediction do
     value { 3 }
 
-    initialize_with {
-      new(
-        value: value
-      )
-    }
+    initialize_with { new(**attributes) }
   end
 end

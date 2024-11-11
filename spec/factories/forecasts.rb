@@ -33,16 +33,6 @@ FactoryBot.define do
     end
     air_pollution { FactoryBot.build(:air_pollution_prediction, value: air_pollution_level) }
 
-    initialize_with {
-      new(
-        obtained_at: obtained_at,
-        date: date,
-        zone: zone,
-        air_pollution: air_pollution,
-        uv: uv,
-        pollen: pollen,
-        temperature: temperature
-      )
-    }
+    initialize_with { new(**attributes) }
   end
 end

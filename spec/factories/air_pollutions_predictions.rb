@@ -143,16 +143,6 @@ FactoryBot.define do
       ozone { 10 }
     end
 
-    initialize_with {
-      new(
-        forecasted_at: forecasted_at,
-        nitrogen_dioxide: nitrogen_dioxide,
-        particulate_matter_10: particulate_matter_10,
-        particulate_matter_2_5: particulate_matter_2_5,
-        ozone: ozone,
-        value: value,
-        label: label
-      )
-    }
+    initialize_with { new(**attributes) }
   end
 end
