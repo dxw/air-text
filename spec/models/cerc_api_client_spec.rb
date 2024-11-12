@@ -1,7 +1,10 @@
 RSpec.describe CercApiClient do
-  before do
-    allow(ENV).to receive(:fetch).with("CERC_API_HOST_URL").and_return("https://example.com")
-    allow(ENV).to receive(:fetch).with("CERC_API_KEY").and_return("ABC123")
+  around do |example|
+    env_vars = {
+      CERC_API_HOST_URL: "https://example.com",
+      CERC_API_KEY: "ABC123"
+    }
+    ClimateControl.modify(env_vars) { example.run }
   end
 
   describe "#latest_forecasts" do

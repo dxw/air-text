@@ -7,11 +7,6 @@ FactoryBot.define do
     min { 10.0 }
     max { 16.6 }
 
-    initialize_with {
-      new(
-        min: min,
-        max: max
-      )
-    }
+    initialize_with { new(**attributes) }
   end
 end

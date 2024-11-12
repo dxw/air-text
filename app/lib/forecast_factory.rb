@@ -32,8 +32,8 @@ class ForecastFactory
           label: forecast.fetch("total_status")
         ),
 
-        uv: UvPrediction.new(forecast.fetch("uv")),
-        pollen: PollenPrediction.new(forecast.fetch("pollen")),
+        uv: UvPrediction.new(value: forecast.fetch("uv")),
+        pollen: PollenPrediction.new(value: forecast.fetch("pollen")),
         temperature: TemperaturePrediction.new(
           min: forecast.fetch("temp_min"),
           max: forecast.fetch("temp_max")

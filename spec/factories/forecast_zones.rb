@@ -9,12 +9,6 @@ FactoryBot.define do
     name { "Southwark" }
     type { 1 }
 
-    initialize_with {
-      new(
-        id: id,
-        name: name,
-        type: type
-      )
-    }
+    initialize_with { new(**attributes) }
   end
 end

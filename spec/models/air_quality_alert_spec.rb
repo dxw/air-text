@@ -7,7 +7,7 @@ RSpec.describe AirQualityAlert do
     )
   end
 
-  let(:alert) { AirQualityAlert.new(forecast) }
+  let(:alert) { FactoryBot.build(:air_quality_alert, forecast: forecast) }
 
   describe "date" do
     it "returns the associated forecast's date" do
@@ -24,8 +24,6 @@ RSpec.describe AirQualityAlert do
         )
       end
 
-      let(:alert) { AirQualityAlert.new(forecast) }
-
       it "returns _yellow_" do
         expect(alert.tag_colour).to eq(:yellow)
       end
@@ -39,8 +37,6 @@ RSpec.describe AirQualityAlert do
         )
       end
 
-      let(:alert) { AirQualityAlert.new(forecast) }
-
       it "returns _red_" do
         expect(alert.tag_colour).to eq(:red)
       end
@@ -53,8 +49,6 @@ RSpec.describe AirQualityAlert do
           air_pollution: FactoryBot.build(:air_pollution_prediction, :very_high)
         )
       end
-
-      let(:alert) { AirQualityAlert.new(forecast) }
 
       it "returns _purple_" do
         expect(alert.tag_colour).to eq(:purple)

@@ -3,7 +3,7 @@ module HttpStubs
     def stub_forecasts_with(response)
       WebMock.stub_request(:get, %r{/getforecast/all})
         .to_return(status:  200,
-          body:    response,
+          body:    response.to_json,
           headers: {"Content-Type" => "application/json"})
     end
   end

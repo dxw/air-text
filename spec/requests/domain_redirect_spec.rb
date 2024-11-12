@@ -1,12 +1,12 @@
-RSpec.describe "Canonical domain redirect" do
-  before(:all) do
-    ENV["CANONICAL_HOSTNAME"] = "http://example.com"
-    Rails.application.reload_routes!
-  end
+require "climate_control"
 
-  after(:all) do
-    ENV["CANONICAL_HOSTNAME"] = ""
-    Rails.application.reload_routes!
+RSpec.describe "Canonical domain redirect" do
+  around(:each) do |example|
+    ClimateControl.modify CANONICAL_HOSTNAME: "http://example.com" do
+      Rails.application.reload_routes!
+      example.run
+      Rails.application.reload_routes!
+    end
   end
 
   it "redirects to the canonical domain" do

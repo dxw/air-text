@@ -1,46 +1,68 @@
-# Feature: View air quality alerts
-#   - So that I can take appropriate protective action
-#   - As a visitor
-#   - I want to see Air quality alerts for air pollution predictions with warning
-#       statuses above "low"
 RSpec.feature "Air quality alerts", feature: true do
-  around do |example|
-    env_vars = {
-      CERC_API_HOST_URL: "https://cerc.example.com",
-      CERC_API_KEY: "SECRET-API-KEY",
-      CERC_API_CACHE_LIMIT_MINS: "60",
-      MAPTILER_API_KEY: "TOPSECRET"
-    }
-    ClimateControl.modify(env_vars) { example.run }
-  end
-
-  include AirQualitySteps, ForecastSteps
+  include Features::ForecastHelper
 
   before do
-    given_an_air_pollution_prediction_for_today_w_high_warning_status
-    and_an_air_pollution_prediction_for_tomorrow_w_moderate_warning_status
-    and_an_air_pollution_prediction_for_day_after_tomorrow_w_v_high_warning_status
-    and_the_response_from_cercs_api_is_stubbed_accordingly
+    forecasts = [
+      Fixtures::API.zone_forecast(
+        day: :today,
+        air_pollution_status: :high
+      ),
+      Fixtures::API.zone_forecast(
+        day: :tomorrow,
+        air_pollution_status: :moderate,
+        daqi_value: 4
+      ),
+      Fixtures::API.zone_forecast(
+        day: :day_after_tomorrow,
+        air_pollution_status: :very_high,
+        daqi_value: 10
+      )
+    ]
+    stub_cerc_api_with(forecasts)
   end
 
-  scenario "View air quality alert for today" do
-    when_i_look_at_the_forecasts
-    then_i_see_an_air_quality_alert_of_high_for_today
+  describe "View air quality alert for today" do
+    it "shows an air quality alert of high for today" do
+      view_forecasts
+
+      within(".today[data-date='#{Date.today}']") do
+        expect_to_see_alert_level(:high)
+      end
+      within(".alert-guidance") do
+        expect_to_see_guidance_for(:high)
+      end
+    end
   end
 
-  scenario "View air quality alert for tomorrow", js: true do
-    visit root_path
-    when_i_select_view_forecasts
-    and_i_switch_to_the_tab_for_tomorrow
+  describe "View air quality alert for tomorrow", js: true do
+    it "shows an air quality alert of moderate for tomorrow" do
+      view_forecasts
+      switch_to_tab_for(:tomorrow)
 
-    then_i_see_an_air_quality_alert_of_moderate_for_tomorrow
+      within(".tomorrow[data-date='#{Date.tomorrow}']") do
+        expect_to_see_alert_level(:moderate)
+      end
+      within(".alert-guidance") do
+        expect_to_see_guidance_for(:moderate)
+      end
+      expect(page).to have_css(".tab.tomorrow.daqi-alert-after-today-selected-level-4")
+      expect(page).not_to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
+    end
   end
 
-  scenario "View air quality alert for the day after tomorrow", js: true do
-    visit root_path
-    when_i_select_view_forecasts
-    and_i_switch_to_the_tab_for_day_after_tomorrow
+  describe "View air quality alert for the day after tomorrow", js: true do
+    it "shows an air quality alert of very high for the day after tomorrow" do
+      view_forecasts
+      switch_to_tab_for(:day_after_tomorrow)
 
-    then_i_see_an_air_quality_alert_of_v_high_for_day_after_tomorrow
+      within(".day_after_tomorrow[data-date='#{Date.tomorrow + 1.day}']") do
+        expect_to_see_alert_level(:very_high)
+      end
+      within(".alert-guidance") do
+        expect_to_see_guidance_for(:very_high)
+      end
+      expect(page).to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
+      expect(page).not_to have_css(".tab.tomorrow.daqi-alert-after-today-selected-level-4")
+    end
   end
 end
