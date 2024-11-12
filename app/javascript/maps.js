@@ -11,6 +11,17 @@ document.addEventListener("turbo:load", function () {
     const todaysDate = new Date().toJSON().slice(0, 10);
     const maptilerApiKey = mapEle.getAttribute("data-maptiler-api-key");
 
+    const map = L.map("map", {
+      center: bigBenLatLng,
+      zoom: 8,
+    });
+
+    map.createPane("osm"); // OS map
+    map.getPane("osm").style.zIndex = 999;
+    map.getPane("osm").style.opacity = 0.6;
+
+    // Base maps
+
     const airTextOptions = {
       layers: "london:Total",
       time: todaysDate,
@@ -32,15 +43,7 @@ document.addEventListener("turbo:load", function () {
       mergeAirTextOptions({ styles: "daqiTotal_linear" })
     );
 
-    const map = L.map("map", {
-      center: bigBenLatLng,
-      zoom: 8,
-      layers: [discreteAir],
-    });
-
-    map.createPane("osm");
-    map.getPane("osm").style.zIndex = 999;
-    map.getPane("osm").style.opacity = 0.6;
+    // Overlay maps
 
     const tonerLite = new L.MaptilerLayer({
       apiKey: maptilerApiKey,
@@ -60,19 +63,22 @@ document.addEventListener("turbo:load", function () {
       pane: "osm",
     });
 
+    // Set up default map layers
+    map.addLayer(discreteAir);
     map.addLayer(basicLight);
 
+    // Add other layers as options
     const baseMaps = {
-      DiscreteColours: discreteAir,
-      LinearColours: linearAir,
+      "Discrete Colours": discreteAir,
+      "Linear Colours": linearAir,
     };
-    const overlayMaps = {
-      TonerLite: tonerLite,
-      BasicLight: basicLight,
-      StreetsPastel: streetsPastel,
-    };
-
     L.control.layers(baseMaps, null, { collapsed: false }).addTo(map);
+
+    const overlayMaps = {
+      "Toner Lite": tonerLite,
+      "Basic Light": basicLight,
+      "Streets Pastel": streetsPastel,
+    };
     L.control.layers(overlayMaps, null, { collapsed: false }).addTo(map);
   }
 });
