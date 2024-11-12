@@ -1,0 +1,54 @@
+export { default as chelmsford } from "./east/chelmsford.geojson";
+export { default as colchester } from "./east/colchester.geojson";
+export { default as maldon } from "./east/maldon.geojson";
+
+export { default as barkingAndDagenham } from "./london/boroughs/barking-and-dagenham.geojson";
+export { default as barnet } from "./london/boroughs/barnet.geojson";
+export { default as bexley } from "./london/boroughs/bexley.geojson";
+export { default as brent } from "./london/boroughs/brent.geojson";
+export { default as bromley } from "./london/boroughs/bromley.geojson";
+export { default as camden } from "./london/boroughs/camden.geojson";
+export { default as cityOfLondon } from "./london/boroughs/city-of-london.geojson";
+export { default as cityOfWestminster } from "./london/boroughs/city-of-westminster.geojson";
+export { default as croydon } from "./london/boroughs/croydon.geojson";
+export { default as ealing } from "./london/boroughs/ealing.geojson";
+export { default as enfield } from "./london/boroughs/enfield.geojson";
+export { default as greenwich } from "./london/boroughs/greenwich.geojson";
+export { default as hackney } from "./london/boroughs/hackney.geojson";
+export { default as hammersmithAndFulham } from "./london/boroughs/hammersmith-and-fulham.geojson";
+export { default as haringey } from "./london/boroughs/haringey.geojson";
+export { default as harrow } from "./london/boroughs/harrow.geojson";
+export { default as havering } from "./london/boroughs/havering.geojson";
+export { default as hillingdon } from "./london/boroughs/hillingdon.geojson";
+export { default as hounslow } from "./london/boroughs/hounslow.geojson";
+export { default as islington } from "./london/boroughs/islington.geojson";
+export { default as kensingtonAndChelsea } from "./london/boroughs/kensington-and-chelsea.geojson";
+export { default as kingstonUponThames } from "./london/boroughs/kingston-upon-thames.geojson";
+export { default as lambeth } from "./london/boroughs/lambeth.geojson";
+export { default as lewisham } from "./london/boroughs/lewisham.geojson";
+export { default as merton } from "./london/boroughs/merton.geojson";
+export { default as newham } from "./london/boroughs/newham.geojson";
+export { default as redbridge } from "./london/boroughs/redbridge.geojson";
+export { default as richmondUponThames } from "./london/boroughs/richmond-upon-thames.geojson";
+export { default as southwark } from "./london/boroughs/southwark.geojson";
+export { default as sutton } from "./london/boroughs/sutton.geojson";
+export { default as towerHamlets } from "./london/boroughs/tower-hamlets.geojson";
+export { default as walthamForest } from "./london/boroughs/waltham-forest.geojson";
+export { default as wandsworth } from "./london/boroughs/wandsworth.geojson";
+
+export { default as centralLondon } from "./london/regions/central-london.geojson";
+export { default as eastLondon } from "./london/regions/east-london.geojson";
+export { default as northLondon } from "./london/regions/north-london.geojson";
+export { default as southLondon } from "./london/regions/south-london.geojson";
+export { default as westLondon } from "./london/regions/west-london.geojson";
+
+export { default as elmbridge } from "./london-surrounds/elmbridge.geojson";
+export { default as moleValley } from "./london-surrounds/mole-valley.geojson";
+export { default as reigateAndBanstead } from "./london-surrounds/reigate-and-banstead.geojson";
+export { default as runnymede } from "./london-surrounds/runnymede.geojson";
+export { default as slough } from "./london-surrounds/slough.geojson";
+export { default as spelthorne } from "./london-surrounds/spelthorne.geojson";
+export { default as tandridge } from "./london-surrounds/tandridge.geojson";
+export { default as thurrock } from "./london-surrounds/thurrock.geojson";
+
+export { default as cambridge } from "./cambridge/cambridge.geojson";
