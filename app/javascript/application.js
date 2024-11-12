@@ -19,9 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   locationList &&
     locationList.addEventListener("click", function (e) {
-      const newSelectedZone = e.target.innerText;
-      const selectedZone = document.getElementById("selected-zone");
-      selectedZone.innerText = newSelectedZone;
+      const selectedZone = e.target.innerText;
+      const selectedZoneInput = document.getElementById("zone");
+      selectedZoneInput.value = selectedZone;
+      const selectedZoneLabel = document.getElementById("selected-zone-label");
+      selectedZoneLabel.innerText = selectedZone;
       locationList.classList.toggle("hidden");
     });
 });
