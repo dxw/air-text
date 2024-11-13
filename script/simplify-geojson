@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+# Script to simplify geojson boundaries of the zones to reduce filesize
+
+# Get all the geojson files in the directory, then run simplify-geojson on them
+find app/javascript/zone_boundaries -type f -name "*.geojson" | while read -r file; do
+
+  # Exclude files that have already been simplified
+  if [ "${file%-simplified.geojson}" != "$file" ]; then
+    continue
+  fi
+
+  echo "Simplifying $file"
+  # Create new file name with -simplified suffix
+  filename=$(echo "$file" | sed 's/\.geojson$/-simplified\.geojson/')
+
+  # Run simplify-geojson with tolerance of 0.0005
+  # Tolerance is specified in a number in degrees (e.g. lat/lon distance)
+  # 1 degree is roughly equivalent to 69 miles, 0.0001 is about 36 feet or 11 metres
+  npx simplify-geojson -t 0.0001 "$file" > "$filename" &
+done
+
+# Wait for all background processes to finish
+wait

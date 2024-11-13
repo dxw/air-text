@@ -36,3 +36,7 @@ Each file has the following structure:
 like . They are rendered slightly differently on the map. "londonBorough" is
 true for London boroughs and false otherwise. It controls when the zone label
 will appear.
+
+When the polygon defined by the coordinates is overly detailed, you can run
+`script/simplify-geojson`, which will generated simplified versions of all the
+boundaries with smaller file sizes.
