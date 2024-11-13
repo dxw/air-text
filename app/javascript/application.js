@@ -24,23 +24,5 @@ document.addEventListener("DOMContentLoaded", function () {
       selectedZone.innerText = newSelectedZone;
       locationList.classList.toggle("hidden");
     });
-
-  const pollutantSelectorButton = document.getElementById(
-    "pollutant-selector-button"
-  );
-  const pollutantMenu = document.getElementById("pollutant-selector-menu");
-
-  pollutantSelectorButton &&
-    pollutantSelectorButton.addEventListener("click", function () {
-      pollutantMenu.classList.toggle("hidden");
-    });
-
-  pollutantMenu &&
-    pollutantMenu.addEventListener("click", function (e) {
-      const newSelectedPollutant = e.target.innerText;
-      const selectedPollutant = document.getElementById("selected-pollutant");
-      selectedPollutant.innerText = newSelectedPollutant;
-      pollutantMenu.classList.toggle("hidden");
-    });
 });
 import "./controllers";
