@@ -9,7 +9,7 @@
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css.scss -o ./app/assets/builds/application.css --minify",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --outdir=app/assets/builds --public-path=/assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --loader:.geojson=json --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

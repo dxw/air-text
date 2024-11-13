@@ -1,0 +1,17 @@
+/* Airtext specific styles */
+
+.leaflet-marker-icon.zone-label {
+  color: black;
+  font-size: 12px;
+  width: auto !important;
+  height: auto !important;
+  background-color: white;
+  padding: 0 3px;
+  text-align: center;
+  border-radius: 3px;
+  opacity: 1;
+
+  &.zone-label-level-1 {
+    font-weight: bold;
+  }
+}

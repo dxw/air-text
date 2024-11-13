@@ -1,5 +1,6 @@
 import L from "leaflet";
 import "@maptiler/leaflet-maptilersdk";
+import * as zones from "./zone_boundaries/zone-boundaries";
 
 document.addEventListener("turbo:load", function () {
   const mapEle = document.querySelector("#map");
@@ -17,7 +18,6 @@ document.addEventListener("turbo:load", function () {
     });
 
     map.createPane("osm"); // OS map
-    map.getPane("osm").style.zIndex = 999;
     map.getPane("osm").style.opacity = 0.6;
 
     // Base maps
@@ -45,6 +45,67 @@ document.addEventListener("turbo:load", function () {
 
     // Overlay maps
 
+    const zoneBoundaryLayers = [];
+    const zoneLabelMarkers = [];
+    const zoneBoundaryLayerLevelStyles = {
+      1: { weight: 3 }, // stroke width
+      2: { weight: 1 },
+    };
+    for (const [, zone] of Object.entries(zones)) {
+      const layer = L.geoJSON(zone, {
+        style: function (feature) {
+          return {
+            color: "black", // stroke color
+            weight:
+              zoneBoundaryLayerLevelStyles[feature.properties.level].weight,
+            fill: false,
+          };
+        },
+      });
+
+      zoneBoundaryLayers.push(layer);
+
+      // Get centre of zone
+      const bounds = layer.getBounds();
+      const center = bounds.getCenter();
+
+      // Add a label at centre
+      const label = L.marker(center, {
+        icon: L.divIcon({
+          className:
+            "zone-label " + `zone-label-level-${zone.properties.level}`,
+          html: zone.properties.name,
+        }),
+      });
+
+      zoneLabelMarkers.push({
+        marker: label,
+        londonBorough: zone.properties.londonBorough,
+      });
+    }
+
+    // Only show the zone labels when the map is zoomed in enough
+    zoneLabelMarkers.forEach(({ marker, londonBorough }) => {
+      const startZoom = 9 + (londonBorough ? 2 : 0); // Only show London borough labels at higher zoom
+      const endZoom = 20;
+
+      // Add the marker to the map initially if within the zoom range
+      if (map.getZoom() >= startZoom && map.getZoom() <= endZoom) {
+        marker.addTo(map);
+      }
+
+      // Attach the zoomend event to control visibility
+      map.on("zoomend", function () {
+        const currentZoom = map.getZoom();
+        console.log(currentZoom);
+        if (currentZoom >= startZoom && currentZoom <= endZoom) {
+          map.addLayer(marker);
+        } else {
+          map.removeLayer(marker);
+        }
+      });
+    });
+
     const tonerLite = new L.MaptilerLayer({
       apiKey: maptilerApiKey,
       style: "toner-v2-lite",
@@ -66,6 +127,7 @@ document.addEventListener("turbo:load", function () {
     // Set up default map layers
     map.addLayer(discreteAir);
     map.addLayer(basicLight);
+    zoneBoundaryLayers.forEach((layer) => map.addLayer(layer));
 
     // Add other layers as options
     const baseMaps = {
