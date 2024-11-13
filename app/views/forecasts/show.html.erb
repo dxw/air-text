@@ -1,5 +1,6 @@
 <%= render partial: "forecasts/location" %>
 <%= render partial: "forecasts/forecast_tabs", cerc_forecasts: @forecasts %>
+<%= render partial: "forecasts/map" %>
 <%= render partial: "forecasts/predictions", locals: { forecast: @forecasts.first } %>
 <%= render partial: "sharing" %>
 <%= render partial: "learning" %>

@@ -1,0 +1,7 @@
+<div data-controller="map">
+  <%= render partial: "pollutant_selector" %>
+  <div id="map" class="map w-full h-80" data-maptiler-api-key="<%= @maptiler_api_key %>"></div>
+  <div class="w-full h-10">
+    <%= render "shared/daqi_scale" %>
+  </div>
+</div>
