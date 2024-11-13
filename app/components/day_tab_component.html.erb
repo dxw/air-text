@@ -4,12 +4,13 @@
     controller: "tab",
     "tab-active-class": "active",
     "tab-inactive-class": "inactive",
-    "tab-target": "dayPrediction"
+    "tab-target": "dayPrediction",
+    "map-target": "daySelector",
   } do
   %>
 <%= link_to update_forecast_path(day: @day, format: :turbo_stream),
       data: {
-        action: "click->tab#switch_tab"
+        action: "click->tab#switch_tab click->map#updateMap",
     } do %>
   <div class="day" data-tab-target="day">
     <%= @forecast.date == Date.today ? 'Today' : @forecast.date.strftime('%A') %>

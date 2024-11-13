@@ -4,7 +4,7 @@ import "@maptiler/leaflet-maptilersdk";
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
-  static targets = ["map", "pollutantSelector"];
+  static targets = ["map", "pollutantSelector", "daySelector"];
 
   layers = {};
   controls = {};
@@ -190,7 +190,8 @@ export default class MapController extends Controller {
 
   updateMap() {
     const pollutant = this.pollutantSelectorTarget.value;
-    const newSettings = { pollutant: pollutant };
+    const date = this.daySelector.dataset.date;
+    const newSettings = { pollutant: pollutant, date: date };
     this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
 
     this.updatePollutionLayer();
