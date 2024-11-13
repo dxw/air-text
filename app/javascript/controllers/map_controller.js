@@ -4,6 +4,8 @@ import "@maptiler/leaflet-maptilersdk";
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
+  layers = {};
+  controls = {};
   defaultMapSettings = {
     pollutant: "Total",
     date: new Date().toJSON().slice(0, 10),
@@ -75,13 +77,16 @@ export default class MapController extends Controller {
       this.settings.pollutant,
       this.settings.date
     );
-    this.map.addLayer(discreteAir);
+    this.layers.pollution = discreteAir;
+    this.map.addLayer(this.layers.pollution);
 
     const pollutionMaps = {
       DiscreteColours: discreteAir,
       LinearColours: linearAir,
     };
-    L.control.layers(pollutionMaps, null, { collapsed: false }).addTo(this.map);
+    this.controls.pollution = L.control
+      .layers(pollutionMaps, null, { collapsed: false })
+      .addTo(this.map);
   }
 
   pollutionLayers(pollutant, date) {
@@ -181,5 +186,19 @@ export default class MapController extends Controller {
         }
       });
     });
+  }
+
+  updateMap() {
+    const pollutant = document.querySelector("select#pollutant").value;
+    const newSettings = { pollutant: pollutant };
+    this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
+
+    this.updatePollutionLayer();
+  }
+
+  updatePollutionLayer() {
+    this.map.removeControl(this.controls.pollution);
+    this.map.removeLayer(this.layers.pollution);
+    this.addPollutionLayer();
   }
 }
