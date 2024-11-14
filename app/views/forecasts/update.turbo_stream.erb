@@ -1,2 +1,3 @@
 <%= turbo_stream.replace("day_predictions", partial: "predictions", locals: {forecast: @day_forecast}) %>
-<%= turbo_stream.replace("alert_guidance", partial: "alert_guidance", locals: {air_pollution_prediction: @day_forecast}) %>
+<%= turbo_stream.replace("pollution_forecast", partial: "pollution_forecast", locals: {forecasts: @forecasts, day_forecast: @day_forecast, selected_day: @selected_day}) %>
+<%= turbo_stream.replace("selected_day_input", partial: "selected_day_input", locals: {selected_day: @selected_day}) %>
