@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import L from "leaflet";
 import "@maptiler/leaflet-maptilersdk";
+import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
   defaultMapSettings = {
@@ -27,6 +28,9 @@ export default class MapController extends Controller {
     this.map.createPane("pollution");
     this.map.getPane("pollution").style.opacity = 0.6;
     this.addPollutionLayer();
+
+    this.map.createPane("zones");
+    this.addZonesLayer();
   }
 
   addStreetMapLayer() {
@@ -105,5 +109,77 @@ export default class MapController extends Controller {
     );
 
     return { discreteAir, linearAir };
+  }
+
+  addZonesLayer() {
+    const { zoneBoundaryLayers, zoneLabelMarkers } = this.zones();
+    zoneBoundaryLayers.forEach((layer) => layer.addTo(this.map));
+    this.addZoneLabelMarkers(zoneLabelMarkers);
+  }
+
+  zones() {
+    const zoneBoundaryLayers = [];
+    const zoneLabelMarkers = [];
+    const zoneBoundaryLayerLevelStyles = {
+      1: { weight: 3 }, // stroke width
+      2: { weight: 1 },
+    };
+
+    for (const [, zone] of Object.entries(zones)) {
+      const layer = L.geoJSON(zone, {
+        style: function (feature) {
+          return {
+            color: "black", // stroke color
+            weight:
+              zoneBoundaryLayerLevelStyles[feature.properties.level].weight,
+            fill: false,
+          };
+        },
+        pane: "zones",
+      });
+
+      zoneBoundaryLayers.push(layer);
+
+      const bounds = layer.getBounds();
+      const center = bounds.getCenter();
+
+      const label = L.marker(center, {
+        icon: L.divIcon({
+          className:
+            "zone-label " + `zone-label-level-${zone.properties.level}`,
+          html: zone.properties.name,
+        }),
+      });
+
+      zoneLabelMarkers.push({
+        marker: label,
+        londonBorough: zone.properties.londonBorough,
+      });
+    }
+
+    return { zoneBoundaryLayers, zoneLabelMarkers };
+  }
+
+  addZoneLabelMarkers(zoneLabelMarkers) {
+    // Only show the zone labels when the map is zoomed in enough
+    zoneLabelMarkers.forEach(({ marker, londonBorough }) => {
+      const startZoom = 9 + (londonBorough ? 2 : 0); // Only show London borough labels at higher zoom
+      const endZoom = 20;
+
+      // Add the marker to the map initially if within the zoom range
+      if (this.map.getZoom() >= startZoom && this.map.getZoom() <= endZoom) {
+        marker.addTo(this.map);
+      }
+
+      // Attach the zoomend event to control visibility
+      this.map.on("zoomend", () => {
+        const currentZoom = this.map.getZoom();
+        if (currentZoom >= startZoom && currentZoom <= endZoom) {
+          this.map.addLayer(marker);
+        } else {
+          this.map.removeLayer(marker);
+        }
+      });
+    });
   }
 }
