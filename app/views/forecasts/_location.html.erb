@@ -5,8 +5,8 @@
 </div>
 <div class="location p-4 pt-2">
   <%= form_with url: update_forecast_path(format: :turbo_stream), method: :get do |form| %>
-    <%= hidden_field_tag "day", @selected_day %>
     <%= render partial: "location_selector", locals: {form: form, selected_zone: @zone} %>
+    <%= render partial: "selected_day_input", locals: {selected_day: @selected_day} %>
     <%= form.submit "Change location", class: "change-location block underline text-xs cursor-pointer" %>
   <% end %>
 </div>
