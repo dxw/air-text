@@ -2,6 +2,7 @@ class DayTabComponent < ViewComponent::Base
   def initialize(forecast:, day:)
     @forecast = forecast
     @day = day
+    @zone = forecast.zone
   end
 
   TAG_COLOURS = {

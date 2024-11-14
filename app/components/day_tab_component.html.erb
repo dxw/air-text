@@ -8,7 +8,7 @@
     "map-target": "daySelector",
   } do
   %>
-<%= link_to update_forecast_path(day: @day, format: :turbo_stream),
+<%= link_to update_forecast_path(day: @day, zone: @zone.name, format: :turbo_stream),
       data: {
         action: "click->tab#switch_tab click->map#updateMap",
     } do %>
