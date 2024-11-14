@@ -32,8 +32,6 @@ class ForecastsController < ApplicationController
       forecasts.second
     when "day_after_tomorrow"
       forecasts.third
-    else
-      raise ArgumentError, "Invalid day: #{day}"
     end
   end
 
