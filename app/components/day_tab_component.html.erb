@@ -1,10 +1,6 @@
 <%= tag.div class: "tab py-4 flex-1 #{@day} mx-2 px-1 text-center #{tab_classes}",
   data: {
     date: @forecast.date.to_s,
-    controller: "tab",
-    "tab-active-class": "active",
-    "tab-inactive-class": "inactive",
-    "tab-target": "dayPrediction",
     "map-target": "daySelector",
   } do
   %>
@@ -12,7 +8,7 @@
       data: {
         action: "click->tab#switch_tab click->map#updateMap",
     } do %>
-  <div class="day" data-tab-target="day">
+  <div class="day">
     <%= @forecast.date == Date.today ? 'Today' : @forecast.date.strftime('%A') %>
   </div>
   <div class="date">
@@ -27,7 +23,7 @@
   <div class="daqi-label text-base">
     <%= @forecast.air_pollution.label.capitalize %>
   </div>
-  <div class="daqi-value font-normal" data-tab-target="daqiValue">
+  <div class="daqi-value font-normal">
     Index <%= @forecast.air_pollution.value %>/10
   </div>
 <% end %>
