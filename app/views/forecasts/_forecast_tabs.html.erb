@@ -6,9 +6,9 @@
     class="tabs flex flex-row items-stretch mt-4 m-1 text-xs font-bold border-b-[3px] border-black"
     data-turbo-prefetch="false"
     >
-    <%= render(DayTabComponent.new(forecast: @forecasts.first, day: :today)) %>
-    <%= render(DayTabComponent.new(forecast: @forecasts.second, day: :tomorrow)) %>
-    <%= render(DayTabComponent.new(forecast: @forecasts.third, day: :day_after_tomorrow)) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.first, day: "today", selected_day: selected_day)) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.second, day: "tomorrow", selected_day: selected_day)) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.third, day: "day_after_tomorrow", selected_day: selected_day)) %>
   </div>
   <%= render partial: "alert_guidance", locals: {air_pollution_prediction: @forecasts.first} %>
 </div>
