@@ -1,14 +1,21 @@
 class ForecastsController < ApplicationController
   def show
+    @selected_day = selected_day
+    @zone = zone
+
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
-    @forecasts = CercForecastService.latest_forecasts_for(zone).data
+    @forecasts = CercForecastService.latest_forecasts_for(@zone).data
+    @day_forecast = forecast_for_day(@selected_day, @forecasts)
   end
 
   def update
-    @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
-    forecasts = CercForecastService.latest_forecasts_for(zone).data
+    @selected_day = selected_day
+    @zone = zone
 
-    @day_forecast = forecast_for_day(params.fetch("day"), forecasts)
+    @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
+    @forecasts = CercForecastService.latest_forecasts_for(@zone).data
+
+    @day_forecast = forecast_for_day(@selected_day, @forecasts)
 
     respond_to do |format|
       format.turbo_stream
@@ -31,8 +38,18 @@ class ForecastsController < ApplicationController
   end
 
   def zone
-    return Zone.default unless params[:zone]
+    if params[:zone]
+      Zone.find_by(name: params[:zone]) || Zone.default
+    else
+      Zone.default
+    end
+  end
 
-    Zone.find_by(cerc_id: params[:zone])
+  def selected_day
+    if ["today", "tomorrow", "day_after_tomorrow"].include?(params[:day])
+      params[:day]
+    else
+      "today"
+    end
   end
 end
