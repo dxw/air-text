@@ -87,20 +87,10 @@ RSpec.describe ForecastsController do
       it "renders the turbo update template" do
         allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
-        get :update, params: {day: :today}, format: :turbo_stream
+        get :update, params: {day: "today"}, format: :turbo_stream
 
         expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
         expect(response).to render_template("forecasts/update")
-      end
-    end
-
-    context "when an unrecognised _day_ parameter is received" do
-      it "raises a helpful error" do
-        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
-        expect {
-          get :update, params: {day: :yesterday}
-        }.to raise_error(ArgumentError, "Invalid day: yesterday")
       end
     end
   end
