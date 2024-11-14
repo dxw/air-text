@@ -1,8 +1,8 @@
 <div data-controller="map">
   <%= render partial: "forecasts/location" %>
-  <%= render partial: "forecasts/forecast_tabs", cerc_forecasts: @forecasts %>
+  <%= render partial: "forecasts/forecast_tabs", locals: {forecasts: @forecasts, day_forecast: @day_forecast, selected_day: @selected_day} %>
   <%= render partial: "forecasts/map" %>
-  <%= render partial: "forecasts/predictions", locals: { forecast: @forecasts.first } %>
+  <%= render partial: "forecasts/predictions", locals: { forecast: @day_forecast } %>
   <%= render partial: "sharing" %>
 </div>
 <%= render partial: "learning" %>
