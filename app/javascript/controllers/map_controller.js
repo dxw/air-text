@@ -4,6 +4,8 @@ import "@maptiler/leaflet-maptilersdk";
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
+  static targets = ["map", "pollutantSelector"];
+
   layers = {};
   controls = {};
   defaultMapSettings = {
@@ -48,9 +50,7 @@ export default class MapController extends Controller {
   }
 
   streetMaps() {
-    const maptilerApiKey = document
-      .getElementById("map")
-      .getAttribute("data-maptiler-api-key");
+    const maptilerApiKey = this.mapTarget.dataset.maptilerApiKey;
     const tonerLite = new L.MaptilerLayer({
       apiKey: maptilerApiKey,
       style: "toner-v2-lite",
@@ -189,7 +189,7 @@ export default class MapController extends Controller {
   }
 
   updateMap() {
-    const pollutant = document.querySelector("select#pollutant").value;
+    const pollutant = this.pollutantSelectorTarget.value;
     const newSettings = { pollutant: pollutant };
     this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
 

@@ -1,11 +1,15 @@
 <div class="relative inline-block w-full text-left p-4">
   <%= form_tag do %>
-    <%= select_tag :pollutant, options_for_select({
+    <%= select_tag :pollutant, 
+    options_for_select({
       "All pollutants" => 'Total',
       "Nitrogen Dioxide" => 'NO2',
       "Particles < 2.5µm" => 'PM25',
       "Particles < 10µm" => 'PM10',
       "Ozone" => 'O3',
-    }),  data:{ action: "map#updateMap" }, class: "inline-flex flex-row w-full justify-left gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+    }),
+    data:{ action: "map#updateMap", "map-target": "pollutantSelector" },
+    class: "inline-flex flex-row w-full justify-left gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+    %>
   <% end %>
 </div>
