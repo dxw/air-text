@@ -11,10 +11,4 @@
     <%= render(DayTabComponent.new(forecast: @forecasts.third, day: :day_after_tomorrow)) %>
   </div>
   <%= render partial: "alert_guidance", locals: {air_pollution_prediction: @forecasts.first} %>
-  <%= render partial: "map_selector" %>
-  <div id="map" class="map w-full bg-green-200 h-80" data-maptiler-api-key="<%= @maptiler_api_key %>">
-  </div>
-  <div class="w-full h-10 bg-stone-700">
-    <%= render "shared/daqi_scale" %>
-  </div>
 </div>
