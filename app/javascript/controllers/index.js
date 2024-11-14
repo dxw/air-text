@@ -9,6 +9,3 @@ application.register("map", MapController);
 
 import PredictionController from "./prediction_controller";
 application.register("prediction", PredictionController);
-
-import TabController from "./tab_controller";
-application.register("tab", TabController);
