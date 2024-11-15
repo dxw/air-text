@@ -32,6 +32,7 @@ export default class MapController extends Controller {
 
     this.addSearchControl();
 
+    // Ordered from bottom to top
     this.map.createPane("street-map");
     this.addStreetMapLayer();
 
@@ -39,20 +40,11 @@ export default class MapController extends Controller {
     this.map.getPane("pollution").style.opacity = 0.6;
     this.addPollutionLayer();
 
+    this.map.createPane("place-names");
+    this.addPlaceNamesLayer();
+
     this.map.createPane("zones");
     this.addZonesLayer();
-  }
-
-  addStreetMapLayer() {
-    const { tonerLite, basicLight, streetsPastel } = this.streetMaps();
-    this.map.addLayer(basicLight);
-
-    const streetMaps = {
-      TonerLite: tonerLite,
-      BasicLight: basicLight,
-      StreetsPastel: streetsPastel,
-    };
-    L.control.layers(streetMaps, null, { collapsed: false }).addTo(this.map);
   }
 
   addSearchControl() {
@@ -81,26 +73,22 @@ export default class MapController extends Controller {
       .addTo(this.map);
   }
 
-  streetMaps() {
-    const tonerLite = new L.MaptilerLayer({
+  addStreetMapLayer() {
+    const streetMap = new L.MaptilerLayer({
       apiKey: this.settings.maptilerApiKey,
-      style: "toner-v2-lite",
+      style: "13be04a7-d035-45cd-b5cf-6c0c50fdf6a8",
       pane: "street-map",
     });
+    this.map.addLayer(streetMap);
+  }
 
-    const basicLight = new L.MaptilerLayer({
+  addPlaceNamesLayer() {
+    const placeNames = new L.MaptilerLayer({
       apiKey: this.settings.maptilerApiKey,
-      style: "basic-v2-light",
-      pane: "street-map",
+      style: "1cc6214b-0f45-4e3d-a5bc-8e81b82cca7a",
+      pane: "place-names",
     });
-
-    const streetsPastel = new L.MaptilerLayer({
-      apiKey: this.settings.maptilerApiKey,
-      style: "streets-v2-pastel",
-      pane: "street-map",
-    });
-
-    return { tonerLite, basicLight, streetsPastel };
+    this.map.addLayer(placeNames);
   }
 
   addPollutionLayer() {
