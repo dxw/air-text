@@ -263,5 +263,48 @@ RSpec.feature "Forecasts page", feature: true do
         expect_prediction(category: :temperature, level: :high)
       end
     end
+
+    describe "Viewing forecasts for a location and a day based on URL parameters" do
+      before do
+        barking_and_dagenham = FactoryBot.create(:zone, name: "Barking and Dagenham", cerc_id: 1)
+
+        zone_forecasts = [{zone: Zone.default, forecasts: [
+          Fixtures::API.zone_forecast(day: :today, air_pollution_status: :low, pollen: :low, temperature: :cold, uv: :low),
+          Fixtures::API.zone_forecast(day: :tomorrow, air_pollution_status: :low, pollen: :low, temperature: :cold, uv: :low),
+          Fixtures::API.zone_forecast(day: :day_after_tomorrow, air_pollution_status: :low, pollen: :low, temperature: :cold, uv: :low)
+        ]}, {zone: barking_and_dagenham, forecasts: [
+          Fixtures::API.zone_forecast(day: :today, air_pollution_status: :high, pollen: :low, temperature: :normal, uv: :low),
+          Fixtures::API.zone_forecast(day: :tomorrow, air_pollution_status: :high, pollen: :high, temperature: :hot, uv: :high),
+          Fixtures::API.zone_forecast(day: :day_after_tomorrow, air_pollution_status: :high, pollen: :low, temperature: :normal, uv: :low)
+        ]}]
+        stub_cerc_api_with(zone_forecasts)
+      end
+
+      it "shows the forecast for the chosen location" do
+        ##
+        # When I visit the forecast URL with parameters specified for day and zone
+        #
+        # Then I see the air pollution forecast for the zone
+        # And I see predicted UV level for the new zone for today
+        # And I see predicted pollen level for the new zone for today
+        # And I see predicted temperature level for the new zone for today
+        ##
+        visit forecast_path(params: {zone: "Barking and Dagenham", day: "tomorrow"})
+
+        # Predicted air pollution status for each day
+        expect_air_pollution_prediction(day: :today, value: :high)
+        expect_air_pollution_prediction(day: :tomorrow, value: :high)
+        expect_air_pollution_prediction(day: :day_after_tomorrow, value: :high)
+
+        # Predicted UV level for tomorrow
+        expect_prediction(category: :"ultraviolet-rays-uv", level: :high)
+
+        # Predicted pollen level for tomorrow
+        expect_prediction(category: :pollen, level: :high)
+
+        # Predicted temperature level for tomorrow
+        expect_prediction(category: :temperature, level: :high)
+      end
+    end
   end
 end
