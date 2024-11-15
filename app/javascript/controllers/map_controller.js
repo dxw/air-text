@@ -209,7 +209,7 @@ export default class MapController extends Controller {
 
   updateMap() {
     const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.daySelector.dataset.date;
+    const date = this.daySelectorTarget.querySelector(".active").dataset.date;
     const newSettings = { pollutant: pollutant, date: date };
     this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
 
