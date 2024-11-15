@@ -8,21 +8,5 @@ document.addEventListener("DOMContentLoaded", function () {
   hamburgerMenu.addEventListener("click", function () {
     menuList.classList.toggle("hidden");
   });
-
-  const locationButton = document.getElementById("location-selector-button");
-  const locationList = document.getElementById("location-selector-list");
-
-  locationButton &&
-    locationButton.addEventListener("click", function () {
-      locationList.classList.toggle("hidden");
-    });
-
-  locationList &&
-    locationList.addEventListener("click", function (e) {
-      const newSelectedZone = e.target.innerText;
-      const selectedZone = document.getElementById("selected-zone");
-      selectedZone.innerText = newSelectedZone;
-      locationList.classList.toggle("hidden");
-    });
 });
 import "./controllers";
