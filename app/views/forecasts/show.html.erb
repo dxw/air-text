@@ -1,8 +1,10 @@
-<%= render partial: "forecasts/location" %>
-<%= render partial: "forecasts/forecast_tabs", cerc_forecasts: @forecasts %>
-<%= render partial: "forecasts/map" %>
-<%= render partial: "forecasts/predictions", locals: { forecast: @forecasts.first } %>
-<%= render partial: "sharing" %>
+<div data-controller="map">
+  <%= render partial: "forecasts/location" %>
+  <%= render partial: "forecasts/forecast_tabs", cerc_forecasts: @forecasts %>
+  <%= render partial: "forecasts/map" %>
+  <%= render partial: "forecasts/predictions", locals: { forecast: @forecasts.first } %>
+  <%= render partial: "sharing" %>
+</div>
 <%= render partial: "learning" %>
 <%= render partial: "subscribe" %>
 <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
