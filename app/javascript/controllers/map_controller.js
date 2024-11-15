@@ -13,6 +13,9 @@ export default class MapController extends Controller {
     date: new Date().toJSON().slice(0, 10),
     center: [51.510357, -0.116773], // Big Ben
     zoom: 8,
+    maptilerApiKey: document
+      .getElementById("map")
+      .getAttribute("data-maptiler-api-key"),
   };
 
   connect() {
@@ -50,21 +53,20 @@ export default class MapController extends Controller {
   }
 
   streetMaps() {
-    const maptilerApiKey = this.mapTarget.dataset.maptilerApiKey;
     const tonerLite = new L.MaptilerLayer({
-      apiKey: maptilerApiKey,
+      apiKey: this.settings.maptilerApiKey,
       style: "toner-v2-lite",
       pane: "street-map",
     });
 
     const basicLight = new L.MaptilerLayer({
-      apiKey: maptilerApiKey,
+      apiKey: this.settings.maptilerApiKey,
       style: "basic-v2-light",
       pane: "street-map",
     });
 
     const streetsPastel = new L.MaptilerLayer({
-      apiKey: maptilerApiKey,
+      apiKey: this.settings.maptilerApiKey,
       style: "streets-v2-pastel",
       pane: "street-map",
     });
