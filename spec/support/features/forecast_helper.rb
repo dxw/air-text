@@ -195,5 +195,11 @@ module Features
         raise "Unexpected Pollen value #{value}"
       end
     end
+
+    def change_location_to(zone_name)
+      find("#location-selector-button").trigger("click")
+      find("span", text: zone_name).trigger("click")
+      click_button "Change location"
+    end
   end
 end

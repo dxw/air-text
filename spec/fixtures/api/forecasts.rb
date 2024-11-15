@@ -2,20 +2,34 @@ module Fixtures
   module API
     class << self
       def all_forecasts(forecasts = [])
-        {
-          "forecastdate" => "07-11-2024 19:54",
-          "timestamp" => 1731009262649.986,
-          "zones" => [
-            zone_object(forecasts: forecasts)
-          ]
-        }
+        if !forecasts.empty? && forecasts.first[:zone]
+          zones = []
+          forecasts.each do |zone_forecast|
+            zone = zone_forecast[:zone]
+            zones.push(zone_object(zone_id: zone[:cerc_id], zone_name: zone[:zone_name], forecasts: zone_forecast[:forecasts]))
+          end
+
+          {
+            "forecastdate" => "07-11-2024 19:54",
+            "timestamp" => 1731009262649.986,
+            "zones" => zones
+          }
+        else
+          {
+            "forecastdate" => "07-11-2024 19:54",
+            "timestamp" => 1731009262649.986,
+            "zones" => [
+              zone_object(forecasts: forecasts)
+            ]
+          }
+        end
       end
 
-      def zone_object(zone_id: 29, forecasts: [])
+      def zone_object(zone_id: 29, zone_name: "Southwark", forecasts: [])
         {
           "forecasts" => forecasts.presence || [zone_forecast],
           "zone_id" => zone_id,
-          "zone_name" => "Southwark",
+          "zone_name" => zone_name,
           "zone_type" => 1
         }
       end
