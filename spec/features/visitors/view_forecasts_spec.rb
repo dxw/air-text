@@ -176,5 +176,92 @@ RSpec.feature "Forecasts page", feature: true do
         end
       end
     end
+
+    describe "Viewing forecasts for a different location" do
+      before do
+        barking_and_dagenham = FactoryBot.create(:zone, name: "Barking and Dagenham", cerc_id: 1)
+
+        zone_forecasts = [{zone: Zone.default, forecasts: [
+          Fixtures::API.zone_forecast(day: :today, air_pollution_status: :low, pollen: :low, temperature: :cold, uv: :low),
+          Fixtures::API.zone_forecast(day: :tomorrow, air_pollution_status: :low, pollen: :low, temperature: :cold, uv: :low),
+          Fixtures::API.zone_forecast(day: :day_after_tomorrow, air_pollution_status: :low, pollen: :low, temperature: :cold, uv: :low)
+        ]}, {zone: barking_and_dagenham, forecasts: [
+          Fixtures::API.zone_forecast(day: :today, air_pollution_status: :high, pollen: :moderate, temperature: :normal, uv: :moderate),
+          Fixtures::API.zone_forecast(day: :tomorrow, air_pollution_status: :high, pollen: :high, temperature: :hot, uv: :high),
+          Fixtures::API.zone_forecast(day: :day_after_tomorrow, air_pollution_status: :high, pollen: :high, temperature: :hot, uv: :high)
+        ]}]
+        stub_cerc_api_with(zone_forecasts)
+      end
+
+      it "shows the forecast for the new location", js: true do
+        ##
+        # When I select view forecasts
+        # And I change location to a new zone
+        #
+        # Then I see the air pollution forecast for the new zone
+        # And I see predicted UV level for the new zone
+        # And I see predicted pollen level for the new zone
+        # And I see predicted temperature level for the new zone
+        ##
+
+        view_forecasts
+        change_location_to("Barking and Dagenham")
+
+        # Predicted air pollution status for each day
+        expect_air_pollution_prediction(day: :today, value: :high)
+        expect_air_pollution_prediction(day: :tomorrow, value: :high)
+        expect_air_pollution_prediction(day: :day_after_tomorrow, value: :high)
+
+        # Predicted UV level for today
+        expect_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
+
+        # Predicted pollen level for today
+        expect_prediction(category: :pollen, level: :moderate)
+
+        # Predicted temperature level for today
+        expect_prediction(category: :temperature, level: :moderate)
+      end
+
+      it "shows the forecast for the new location for the previously selected day", js: true do
+        ##
+        # When I select view forecasts
+        # And I view the forecast for the day after tomorrow
+        # And I change location to a new zone
+        #
+        # Then I see the air pollution forecast for the new zone
+        # And I see that the day after tomorrow tab is active
+        # And I see predicted UV level for the new zone for the day after tomorrow
+        # And I see predicted pollen level for the new zone for the day after tomorrow
+        # And I see predicted temperature level for the new zone for the day after tomorrow
+        ##
+
+        view_forecasts
+        switch_to_tab_for(:day_after_tomorrow)
+        change_location_to("Barking and Dagenham")
+
+        # Predicted air pollution status for each day
+        expect_air_pollution_prediction(day: :today, value: :high)
+        expect_air_pollution_prediction(day: :tomorrow, value: :high)
+        expect_air_pollution_prediction(day: :day_after_tomorrow, value: :high)
+
+        # See that the day after tomorrow tab is active
+        expect(page).to have_css(".tab.day_after_tomorrow.active")
+
+        expect(page).to have_css(".tab.today.inactive")
+        expect(page).to have_css(".tab.tomorrow.inactive")
+
+        expect(page).not_to have_css(".tab.today.active")
+        expect(page).not_to have_css(".tab.tomorrow.active")
+
+        # Predicted UV level for day after tomorrow
+        expect_prediction(category: :"ultraviolet-rays-uv", level: :high)
+
+        # Predicted pollen level for day after tomorrow
+        expect_prediction(category: :pollen, level: :high)
+
+        # Predicted temperature level for day after tomorrow
+        expect_prediction(category: :temperature, level: :high)
+      end
+    end
   end
 end
