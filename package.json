@@ -33,6 +33,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.10",
+    "@maptiler/geocoding-control": "^1.4.1",
     "depcheck": "^1.4.7",
     "tailwindcss": "^3.4.13"
   }
