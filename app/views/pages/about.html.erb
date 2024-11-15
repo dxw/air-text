@@ -1,7 +1,38 @@
-<% content_for :title do %>About<% end %>
-<h3>About the Website</h3>
-<p>
-This web application was created with
-<%= link_to('Rails Composer', 'http://railsapps.github.io/rails-composer/') %>
-from the <%= link_to('RailsApps project', 'http://railsapps.github.io/') %>.
-</p>
+<% content_for :title, 'About' %>
+
+<article>
+  <h1>About airTEXT</h1>
+
+  <h2>What is airTEXT?</h2>
+  <p>airTEXT is a free service for the public providing air quality alerts by SMS text message, email and voicemail and 3-day forecasts of air quality, pollen, UV and temperature across Greater London. airTEXT is an independent service, operated by <%= link_to('Cambridge Environmental Research Consultants (CERC) Ltd', 'https://www.cerc.co.uk', target: '_blank') %> in partnership with a Consortium made up of representatives from all the member local authorities, the GLA, Public Health England and the Environment Agency.  The airTEXT Consortium is chaired by Islington Borough Council.</p>
+  <p>airTEXT air quality maps at 10m resolution are created using CERC's world-leading urban air quality dispersion modelling system <%= link_to('ADMS-Urban', 'https://www.cerc.co.uk/ADMS-urban', target: '_blank') %>.</p>
+  <p>Member local authorities pay a small annual subscription to be part of the service. The maintenance and development of the core airTEXT service is funded jointly by CERC and research projects in which CERC is involved. Grants from national and local government have contributed to airTEXT service developments in the past. airTEXT works in partnership with the GLA from time to time, for example on the Mayor of London's <%= link_to('public notifications', 'https://www.london.gov.uk/press-releases/mayoral/air-quality-alerts-warn-londoners-about-pollution', target: '_blank') %> during high pollution episodes.</p>
+
+  <h2>How are the forecasts made?</a></h2>	
+  <p>The air quality forecasts are produced using <%= link_to("CERC's air pollution forecasting system", 'https://www.cerc.co.uk/forecast', target: '_blank') %>. Information from weather forecasts, forecasts of pollution across Europe from the <%= link_to('CAMS', 'https://atmosphere.copernicus.eu/', target: '_blank') %> Regional Ensemble and very detailed data on about 30,000 pollution sources across London are fed into the world-leading <%= link_to('ADMS-Urban', 'https://www.cerc.co.uk/environmental-software/ADMS-Urban-model.html', target: '_blank') %> air quality model to produce forecasts of air quality at a high degree of spatial resolution (10m). These forecasts are issued twice a day at about 7am and 7pm. The forecasts are updated throughout the day using real-time monitoring data from LondonAir. We compare the forecasts with observed pollution levels to assess the accuracy of the forecasts. These performance statistics are available <%= link_to('here', './pdfs/airTEXT 2023 performance.pdf', target: '_blank') %>.</p>p>
+  <p>The hourly concentrations of four pollutants are calculated: nitrogen dioxide (NO2), particulates (PM10 and PM2.5) and ozone (O3). From the hourly concentrations the daily air quality index (<%= link_to('DAQI', 'https://uk-air.defra.gov.uk/air-pollution/daqi', target: '_blank') %>) of each pollutant is derived. The overall air quality index is determined by the highest index for any of these pollutants.</p>
+  <p>airTEXT issues an alert for a local authority or region if at least 10% of the geographical area is predicted to reach MODERATE or above.</p>
+  <p>Forecast values of UV and temperature are supplied by <%= link_to('DTN', 'https://www.dtn.com/weather/', target: '_blank') %>. The pollen forecast is supplied by the <%= link_to('Met Office', 'https://www.metoffice.gov.uk/weather/warnings-and-advice/seasonal-advice/pollen-forecast', target: '_blank') %>.</p>
+
+  <h2>Partners</h2>
+  <p>The airTEXT Consortium is a consortium of London Boroughs, Slough Borough Council, Chelmsford City Council, Colchester Borough Council, Maldon District Council, Elmbridge Borough Council, Mole Valley District Council, Reigate and Banstead Borough Council, Runnymede Borough Council, Spelthorne Borough Council, Tandridge District Council, the Greater London Authority, the Environment Agency and Public Health England.</p>
+
+  <h4>Islington Council</h4>
+  <p><%= link_to('Islington Council', 'https://www.islington.gov.uk', target: '_blank') %> currently leads the airTEXT consortium.</p>
+
+  <h4>Cambridge: </h4>
+  <p>Additional forecasts are provided for Cambridge although the Council is not a member of the airTEXT consortium.</p>
+
+  <h4>CERC</h4>
+  <p><%= link_to('CERC', 'https://www.cerc.co.uk', target: '_blank') %> develop and operate the airTEXT forecasting and alert system, which has operated across London since March 2007.</p>
+
+  <h4>European Commission</h4>
+  <p>CERC has been a partner in a number of EU-funded projects which have contributed to the development of airTEXT, including PASODOBLE and the series of MACC projects. CERC is a member of the team delivering the EU's <%= link_to('Copernicus Atmospheric Monitoring Service (CAMS)', 'https://atmosphere.copernicus.eu/', target: '_blank') %>%. CERC is part of the sub-team facilitating user interaction.</p>
+
+  <h4>DEFRA</h4>
+  <p><%= link_to('Department for the Environment, Food and Rural Affairs', 'https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs', target: '_blank') %>% has provided support through air quality grants to member Councils. Grants to Islington and Hackney in 2012 funded the development of the daily bulletins for each Borough. A grant to Southwark and Lambeth Council in 2022 funded the re-development of the operational system using Cloud technology and the development of web APIs for integrating airTEXT data in other apps and services.</p>
+
+  <h4>European Space Agency</h4>
+  <p><%= link_to('ESA', 'https://www.esa.int', target: '_blank') %> supported the inital development of airTEXT through the <%= link_to('PROMOTE', 'https://www.esa.int/Our_Activities/Space_Engineering_Technology/Space_for_health/Air_quality_and_pollution', target: '_blank') %> projects.</p>
+
+</article>

@@ -23,6 +23,22 @@
   @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
 }
 
+.low-level {
+  @apply text-black bg-lime-400;
+}
+
+.moderate-level {
+  @apply text-black bg-yellow-300;
+}
+
+.high-level {
+  @apply text-white bg-red-500;
+}
+
+.very-high-level {
+  @apply text-white bg-red-800;
+}
+
 .daqi-level-4-today,
 .daqi-alert-after-today-selected-level-4 {
   @apply text-black bg-yellow-300;
@@ -60,4 +76,50 @@
 
 .home-page-link {
   color: revert;
+}
+
+article {
+  h1 {
+    @apply text-2xl font-bold mt-5;
+  }
+
+  h2 {
+    @apply text-xl font-bold mt-5;
+  }
+
+  h3 {
+    @apply text-lg font-bold mt-5;
+  }
+
+  h4 {
+    @apply text-base font-bold mt-3;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+
+    li {
+      @apply ml-2;
+    }
+  }
+
+  p {
+    @apply mb-2;
+
+    a {
+      @apply text-blue-500 underline;
+    }
+  }
+
+  table {
+    @apply max-w-sm border-collapse;
+
+    th {
+      @apply px-2 py-1 border border-gray-400;
+    }
+
+    td {
+      @apply px-2 py-1 border border-gray-400;
+    }
+  }
 }
