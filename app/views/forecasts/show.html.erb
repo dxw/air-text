@@ -4,12 +4,12 @@
   </h2>
 </div>
 
-<div data-controller="map">
+<turbo-frame id="forecasts" data-controller="map tab">
   <%= render partial: "forecasts/location" %>
   <%= render partial: "forecasts/forecast_tabs", cerc_forecasts: @forecasts %>
   <%= render partial: "forecasts/map" %>
   <%= render partial: "forecasts/predictions", locals: { forecast: @day_forecast } %>
   <%= render partial: "sharing" %>
-</div>
+</turbo-frame>
 <%= render partial: "learning" %>
 <%= render partial: "subscribe" %>

@@ -19,7 +19,7 @@ export default class MapController extends Controller {
       .getAttribute("data-maptiler-api-key"),
   };
 
-  connect() {
+  mapTargetConnected() {
     this.updateSettings();
     this.createMap();
   }
