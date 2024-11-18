@@ -7,17 +7,6 @@ class ForecastsController < ApplicationController
     @day_forecast = forecast_for_day(@day, @forecasts)
   end
 
-  def update
-    @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
-    forecasts = CercForecastService.latest_forecasts_for(zone).data
-
-    @day_forecast = forecast_for_day(params.fetch("day"), forecasts)
-
-    respond_to do |format|
-      format.turbo_stream
-    end
-  end
-
   private
 
   def forecast_for_day(day, forecasts)

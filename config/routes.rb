@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get "map", to: "map#show"
 
   get :forecast, to: "forecasts#show"
-  get :update_forecast, to: "forecasts#update"
 
   get :health_advice, to: "pages#health_advice"
   get :about, to: "pages#about"
