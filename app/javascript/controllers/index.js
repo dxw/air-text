@@ -12,3 +12,6 @@ application.register("prediction", PredictionController);
 
 import TabController from "./tab_controller";
 application.register("tab", TabController);
+
+import NavigationController from "./navigation_controller";
+application.register("navigation", NavigationController);
