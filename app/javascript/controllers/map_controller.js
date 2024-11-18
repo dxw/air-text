@@ -99,47 +99,22 @@ export default class MapController extends Controller {
   }
 
   addPollutionLayer() {
-    const { discreteAir, linearAir } = this.pollutionLayers(
+    this.layers.pollution = this.pollutionLayer(
       this.settings.pollutant,
       this.settings.date
     );
-    this.layers.pollution = discreteAir;
     this.map.addLayer(this.layers.pollution);
-
-    const pollutionMaps = {
-      DiscreteColours: discreteAir,
-      LinearColours: linearAir,
-    };
-    this.controls.pollution = L.control
-      .layers(pollutionMaps, null, { collapsed: false })
-      .addTo(this.map);
   }
 
-  pollutionLayers(pollutant, date) {
-    const airTextBaseUrl = "https://airtext.info/geoserver/wms?";
-    const airTextOptions = {
+  pollutionLayer(pollutant, date) {
+    return L.tileLayer.wms("https://airtext.info/geoserver/wms?", {
       layers: `london:${pollutant}`,
       time: date,
       format: "image/png",
       opacity: 1,
       pane: "pollution",
-    };
-
-    const mergeAirTextOptions = (options) => {
-      return Object.assign({}, airTextOptions, options);
-    };
-
-    const discreteAir = L.tileLayer.wms(
-      airTextBaseUrl,
-      mergeAirTextOptions({ styles: `daqi${pollutant}` })
-    );
-
-    const linearAir = L.tileLayer.wms(
-      airTextBaseUrl,
-      mergeAirTextOptions({ styles: `daqi${pollutant}_linear` })
-    );
-
-    return { discreteAir, linearAir };
+      styles: `daqi${pollutant}_linear`,
+    });
   }
 
   addZonesLayer() {

@@ -1,15 +1,10 @@
-<div class="air-pollution my-4">
-  <header class="text-xl px-4 font-bold">
-    Air pollution
-  </header>
-  <div
-    class="tabs"
-    data-turbo-prefetch="false"
-    data-map-target="daySelector"
-    >
-    <%= render(DayTabComponent.new(forecast: @forecasts.first, day: 'today', active: @day == 'today')) %>
-    <%= render(DayTabComponent.new(forecast: @forecasts.second, day: 'tomorrow', active: @day == 'tomorrow')) %>
-    <%= render(DayTabComponent.new(forecast: @forecasts.third, day: 'day_after_tomorrow', active: @day == 'day_after_tomorrow')) %>
-  </div>
-  <%= render "alert_guidance" %>
+<h3 class="text-xl font-bold mt-4 mb-2"> Air pollution for <%= @zone.name %></h3>
+<div
+  class="tabs"
+  data-turbo-prefetch="false"
+  data-map-target="daySelector"
+  >
+  <%= render(DayTabComponent.new(forecast: @forecasts.first, day: 'today', active: @day == 'today')) %>
+  <%= render(DayTabComponent.new(forecast: @forecasts.second, day: 'tomorrow', active: @day == 'tomorrow')) %>
+  <%= render(DayTabComponent.new(forecast: @forecasts.third, day: 'day_after_tomorrow', active: @day == 'day_after_tomorrow')) %>
 </div>

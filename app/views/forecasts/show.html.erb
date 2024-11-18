@@ -1,15 +1,16 @@
-<div class="inner p-4">
-  <h2 class="text-xl font-bold">
-    Air quality forecast
-  </h2>
-</div>
+<h2 class="text-xl font-bold mb-2">Air quality forecast</h2>
+<p>The air quality forecast displays levels of air pollution, ultraviolet rays, pollen, and temperature over the next three days for your area of interest.</p>
 
-<turbo-frame id="forecasts" data-controller="map tab">
-  <%= render "location_selector" %>
-  <%= render "forecast_tabs" %>
-  <%= render "map" %>
-  <%= render "predictions" %>
-  <%= render "sharing" %>
+<turbo-frame id="forecasts-frame" data-controller="map tab">
+    <%= render "location_selector" %>
+    <%= render "forecast_tabs" %>
+  <div class="tab-contents">
+    <%= render "alert_guidance" %>
+    <%= render "map" %>
+    <%= render "predictions" %>
+    <%= render "sharing" %>
+    <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution.forecasted_at.strftime("%H:%M on %A %d %B %Y") %></span>
+  </div>
 </turbo-frame>
-<%= render "learning" %>
 <%= render "subscribe" %>
+<%= render "learning" %>

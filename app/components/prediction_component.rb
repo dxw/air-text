@@ -21,38 +21,8 @@ class PredictionComponent < ViewComponent::Base
     @prediction.daqi_label
   end
 
-  def daqi_indicator_colour
-    case @prediction.daqi_level
-    when :low
-      "text-green-600"
-    when :moderate
-      "text-amber-300"
-    when :high
-      "text-red-500"
-    when :very_high
-      "text-stone-700"
-    else
-      raise "DAQI level '#{@prediction.daqi_level}' not known"
-    end
-  end
-
-  def details_panel_colour
-    case @prediction.daqi_level
-    when :low
-      "bg-green-50"
-    when :moderate
-      "text-amber-50"
-    when :high
-      "text-red-50"
-    when :very_high
-      "text-stone-50"
-    else
-      raise "DAQI level '#{@prediction.daqi_level}' not known"
-    end
-  end
-
-  def daqi_value_as_index
-    "Index #{@prediction.value}/10"
+  def guidance_panel_colour
+    "bg-#{@prediction.daqi_label.parameterize}-alert-guidance-panel"
   end
 
   def guidance
@@ -62,6 +32,6 @@ class PredictionComponent < ViewComponent::Base
   end
 
   def guidance_visible?
-    !(@prediction.daqi_level == :low)
+    @prediction.daqi_level != :low
   end
 end

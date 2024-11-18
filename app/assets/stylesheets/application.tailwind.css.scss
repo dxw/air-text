@@ -7,47 +7,139 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --main-colour: #3880d1;
+  --main-colour-light: #dae7f7;
+}
+
+header.site-header {
+  background-color: var(--main-colour);
+
+  @apply flex flex-row p-4;
+
+  .site-title {
+    @apply text-white flex-auto;
+
+    .site-name {
+      @apply text-2xl font-bold block;
+    }
+
+    .site-strapline {
+      @apply text-sm block;
+    }
+  }
+
+  nav {
+    @apply text-white flex-auto text-right;
+
+    button {
+      @apply text-5xl;
+    }
+
+    ul {
+      @apply text-sm;
+    }
+  }
+}
+
+main {
+  padding: 1rem;
+}
+
 .tabs {
-  @apply flex flex-row items-stretch mt-4 m-1 text-xs font-bold border-b-[3px] border-black;
+  @apply flex flex-row items-stretch border-b-[2px] border-black;
+
+  border-radius: 10px 10px 0 0;
+  gap: 0.5rem;
 }
 
 .tab {
+  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[2px];
+
+  border-radius: 10px 10px 0 0;
+
   &.active {
-    @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+    @apply border-black border-solid border-b-0 -mb-[2px] bg-white;
   }
 
   &.inactive {
-    @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+    @apply border-gray-400 border-dashed border-b-0 text-gray-400;
+  }
+
+  .daqi-indicator {
+    @apply size-9 rounded-full mx-auto my-1 flex justify-center items-center;
+  }
+
+  .daqi-label {
+    @apply text-base;
+  }
+
+  .daqi-value {
+    @apply font-normal;
+  }
+}
+
+.tab-contents {
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.map {
+  @apply w-full h-80 mt-2;
+}
+
+.daqi-scale {
+  @apply flex flex-row;
+
+  div {
+    @apply flex py-1 justify-center items-center;
+
+    width: 10%;
+  }
+}
+
+.predictions {
+  > * {
+    @apply py-2 border-b border-gray-300;
+  }
+
+  dd {
+    @apply text-right;
+  }
+
+  .guidance {
+    @apply text-sm mt-2 p-4;
   }
 }
 
 .sharing {
   button {
-    @apply inline-flex px-8 py-2 rounded-md bg-slate-800 text-slate-50 w-full;
+    @apply flex mx-auto mt-6 px-8 py-2 rounded-md text-white justify-center;
+
+    background-color: var(--main-colour);
   }
 }
 
-.learning {
-  @apply bg-gray-100 p-8 mt-12;
-
-  header {
-    @apply text-xl font-bold text-center w-full mb-8;
-  }
-
-  a {
-    @apply block w-full py-4 px-8 rounded-md text-lg font-bold bg-gray-200 border border-gray-700 text-center mb-4;
-  }
+.forecast-timestamp {
+  @apply text-sm text-center text-gray-500 mt-2 block;
 }
 
+.learning,
 .subscribe {
-  @apply bg-gray-100 p-8 mt-1;
+  background-color: var(--main-colour-light);
+
+  @apply p-8 mt-2 text-center;
 
   header {
-    @apply text-xl font-bold text-center w-full mb-8;
+    @apply font-bold;
   }
 
   a {
-    @apply block w-full py-4 px-8 rounded-md text-lg font-bold bg-gray-200 border border-gray-700 text-center mb-4;
+    @apply inline-block py-2 px-8 rounded-md text-white mt-4;
+
+    background-color: var(--main-colour);
   }
 }
 
