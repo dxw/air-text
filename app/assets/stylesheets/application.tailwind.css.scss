@@ -37,6 +37,10 @@ header.site-header {
   }
 }
 
+main {
+  padding: 1rem;
+}
+
 .tabs {
   @apply flex flex-row items-stretch border-b-[2px] border-black;
 
