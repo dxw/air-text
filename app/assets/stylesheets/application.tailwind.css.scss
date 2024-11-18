@@ -1,78 +1,58 @@
 @import "leaflet/dist/leaflet.css";
 @import "@maptiler/geocoding-control/style.css";
 @import "leaflet.scss"; /* stylelint-disable-line scss/load-partial-extension */
+@import "daqi_levels.scss"; /* stylelint-disable-line scss/load-partial-extension */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.active {
-  @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+.tabs {
+  @apply flex flex-row items-stretch mt-4 m-1 text-xs font-bold border-b-[3px] border-black;
 }
 
-.after-today {
-  @apply text-black bg-white;
+.tab {
+  &.active {
+    @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+  }
+
+  &.inactive {
+    @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+  }
 }
 
-.daqi-level-1-today,
-.daqi-level-2-today,
-.daqi-level-3-today {
-  @apply text-black bg-white;
+.sharing {
+  button {
+    @apply inline-flex px-8 py-2 rounded-md bg-slate-800 text-slate-50 w-full;
+  }
 }
 
-.inactive {
-  @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+.learning {
+  @apply bg-gray-100 p-8 mt-12;
+
+  header {
+    @apply text-xl font-bold text-center w-full mb-8;
+  }
+
+  a {
+    @apply block w-full py-4 px-8 rounded-md text-lg font-bold bg-gray-200 border border-gray-700 text-center mb-4;
+  }
 }
 
-.low-level {
-  @apply text-black bg-lime-400;
+.subscribe {
+  @apply bg-gray-100 p-8 mt-1;
+
+  header {
+    @apply text-xl font-bold text-center w-full mb-8;
+  }
+
+  a {
+    @apply block w-full py-4 px-8 rounded-md text-lg font-bold bg-gray-200 border border-gray-700 text-center mb-4;
+  }
 }
 
-.moderate-level {
-  @apply text-black bg-yellow-300;
-}
-
-.high-level {
-  @apply text-white bg-red-500;
-}
-
-.very-high-level {
-  @apply text-white bg-red-800;
-}
-
-.daqi-level-4-today,
-.daqi-alert-after-today-selected-level-4 {
-  @apply text-black bg-yellow-300;
-}
-
-.daqi-level-5-today,
-.daqi-alert-after-today-selected-level-5 {
-  @apply text-black bg-amber-200;
-}
-
-.daqi-level-6-today,
-.daqi-alert-after-today-selected-level-6 {
-  @apply text-black bg-yellow-500;
-}
-
-.daqi-level-7-today,
-.daqi-alert-after-today-selected-level-7 {
-  @apply text-white bg-orange-500;
-}
-
-.daqi-level-8-today,
-.daqi-alert-after-today-selected-level-8 {
-  @apply text-white bg-red-500;
-}
-
-.daqi-level-9-today,
-.daqi-alert-after-today-selected-level-9 {
-  @apply text-white bg-red-800;
-}
-
-.daqi-level-10-today,
-.daqi-alert-after-today-selected-level-10 {
-  @apply text-white bg-stone-700;
+select {
+  @apply inline-flex flex-row w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
 }
 
 .home-page-link {

@@ -2,7 +2,13 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { Application } from "@hotwired/stimulus";
+
+const application = Application.start();
+
+// Configure Stimulus development experience
+application.debug = false;
+window.Stimulus = application;
 
 import MapController from "./map_controller";
 application.register("map", MapController);
@@ -12,3 +18,6 @@ application.register("prediction", PredictionController);
 
 import TabController from "./tab_controller";
 application.register("tab", TabController);
+
+import NavigationController from "./navigation_controller";
+application.register("navigation", NavigationController);

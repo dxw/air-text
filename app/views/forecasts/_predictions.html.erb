@@ -1,5 +1,5 @@
 <dl class="predictions p-4">
-  <%= render(PredictionComponent.new(prediction: forecast.uv)) %>
-  <%= render(PredictionComponent.new(prediction: forecast.pollen)) if forecast.pollen.valid? %>
-  <%= render "temperature_prediction", prediction: forecast.temperature %>
+  <%= render(PredictionComponent.new(prediction: @day_forecast.uv)) %>
+  <%= render(PredictionComponent.new(prediction: @day_forecast.pollen)) if @day_forecast.pollen.valid? %>
+  <%= render "temperature_prediction", prediction: @day_forecast.temperature %>
 </dl>
