@@ -7,8 +7,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --main-colour: #3880d1;
+  --main-colour-light: #dae7f7;
+}
+
 header.site-header {
-  background-color: #3880d1;
+  background-color: var(--main-colour);
 
   @apply flex flex-row p-4;
 
