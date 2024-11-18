@@ -108,7 +108,7 @@ RSpec.describe DayTabComponent, type: :component do
   describe "classes" do
     context "when the day is today" do
       let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 1), day: :today)
+        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 1), day: :today, active: true)
       }
 
       it "returns the classes for today's tab" do
