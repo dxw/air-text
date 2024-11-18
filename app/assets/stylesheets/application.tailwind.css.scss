@@ -84,6 +84,18 @@ main {
   }
 }
 
+.predictions {
+  @apply mb-2;
+
+  > * {
+    @apply py-2 border-b border-gray-300;
+  }
+
+  dd {
+    @apply text-right;
+  }
+}
+
 .sharing {
   button {
     @apply inline-flex px-8 py-2 rounded-md bg-slate-800 text-slate-50 w-full;
