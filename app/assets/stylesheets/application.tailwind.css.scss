@@ -111,6 +111,10 @@ main {
   }
 }
 
+.forecast-timestamp {
+  @apply text-sm text-center text-gray-500 mt-2 block;
+}
+
 .learning {
   @apply bg-gray-100 p-8 mt-12;
 

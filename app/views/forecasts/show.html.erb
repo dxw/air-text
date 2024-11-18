@@ -8,6 +8,7 @@
     <%= render "map" %>
     <%= render "predictions" %>
     <%= render "sharing" %>
+    <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution.forecasted_at.strftime("%H:%M on %A %d %B %Y") %></span>
   </div>
 </turbo-frame>
 <%= render "learning" %>
