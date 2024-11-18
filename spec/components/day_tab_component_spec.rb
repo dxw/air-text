@@ -9,8 +9,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 1), day: :today)
       }
 
-      it "returns _bg-lime-400_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-lime-400")
+      it "returns _daqi-level-1_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-1")
       end
     end
 
@@ -19,8 +19,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 2), day: :today)
       }
 
-      it "returns _bg-green-400_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-green-400")
+      it "returns _daqi-level-2_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-2")
       end
     end
 
@@ -29,8 +29,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 3), day: :today)
       }
 
-      it "returns _bg-lime-600_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-lime-600")
+      it "returns _daqi-level-3_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-3")
       end
     end
 
@@ -39,8 +39,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 4), day: :today)
       }
 
-      it "returns _bg-yellow-300_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-yellow-300")
+      it "returns _daqi-level-4_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-4")
       end
     end
 
@@ -49,8 +49,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 5), day: :today)
       }
 
-      it "returns _bg-amber-200_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-amber-200")
+      it "returns _daqi-level-5_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-5")
       end
     end
 
@@ -59,8 +59,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 6), day: :today)
       }
 
-      it "returns _bg-yellow-500_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-yellow-500")
+      it "returns _daqi-level-6_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-6")
       end
     end
 
@@ -69,8 +69,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 7), day: :today)
       }
 
-      it "returns _bg-orange-500_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-orange-500")
+      it "returns _daqi-level-7_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-7")
       end
     end
 
@@ -79,8 +79,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 8), day: :today)
       }
 
-      it "returns _bg-red-500_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-red-500")
+      it "returns _daqi-level-8_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-8")
       end
     end
 
@@ -89,8 +89,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 9), day: :today)
       }
 
-      it "returns _bg-red-800_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-red-800")
+      it "returns _daqi-level-9_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-9")
       end
     end
 
@@ -99,8 +99,8 @@ RSpec.describe DayTabComponent, type: :component do
         DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 10), day: :today)
       }
 
-      it "returns _bg-stone-700_" do
-        expect(component.daqi_indicator_colour_class).to eq("bg-stone-700")
+      it "returns _daqi-level-10_" do
+        expect(component.daqi_indicator_colour_class).to eq("daqi-level-10")
       end
     end
   end
@@ -112,7 +112,7 @@ RSpec.describe DayTabComponent, type: :component do
       }
 
       it "returns the classes for today's tab" do
-        expect(component.classes).to eq("active daqi-level-1-today")
+        expect(component.classes).to eq("active daqi-level-1")
       end
     end
 
