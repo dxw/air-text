@@ -37,17 +37,36 @@ header.site-header {
   }
 }
 
-.tabs{
-  @apply flex flex-row items-stretch mt-4 m-1 text-xs font-bold border-b-[3px] border-black;
+.tabs {
+  @apply flex flex-row items-stretch border-b-[2px] border-black;
+
+  border-radius: 10px 10px 0 0;
+  gap: 0.5rem;
 }
 
 .tab {
+  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[2px];
+
+  border-radius: 10px 10px 0 0;
+
   &.active {
-    @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+    @apply border-black border-solid border-b-0 -mb-[2px] bg-white;
   }
 
   &.inactive {
-    @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+    @apply border-gray-400 border-dashed border-b-0 text-gray-400;
+  }
+
+  .daqi-indicator {
+    @apply size-9 rounded-full mx-auto my-1 flex justify-center items-center;
+  }
+
+  .daqi-label {
+    @apply text-base;
+  }
+
+  .daqi-value {
+    @apply font-normal;
   }
 }
 
