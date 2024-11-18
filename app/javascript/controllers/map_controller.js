@@ -19,9 +19,16 @@ export default class MapController extends Controller {
       .getAttribute("data-maptiler-api-key"),
   };
 
-  connect() {
-    this.settings = this.defaultMapSettings;
+  mapTargetConnected() {
+    this.updateSettings();
     this.createMap();
+  }
+
+  updateSettings() {
+    const pollutant = this.pollutantSelectorTarget.value;
+    const date = this.daySelectorTarget.querySelector(".active").dataset.date;
+    const newSettings = { pollutant: pollutant, date: date };
+    this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
   }
 
   createMap() {
@@ -208,11 +215,7 @@ export default class MapController extends Controller {
   }
 
   updateMap() {
-    const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.daySelectorTarget.querySelector(".active").dataset.date;
-    const newSettings = { pollutant: pollutant, date: date };
-    this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
-
+    this.updateSettings();
     this.updatePollutionLayer();
   }
 

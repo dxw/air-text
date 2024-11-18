@@ -1,12 +1,10 @@
-<%= turbo_frame_tag "alert_guidance" do %>
-  <% if air_pollution_prediction.air_quality_alert %>
-    <div class="alert-guidance bg-<%= air_pollution_prediction.air_quality_alert.daqi_label.parameterize %>-alert-guidance-panel m-5 p-10">
-      <p class="font-semibold mb-4">
-        <%= t("air_quality_alert.#{air_pollution_prediction.air_quality_alert.daqi_level}.guidance.title") %>
-      </p>
-      <div class="text-xs">
-        <%= t("air_quality_alert.#{air_pollution_prediction.air_quality_alert.daqi_level}.guidance.detail_html") %>
-      </div>
+<% if air_pollution_prediction.air_quality_alert %>
+  <div class="alert-guidance bg-<%= air_pollution_prediction.air_quality_alert.daqi_label.parameterize %>-alert-guidance-panel m-5 p-10">
+    <p class="font-semibold mb-4">
+      <%= t("air_quality_alert.#{air_pollution_prediction.air_quality_alert.daqi_level}.guidance.title") %>
+    </p>
+    <div class="text-xs">
+      <%= t("air_quality_alert.#{air_pollution_prediction.air_quality_alert.daqi_level}.guidance.detail_html") %>
     </div>
-  <% end %>
+  </div>
 <% end %>

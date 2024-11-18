@@ -7,9 +7,9 @@
     data-turbo-prefetch="false"
     data-map-target="daySelector"
     >
-    <%= render(DayTabComponent.new(forecast: @forecasts.first, day: :today)) %>
-    <%= render(DayTabComponent.new(forecast: @forecasts.second, day: :tomorrow)) %>
-    <%= render(DayTabComponent.new(forecast: @forecasts.third, day: :day_after_tomorrow)) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.first, day: 'today', active: @day == 'today')) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.second, day: 'tomorrow', active: @day == 'tomorrow')) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.third, day: 'day_after_tomorrow', active: @day == 'day_after_tomorrow')) %>
   </div>
-  <%= render partial: "alert_guidance", locals: {air_pollution_prediction: @forecasts.first} %>
+  <%= render partial: "alert_guidance", locals: {air_pollution_prediction: @day_forecast} %>
 </div>

@@ -45,8 +45,8 @@ RSpec.feature "Air quality alerts", feature: true do
       within(".alert-guidance") do
         expect_to_see_guidance_for(:moderate)
       end
-      expect(page).to have_css(".tab.tomorrow.daqi-alert-after-today-selected-level-4")
-      expect(page).not_to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
+      expect(page).to have_css(".tab.tomorrow.active")
+      expect(page).not_to have_css(".tab.day_after_tomorrow.active")
     end
   end
 
@@ -61,8 +61,8 @@ RSpec.feature "Air quality alerts", feature: true do
       within(".alert-guidance") do
         expect_to_see_guidance_for(:very_high)
       end
-      expect(page).to have_css(".tab.day_after_tomorrow.daqi-alert-after-today-selected-level-10")
-      expect(page).not_to have_css(".tab.tomorrow.daqi-alert-after-today-selected-level-4")
+      expect(page).to have_css(".tab.day_after_tomorrow.active")
+      expect(page).not_to have_css(".tab.tomorrow.active")
     end
   end
 end

@@ -13,9 +13,9 @@ module Features
     def switch_to_tab_for(day)
       case day
       when :tomorrow
-        find(".tab.tomorrow a").trigger("click")
+        find(".tab.tomorrow").trigger("click")
       when :day_after_tomorrow
-        find(".tab.day_after_tomorrow a").trigger("click")
+        find(".tab.day_after_tomorrow").trigger("click")
       else
         raise "day: #{day} not expected"
       end

@@ -1,7 +1,8 @@
 class DayTabComponent < ViewComponent::Base
-  def initialize(forecast:, day:)
+  def initialize(forecast:, day:, active: false)
     @forecast = forecast
     @day = day
+    @active = active
   end
 
   TAG_COLOURS = {
@@ -22,7 +23,7 @@ class DayTabComponent < ViewComponent::Base
   end
 
   def classes
-    if @day == :today
+    if @active
       "active daqi-level-#{@forecast.air_pollution.value}-today"
     else
       "inactive after-today"
