@@ -1,6 +1,7 @@
 class ForecastsController < ApplicationController
   def show
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
+    @zone = zone
     @forecasts = CercForecastService.latest_forecasts_for(zone).data
   end
 
@@ -33,6 +34,6 @@ class ForecastsController < ApplicationController
   def zone
     return Zone.default unless params[:zone]
 
-    Zone.find_by(cerc_id: params[:zone])
+    Zone.find_by(name: params[:zone])
   end
 end
