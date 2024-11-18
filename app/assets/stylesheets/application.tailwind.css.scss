@@ -120,27 +120,20 @@ main {
   @apply text-sm text-center text-gray-500 mt-2 block;
 }
 
-.learning {
-  @apply bg-gray-100 p-8 mt-12;
-
-  header {
-    @apply text-xl font-bold text-center w-full mb-8;
-  }
-
-  a {
-    @apply block w-full py-4 px-8 rounded-md text-lg font-bold bg-gray-200 border border-gray-700 text-center mb-4;
-  }
-}
-
+.learning,
 .subscribe {
-  @apply bg-gray-100 p-8 mt-1;
+  background-color: var(--main-colour-light);
+
+  @apply p-8 mt-2 text-center;
 
   header {
-    @apply text-xl font-bold text-center w-full mb-8;
+    @apply font-bold;
   }
 
   a {
-    @apply block w-full py-4 px-8 rounded-md text-lg font-bold bg-gray-200 border border-gray-700 text-center mb-4;
+    @apply inline-block py-2 px-8 rounded-md text-white mt-4;
+
+    background-color: var(--main-colour);
   }
 }
 
