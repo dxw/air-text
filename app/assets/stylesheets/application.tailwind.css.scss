@@ -7,16 +7,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.active {
-  @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+.tabs {
+  @apply flex flex-row items-stretch mt-4 m-1 text-xs font-bold border-b-[3px] border-black;
 }
 
-.after-today {
-  @apply text-black bg-white;
-}
+.tab {
+  &.active {
+    @apply border-[3px] border-black border-solid border-b-0 -mb-[3px] bg-white;
+  }
 
-.inactive {
-  @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+  &.inactive {
+    @apply border-b-0 border-l-2 border-r-2 border-t-2 border-gray-400 border-dashed text-gray-400;
+  }
 }
 
 .home-page-link {

@@ -1,4 +1,4 @@
-<%= tag.div class: "tab py-4 flex-1 #{@day} mx-2 px-1 text-center #{classes}",
+<%= tag.div class: "tab py-4 flex-1 #{@day} mx-2 px-1 text-center #{@active ? 'active' : 'inactive'}",
   data: {
     date: @forecast.date.to_s,
     day: @day,
@@ -12,7 +12,7 @@
   <div class="date">
     <%= @forecast.date.strftime("%d %B") %>
   </div>
-  <div class="daqi-symbol flex justify-center items-center daqi-marker text-4xl py-2 h-14">
+  <div class="daqi-indicator flex justify-center items-center text-4xl py-2 h-14">
     <div class="size-9 rounded-full <%= daqi_indicator_colour_class %>"></div>
     <% if @forecast.air_pollution.value > 3 %>
       <%= render partial: "shared/icons/exclamation_triangle", locals: {forecast: @forecast} %>

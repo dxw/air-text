@@ -104,26 +104,4 @@ RSpec.describe DayTabComponent, type: :component do
       end
     end
   end
-
-  describe "classes" do
-    context "when the day is today" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 1), day: :today, active: true)
-      }
-
-      it "returns the classes for today's tab" do
-        expect(component.classes).to eq("active daqi-level-1")
-      end
-    end
-
-    context "when the day is not today" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 1), day: :tomorrow)
-      }
-
-      it "returns the classes for the after today tabs" do
-        expect(component.classes).to eq("inactive after-today")
-      end
-    end
-  end
 end
