@@ -8,4 +8,3 @@
   <%= render(DayTabComponent.new(forecast: @forecasts.second, day: 'tomorrow', active: @day == 'tomorrow')) %>
   <%= render(DayTabComponent.new(forecast: @forecasts.third, day: 'day_after_tomorrow', active: @day == 'day_after_tomorrow')) %>
 </div>
-<%= render "alert_guidance" %>
