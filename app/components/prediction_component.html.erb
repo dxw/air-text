@@ -19,13 +19,13 @@
           class="<%= guidance_visible? ? "hidden" : "visible" %>"
           data-prediction-target="showButton"
         >
-          <%= render partial: "shared/icons/chevron_down" %>
+          <%= render "shared/icons/chevron_down" %>
         </button>
         <button
           class="<%= !guidance_visible? ? "hidden" : "visible" %>"
           data-prediction-target="hideButton"
         >
-          <%= render partial: "shared/icons/chevron_up" %>
+          <%= render "shared/icons/chevron_up" %>
         </button>
       </div>
     </dd>
