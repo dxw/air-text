@@ -74,6 +74,16 @@ main {
   }
 }
 
+.daqi-scale {
+  @apply flex flex-row;
+
+  div {
+    @apply flex py-1 justify-center items-center;
+
+    width: 10%;
+  }
+}
+
 .sharing {
   button {
     @apply inline-flex px-8 py-2 rounded-md bg-slate-800 text-slate-50 w-full;
