@@ -86,6 +86,10 @@ main {
   border-radius: 0 0 10px 10px;
 }
 
+.map {
+  @apply w-full h-80 mt-2;
+}
+
 .daqi-scale {
   @apply flex flex-row;
 
