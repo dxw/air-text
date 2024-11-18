@@ -5,5 +5,6 @@
     class: "inline-flex flex-row w-full justify-left gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50",
     data: { controller: "prediction", "prediction-target": "zoneSelector", action: "change->prediction#changeZone" }
     %>
+    <%= hidden_field_tag :day, @day, data: { "tab-target": "daySelector" } %>
   <% end %>
 </div>
