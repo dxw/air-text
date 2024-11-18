@@ -97,8 +97,6 @@ main {
 }
 
 .predictions {
-  @apply mb-2;
-
   > * {
     @apply py-2 border-b border-gray-300;
   }
