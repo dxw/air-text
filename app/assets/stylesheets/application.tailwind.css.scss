@@ -108,6 +108,10 @@ main {
   dd {
     @apply text-right;
   }
+
+  .guidance {
+    @apply text-sm mt-2 p-4;
+  }
 }
 
 .sharing {

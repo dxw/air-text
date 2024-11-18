@@ -36,7 +36,7 @@ RSpec.describe PredictionComponent, type: :component do
     end
   end
 
-  describe "details" do
+  describe "guidance" do
     it "includes the prediction's guidance from the translation system" do
       expect(page).to have_css(
         ".guidance",
@@ -48,14 +48,14 @@ RSpec.describe PredictionComponent, type: :component do
       context "when the DAQI level is low" do
         let(:component) {
           PredictionComponent.new(
-            prediction: OpenStruct.new(name: "Solar Rays", daqi_level: :low)
+            prediction: OpenStruct.new(name: "Solar Rays", daqi_level: :low, daqi_label: "Low")
           )
         }
 
         before { render_inline(component) }
 
         it "hides the panel" do
-          expect(page).to have_css(".details.hidden")
+          expect(page).to have_css(".guidance.hidden")
         end
       end
 
@@ -63,82 +63,22 @@ RSpec.describe PredictionComponent, type: :component do
         [:moderate, :high, :very_high].each do |level|
           let(:component) {
             PredictionComponent.new(
-              prediction: OpenStruct.new(name: "Solar Rays", daqi_level: level)
+              prediction: OpenStruct.new(name: "Solar Rays", daqi_level: level, daqi_label: level.to_s)
             )
           }
 
           before { render_inline(component) }
 
           it "shows the panel" do
-            expect(page).to have_css(".details.visible")
+            expect(page).to have_css(".guidance.visible")
           end
         end
       end
     end
 
-    it "includes the details_panel_colour as a class" do
+    it "includes the guidance_panel_colour as a class" do
       component = PredictionComponent.new(prediction: prediction)
-      expect(page).to have_css(".#{component.details_panel_colour}.details")
-    end
-
-    describe "the colour of the details panel (#details_panel_colour)" do
-      context "when the daqi level is low" do
-        let(:component) {
-          PredictionComponent.new(
-            prediction: OpenStruct.new(daqi_level: :low)
-          )
-        }
-        it "uses an green colour" do
-          expect(component.details_panel_colour).to match(/green/)
-        end
-      end
-
-      context "when the daqi level is moderate" do
-        let(:component) {
-          PredictionComponent.new(
-            prediction: OpenStruct.new(daqi_level: :moderate)
-          )
-        }
-        it "uses an amber colour" do
-          expect(component.details_panel_colour).to match(/amber/)
-        end
-      end
-
-      context "when the daqi level is high" do
-        let(:component) {
-          PredictionComponent.new(
-            prediction: OpenStruct.new(daqi_level: :high)
-          )
-        }
-
-        it "uses a red colour" do
-          expect(component.details_panel_colour).to match(/red/)
-        end
-      end
-
-      context "when the daqi level is very high" do
-        let(:component) {
-          PredictionComponent.new(
-            prediction: OpenStruct.new(daqi_level: :very_high)
-          )
-        }
-
-        it "uses a black-ish" do
-          expect(component.details_panel_colour).to match(/stone/)
-        end
-      end
-
-      context "when the daqi level is not known" do
-        let(:component) {
-          PredictionComponent.new(
-            prediction: OpenStruct.new(daqi_level: :unknown)
-          )
-        }
-
-        it "raises an error" do
-          expect { component.details_panel_colour }.to raise_error(/DAQI level 'unknown' not known/)
-        end
-      end
+      expect(page).to have_css(".#{component.guidance_panel_colour}.guidance")
     end
   end
 end
