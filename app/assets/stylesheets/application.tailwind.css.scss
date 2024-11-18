@@ -7,7 +7,37 @@
 @tailwind components;
 @tailwind utilities;
 
-.tabs {
+header.site-header {
+  background-color: #3880d1;
+
+  @apply flex flex-row p-4;
+
+  .site-title {
+    @apply text-white flex-auto;
+
+    .site-name {
+      @apply text-2xl font-bold block;
+    }
+
+    .site-strapline {
+      @apply text-sm block;
+    }
+  }
+
+  nav {
+    @apply text-white flex-auto text-right;
+
+    button {
+      @apply text-5xl;
+    }
+
+    ul {
+      @apply text-sm;
+    }
+  }
+}
+
+.tabs{
   @apply flex flex-row items-stretch mt-4 m-1 text-xs font-bold border-b-[3px] border-black;
 }
 

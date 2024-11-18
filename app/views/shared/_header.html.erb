@@ -1,15 +1,18 @@
-<header class="bg-gray-50" >
-  <div class="flex flex-row p-4" >
-    <div class="heading bg-gray-50 grow" >
-      <h1 class="text-4xl font-bold">
-        airTEXT
-      </h1>
-      <div class="strap-line text-sm">
-        Air Quality Service
-      </div>
-    </div>
-    <nav>
-      <%= render 'shared/hamburger_menu' %>
-    </nav>
+<header class="site-header">
+  <div class="site-title">
+    <span class="site-name">airTEXT</span>
+    <span class="site-strapline">Air quality service</span>
   </div>
+  <nav data-controller="navigation">
+    <button data-action="navigation#toggleMenu">
+    ☰
+    </button>
+    <ul class="hidden" data-navigation-target="menuList">
+      <li><a href="forecast">Air quality forecast</a></li>
+      <li>Alerts</li>
+      <li><a href="health_advice" class="">Health advice</a></li>
+      <li><a href="about" class="">About</a></li>
+      <li>Contact</li>
+    </ul>
+  </nav>
 </header>
