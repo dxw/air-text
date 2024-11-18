@@ -1,7 +1,4 @@
-<div>
-  <%= render "pollutant_selector" %>
-  <div id="map" class="map w-full h-80" data-maptiler-api-key="<%= @maptiler_api_key %>" data-map-target="map"></div>
-  <div class="w-full h-10">
-    <%= render "shared/daqi_scale" %>
-  </div>
-</div>
+<%= render "pollutant_selector" %>
+<div id="map" class="map w-full h-80" data-maptiler-api-key="<%= @maptiler_api_key %>" data-map-target="map"></div>
+<%= render "shared/daqi_scale" %>
+<%= link_to("Learn more about the colour scale", health_advice_path, class: "text-sm text-blue-600 underline") %>

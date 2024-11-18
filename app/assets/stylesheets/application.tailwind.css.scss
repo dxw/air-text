@@ -74,6 +74,13 @@ main {
   }
 }
 
+.tab-contents {
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+
 .daqi-scale {
   @apply flex flex-row;
 
