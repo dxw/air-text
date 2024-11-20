@@ -3,6 +3,7 @@ class ForecastsController < ApplicationController
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
     @zone = zone
     @day = params.fetch("day", "today")
+    @pollutant = params.fetch("pollutant", "Total")
     @forecasts = CercForecastService.latest_forecasts_for(zone).data
     @day_forecast = forecast_for_day(@day, @forecasts)
   end
