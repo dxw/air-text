@@ -195,7 +195,6 @@ export default class MapController extends Controller {
   }
 
   updatePollutionLayer() {
-    this.map.removeControl(this.controls.pollution);
     this.map.removeLayer(this.layers.pollution);
     this.addPollutionLayer();
   }
