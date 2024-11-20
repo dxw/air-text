@@ -26,7 +26,7 @@ export default class MapController extends Controller {
 
   updateSettings() {
     const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.daySelectorTarget.querySelector(".active").dataset.date;
+    const date = this.daySelectorTarget.value;
     const url = new URL(window.location.href);
     const lat = parseFloat(url.searchParams.get("lat"));
     const lng = parseFloat(url.searchParams.get("lng"));

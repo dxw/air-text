@@ -9,12 +9,12 @@ export default class ForecastController extends Controller {
   }
 
   changeDay(event) {
-    const selectedDay = event.currentTarget.dataset.day;
+    const selectedDate = event.currentTarget.dataset.date;
 
-    this.updateUrl({ day: selectedDay });
+    this.updateUrl({ date: selectedDate });
 
     // Update contents of daySelector
-    this.daySelectorTarget.value = selectedDay;
+    this.daySelectorTarget.value = selectedDate;
 
     this.reloadPrediction();
   }

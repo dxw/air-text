@@ -3,5 +3,5 @@
   options_for_select(Zone.all.order(:name).map(&:name), @zone.name),
   data: { "forecast-target": "zoneSelector", action: "change->forecast#changeZone" }
   %>
-  <%= hidden_field_tag :day, @day, data: { "forecast-target": "daySelector" } %>
+  <%= hidden_field_tag :date, @date, data: { "forecast-target": "daySelector", "map-target": "daySelector" } %>
 <% end %>

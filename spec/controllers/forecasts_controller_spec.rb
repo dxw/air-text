@@ -41,7 +41,7 @@ RSpec.describe ForecastsController do
     end
 
     context "when a recognised _day_ parameter is received" do
-      it "renders the turbo update template" do
+      it "renders the _show_ template" do
         allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
 
         get :show, params: {day: :today}
@@ -58,6 +58,53 @@ RSpec.describe ForecastsController do
         expect {
           get :show, params: {day: :yesterday}
         }.to raise_error(ArgumentError, "Invalid day: yesterday")
+      end
+    end
+
+    context "when a _date_ parameter is received" do
+      before do
+        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
+        get :show, params: {date: date.to_s}
+      end
+
+      context "when the date is in the past" do
+        let(:date) { 5.day.ago.to_date }
+
+        it "shows the forecast for today" do
+          expect(assigns(:day_forecast)).to eq(forecasts.data.first)
+        end
+      end
+
+      context "when the date is today" do
+        let(:date) { Date.today }
+
+        it "shows the forecast for today" do
+          expect(assigns(:day_forecast)).to eq(forecasts.data.first)
+        end
+      end
+
+      context "when the date is tomorrow" do
+        let(:date) { Date.tomorrow }
+
+        it "shows the forecast for tomorrow" do
+          expect(assigns(:day_forecast)).to eq(forecasts.data.second)
+        end
+      end
+
+      context "when the date is the day after tomorrow" do
+        let(:date) { 2.days.from_now.to_date }
+
+        it "shows the forecast for the day after tomorrow" do
+          expect(assigns(:day_forecast)).to eq(forecasts.data.third)
+        end
+      end
+
+      context "when the date is in the future" do
+        let(:date) { 5.days.from_now.to_date }
+
+        it "shows the forecast for the day after tomorrow" do
+          expect(assigns(:day_forecast)).to eq(forecasts.data.third)
+        end
       end
     end
   end
