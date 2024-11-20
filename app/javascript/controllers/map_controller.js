@@ -5,7 +5,14 @@ import "@maptiler/geocoding-control/leaflet";
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
-  static targets = ["map", "pollutantSelector", "daySelector"];
+  static targets = [
+    "map",
+    "pollutantSelector",
+    "daySelector",
+    "latField",
+    "lngField",
+    "zoomField",
+  ];
 
   layers = {};
   controls = {};
@@ -32,8 +39,6 @@ export default class MapController extends Controller {
     const lng = parseFloat(url.searchParams.get("lng"));
     const center = lat && lng ? [lat, lng] : null;
     const zoom = parseInt(url.searchParams.get("zoom"));
-
-    console.log({ pollutant, date, center, zoom });
 
     const newSettings = {
       pollutant: pollutant,
@@ -73,9 +78,19 @@ export default class MapController extends Controller {
 
   updateUrl() {
     const url = new URL(window.location.href);
-    url.searchParams.set("lat", this.map.getCenter().lat.toFixed(6));
-    url.searchParams.set("lng", this.map.getCenter().lng.toFixed(6));
-    url.searchParams.set("zoom", this.map.getZoom());
+
+    const lat = this.map.getCenter().lat.toFixed(6);
+    url.searchParams.set("lat", lat);
+    this.latFieldTarget.value = lat;
+
+    const lng = this.map.getCenter().lng.toFixed(6);
+    url.searchParams.set("lng", lng);
+    this.lngFieldTarget.value = lng;
+
+    const zoom = this.map.getZoom();
+    url.searchParams.set("zoom", zoom);
+    this.zoomFieldTarget.value = zoom;
+
     window.history.replaceState({}, "", url);
   }
 

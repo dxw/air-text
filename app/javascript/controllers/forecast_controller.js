@@ -5,7 +5,7 @@ export default class ForecastController extends Controller {
 
   changeZone() {
     this.updateUrl({ zone: this.zoneSelectorTarget.value });
-    this.reloadPrediction();
+    this.updateForecast();
   }
 
   changeDay(event) {
@@ -16,15 +16,15 @@ export default class ForecastController extends Controller {
     // Update contents of daySelector
     this.daySelectorTarget.value = selectedDate;
 
-    this.reloadPrediction();
+    this.updateForecast();
   }
 
   changePollutant() {
     this.updateUrl({ pollutant: this.pollutantSelectorTarget.value });
-    this.reloadPrediction();
+    this.updateForecast();
   }
 
-  reloadPrediction() {
+  updateForecast() {
     // Submit the form to reload the turbo frame
     this.zoneSelectorTarget.form.requestSubmit();
   }
