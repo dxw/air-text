@@ -449,17 +449,17 @@
   dependencies:
     quick-lru "^7.0.0"
 
-"@maptiler/geocoding-control@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@maptiler/geocoding-control/-/geocoding-control-1.4.1.tgz#4cba09f5e6cb0a4c792b00ec48e9bd2991ee68b7"
-  integrity sha512-/NMM8oaKKAdF36KbJuucJc18RaY+VpwkJ2V098yoG7H+9K7Rkyen+XKuLDA8gmvrgTeX1m48Pb9RP+e5zCrRvA==
+"@maptiler/geocoding-control@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@maptiler/geocoding-control/-/geocoding-control-2.0.1.tgz#8f4d798758c95e601cb163f3b44766c2a4abdc8c"
+  integrity sha512-fHa6QgRfYGbviMdDY1QoDNs2yIQyc2LS8rTOwoj71dTAWwSiQfw6s+ohhiM9zEBmfwYVoELByAG8qwC9brafww==
   dependencies:
     "@turf/bbox" "^7.1.0"
     "@turf/clone" "^7.1.0"
     "@turf/difference" "^7.1.0"
     "@turf/flatten" "^7.1.0"
     "@turf/union" "^7.1.0"
-    geo-coordinates-parser "^1.7.3"
+    geo-coordinates-parser "^1.7.4"
 
 "@maptiler/leaflet-maptilersdk@^2.0.0":
   version "2.0.0"
@@ -1450,7 +1450,7 @@ function-bind@^1.1.2:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.2.tgz#2c02d864d97f3ea6c8830c464cbd11ab6eab7a1c"
   integrity sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==
 
-geo-coordinates-parser@^1.7.3:
+geo-coordinates-parser@^1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/geo-coordinates-parser/-/geo-coordinates-parser-1.7.4.tgz#b9c45ee188cc5bdd7b29f82601e6e6d7b566ac9c"
   integrity sha512-gVGxBW+s1csexXVMf5bIwz3TH9n4sCEglOOOqmrPk8YazUI5f79jCowKjTw05m/0h1//3+Z2m/nv8IIozgZyUw==
