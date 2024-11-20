@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
-export default class PredictionController extends Controller {
+export default class ForecastController extends Controller {
   static targets = ["zoneSelector", "daySelector"];
 
   changeZone() {
