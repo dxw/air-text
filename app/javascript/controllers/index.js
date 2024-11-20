@@ -13,11 +13,8 @@ window.Stimulus = application;
 import MapController from "./map_controller";
 application.register("map", MapController);
 
-import PredictionController from "./prediction_controller";
-application.register("prediction", PredictionController);
-
-import TabController from "./tab_controller";
-application.register("tab", TabController);
+import ForecastController from "./forecast_controller";
+application.register("forecast", ForecastController);
 
 import NavigationController from "./navigation_controller";
 application.register("navigation", NavigationController);
