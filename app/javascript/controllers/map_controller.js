@@ -33,8 +33,6 @@ export default class MapController extends Controller {
     const center = lat && lng ? [lat, lng] : null;
     const zoom = parseInt(url.searchParams.get("zoom"));
 
-    console.log({ pollutant, date, center, zoom });
-
     const newSettings = {
       pollutant: pollutant,
       date: date,
