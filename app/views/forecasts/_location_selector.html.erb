@@ -1,7 +1,7 @@
 <%= form_tag(false, method: :get) do %>
   <%= select_tag :zone, 
   options_for_select(Zone.all.order(:name).map(&:name), @zone.name),
-  data: { controller: "prediction", "prediction-target": "zoneSelector", action: "change->prediction#changeZone" }
+  data: { "prediction-target": "zoneSelector", action: "change->prediction#changeZone" }
   %>
-  <%= hidden_field_tag :day, @day, data: { "tab-target": "daySelector" } %>
+  <%= hidden_field_tag :day, @day, data: { "prediction-target": "daySelector" } %>
 <% end %>

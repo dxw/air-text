@@ -2,11 +2,11 @@
   data: {
     date: @forecast.date.to_s,
     day: @day,
-    "tab-target": "dayPrediction",
-    action: "click->tab#changeTab",
+    "prediction-target": "dayPrediction",
+    action: "click->prediction#changeDay",
   } do
   %>
-  <div class="day" data-tab-target="day">
+  <div class="day">
     <%= @forecast.date == Date.today ? 'Today' : @forecast.date.strftime('%A') %>
   </div>
   <div class="date">
@@ -20,7 +20,7 @@
   <div class="daqi-label">
     <%= @forecast.air_pollution.label.capitalize %>
   </div>
-  <div class="daqi-value" data-tab-target="daqiValue">
+  <div class="daqi-value">
     Index <%= @forecast.air_pollution.value %>/10
   </div>
 <% end %>
