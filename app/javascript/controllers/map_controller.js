@@ -27,7 +27,20 @@ export default class MapController extends Controller {
   updateSettings() {
     const pollutant = this.pollutantSelectorTarget.value;
     const date = this.daySelectorTarget.querySelector(".active").dataset.date;
-    const newSettings = { pollutant: pollutant, date: date };
+    const url = new URL(window.location.href);
+    const lat = parseFloat(url.searchParams.get("lat"));
+    const lng = parseFloat(url.searchParams.get("lng"));
+    const center = lat && lng ? [lat, lng] : null;
+    const zoom = parseInt(url.searchParams.get("zoom"));
+
+    console.log({ pollutant, date, center, zoom });
+
+    const newSettings = {
+      pollutant: pollutant,
+      date: date,
+      center: center || this.defaultMapSettings.center,
+      zoom: zoom || this.defaultMapSettings.zoom,
+    };
     this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
   }
 
@@ -52,6 +65,18 @@ export default class MapController extends Controller {
 
     this.map.createPane("zones");
     this.addZonesLayer();
+
+    this.map.on("zoomend moveend", () => {
+      this.updateUrl();
+    });
+  }
+
+  updateUrl() {
+    const url = new URL(window.location.href);
+    url.searchParams.set("lat", this.map.getCenter().lat.toFixed(6));
+    url.searchParams.set("lng", this.map.getCenter().lng.toFixed(6));
+    url.searchParams.set("zoom", this.map.getZoom());
+    window.history.replaceState({}, "", url);
   }
 
   addSearchControl() {
