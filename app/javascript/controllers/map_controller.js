@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import "@maptiler/leaflet-maptilersdk";
 import "@maptiler/geocoding-control/leaflet"; // Geocoding (search) control
 import { LocateControl } from "leaflet.locatecontrol"; // Geolocation control
+import "leaflet.fullscreen"; // Fullscreen control
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
@@ -53,6 +54,10 @@ export default class MapController extends Controller {
       center: this.settings.center,
       zoom: this.settings.zoom,
       zoomControl: false,
+      fullscreenControl: true,
+      fullscreenControlOptions: {
+        position: "topright",
+      },
     });
 
     this.addSearchControl();
