@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
-import L from "leaflet";
 import "@maptiler/leaflet-maptilersdk";
-import "@maptiler/geocoding-control/leaflet";
+import "@maptiler/geocoding-control/leaflet"; // Geocoding (search) control
+import { LocateControl } from "leaflet.locatecontrol"; // Geolocation control
+import "leaflet.fullscreen"; // Fullscreen control
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
@@ -15,7 +16,6 @@ export default class MapController extends Controller {
   ];
 
   layers = {};
-  controls = {};
   defaultMapSettings = {
     pollutant: "Total",
     date: new Date().toJSON().slice(0, 10),
@@ -53,9 +53,16 @@ export default class MapController extends Controller {
     this.map = L.map("map", {
       center: this.settings.center,
       zoom: this.settings.zoom,
+      zoomControl: false,
+      fullscreenControl: true,
+      fullscreenControlOptions: {
+        position: "topright",
+      },
     });
 
     this.addSearchControl();
+    this.addGeolocationControl();
+    this.addZoomControl();
 
     // Ordered from bottom to top
     this.map.createPane("street-map");
@@ -94,10 +101,19 @@ export default class MapController extends Controller {
     window.history.replaceState({}, "", url);
   }
 
+  addZoomControl() {
+    L.control
+      .zoom({
+        position: "bottomright",
+      })
+      .addTo(this.map);
+  }
+
   addSearchControl() {
     L.control
       .maptilerGeocoding({
         apiKey: this.settings.maptilerApiKey,
+        position: "topleft",
         country: ["GB"],
         proximity: [-0.116773, 51.510357], // Big Ben, lng lat
         types: [
@@ -118,6 +134,12 @@ export default class MapController extends Controller {
         ],
       })
       .addTo(this.map);
+  }
+
+  addGeolocationControl() {
+    new LocateControl({
+      position: "bottomright",
+    }).addTo(this.map);
   }
 
   addStreetMapLayer() {
