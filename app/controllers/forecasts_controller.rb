@@ -9,7 +9,7 @@ class ForecastsController < ApplicationController
     @map_lon = params.fetch("lon", nil)
     @map_zoom = params.fetch("zoom", nil)
 
-    @forecasts = CercForecastService.latest_forecasts_for(zone).data
+    @forecasts = CercForecastService.latest_forecasts_for(@zone).data
     @day_forecast = forecast_for_day(@day, @forecasts)
   end
 
