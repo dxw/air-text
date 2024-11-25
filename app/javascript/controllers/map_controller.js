@@ -4,11 +4,13 @@ import "@maptiler/geocoding-control/leaflet"; // Geocoding (search) control
 import { LocateControl } from "leaflet.locatecontrol"; // Geolocation control
 import "leaflet.fullscreen"; // Fullscreen control
 import * as zones from "../zone_boundaries/zone-boundaries";
+import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
 
 export default class MapController extends Controller {
   static targets = [
     "map",
     "pollutantSelector",
+    "zoneSelector",
     "daySelector",
     "latField",
     "lngField",
@@ -80,7 +82,27 @@ export default class MapController extends Controller {
 
     this.map.on("zoomend moveend", () => {
       this.updateUrl();
+      this.updateForecastZone([
+        this.map.getCenter().lat,
+        this.map.getCenter().lng,
+      ]);
     });
+  }
+
+  updateForecastZone(coordinatesLatLng) {
+    const coordinatesLngLat = [coordinatesLatLng[1], coordinatesLatLng[0]];
+    const zones = this.findZones(coordinatesLngLat);
+    let zone;
+    if (!zones || zones.length === 0) {
+      return;
+    } else if (zones.length > 1) {
+      zone = zones[this.map.getZoom() <= 12 ? 1 : 0]; // Show more specific zone at higher zoom
+    } else {
+      zone = zones[0];
+    }
+
+    this.zoneSelectorTarget.value = zone.properties.name;
+    this.zoneSelectorTarget.form.requestSubmit();
   }
 
   updateUrl() {
@@ -249,6 +271,25 @@ export default class MapController extends Controller {
         }
       });
     });
+  }
+
+  findZones(coordinatesLngLat) {
+    if (!coordinatesLngLat) {
+      return;
+    }
+
+    const matches = [];
+    for (const [, zone] of Object.entries(zones)) {
+      // Coordinated have to be in the format [longitude, latitude]
+      if (booleanPointInPolygon(coordinatesLngLat, zone)) {
+        matches.push(zone);
+      }
+    }
+
+    // Sort by zone level so more specific zones are returned first
+    matches.sort((a, b) => b.properties.level - a.properties.level);
+
+    return matches;
   }
 
   updateMap() {
