@@ -111,4 +111,26 @@ RSpec.describe ForecastsController do
       end
     end
   end
+
+  context "when a _pollutant_ parameter is received" do
+    before do
+      get :show, params: {pollutant: pollutant}
+    end
+
+    context "when the pollutant is recognised" do
+      let(:pollutant) { "PM10" }
+
+      it "set the pollutant to the given value" do
+        expect(assigns(:pollutant)).to eq("PM10")
+      end
+    end
+
+    context "when the pollutant is not recognised" do
+      let(:pollutant) { "invalid" }
+
+      it "defaults to showing the Total forecast" do
+        expect(assigns(:pollutant)).to eq("Total")
+      end
+    end
+  end
 end

@@ -4,7 +4,7 @@ class ForecastsController < ApplicationController
     @zone = zone
     @date = date
     @day = @date ? day_from_date(@date) : day
-    @pollutant = params.fetch("pollutant", "Total")
+    @pollutant = pollutant
     @map_lat = params.fetch("lat", nil)
     @map_lon = params.fetch("lon", nil)
     @map_zoom = params.fetch("zoom", nil)
@@ -52,5 +52,11 @@ class ForecastsController < ApplicationController
     return params.fetch("day") if %w[today tomorrow day_after_tomorrow].include?(params.dig("day"))
 
     "today" # default to today
+  end
+
+  def pollutant
+    return params.fetch("pollutant", "Total") if %w[Total PM10 PM25 NO2 O3].include?(params.dig("pollutant"))
+
+    "Total" # default to Total
   end
 end
