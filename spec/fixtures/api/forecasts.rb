@@ -11,11 +11,11 @@ module Fixtures
         }
       end
 
-      def zone_object(zone_id: 29, forecasts: [])
+      def zone_object(zone_id: 55, forecasts: [])
         {
           "forecasts" => forecasts.presence || [zone_forecast],
           "zone_id" => zone_id,
-          "zone_name" => "Southwark",
+          "zone_name" => "Central London",
           "zone_type" => 1
         }
       end

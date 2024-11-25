@@ -1,6 +1,6 @@
 RSpec.describe CercForecastService do
   describe "::latest_forecasts_for(zone)" do
-    let(:zone) { FactoryBot.create(:zone, cerc_id: 29) }
+    let(:zone) { FactoryBot.create(:zone, cerc_id: 55) }
 
     context "when the cache is stale" do
       let(:latest_forecasts_from_api) { Fixtures::API.all_forecasts }

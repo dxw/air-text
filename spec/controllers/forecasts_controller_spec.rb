@@ -1,10 +1,10 @@
 RSpec.describe ForecastsController do
-  let(:southwark) { double("Southwark") }
+  let(:central_london) { double("Central London") }
   let(:barnet) { double("Barnet") }
 
   before do
     allow(Zone).to receive(:find_by).and_return(barnet)
-    allow(Zone).to receive(:default).and_return(southwark)
+    allow(Zone).to receive(:default).and_return(central_london)
     allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
   end
 
@@ -14,10 +14,10 @@ RSpec.describe ForecastsController do
 
   describe "GET :show" do
     context "when NO zone is given" do
-      it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
+      it "obtains forecasts for the default zone (Central London) from the CercForecastService" do
         get :show
 
-        expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
+        expect(CercForecastService).to have_received(:latest_forecasts_for).with(central_london)
       end
     end
 

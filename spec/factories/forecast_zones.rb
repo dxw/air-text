@@ -5,8 +5,8 @@
 
 FactoryBot.define do
   factory :forecast_zone do
-    id { 29 }
-    name { "Southwark" }
+    id { 55 }
+    name { "Central London" }
     type { 1 }
 
     initialize_with { new(**attributes) }
