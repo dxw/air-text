@@ -31,6 +31,7 @@ export default class MapController extends Controller {
   mapTargetConnected() {
     this.updateSettings();
     this.createMap();
+    this.updateForecastZone(this.settings.center);
   }
 
   updateSettings() {
@@ -137,6 +138,7 @@ export default class MapController extends Controller {
         apiKey: this.settings.maptilerApiKey,
         position: "topleft",
         country: ["GB"],
+        placeholder: "Enter a place, address, or postcode",
         proximity: [-0.116773, 51.510357], // Big Ben, lng lat
         types: [
           "region",
@@ -154,6 +156,9 @@ export default class MapController extends Controller {
           "road",
           "poi",
         ],
+      })
+      .on("pick", (e) => {
+        this.updateForecastZone(e.feature?.geometry?.coordinates);
       })
       .addTo(this.map);
   }
