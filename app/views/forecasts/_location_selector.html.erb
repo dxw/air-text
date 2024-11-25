@@ -1,4 +1,4 @@
-<%= form_tag(false, method: :get, id: "forecast-form") do %>
+<%= form_tag(false, method: :get, id: "forecast-form", data: { "turbo-stream": "replace", "action": "submit->map#updateMap"}) do %>
   <%= select_tag :zone, 
   options_for_select(Zone.all.order(:name).map(&:name), @zone.name),
   data: { "forecast-target": "zoneSelector", action: "change->forecast#changeZone" }
