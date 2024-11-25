@@ -2,9 +2,9 @@ class ForecastsController < ApplicationController
   def show
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
     @zone = zone
-    @date = Date.parse(params.fetch("date")) if params[:date]
-    @day = @date ? day_from_date(@date) : params.fetch("day", "today")
-    @pollutant = params.fetch("pollutant", "Total")
+    @date = date
+    @day = @date ? day_from_date(@date) : day
+    @pollutant = pollutant
     @map_lat = params.fetch("lat", nil)
     @map_lon = params.fetch("lon", nil)
     @map_zoom = params.fetch("zoom", nil)
@@ -22,8 +22,6 @@ class ForecastsController < ApplicationController
       "tomorrow"
     elsif date >= Date.tomorrow
       "day_after_tomorrow"
-    else
-      "today"
     end
   end
 
@@ -35,8 +33,6 @@ class ForecastsController < ApplicationController
       forecasts.second
     when "day_after_tomorrow"
       forecasts.third
-    else
-      raise ArgumentError, "Invalid day: #{day}"
     end
   end
 
@@ -44,5 +40,23 @@ class ForecastsController < ApplicationController
     return Zone.default unless params[:zone]
 
     Zone.find_by(name: params[:zone])
+  end
+
+  def date
+    Date.parse(params.fetch("date")) if params[:date].present?
+  rescue ArgumentError
+    Date.today # default to today
+  end
+
+  def day
+    return params.fetch("day") if %w[today tomorrow day_after_tomorrow].include?(params.dig("day"))
+
+    "today" # default to today
+  end
+
+  def pollutant
+    return params.fetch("pollutant", "Total") if %w[Total PM10 PM25 NO2 O3].include?(params.dig("pollutant"))
+
+    "Total" # default to Total
   end
 end
