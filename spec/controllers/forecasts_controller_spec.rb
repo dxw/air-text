@@ -96,6 +96,14 @@ RSpec.describe ForecastsController do
           expect(assigns(:day_forecast)).to eq(forecasts.data.third)
         end
       end
+
+      context "when the date is invalid" do
+        let(:date) { "invalid" }
+
+        it "shows the forecast for today" do
+          expect(assigns(:day_forecast)).to eq(forecasts.data.first)
+        end
+      end
     end
   end
 end

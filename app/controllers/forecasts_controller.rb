@@ -2,7 +2,7 @@ class ForecastsController < ApplicationController
   def show
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
     @zone = zone
-    @date = Date.parse(params.fetch("date")) if params[:date]
+    @date = date
     @day = @date ? day_from_date(@date) : params.fetch("day", "today")
     @pollutant = params.fetch("pollutant", "Total")
     @map_lat = params.fetch("lat", nil)
@@ -22,8 +22,6 @@ class ForecastsController < ApplicationController
       "tomorrow"
     elsif date >= Date.tomorrow
       "day_after_tomorrow"
-    else
-      "today"
     end
   end
 
@@ -44,5 +42,11 @@ class ForecastsController < ApplicationController
     return Zone.default unless params[:zone]
 
     Zone.find_by(name: params[:zone])
+  end
+
+  def date
+    Date.parse(params.fetch("date")) if params[:date].present?
+  rescue ArgumentError
+    Date.today # default to today
   end
 end
