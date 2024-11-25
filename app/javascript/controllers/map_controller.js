@@ -52,10 +52,12 @@ export default class MapController extends Controller {
     this.map = L.map("map", {
       center: this.settings.center,
       zoom: this.settings.zoom,
+      zoomControl: false,
     });
 
     this.addSearchControl();
     this.addGeolocationControl();
+    this.addZoomControl();
 
     // Ordered from bottom to top
     this.map.createPane("street-map");
@@ -94,10 +96,19 @@ export default class MapController extends Controller {
     window.history.replaceState({}, "", url);
   }
 
+  addZoomControl() {
+    L.control
+      .zoom({
+        position: "bottomright",
+      })
+      .addTo(this.map);
+  }
+
   addSearchControl() {
     L.control
       .maptilerGeocoding({
         apiKey: this.settings.maptilerApiKey,
+        position: "topleft",
         country: ["GB"],
         proximity: [-0.116773, 51.510357], // Big Ben, lng lat
         types: [
