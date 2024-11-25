@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
-import L from "leaflet";
 import "@maptiler/leaflet-maptilersdk";
-import "@maptiler/geocoding-control/leaflet";
+import "@maptiler/geocoding-control/leaflet"; // Geocoding (search) control
+import { LocateControl } from "leaflet.locatecontrol"; // Geolocation control
 import * as zones from "../zone_boundaries/zone-boundaries";
 
 export default class MapController extends Controller {
@@ -15,7 +15,6 @@ export default class MapController extends Controller {
   ];
 
   layers = {};
-  controls = {};
   defaultMapSettings = {
     pollutant: "Total",
     date: new Date().toJSON().slice(0, 10),
@@ -56,6 +55,7 @@ export default class MapController extends Controller {
     });
 
     this.addSearchControl();
+    this.addGeolocationControl();
 
     // Ordered from bottom to top
     this.map.createPane("street-map");
@@ -118,6 +118,12 @@ export default class MapController extends Controller {
         ],
       })
       .addTo(this.map);
+  }
+
+  addGeolocationControl() {
+    new LocateControl({
+      position: "bottomright",
+    }).addTo(this.map);
   }
 
   addStreetMapLayer() {
