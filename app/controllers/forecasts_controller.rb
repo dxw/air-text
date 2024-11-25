@@ -11,6 +11,16 @@ class ForecastsController < ApplicationController
 
     @forecasts = CercForecastService.latest_forecasts_for(@zone).data
     @day_forecast = forecast_for_day(@day, @forecasts)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace("forecasts-frame-top", partial: "forecasts/top"),
+          turbo_stream.replace("forecasts-frame-bottom", partial: "forecasts/bottom")
+        ]
+      end
+      format.html
+    end
   end
 
   private

@@ -1,0 +1,6 @@
+<turbo-frame id="forecasts-frame-bottom">
+  <%= render "alert_guidance" %>
+  <%= render "predictions" %>
+  <%= render "sharing" %>
+  <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution.forecasted_at.strftime("%H:%M on %A %d %B %Y") %></span>
+</turbo-frame>

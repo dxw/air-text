@@ -521,6 +521,17 @@
     "@types/geojson" "^7946.0.10"
     tslib "^2.6.2"
 
+"@turf/boolean-point-in-polygon@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/boolean-point-in-polygon/-/boolean-point-in-polygon-7.1.0.tgz#dec07b467d74b4409eb03acc60b874958f71b49a"
+  integrity sha512-mprVsyIQ+ijWTZwbnO4Jhxu94ZW2M2CheqLiRTsGJy0Ooay9v6Av5/Nl3/Gst7ZVXxPqMeMaFYkSzcTc87AKew==
+  dependencies:
+    "@turf/helpers" "^7.1.0"
+    "@turf/invariant" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    point-in-polygon-hao "^1.1.0"
+    tslib "^2.6.2"
+
 "@turf/clone@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@turf/clone/-/clone-7.1.0.tgz#b0cbf60b84fadd30ae8411f12d3bdcd3e773577f"
@@ -556,6 +567,15 @@
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-7.1.0.tgz#eb734e291c9c205822acdd289fe20e91c3cb1641"
   integrity sha512-dTeILEUVeNbaEeoZUOhxH5auv7WWlOShbx7QSd4s0T4Z0/iz90z9yaVCtZOLbU89umKotwKaJQltBNO9CzVgaQ==
   dependencies:
+    "@types/geojson" "^7946.0.10"
+    tslib "^2.6.2"
+
+"@turf/invariant@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-7.1.0.tgz#c90cffa093291316b597212396d68bf9e465cf2e"
+  integrity sha512-OCLNqkItBYIP1nE9lJGuIUatWGtQ4rhBKAyTfFu0z8npVzGEYzvguEeof8/6LkKmTTEHW53tCjoEhSSzdRh08Q==
+  dependencies:
+    "@turf/helpers" "^7.1.0"
     "@types/geojson" "^7946.0.10"
     tslib "^2.6.2"
 
@@ -2150,6 +2170,11 @@ please-upgrade-node@^3.2.0:
   integrity sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==
   dependencies:
     semver-compare "^1.0.0"
+
+point-in-polygon-hao@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/point-in-polygon-hao/-/point-in-polygon-hao-1.1.0.tgz#37f5f4fbe14e89fa8a3bb7f67c9158079d2ede7c"
+  integrity sha512-3hTIM2j/v9Lio+wOyur3kckD4NxruZhpowUbEgmyikW+a2Kppjtu1eN+AhnMQtoHW46zld88JiYWv6fxpsDrTQ==
 
 polygon-clipping@^0.15.3:
   version "0.15.7"
