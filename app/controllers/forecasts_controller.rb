@@ -3,7 +3,7 @@ class ForecastsController < ApplicationController
     @maptiler_api_key = ENV.fetch("MAPTILER_API_KEY")
     @zone = zone
     @date = date
-    @day = @date ? day_from_date(@date) : params.fetch("day", "today")
+    @day = @date ? day_from_date(@date) : day
     @pollutant = params.fetch("pollutant", "Total")
     @map_lat = params.fetch("lat", nil)
     @map_lon = params.fetch("lon", nil)
@@ -33,8 +33,6 @@ class ForecastsController < ApplicationController
       forecasts.second
     when "day_after_tomorrow"
       forecasts.third
-    else
-      raise ArgumentError, "Invalid day: #{day}"
     end
   end
 
@@ -48,5 +46,11 @@ class ForecastsController < ApplicationController
     Date.parse(params.fetch("date")) if params[:date].present?
   rescue ArgumentError
     Date.today # default to today
+  end
+
+  def day
+    return params.fetch("day") if %w[today tomorrow day_after_tomorrow].include?(params.dig("day"))
+
+    "today" # default to today
   end
 end
