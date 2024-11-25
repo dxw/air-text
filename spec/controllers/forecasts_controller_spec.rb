@@ -5,6 +5,7 @@ RSpec.describe ForecastsController do
   before do
     allow(Zone).to receive(:find_by).and_return(barnet)
     allow(Zone).to receive(:default).and_return(southwark)
+    allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
   end
 
   let(:forecasts) do
@@ -14,8 +15,6 @@ RSpec.describe ForecastsController do
   describe "GET :show" do
     context "when NO zone is given" do
       it "obtains forecasts for the default zone (Southwark) from the CercForecastService" do
-        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
         get :show
 
         expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
@@ -24,8 +23,6 @@ RSpec.describe ForecastsController do
 
     context "when zone IS given" do
       it "obtains forecasts for the given zone from the CercForecastService" do
-        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
         get :show, params: {zone: double}
 
         expect(CercForecastService).to have_received(:latest_forecasts_for).with(barnet)
@@ -33,8 +30,6 @@ RSpec.describe ForecastsController do
     end
 
     it "renders the _show_ template" do
-      allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
       get :show
 
       expect(response).to render_template("show")
@@ -42,8 +37,6 @@ RSpec.describe ForecastsController do
 
     context "when a recognised _day_ parameter is received" do
       it "renders the _show_ template" do
-        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
         get :show, params: {day: :today}
 
         expect(CercForecastService).to have_received(:latest_forecasts_for).with(southwark)
@@ -53,8 +46,6 @@ RSpec.describe ForecastsController do
 
     context "when an unrecognised _day_ parameter is received" do
       it "raises a helpful error" do
-        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
-
         expect {
           get :show, params: {day: :yesterday}
         }.to raise_error(ArgumentError, "Invalid day: yesterday")
@@ -63,7 +54,6 @@ RSpec.describe ForecastsController do
 
     context "when a _date_ parameter is received" do
       before do
-        allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
         get :show, params: {date: date.to_s}
       end
 
