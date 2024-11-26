@@ -4,5 +4,6 @@ FactoryBot.define do
     cerc_id { Faker::Number.between(from: 1, to: 1000000) }
     cerc_type { 1 }
     name { ["Barnet", "Brent", "Lewisham"].sample }
+    zone_group
   end
 end
