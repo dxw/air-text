@@ -1,7 +1,7 @@
 module SvgHelper
   def render_svg(svg_path, classes: nil, tag: nil)
-    asset = find_asset(svg_path)
-    return unless asset
+    asset = find_asset(svg_path + (".svg" unless svg_path.end_with?(".svg")).to_s)
+    return unless asset.present?
     return asset.html_safe if tag.nil?
 
     content_tag(tag, asset.html_safe, class: classes)
