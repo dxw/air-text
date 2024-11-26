@@ -8,4 +8,8 @@ class DayTabComponent < ViewComponent::Base
   def daqi_indicator_colour_class
     "daqi-level-#{@forecast.air_pollution.value}"
   end
+
+  def icon_stroke_colour_class
+    (@forecast.air_pollution.label == "HIGH") ? "stroke-white" : "stroke-black"
+  end
 end

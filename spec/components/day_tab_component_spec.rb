@@ -104,4 +104,27 @@ RSpec.describe DayTabComponent, type: :component do
       end
     end
   end
+
+  describe "icon_stroke_colour_class" do
+    let(:component) {
+      forecast = FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, label: label))
+      DayTabComponent.new(forecast: forecast, day: :today)
+    }
+
+    context "when the air pollution label is _HIGH_" do
+      let(:label) { "HIGH" }
+
+      it "returns _stroke-white_" do
+        expect(component.icon_stroke_colour_class).to eq("stroke-white")
+      end
+    end
+
+    context "when the air pollution label is _MODERATE_" do
+      let(:label) { "MODERATE" }
+
+      it "returns _stroke-black_" do
+        expect(component.icon_stroke_colour_class).to eq("stroke-black")
+      end
+    end
+  end
 end

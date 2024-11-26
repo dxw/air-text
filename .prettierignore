@@ -22,6 +22,7 @@
 *.rb
 *.ru
 *.sh
+*.svg
 *.txt
 *.gz
 *.map
