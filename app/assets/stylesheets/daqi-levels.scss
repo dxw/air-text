@@ -53,3 +53,15 @@
 .daqi-level-10 {
   @apply text-white bg-stone-700;
 }
+
+.stroke-white {
+  svg {
+    stroke: white;
+  }
+}
+
+.stroke-black {
+  svg {
+    stroke: black;
+  }
+}
