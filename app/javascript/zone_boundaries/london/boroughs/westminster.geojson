@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "name": "City of Westminster",
+    "name": "Westminster",
     "level": 2,
     "londonBorough": true
   },
