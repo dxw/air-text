@@ -55,6 +55,7 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
   gem "simplecov"
+  gem "shoulda-matchers", "~> 6.0"
   gem "climate_control"
   gem "webmock"
 end
