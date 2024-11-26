@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_28_152137) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_26_153827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,12 +23,26 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_28_152137) do
     t.index ["zone_id"], name: "index_cached_forecasts_on_zone_id"
   end
 
+  create_table "zone_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "zones", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "cerc_id", null: false
     t.integer "cerc_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.uuid "zone_group_id"
     t.index ["cerc_id"], name: "index_zones_on_cerc_id", unique: true
+    t.index ["zone_group_id"], name: "index_zones_on_zone_group_id"
   end
+
+  add_foreign_key "zones", "zone_groups"
 end
