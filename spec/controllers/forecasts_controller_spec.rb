@@ -3,7 +3,6 @@ RSpec.describe ForecastsController do
   let(:barnet) { double("Barnet") }
 
   before do
-    allow(Zone).to receive(:find_by).and_return(barnet)
     allow(Zone).to receive(:default).and_return(central_london)
     allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
   end
@@ -23,7 +22,9 @@ RSpec.describe ForecastsController do
 
     context "when zone IS given" do
       it "obtains forecasts for the given zone from the CercForecastService" do
-        get :show, params: {zone: double}
+        allow(Zone).to receive(:find_by).and_return(barnet)
+
+        get :show, params: {zone: "Barnet"}
 
         expect(CercForecastService).to have_received(:latest_forecasts_for).with(barnet)
       end

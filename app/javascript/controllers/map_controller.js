@@ -209,30 +209,21 @@ export default class MapController extends Controller {
   addZonesLayer() {
     const { zoneBoundaryLayers, zoneLabelMarkers } = this.zones();
     zoneBoundaryLayers.forEach((layer) => layer.addTo(this.map));
+    this.updateZoneBoundaryLayerStyles(zoneBoundaryLayers);
+
+    this.map.on("zoomend", () => {
+      this.updateZoneBoundaryLayerStyles(zoneBoundaryLayers);
+    });
+
     this.addZoneLabelMarkers(zoneLabelMarkers);
   }
 
   zones() {
     const zoneBoundaryLayers = [];
     const zoneLabelMarkers = [];
-    const zoneBoundaryLayerLevelStyles = {
-      1: { weight: 3 }, // stroke width
-      2: { weight: 1 },
-    };
 
     for (const [, zone] of Object.entries(zones)) {
-      const layer = L.geoJSON(zone, {
-        style: function (feature) {
-          return {
-            color: "black", // stroke color
-            weight:
-              zoneBoundaryLayerLevelStyles[feature.properties.level].weight,
-            fill: false,
-          };
-        },
-        pane: "zones",
-      });
-
+      const layer = L.geoJSON(zone, { pane: "zones" });
       zoneBoundaryLayers.push(layer);
 
       const bounds = layer.getBounds();
@@ -253,6 +244,18 @@ export default class MapController extends Controller {
     }
 
     return { zoneBoundaryLayers, zoneLabelMarkers };
+  }
+
+  updateZoneBoundaryLayerStyles(zoneBoundaryLayers) {
+    const zoom = this.map.getZoom();
+
+    zoneBoundaryLayers.forEach((layer) => {
+      layer.setStyle({
+        weight: 0.1 * 20 ** (zoom / 14), // Scale the stroke width with zoom
+        color: "black", // stroke color
+        fill: false,
+      });
+    });
   }
 
   addZoneLabelMarkers(zoneLabelMarkers) {

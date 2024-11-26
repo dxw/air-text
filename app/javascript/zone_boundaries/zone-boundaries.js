@@ -9,7 +9,6 @@ export { default as brent } from "./london/boroughs/brent-simplified.geojson";
 export { default as bromley } from "./london/boroughs/bromley-simplified.geojson";
 export { default as camden } from "./london/boroughs/camden-simplified.geojson";
 export { default as cityOfLondon } from "./london/boroughs/city-of-london-simplified.geojson";
-export { default as cityOfWestminster } from "./london/boroughs/city-of-westminster-simplified.geojson";
 export { default as croydon } from "./london/boroughs/croydon-simplified.geojson";
 export { default as ealing } from "./london/boroughs/ealing-simplified.geojson";
 export { default as enfield } from "./london/boroughs/enfield-simplified.geojson";
@@ -35,6 +34,7 @@ export { default as sutton } from "./london/boroughs/sutton-simplified.geojson";
 export { default as towerHamlets } from "./london/boroughs/tower-hamlets-simplified.geojson";
 export { default as walthamForest } from "./london/boroughs/waltham-forest-simplified.geojson";
 export { default as wandsworth } from "./london/boroughs/wandsworth-simplified.geojson";
+export { default as westminster } from "./london/boroughs/westminster-simplified.geojson";
 
 export { default as centralLondon } from "./london/regions/central-london-simplified.geojson";
 export { default as eastLondon } from "./london/regions/east-london-simplified.geojson";

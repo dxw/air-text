@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="site-title">
-    <span class="site-name">airTEXT</span>
+    <%= link_to "airTEXT", root_path, class: "site-name" %>
     <span class="site-strapline">Air quality service</span>
   </div>
   <nav data-controller="navigation">
@@ -8,10 +8,10 @@
     ☰
     </button>
     <ul class="hidden" data-navigation-target="menuList">
-      <li><a href="forecast">Air quality forecast</a></li>
+      <li><%= link_to "Air quality forecast", forecast_path %></li>
       <li>Alerts</li>
-      <li><a href="health_advice" class="">Health advice</a></li>
-      <li><a href="about" class="">About</a></li>
+      <li><%= link_to "Health advice", health_advice_path %></li>
+      <li><%= link_to "About", about_path %></li>
       <li>Contact</li>
     </ul>
   </nav>

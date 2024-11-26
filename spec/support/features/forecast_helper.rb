@@ -5,11 +5,6 @@ module Features
       HttpStubs.stub_forecasts_with(forecast_response)
     end
 
-    def view_forecasts
-      visit root_path
-      click_link("View forecasts")
-    end
-
     def switch_to_tab_for(day)
       case day
       when :tomorrow

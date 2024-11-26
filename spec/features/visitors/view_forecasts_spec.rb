@@ -45,7 +45,7 @@ RSpec.feature "Forecasts page", feature: true do
         # and I see predicted temperature level
         ##
 
-        view_forecasts
+        visit forecast_path
 
         # See the forecasts page
         expect(page).to have_content("Air quality forecast")
@@ -85,7 +85,7 @@ RSpec.feature "Forecasts page", feature: true do
         # And I see predicted temperature level for tomorrow
         ##
 
-        view_forecasts
+        visit forecast_path
         switch_to_tab_for(:tomorrow)
 
         # See that the tomorrow tab is active
@@ -118,7 +118,7 @@ RSpec.feature "Forecasts page", feature: true do
         # And I see predicted temperature level for the day after tomorrow
         ##
 
-        view_forecasts
+        visit forecast_path
         switch_to_tab_for(:day_after_tomorrow)
 
         # See that the day after tomorrow tab is active
@@ -153,7 +153,7 @@ RSpec.feature "Forecasts page", feature: true do
         end
 
         it "shows the pollen prediction" do
-          view_forecasts
+          visit forecast_path
 
           expect(page).to have_css(".pollen")
         end
@@ -170,7 +170,7 @@ RSpec.feature "Forecasts page", feature: true do
         end
 
         it "does not show the pollen prediction" do
-          view_forecasts
+          visit forecast_path
 
           expect(page).not_to have_css(".pollen")
         end

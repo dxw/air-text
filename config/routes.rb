@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get "health_check" => "application#health_check"
 
-  root to: "visitors#index"
+  root to: "forecasts#show"
 
   get "map", to: "map#show"
 

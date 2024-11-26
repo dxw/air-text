@@ -23,7 +23,7 @@ RSpec.feature "Air quality alerts", feature: true do
 
   describe "View air quality alert for today" do
     it "shows an air quality alert of high for today" do
-      view_forecasts
+      visit forecast_path
 
       within(".today[data-date='#{Date.today}']") do
         expect_to_see_alert_level(:high)
@@ -36,7 +36,7 @@ RSpec.feature "Air quality alerts", feature: true do
 
   describe "View air quality alert for tomorrow", js: true do
     it "shows an air quality alert of moderate for tomorrow" do
-      view_forecasts
+      visit forecast_path
       switch_to_tab_for(:tomorrow)
 
       within(".tomorrow[data-date='#{Date.tomorrow}']") do
@@ -52,7 +52,7 @@ RSpec.feature "Air quality alerts", feature: true do
 
   describe "View air quality alert for the day after tomorrow", js: true do
     it "shows an air quality alert of very high for the day after tomorrow" do
-      view_forecasts
+      visit forecast_path
       switch_to_tab_for(:day_after_tomorrow)
 
       within(".day_after_tomorrow[data-date='#{Date.tomorrow + 1.day}']") do
