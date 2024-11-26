@@ -62,4 +62,21 @@ RSpec.describe Forecast do
       end
     end
   end
+
+  describe "#share_message" do
+    let(:forecast) do
+      FactoryBot.build(
+        :forecast,
+        date: Date.new(2021, 1, 1),
+        zone: FactoryBot.build(:zone, name: "London"),
+        air_pollution: FactoryBot.build(:air_pollution_prediction, :high)
+      )
+    end
+
+    it "returns the share message" do
+      expect(forecast.share_message).to eq(
+        "On #{forecast.date.strftime("%A %d/%m/%Y")} the air pollution forecast for #{forecast.zone.name} is #{forecast.air_pollution.label} (#{forecast.air_pollution.value}/10). To learn more, visit https://airtext.info."
+      )
+    end
+  end
 end

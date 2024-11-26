@@ -3,7 +3,8 @@
 @import "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
 @import "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
 @import "leaflet.scss"; /* stylelint-disable-line scss/load-partial-extension */
-@import "daqi_levels.scss"; /* stylelint-disable-line scss/load-partial-extension */
+@import "daqi-levels.scss"; /* stylelint-disable-line scss/load-partial-extension */
+@import "share.scss"; /* stylelint-disable-line scss/load-partial-extension */
 
 @tailwind base;
 @tailwind components;

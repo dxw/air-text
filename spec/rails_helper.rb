@@ -67,6 +67,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.before(:example, feature: true) do
-    create_default_zone
+    FactoryBot.create(:zone, name: "Central London", cerc_id: 55)
   end
 end

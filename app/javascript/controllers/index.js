@@ -18,3 +18,6 @@ application.register("forecast", ForecastController);
 
 import NavigationController from "./navigation_controller";
 application.register("navigation", NavigationController);
+
+import ShareController from "./share_controller";
+application.register("share", ShareController);
