@@ -11,9 +11,9 @@
   <div class="date">
     <%= @forecast.date.strftime("%d %B") %>
   </div>
-  <div class="daqi-indicator <%= daqi_indicator_colour_class %>">
-    <% if @forecast.air_pollution.value > 3 %>
-      <%= render partial: "shared/icons/exclamation_triangle", locals: {forecast: @forecast} %>
+  <div class="daqi-indicator <%= daqi_indicator_colour_class %> <%= icon_stroke_colour_class %>">
+    <% if @forecast.air_pollution.label != 'LOW' %>
+      <%= helpers.render_svg "exclamation_triangle" %>
     <% end %>
   </div>
   <div class="daqi-label">
