@@ -48,9 +48,9 @@ class ForecastsController < ApplicationController
   end
 
   def zone
-    return Zone.default unless params[:zone]
-
-    Zone.find_by(name: params[:zone])
+    Zone.find_by!(name: params[:zone])
+  rescue ActiveRecord::RecordNotFound
+    Zone.default
   end
 
   def date
