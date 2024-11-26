@@ -20,7 +20,7 @@ RSpec.feature "Forecasts page - hsaring", feature: true do
     # Then I see the share icons for multiple platforms
 
     it "shows share icons for multiple platforms" do
-      view_forecasts
+      visit forecast_path
 
       click_on "Share with others"
 
@@ -44,7 +44,7 @@ RSpec.feature "Forecasts page - hsaring", feature: true do
       let(:share_message) { CGI.escape_uri_component(today_forecast.share_message) }
 
       before do
-        view_forecasts
+        visit forecast_path
 
         click_on "Share with others"
       end
