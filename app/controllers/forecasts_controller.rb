@@ -11,6 +11,7 @@ class ForecastsController < ApplicationController
 
     @forecasts = CercForecastService.latest_forecasts_for(@zone).data
     @day_forecast = forecast_for_day(@day, @forecasts)
+    @share_message = @day_forecast.share_message
 
     respond_to do |format|
       format.turbo_stream do

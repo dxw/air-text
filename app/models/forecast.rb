@@ -21,6 +21,10 @@ class Forecast
     AirQualityAlert.new(forecast: self)
   end
 
+  def share_message
+    "On #{date.strftime("%A %d/%m/%Y")} the air pollution forecast for #{zone.name} is #{air_pollution.label} (#{air_pollution.value}/10). To learn more, visit https://airtext.info."
+  end
+
   # :nocov:
   def inspect
     attr_values = [
