@@ -12,6 +12,8 @@ module DaqiProperties
 
   def daqi_level
     case @value
+    when -999
+      :low
     when 1..3
       :low
     when 4..6

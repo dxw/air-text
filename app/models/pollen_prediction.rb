@@ -15,10 +15,6 @@ class PollenPrediction
     I18n.t("prediction.guidance.pollen.#{daqi_level}")
   end
 
-  def valid?
-    value != -999
-  end
-
   # :nocov:
   def inspect
     "#<#{self.class.name} @value=#{value}>"

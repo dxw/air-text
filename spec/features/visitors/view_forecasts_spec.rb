@@ -158,23 +158,6 @@ RSpec.feature "Forecasts page", feature: true do
           expect(page).to have_css(".pollen")
         end
       end
-
-      context "when the pollen level is -999" do
-        before do
-          forecasts = [
-            Fixtures::API.zone_forecast(day: :today).merge("pollen" => -999),
-            Fixtures::API.zone_forecast(day: :tomorrow),
-            Fixtures::API.zone_forecast(day: :day_after_tomorrow)
-          ]
-          stub_cerc_api_with(forecasts)
-        end
-
-        it "does not show the pollen prediction" do
-          visit forecast_path
-
-          expect(page).not_to have_css(".pollen")
-        end
-      end
     end
   end
 end
