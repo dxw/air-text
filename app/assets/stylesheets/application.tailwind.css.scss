@@ -17,12 +17,8 @@
   --main-colour-light: #dae7f7;
 }
 
-main {
-  padding: 1rem;
-}
-
 .tabs {
-  @apply flex flex-row items-stretch border-b-[1px] border-zinc-500;
+  @apply flex flex-row items-stretch border-b-[1px] border-zinc-500 mx-4;
 
   border-radius: 10px 10px 0 0;
   gap: 0.5rem;
@@ -55,7 +51,7 @@ main {
 }
 
 .tab-contents {
-  @apply p-2 border-[1px] border-t-0 border-zinc-500;
+  @apply p-4 mx-4 border-[1px] border-t-0 border-zinc-500;
 
   border-radius: 0 0 10px 10px;
 }
@@ -104,7 +100,7 @@ main {
 .subscribe {
   background-color: var(--main-colour-light);
 
-  @apply p-8 mt-2 text-center;
+  @apply p-8 mt-4 text-center;
 
   header {
     @apply font-bold;
@@ -118,6 +114,8 @@ main {
 }
 
 .text-block {
+  @apply p-4;
+
   h1 {
     @apply text-2xl font-bold mt-5 mb-3;
   }
