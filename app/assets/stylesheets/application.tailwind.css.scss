@@ -50,19 +50,19 @@ main {
 }
 
 .tabs {
-  @apply flex flex-row items-stretch border-b-[2px] border-black;
+  @apply flex flex-row items-stretch border-b-[1px] border-zinc-500;
 
   border-radius: 10px 10px 0 0;
   gap: 0.5rem;
 }
 
 .tab {
-  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[2px] cursor-pointer;
+  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[1px] cursor-pointer;
 
   border-radius: 10px 10px 0 0;
 
   &.active {
-    @apply border-black border-solid border-b-0 -mb-[2px] bg-white;
+    @apply border-zinc-500 border-solid border-b-0 -mb-[1px] bg-white;
   }
 
   &.inactive {
@@ -83,9 +83,8 @@ main {
 }
 
 .tab-contents {
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-top: 0;
+  @apply p-2 border-[1px] border-t-0 border-zinc-500;
+
   border-radius: 0 0 10px 10px;
 }
 
