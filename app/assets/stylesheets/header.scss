@@ -45,6 +45,10 @@
 
       li {
         @apply pt-4;
+
+        a.active {
+          @apply font-bold underline;
+        }
       }
     }
   }

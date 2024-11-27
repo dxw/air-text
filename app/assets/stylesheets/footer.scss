@@ -6,6 +6,10 @@
   nav {
     li {
       @apply py-2;
+
+      a.active {
+        @apply font-bold underline;
+      }
     }
   }
 
