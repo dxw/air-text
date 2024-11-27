@@ -62,11 +62,11 @@ main {
   border-radius: 10px 10px 0 0;
 
   &.active {
-    @apply border-zinc-500 border-solid border-b-0 -mb-[1px] bg-white;
+    @apply border-zinc-500 border-solid border-b-0 -mb-[1px];
   }
 
   &.inactive {
-    @apply border-gray-400 border-dashed border-b-0 text-gray-400;
+    @apply border-gray-400 border-dashed border-b-0 text-gray-400 bg-white;
   }
 
   .daqi-indicator {
