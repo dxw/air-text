@@ -32,15 +32,37 @@ header.site-header {
     }
   }
 
-  nav {
-    @apply text-white flex-auto text-right;
+  button {
+    @apply text-5xl flex-auto text-white text-right;
 
-    button {
-      @apply text-5xl;
+    line-height: 0;
+
+    &::before {
+      content: "☰";
+      font-size: 4rem;
+      bottom: 0.25rem;
+      position: relative;
     }
 
+    &.menu-open {
+      &::before {
+        content: "✕";
+        font-size: 3.25rem;
+        bottom: 0;
+        right: 8px;
+      }
+    }
+  }
+  
+  nav {
+    @apply text-white w-full;
+
     ul {
-      @apply text-sm;
+      @apply text-xl my-4;
+
+      li {
+        @apply pt-4;
+      }
     }
   }
 }
