@@ -30,8 +30,31 @@
 .leaflet-container {
   a {
     left: 2px !important;
+
     img {
       width: 50px; /* Make the Maptiler logo smaller to fit on mobile */
+    }
+  }
+}
+
+.leaflet-control:not(.leaflet-control-attribution) {
+  border: 2px solid rgb(0 0 0 / 20%);
+  box-shadow: none;
+  border-radius: 4px;
+}
+
+.leaflet-top:has(.leaflet-ctrl-geocoder) {
+  max-width: calc(100% - 60px);
+
+  .leaflet-ctrl-geocoder {
+    max-width: 100%;
+
+    form {
+      max-width: 100%;
+
+      input {
+        height: 30px;
+      }
     }
   }
 }
