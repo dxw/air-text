@@ -119,14 +119,14 @@ main {
 
 .sharing {
   button {
-    @apply flex mx-auto mt-6 px-8 py-2 rounded-md text-white justify-center;
+    @apply flex mx-auto mt-2 px-8 py-2 rounded-md text-white justify-center;
 
     background-color: var(--main-colour);
   }
 }
 
 .forecast-timestamp {
-  @apply text-sm text-center text-gray-500 mt-2 block;
+  @apply text-xs text-gray-500 text-center mt-2 block italic;
 }
 
 .learning,
