@@ -1,6 +1,9 @@
-<dl class="predictions mt-3">
-  <h3 class="text-xl font-bold">Other environmental forecasts</h3>
-  <%= render(PredictionComponent.new(prediction: @day_forecast.uv)) %>
-  <%= render(PredictionComponent.new(prediction: @day_forecast.pollen)) if @day_forecast.pollen.valid? %>
-  <%= render "temperature_prediction", prediction: @day_forecast.temperature %>
-</dl>
+<turbo-frame id="predictions-frame">
+  <dl class="predictions mt-3">
+    <h3 class="text-xl font-bold">Other environmental forecasts</h3>
+    <%= render(PredictionComponent.new(prediction: @day_forecast.uv)) %>
+    <%= render(PredictionComponent.new(prediction: @day_forecast.pollen)) if @day_forecast.pollen.valid? %>
+    <%= render "temperature_prediction", prediction: @day_forecast.temperature %>
+  </dl>
+  <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution.forecasted_at.strftime("%H:%M on %A %d %B %Y") %></span>
+</turbo-frame>

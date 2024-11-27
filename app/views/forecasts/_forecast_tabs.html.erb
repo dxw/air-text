@@ -1,6 +1,8 @@
-<h3 class="text-xl font-bold mt-4 mb-2"> Air pollution for <%= @zone.name %></h3>
-<div class="tabs">
-  <%= render(DayTabComponent.new(forecast: @forecasts.first, day: 'today', active: @day == 'today')) %>
-  <%= render(DayTabComponent.new(forecast: @forecasts.second, day: 'tomorrow', active: @day == 'tomorrow')) %>
-  <%= render(DayTabComponent.new(forecast: @forecasts.third, day: 'day_after_tomorrow', active: @day == 'day_after_tomorrow')) %>
-</div>
+<turbo-frame id="forecast-tabs-frame">
+  <h3 class="text-xl font-bold mt-4 mb-2"> Air pollution for <%= @zone.name %></h3>
+  <div class="tabs">
+    <%= render(DayTabComponent.new(forecast: @forecasts.first, day: 'today', active: @day == 'today')) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.second, day: 'tomorrow', active: @day == 'tomorrow')) %>
+    <%= render(DayTabComponent.new(forecast: @forecasts.third, day: 'day_after_tomorrow', active: @day == 'day_after_tomorrow')) %>
+  </div>
+</turbo-frame>

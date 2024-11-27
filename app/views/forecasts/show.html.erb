@@ -6,12 +6,14 @@
 <p>The air quality forecast displays levels of air pollution, ultraviolet rays, pollen, and temperature over the next three days for your area of interest.</p>
 
 <div data-controller="map forecast">
-  <%= render "top" %>
+  <%= render "location_selector" %>
+  <%= render "forecast_tabs" %>
 
   <div class="tab-contents">
+    <%= render "alert_guidance" %>
     <%= render "map" %>
-
-    <%= render "bottom" %>
+    <%= render "predictions" %>
+    <%= render "sharing" %>
   </div>
 </div>
 
