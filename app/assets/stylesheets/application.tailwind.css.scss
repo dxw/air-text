@@ -70,7 +70,7 @@ main {
   }
 
   .daqi-indicator {
-    @apply size-9 rounded-full mx-auto my-1 flex justify-center items-center;
+    @apply size-7 rounded-full mx-auto my-1 flex justify-center items-center p-[3px];
   }
 
   .daqi-label {
