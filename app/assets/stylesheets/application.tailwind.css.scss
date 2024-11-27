@@ -161,4 +161,49 @@ main {
       @apply px-2 py-1 border border-gray-400;
     }
   }
+
+  details {
+    summary {
+      cursor: pointer;
+
+      &::marker {
+        content: none; /* Hide the default marker */
+      }
+
+      h3 {
+        margin: 0;
+
+        &::after {
+          content: "\002B"; /* Unicode character for plus sign */
+          display: flex;
+          width: 1.5rem;
+          aspect-ratio: 1;
+          float: right;
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 3px;
+          font-size: 1.3rem;
+          line-height: 0;
+          font-weight: normal;
+          color: black;
+          border: 1px solid black;
+          border-radius: 100%;
+        }
+      }
+    }
+
+    &[open] summary h3 {
+      margin-bottom: 1rem;
+
+      &::after {
+        content: "\2212"; /* Unicode character for minus sign */
+      }
+    }
+  }
+}
+
+.how-forecasts-are-made {
+  @apply py-8 px-4;
+
+  background-color: #eee;
 }
