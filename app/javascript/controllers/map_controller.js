@@ -59,7 +59,7 @@ export default class MapController extends Controller {
       zoomControl: false,
       fullscreenControl: true,
       fullscreenControlOptions: {
-        position: "topright",
+        position: "bottomright",
       },
     });
 
@@ -165,7 +165,7 @@ export default class MapController extends Controller {
 
   addGeolocationControl() {
     new LocateControl({
-      position: "bottomright",
+      position: "topright",
     }).addTo(this.map);
   }
 
