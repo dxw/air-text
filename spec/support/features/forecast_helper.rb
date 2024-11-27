@@ -103,11 +103,14 @@ module Features
     def expect_temperature_content_for_level(level)
       case level
       when :low
-        expect(page).to have_content("-5°C - 4°C")
+        expect(page).to have_content("-5 to 4°C")
+        expect(page).to have_content("23 to 38°F")
       when :moderate
-        expect(page).to have_content("9°C - 16°C")
+        expect(page).to have_content("9 to 16°C")
+        expect(page).to have_content("48 to 62°F")
       when :high
-        expect(page).to have_content("27°C - 31°C")
+        expect(page).to have_content("27 to 31°C")
+        expect(page).to have_content("80 to 88°F")
       else
         raise "unexpected level #{level}"
       end
