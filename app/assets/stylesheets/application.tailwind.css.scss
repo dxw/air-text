@@ -57,7 +57,7 @@ main {
 }
 
 .tab {
-  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[2px];
+  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[2px] cursor-pointer;
 
   border-radius: 10px 10px 0 0;
 
