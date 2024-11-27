@@ -18,17 +18,17 @@
 header.site-header {
   background-color: var(--main-colour);
 
-  @apply flex flex-row p-4;
+  @apply flex flex-row flex-wrap p-4;
 
   .site-title {
-    @apply text-white flex-auto;
+    @apply text-white text-center;
 
     .site-name {
-      @apply text-2xl font-bold block;
+      @apply text-4xl font-bold block;
     }
 
     .site-strapline {
-      @apply text-sm block;
+      @apply text-xs block;
     }
   }
 
