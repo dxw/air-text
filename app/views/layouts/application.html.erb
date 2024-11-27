@@ -18,10 +18,7 @@
         <%= render "layouts/messages" %>
         <%= yield %>
       </main>
-      <footer class="mt-6">
-        <%= render "shared/footer_navigation" %>
-        <%= render "shared/terms_and_conditions" %>
-      </footer>
+      <%= render "shared/footer" %>
     </div>
   </body>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>

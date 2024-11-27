@@ -16,8 +16,10 @@ class ForecastsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace("forecasts-frame-top", partial: "forecasts/top"),
-          turbo_stream.replace("forecasts-frame-bottom", partial: "forecasts/bottom")
+          turbo_stream.replace("forecast-tabs-frame", partial: "forecasts/forecast_tabs"),
+          turbo_stream.replace("alert-guidance-frame", partial: "forecasts/alert_guidance"),
+          turbo_stream.replace("predictions-frame", partial: "forecasts/predictions"),
+          turbo_stream.replace("sharing-frame", partial: "forecasts/sharing")
         ]
       end
       format.html

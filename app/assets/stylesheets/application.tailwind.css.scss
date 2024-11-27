@@ -5,6 +5,8 @@
 @import "leaflet.scss"; /* stylelint-disable-line scss/load-partial-extension */
 @import "daqi-levels.scss"; /* stylelint-disable-line scss/load-partial-extension */
 @import "share.scss"; /* stylelint-disable-line scss/load-partial-extension */
+@import "header.scss"; /* stylelint-disable-line scss/load-partial-extension */
+@import "footer.scss"; /* stylelint-disable-line scss/load-partial-extension */
 
 @tailwind base;
 @tailwind components;
@@ -15,62 +17,28 @@
   --main-colour-light: #dae7f7;
 }
 
-header.site-header {
-  background-color: var(--main-colour);
-
-  @apply flex flex-row p-4;
-
-  .site-title {
-    @apply text-white flex-auto;
-
-    .site-name {
-      @apply text-2xl font-bold block;
-    }
-
-    .site-strapline {
-      @apply text-sm block;
-    }
-  }
-
-  nav {
-    @apply text-white flex-auto text-right;
-
-    button {
-      @apply text-5xl;
-    }
-
-    ul {
-      @apply text-sm;
-    }
-  }
-}
-
-main {
-  padding: 1rem;
-}
-
 .tabs {
-  @apply flex flex-row items-stretch border-b-[2px] border-black;
+  @apply flex flex-row items-stretch border-b-[1px] border-zinc-500 mx-4;
 
   border-radius: 10px 10px 0 0;
   gap: 0.5rem;
 }
 
 .tab {
-  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[2px];
+  @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[1px] cursor-pointer;
 
   border-radius: 10px 10px 0 0;
 
   &.active {
-    @apply border-black border-solid border-b-0 -mb-[2px] bg-white;
+    @apply border-zinc-500 border-solid border-b-0 -mb-[1px];
   }
 
   &.inactive {
-    @apply border-gray-400 border-dashed border-b-0 text-gray-400;
+    @apply border-gray-400 border-dashed border-b-0 text-gray-400 bg-white;
   }
 
   .daqi-indicator {
-    @apply size-9 rounded-full mx-auto my-1 flex justify-center items-center;
+    @apply size-7 rounded-full mx-auto my-1 flex justify-center items-center p-[3px];
   }
 
   .daqi-label {
@@ -83,9 +51,8 @@ main {
 }
 
 .tab-contents {
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-top: 0;
+  @apply p-4 mx-4 border-[1px] border-t-0 border-zinc-500;
+
   border-radius: 0 0 10px 10px;
 }
 
@@ -117,23 +84,23 @@ main {
   }
 }
 
+.forecast-timestamp {
+  @apply text-xs text-gray-500 text-center mt-2 block italic;
+}
+
 .sharing {
   button {
-    @apply flex mx-auto mt-6 px-8 py-2 rounded-md text-white justify-center;
+    @apply flex mx-auto mt-2 px-8 py-2 rounded-md text-white justify-center;
 
     background-color: var(--main-colour);
   }
-}
-
-.forecast-timestamp {
-  @apply text-sm text-center text-gray-500 mt-2 block;
 }
 
 .learning,
 .subscribe {
   background-color: var(--main-colour-light);
 
-  @apply p-8 mt-2 text-center;
+  @apply p-8 mt-4 text-center;
 
   header {
     @apply font-bold;
@@ -146,15 +113,9 @@ main {
   }
 }
 
-select {
-  @apply inline-flex flex-row w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
-}
-
-.home-page-link {
-  color: revert;
-}
-
 .text-block {
+  @apply p-4;
+
   h1 {
     @apply text-2xl font-bold mt-5 mb-3;
   }
@@ -198,4 +159,49 @@ select {
       @apply px-2 py-1 border border-gray-400;
     }
   }
+
+  details {
+    summary {
+      cursor: pointer;
+
+      &::marker {
+        content: none; /* Hide the default marker */
+      }
+
+      h3 {
+        margin: 0;
+
+        &::after {
+          content: "\002B"; /* Unicode character for plus sign */
+          display: flex;
+          width: 1.5rem;
+          aspect-ratio: 1;
+          float: right;
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 3px;
+          font-size: 1.3rem;
+          line-height: 0;
+          font-weight: normal;
+          color: black;
+          border: 1px solid black;
+          border-radius: 100%;
+        }
+      }
+    }
+
+    &[open] summary h3 {
+      margin-bottom: 1rem;
+
+      &::after {
+        content: "\2212"; /* Unicode character for minus sign */
+      }
+    }
+  }
+}
+
+.how-forecasts-are-made {
+  @apply py-8 px-4;
+
+  background-color: #eee;
 }

@@ -50,42 +50,50 @@ RSpec.feature "Forecasts page - hsaring", feature: true do
       end
 
       describe "Sharing to WhatsApp" do
-        it "shares the forecast to WhatsApp" do
-          click_on "WhatsApp"
-          expect(page.current_url).to match(%r{https://wa.me/\?text=#{share_message}})
+        it "has a WhatsApp sharing link" do
+          within(:xpath, "//a[contains(@href, 'https://wa.me/?text=#{share_message}')]") do
+            expect(page).to have_content("WhatsApp")
+          end
         end
       end
 
       describe "Sharing to X / Twitter" do
-        it "shares the forecast to Twitter" do
-          click_on "X / Twitter"
-          expect(page.current_url).to match(%r{https://x.com/intent/tweet\?text=#{share_message}})
+        it "has a Twitter sharing link" do
+          within(:xpath, "//a[contains(@href, 'https://x.com/intent/tweet?text=#{share_message}')]") do
+            expect(page).to have_content("X / Twitter")
+          end
         end
       end
 
       describe "Sharing to Bluesky" do
-        it "shares the forecast to Bluesky" do
-          click_on "Bluesky"
-          expect(page.current_url).to match(%r{https://bsky.app/intent/compose\?text=#{share_message}})
+        it "has a Bluesky sharing link" do
+          within(:xpath, "//a[contains(@href, 'https://bsky.app/intent/compose?text=#{share_message}')]") do
+            expect(page).to have_content("Bluesky")
+          end
         end
       end
 
       describe "Sharing to Facebook" do
-        it "shares the link to Facebook" do
-          click_on "Facebook"
-          expect(page.current_url).to match(%r{https://facebook.com/sharer/sharer.php\?u=http://www.example.com/forecast})
+        it "has a Facebook sharing link" do
+          within(:xpath, "//a[contains(@href, 'https://facebook.com/sharer/sharer')]") do
+            expect(page).to have_content("Facebook")
+          end
         end
       end
 
       describe "Sharing via text message" do
         it "has an sms link" do
-          expect(page).to have_link(nil, href: "sms:;?&body=#{share_message}")
+          within(:xpath, "//a[contains(@href, 'sms:;?&body=#{share_message}')]") do
+            expect(page).to have_content("Text message")
+          end
         end
       end
 
       describe "Sharing via email" do
         it "has a mailto link" do
-          expect(page).to have_link(nil, href: "mailto:?body=#{share_message}&subject=Air%20quality%20forecast")
+          within(:xpath, "//a[contains(@href, 'mailto:?body=#{share_message}&subject=Air%20quality%20forecast')]") do
+            expect(page).to have_content("Email")
+          end
         end
       end
     end

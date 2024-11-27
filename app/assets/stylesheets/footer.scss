@@ -1,0 +1,33 @@
+.site-footer {
+  @apply text-white py-8 px-6;
+
+  background-color: var(--main-colour);
+
+  nav {
+    li {
+      @apply py-2;
+
+      a.active {
+        @apply font-bold underline;
+      }
+    }
+  }
+
+  .terms-and-conditions {
+    @apply mt-6;
+
+    font-size: 0; /* Remove whitespace between inline-block elements */
+
+    li {
+      @apply text-xs inline-block border-r-white border-r px-2;
+
+      &:first-child {
+        @apply pl-0;
+      }
+
+      &:last-child {
+        @apply border-0;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.site-header {
+  background-color: var(--main-colour);
+
+  @apply flex flex-row flex-wrap p-4;
+
+  .site-title {
+    @apply text-white text-center;
+
+    .site-name {
+      @apply text-4xl font-bold block;
+    }
+
+    .site-strapline {
+      @apply text-xs block;
+    }
+  }
+
+  button {
+    @apply text-5xl flex-auto text-white text-right;
+
+    line-height: 0;
+
+    &::before {
+      content: "☰";
+      font-size: 4rem;
+      bottom: 0.25rem;
+      position: relative;
+    }
+
+    &.menu-open {
+      &::before {
+        content: "✕";
+        font-size: 3.25rem;
+        bottom: 0;
+        right: 8px;
+      }
+    }
+  }
+
+  nav {
+    @apply text-white w-full;
+
+    ul {
+      @apply text-xl my-4;
+
+      li {
+        @apply pt-4;
+
+        a.active {
+          @apply font-bold underline;
+        }
+      }
+    }
+  }
+}
