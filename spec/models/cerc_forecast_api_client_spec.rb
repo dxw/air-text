@@ -1,8 +1,8 @@
-RSpec.describe CercApiClient do
+RSpec.describe CercForecastApiClient do
   around do |example|
     env_vars = {
-      CERC_API_HOST_URL: "https://example.com",
-      CERC_API_KEY: "ABC123"
+      CERC_FORECAST_API_HOST_URL: "https://example.com",
+      CERC_FORECAST_API_KEY: "ABC123"
     }
     ClimateControl.modify(env_vars) { example.run }
   end
@@ -11,7 +11,7 @@ RSpec.describe CercApiClient do
     it "makes a request to the API with the expected parameters" do
       allow(HTTParty).to receive(:get)
 
-      CercApiClient.latest_forecasts("North London")
+      CercForecastApiClient.latest_forecasts("North London")
       expect(HTTParty).to have_received(:get).with("https://example.com/getforecast/all", {
         query: {
           "zone" => "North London",
@@ -47,7 +47,7 @@ RSpec.describe CercApiClient do
       before { allow(HTTParty).to receive(:get).and_return(forecasts_for_all_zones) }
 
       it "asks the CERC API for 3 days worth of forecasts for each zone" do
-        CercApiClient.latest_forecasts
+        CercForecastApiClient.latest_forecasts
 
         expect(HTTParty).to have_received(:get).with("https://example.com/getforecast/all", {
           query: {
@@ -59,7 +59,7 @@ RSpec.describe CercApiClient do
       end
 
       it "returns 3 daily forecasts for each zone" do
-        expect(CercApiClient.latest_forecasts).to eq(forecasts_for_all_zones)
+        expect(CercForecastApiClient.latest_forecasts).to eq(forecasts_for_all_zones)
       end
     end
   end

@@ -48,7 +48,8 @@ Each entry in our cache will include these properties:
 ##### `obtained_at`
 
 The timestamp of when the forecast was fetched. We will use this to expire our
-cache after `CERC_API_CACHE_LIMIT_MINS` with the `CachedForecast.stale?` test.
+cache after `CERC_FORECAST_API_CACHE_LIMIT_MINS` with the
+`CachedForecast.stale?` test.
 
 ##### `zone`
 

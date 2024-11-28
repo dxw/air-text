@@ -7,13 +7,13 @@ RSpec.describe CercForecastService do
 
       before do
         allow(CachedForecast).to receive(:stale?).and_return(true)
-        allow(CercApiClient).to receive(:latest_forecasts).and_return(latest_forecasts_from_api)
+        allow(CercForecastApiClient).to receive(:latest_forecasts).and_return(latest_forecasts_from_api)
       end
 
       it "asks the CercApiClient for the latest_forecasts (for all zones)" do
         CercForecastService.latest_forecasts(zone)
 
-        expect(CercApiClient).to have_received(:latest_forecasts).with(no_args)
+        expect(CercForecastApiClient).to have_received(:latest_forecasts).with(no_args)
       end
 
       it "caches a built forecast for each zone" do
@@ -27,14 +27,14 @@ RSpec.describe CercForecastService do
       let(:latest_forecast_from_cache) { double("CachedForecast") }
       before do
         allow(CachedForecast).to receive(:stale?).and_return(false)
-        allow(CercApiClient).to receive(:latest_forecasts)
+        allow(CercForecastApiClient).to receive(:latest_forecasts)
         allow(CachedForecast).to receive(:latest_for).and_return(latest_forecast_from_cache)
       end
 
       it "does not ask the CercApiClient for the latest_forecasts" do
         CercForecastService.latest_forecasts(zone)
 
-        expect(CercApiClient).not_to have_received(:latest_forecasts)
+        expect(CercForecastApiClient).not_to have_received(:latest_forecasts)
       end
 
       it "returns the cached forecast for the given zone" do

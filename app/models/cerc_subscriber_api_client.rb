@@ -1,0 +1,52 @@
+class CercSubscriberApiClient
+  class << self
+    def find_subscriber(email:, phone:)
+      query = {
+        email: email,
+        phone: phone
+      }
+
+      request("find-subscriber", :get, query)
+    end
+
+    def get_subscriptions(subscriber_id)
+      request("subscriptions/#{subscriber_id}", :get)
+    end
+
+    def create_subscription(zone:, mode:, ampm:, subscriber_id: nil, phone: nil, email: nil, subscriber_details: nil)
+      query = {
+        subscriberId: subscriber_id,
+        zone: zone,
+        mode: mode,
+        phone: phone,
+        email: email,
+        ampm: ampm,
+        subscriberDetails: subscriber_details
+      }
+
+      request("subscriptions", :post, query)
+    end
+
+    def delete_subscription(subscriber_id, subscription_id)
+      query = {
+        subscriberId: subscriber_id,
+        subscriptionId: subscription_id
+      }
+
+      request("subscriptions", :delete, query)
+    end
+
+    private
+
+    def request(endpoint, method, query = {})
+      base_url = ENV.fetch("CERC_SUBSCRIBE_API_HOST_URL")
+      query["key"] = ENV.fetch("CERC_SUBSCRIBE_API_KEY")
+
+      if method == :post
+        HTTParty.post("#{base_url}/#{endpoint}", body: query.compact)
+      else
+        HTTParty.get("#{base_url}/#{endpoint}", query: query.compact)
+      end
+    end
+  end
+end
