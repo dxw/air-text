@@ -1,11 +1,11 @@
 <turbo-frame id="alert-guidance-frame">
-<% if @day_forecast.air_quality_alert %>
-  <div class="alert-guidance bg-<%= @day_forecast.air_quality_alert.daqi_label.parameterize(separator: "_") %>-alert-guidance-panel p-4">
+<% if @day_forecast.air_quality_alert? %>
+  <div class="alert-guidance bg-<%= @day_forecast.air_pollution[:label].parameterize %>-alert-guidance-panel p-4">
     <p class="font-semibold mb-4">
-      <%= t("air_quality_alert.#{@day_forecast.air_quality_alert.daqi_label.parameterize(separator: "_")}.guidance.title") %>
+      <%= t("air_quality_alert.#{@day_forecast.air_pollution[:label].parameterize(separator: "_")}.guidance.title") %>
     </p>
     <div class="text-xs">
-      <%= t("air_quality_alert.#{@day_forecast.air_quality_alert.daqi_label.parameterize(separator: "_")}.guidance.detail_html") %>
+      <%= t("air_quality_alert.#{@day_forecast.air_pollution[:label].parameterize(separator: "_")}.guidance.detail_html") %>
     </div>
   </div>
 <% end %>

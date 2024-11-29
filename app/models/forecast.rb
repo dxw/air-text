@@ -11,14 +11,8 @@ class Forecast
     @temperature = attrs.fetch(:temperature)
   end
 
-  def alerts
-    [air_quality_alert].compact
-  end
-
-  def air_quality_alert
-    return if air_pollution[:label] == "LOW"
-
-    AirQualityAlert.new(forecast: self)
+  def air_quality_alert?
+    air_pollution[:label] != "LOW"
   end
 
   def share_message
