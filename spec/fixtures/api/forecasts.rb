@@ -26,7 +26,7 @@ module Fixtures
           "O3" => 2,
           "PM10" => 1,
           "PM2.5" => 1,
-          "forecast_date" => forecast_date_for(day).to_s,
+          "forecast_date" => forecast_date_for(day),
           "non_pollution_version" => nil,
           "pollen" => daqi_value_for_level(pollen),
           "pollution_version" => 202410011407,
