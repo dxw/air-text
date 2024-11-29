@@ -28,15 +28,15 @@ module Fixtures
           "PM2.5" => 1,
           "forecast_date" => forecast_date_for(day),
           "non_pollution_version" => nil,
-          "pollen" => daqi_value_for_level(pollen),
+          "pollen" => value_for_level(:pollen, pollen),
           "pollution_version" => 202410011407,
           "rain_am" => 1.31,
           "rain_pm" => 3.01,
           "temp_max" => max_temp_for(temperature),
           "temp_min" => min_temp_for(temperature),
-          "total" => daqi_value || daqi_value_for_level(air_pollution_status),
-          "total_status" => total_status_for(air_pollution_status).to_s,
-          "uv" => daqi_value_for_level(uv),
+          "total" => daqi_value || value_for_level(:daqi, air_pollution_status),
+          "total_status" => air_pollution_status.to_s.humanize.upcase,
+          "uv" => value_for_level(:uv, uv),
           "wind_am" => 5.3,
           "wind_pm" => 6.0
         }
@@ -73,9 +73,9 @@ module Fixtures
         when :today
           Date.today
         when :tomorrow
-          Date.today + 1.day
+          Date.tomorrow
         when :day_after_tomorrow
-          Date.today + 2.days
+          Date.tomorrow + 1.day
         else
           raise "day: #{day} not expected"
         end
@@ -83,32 +83,27 @@ module Fixtures
         date.iso8601
       end
 
-      def total_status_for(air_pollution_status)
-        case air_pollution_status
-        when :low
-          "LOW"
-        when :moderate
-          "MODERATE"
-        when :high
-          "HIGH"
-        when :very_high
-          "VERY HIGH"
-        end
-      end
-
-      def daqi_value_for_level(daqi_level)
-        case daqi_level
-        when :low
-          [1, 2, 3].sample
-        when :moderate
-          [4, 5, 6].sample
-        when :high
-          [7, 8, 9].sample
-        when :very_high
-          10
-        else
-          raise "DAQI level of #{level} not known"
-        end
+      def value_for_level(type, value)
+        {
+          daqi: {
+            low: [1, 2, 3].sample,
+            moderate: [4, 5, 6].sample,
+            high: [7, 8, 9].sample,
+            very_high: 10
+          },
+          pollen: {
+            low: [1, 2, 3].sample,
+            moderate: [4, 5, 6].sample,
+            high: [7, 8, 9].sample,
+            very_high: 10
+          },
+          uv: {
+            low: [1, 2].sample,
+            moderate: [3, 4, 5].sample,
+            high: [6, 7].sample,
+            very_high: [8, 9, 10].sample
+          }
+        }[type][value]
       end
     end
   end

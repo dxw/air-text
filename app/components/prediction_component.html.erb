@@ -1,9 +1,7 @@
-<div class="prediction <%= name_for_class %> <%= daqi_level_for_class %>">
+<div class="prediction <%= css_name %>">
   <div class="summary flex flex-row">
-    <dt class="name w-1/2"> <%= name_for_label %></dt>
-    <dd class="daqi-label w-1/2"><%= daqi_level_for_label %></dd>
+    <dt class="name w-1/2"> <%= name %></dt>
+    <dd class="display-value w-1/2"><%= display_value&.html_safe %></dd>
   </div>
-  <div id="<%= name_for_class %>-guidance" class="guidance <%= guidance_visible? ? "visible" : "hidden" %> <%= guidance_panel_colour %>">
-    <%= guidance%>
-  </div>
+  <div class="guidance <%= guidance_visible? ? "visible" : "hidden" %> <%= guidance_panel_colour %>"><%= guidance_text&.html_safe %></div>
 </div>

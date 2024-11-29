@@ -65,7 +65,7 @@ RSpec.feature "Forecasts page", feature: true do
         expect_air_pollution_prediction(day: :day_after_tomorrow, value: :very_high)
 
         # UV level
-        expect_prediction(category: :"ultraviolet-rays-uv", level: :low)
+        expect_prediction(category: :uv, level: :low)
 
         # Pollen level
         expect_prediction(category: :pollen, level: :low)
@@ -98,7 +98,7 @@ RSpec.feature "Forecasts page", feature: true do
         expect(page).not_to have_css(".tab.day_after_tomorrow.active")
 
         # Predicted UV level for tomorrow
-        expect_prediction(category: :"ultraviolet-rays-uv", level: :moderate)
+        expect_prediction(category: :uv, level: :moderate)
 
         # Predicted pollen level for tomorrow
         expect_prediction(category: :pollen, level: :moderate)
@@ -131,7 +131,7 @@ RSpec.feature "Forecasts page", feature: true do
         expect(page).not_to have_css(".tab.tomorrow.active")
 
         # Predicted UV level for the day after tomorrow
-        expect_prediction(category: :"ultraviolet-rays-uv", level: :high)
+        expect_prediction(category: :uv, level: :high)
 
         # Predicted pollen level for the day after tomorrow
         expect_prediction(category: :pollen, level: :high)

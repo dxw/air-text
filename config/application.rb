@@ -44,12 +44,7 @@ module AirText
         ActiveSupport::TimeZone,
         Time,
         Date,
-        Forecast,
-        ForecastZone,
-        AirPollutionPrediction,
-        UvPrediction,
-        PollenPrediction,
-        TemperaturePrediction
+        Forecast
       ]
     end
   end

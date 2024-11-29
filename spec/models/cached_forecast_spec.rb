@@ -113,7 +113,7 @@ RSpec.describe CachedForecast do
     it "looks up activerecord Zone with Forecast#zone ID" do
       CachedForecast.store(built_forecasts)
 
-      expect(Zone).to have_received(:find_by).with(cerc_id: forecast_zone.id)
+      expect(Zone).to have_received(:find_by).with(cerc_id: forecast_zone[:id])
     end
 
     it "sets #obtained_at from the Forecast#obtained_at timestamp" do
@@ -131,7 +131,7 @@ RSpec.describe CachedForecast do
     it "sets #data with the list of built forecasts for serialisation to JSONB" do
       cached_forecast = CachedForecast.store(built_forecasts)
 
-      expect(cached_forecast.data.inspect).to eq(built_forecasts.inspect)
+      expect(cached_forecast.data.to_json).to eq(built_forecasts.to_json)
     end
   end
 end
