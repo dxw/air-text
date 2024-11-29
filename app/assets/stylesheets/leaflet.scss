@@ -1,18 +1,44 @@
 /* Airtext specific styles */
 
 .leaflet-marker-icon.zone-label {
-  color: black;
-  font-size: 12px;
   width: auto !important;
   height: auto !important;
-  background-color: white;
-  padding: 0 3px;
-  text-align: center;
-  border-radius: 3px;
-  opacity: 1;
 
   &.zone-label-level-1 {
     font-weight: bold;
+  }
+
+  .wrapper {
+    display: flex;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 12px;
+    background-color: white;
+    text-align: center;
+    border-radius: 3px;
+  }
+
+  .zone-name {
+    padding: 0 6px;
+  }
+
+  .daqi-indicator {
+    padding: 0 6px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+
+    /* 
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 4px;
+      background-color: red;
+    }
+    */
   }
 }
 

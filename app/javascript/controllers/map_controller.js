@@ -207,43 +207,24 @@ export default class MapController extends Controller {
   }
 
   addZonesLayer() {
-    const { zoneBoundaryLayers, zoneLabelMarkers } = this.zones();
+    const zoneBoundaryLayers = this.zoneBoundariesLayers();
     zoneBoundaryLayers.forEach((layer) => layer.addTo(this.map));
     this.updateZoneBoundaryLayerStyles(zoneBoundaryLayers);
 
     this.map.on("zoomend", () => {
       this.updateZoneBoundaryLayerStyles(zoneBoundaryLayers);
     });
-
-    this.addZoneLabelMarkers(zoneLabelMarkers);
   }
 
-  zones() {
+  zoneBoundariesLayers() {
     const zoneBoundaryLayers = [];
-    const zoneLabelMarkers = [];
 
     for (const [, zone] of Object.entries(zones)) {
       const layer = L.geoJSON(zone, { pane: "zones" });
       zoneBoundaryLayers.push(layer);
-
-      const bounds = layer.getBounds();
-      const center = bounds.getCenter();
-
-      const label = L.marker(center, {
-        icon: L.divIcon({
-          className:
-            "zone-label " + `zone-label-level-${zone.properties.level}`,
-          html: zone.properties.name,
-        }),
-      });
-
-      zoneLabelMarkers.push({
-        marker: label,
-        londonBorough: zone.properties.londonBorough,
-      });
     }
 
-    return { zoneBoundaryLayers, zoneLabelMarkers };
+    return zoneBoundaryLayers;
   }
 
   updateZoneBoundaryLayerStyles(zoneBoundaryLayers) {
@@ -258,27 +239,37 @@ export default class MapController extends Controller {
     });
   }
 
-  addZoneLabelMarkers(zoneLabelMarkers) {
+  async updateZoneLabels() {
+    const pollutant_forecasts = await this.getForecastData();
+
+    // Remove existing zone labels
+    this.layers.zoneLabels?.forEach((marker) => this.map.removeLayer(marker));
+    this.layers.zoneLabels = [];
+
     // Only show the zone labels when the map is zoomed in enough
-    zoneLabelMarkers.forEach(({ marker, londonBorough }) => {
-      const startZoom = 9 + (londonBorough ? 2 : 0); // Only show London borough labels at higher zoom
+    for (const [, zone] of Object.entries(zones)) {
+      const startZoom = 9 + (zone.properties.londonBorough ? 2 : 0); // Only show London borough labels at higher zoom
       const endZoom = 20;
 
-      // Add the marker to the map initially if within the zoom range
+      // Add the marker to the map if within the zoom range
       if (this.map.getZoom() >= startZoom && this.map.getZoom() <= endZoom) {
-        marker.addTo(this.map);
-      }
+        const center = {
+          lat: zone.properties.center[1],
+          lng: zone.properties.center[0],
+        };
+        const pollutant_value = pollutant_forecasts[zone.properties.name];
 
-      // Attach the zoomend event to control visibility
-      this.map.on("zoomend", () => {
-        const currentZoom = this.map.getZoom();
-        if (currentZoom >= startZoom && currentZoom <= endZoom) {
-          this.map.addLayer(marker);
-        } else {
-          this.map.removeLayer(marker);
-        }
-      });
-    });
+        const marker = L.marker(center, {
+          icon: L.divIcon({
+            className:
+              "zone-label " + `zone-label-level-${zone.properties.level}`,
+            html: `<div class="wrapper"><span class="daqi-indicator">${pollutant_value}</span><span class="zone-name">${zone.properties.name}</span></div>`,
+          }),
+        });
+        marker.addTo(this.map);
+        this.layers.zoneLabels.push(marker);
+      }
+    }
   }
 
   findZones(coordinatesLngLat) {
@@ -303,10 +294,21 @@ export default class MapController extends Controller {
   updateMap() {
     this.updateSettings();
     this.updatePollutionLayer();
+    this.updateZoneLabels();
   }
 
   updatePollutionLayer() {
     this.map.removeLayer(this.layers.pollution);
     this.addPollutionLayer();
+  }
+
+  async getForecastData() {
+    const pollutant = this.pollutantSelectorTarget.value;
+    const date = this.daySelectorTarget.value;
+
+    const response = await fetch(
+      `/pollutant_forecasts?pollutant=${pollutant}&date=${date}`
+    );
+    return response.json();
   }
 }
