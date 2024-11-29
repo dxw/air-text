@@ -3,7 +3,8 @@
   "properties": {
     "name": "Kingston upon Thames",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.282, 51.377]
   },
   "geometry": {
     "type": "Polygon",

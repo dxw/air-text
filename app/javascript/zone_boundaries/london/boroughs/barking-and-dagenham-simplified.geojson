@@ -3,7 +3,8 @@
   "properties": {
     "name": "Barking and Dagenham",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [0.134, 51.521]
   },
   "geometry": {
     "type": "Polygon",

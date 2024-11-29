@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Runnymede",
-    "level": 2
+    "level": 2,
+    "center": [-0.5436, 51.393]
   },
   "geometry": {
     "type": "MultiPolygon",

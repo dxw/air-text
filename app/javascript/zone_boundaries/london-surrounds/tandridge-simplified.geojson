@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Tandridge",
-    "level": 2
+    "level": 2,
+    "center": [-0.0482, 51.2321]
   },
   "geometry": {
     "type": "MultiPolygon",

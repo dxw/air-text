@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Elmbridge",
-    "level": 2
+    "level": 2,
+    "center": [-0.3926, 51.3632]
   },
   "geometry": {
     "type": "MultiPolygon",

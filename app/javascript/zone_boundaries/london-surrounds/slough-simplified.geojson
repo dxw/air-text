@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Slough",
-    "level": 2
+    "level": 2,
+    "center": [-0.614, 51.516]
   },
   "geometry": {
     "type": "Polygon",

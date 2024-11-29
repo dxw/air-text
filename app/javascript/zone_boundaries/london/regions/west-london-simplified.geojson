@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "West London",
-    "level": 1
+    "level": 1,
+    "center": [-0.3440047709644355, 51.483425694671055]
   },
   "geometry": {
     "type": "Polygon",

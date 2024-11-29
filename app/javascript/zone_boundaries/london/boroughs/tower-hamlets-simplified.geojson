@@ -3,7 +3,8 @@
   "properties": {
     "name": "Tower Hamlets",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.045, 51.518]
   },
   "geometry": {
     "type": "Polygon",

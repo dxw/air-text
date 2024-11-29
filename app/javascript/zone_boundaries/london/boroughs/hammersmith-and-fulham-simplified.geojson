@@ -3,7 +3,8 @@
   "properties": {
     "name": "Hammersmith and Fulham",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.205, 51.475]
   },
   "geometry": {
     "type": "Polygon",

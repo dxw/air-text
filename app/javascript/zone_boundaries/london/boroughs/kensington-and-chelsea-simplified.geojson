@@ -3,7 +3,8 @@
   "properties": {
     "name": "Kensington and Chelsea",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.195, 51.494]
   },
   "geometry": {
     "type": "Polygon",

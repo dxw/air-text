@@ -3,7 +3,8 @@
   "properties": {
     "name": "Redbridge",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [0.0741, 51.579]
   },
   "geometry": {
     "type": "Polygon",

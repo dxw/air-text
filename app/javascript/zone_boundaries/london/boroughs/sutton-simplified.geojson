@@ -3,7 +3,8 @@
   "properties": {
     "name": "Sutton",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.1945, 51.3618]
   },
   "geometry": {
     "type": "Polygon",

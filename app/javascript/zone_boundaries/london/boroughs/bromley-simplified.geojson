@@ -3,7 +3,8 @@
   "properties": {
     "name": "Bromley",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [0.065, 51.371]
   },
   "geometry": {
     "type": "Polygon",

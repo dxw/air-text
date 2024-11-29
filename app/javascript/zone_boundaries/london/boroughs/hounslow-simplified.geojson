@@ -3,7 +3,8 @@
   "properties": {
     "name": "Hounslow",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.368, 51.4746]
   },
   "geometry": {
     "type": "Polygon",

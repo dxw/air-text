@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Mole Valley",
-    "level": 2
+    "level": 2,
+    "center": [-0.3209, 51.1954]
   },
   "geometry": {
     "type": "MultiPolygon",

@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Central London",
-    "level": 1
+    "level": 1,
+    "center": [-0.10943188765589451, 51.494387681168874]
   },
   "geometry": {
     "type": "Polygon",

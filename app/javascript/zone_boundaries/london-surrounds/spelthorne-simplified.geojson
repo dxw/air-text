@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Spelthorne",
-    "level": 2
+    "level": 2,
+    "center": [-0.4729, 51.4263]
   },
   "geometry": {
     "type": "MultiPolygon",
