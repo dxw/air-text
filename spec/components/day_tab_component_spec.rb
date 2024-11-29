@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 RSpec.describe DayTabComponent, type: :component do
   describe "daqi_indicator_colour_class" do
     context "when the air pollution level is 1" do
