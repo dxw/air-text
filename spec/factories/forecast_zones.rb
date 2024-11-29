@@ -1,14 +1,9 @@
-# @zone=#<ForecastZone
-#   @id=29
-#   @name=Southwark
-#   @type=1>
-
 FactoryBot.define do
-  factory :forecast_zone do
+  factory :forecast_zone, class: Hash do
     id { 55 }
     name { "Central London" }
     type { 1 }
 
-    initialize_with { new(**attributes) }
+    initialize_with { attributes }
   end
 end

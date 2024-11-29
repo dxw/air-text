@@ -22,7 +22,7 @@ class Forecast
   end
 
   def share_message
-    "On #{date.strftime("%A %d/%m/%Y")} the air pollution forecast for #{zone.name} is #{air_pollution[:label]} (#{air_pollution[:total]}/10). To learn more, visit https://airtext.info."
+    "On #{date.strftime("%A %d/%m/%Y")} the air pollution forecast for #{zone[:name]} is #{air_pollution[:label]} (#{air_pollution[:total]}/10). To learn more, visit https://airtext.info."
   end
 
   # :nocov:

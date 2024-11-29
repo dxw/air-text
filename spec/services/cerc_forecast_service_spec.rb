@@ -81,9 +81,9 @@ RSpec.describe CercForecastService do
       aggregate_failures do
         expect(forecast.date).to eq(Date.parse("2024-10-02"))
 
-        expect(forecast.zone.name).to eq("Southwark")
-        expect(forecast.zone.id).to eq(29)
-        expect(forecast.zone.type).to eq("London Borough")
+        expect(forecast.zone[:name]).to eq("Southwark")
+        expect(forecast.zone[:id]).to eq(29)
+        expect(forecast.zone[:type]).to eq(1)
 
         expect(forecast.air_pollution[:forecasted_at]).to eq(Time.zone.parse("202410021550"))
         expect(forecast.air_pollution[:nitrogen_dioxide]).to eq(1)

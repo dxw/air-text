@@ -25,11 +25,11 @@ class CercForecastService
           obtained_at: obtained_at,
           date: Date.parse(forecast.fetch("forecast_date")),
 
-          zone: ForecastZone.new(
+          zone: {
             id: zone.fetch("zone_id"),
             name: zone.fetch("zone_name"),
             type: zone.fetch("zone_type")
-          ),
+          },
 
           air_pollution: {
             forecasted_at: Time.zone.parse(forecast.fetch("pollution_version").to_s),

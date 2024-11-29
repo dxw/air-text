@@ -15,7 +15,7 @@ class CachedForecast < ApplicationRecord
   end
 
   def self.store(built_forecasts)
-    zone = Zone.find_by(cerc_id: built_forecasts.first.zone.id)
+    zone = Zone.find_by(cerc_id: built_forecasts.first.zone[:id])
     obtained_at = built_forecasts.first.obtained_at
 
     create(
