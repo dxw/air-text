@@ -86,10 +86,10 @@ RSpec.describe CercForecastService do
         expect(forecast.zone[:type]).to eq(1)
 
         expect(forecast.air_pollution[:forecasted_at]).to eq(Time.zone.parse("202410021550"))
-        expect(forecast.air_pollution[:nitrogen_dioxide]).to eq(1)
-        expect(forecast.air_pollution[:particulate_matter_10]).to eq(1)
-        expect(forecast.air_pollution[:particulate_matter_2_5]).to eq(1)
-        expect(forecast.air_pollution[:ozone]).to eq(2)
+        expect(forecast.air_pollution[:no2]).to eq(1)
+        expect(forecast.air_pollution[:pm10]).to eq(1)
+        expect(forecast.air_pollution[:pm2_5]).to eq(1)
+        expect(forecast.air_pollution[:o3]).to eq(2)
         expect(forecast.air_pollution[:total]).to eq(10)
         expect(forecast.air_pollution[:label]).to eq("VERY HIGH")
 
