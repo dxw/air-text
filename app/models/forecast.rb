@@ -1,15 +1,7 @@
 class Forecast
-  attr_reader :obtained_at, :date, :zone, :air_pollution, :uv, :pollen, :temperature
+  include ActiveModel::Model
 
-  def initialize(attrs)
-    @obtained_at = attrs.fetch(:obtained_at)
-    @date = attrs.fetch(:date)
-    @zone = attrs.fetch(:zone)
-    @air_pollution = attrs.fetch(:air_pollution)
-    @uv = attrs.fetch(:uv)
-    @pollen = attrs.fetch(:pollen)
-    @temperature = attrs.fetch(:temperature)
-  end
+  attr_accessor :obtained_at, :date, :zone, :air_pollution, :uv, :pollen, :temperature
 
   def air_quality_alert?
     air_pollution[:label] != "LOW"
@@ -18,20 +10,4 @@ class Forecast
   def share_message
     "On #{date.strftime("%A %d/%m/%Y")} the air pollution forecast for #{zone[:name]} is #{air_pollution[:label]} (#{air_pollution[:total]}/10). To learn more, visit https://airtext.info."
   end
-
-  # :nocov:
-  def inspect
-    attr_values = [
-      "@obtained_at=#{obtained_at}",
-      "@date=#{date}",
-      "@zone=#{zone.inspect}",
-      "@air_pollution=#{air_pollution.inspect}",
-      "@uv=#{uv.inspect}",
-      "@pollen=#{pollen.inspect}",
-      "@temperature=#{temperature.inspect}"
-    ]
-
-    "#<#{self.class.name} #{attr_values.join(" ")}>"
-  end
-  # :nocov:
 end

@@ -6,21 +6,18 @@ class CachedForecast < ApplicationRecord
   scope :latest_for, ->(zone) { where("zone_id = ?", zone.id).last }
 
   def self.stale?
-    if (latest_record = last)
-      threshold = Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
-      return latest_record.obtained_at < threshold
-    end
+    latest_record = last
 
-    true
+    return true if latest_record.nil?
+
+    threshold = Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
+    latest_record.obtained_at < threshold
   end
 
   def self.store(built_forecasts)
-    zone = Zone.find_by(cerc_id: built_forecasts.first.zone[:id])
-    obtained_at = built_forecasts.first.obtained_at
-
     create(
-      zone: zone,
-      obtained_at: obtained_at,
+      zone: Zone.find_by(cerc_id: built_forecasts.first.zone[:id]),
+      obtained_at: built_forecasts.first.obtained_at,
       data: built_forecasts
     )
   end

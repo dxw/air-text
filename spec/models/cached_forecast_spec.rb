@@ -131,7 +131,7 @@ RSpec.describe CachedForecast do
     it "sets #data with the list of built forecasts for serialisation to JSONB" do
       cached_forecast = CachedForecast.store(built_forecasts)
 
-      expect(cached_forecast.data.inspect).to eq(built_forecasts.inspect)
+      expect(cached_forecast.data.to_json).to eq(built_forecasts.to_json)
     end
   end
 end
