@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: redirect("/forecast")
 
   get :forecast, to: "forecasts#show"
+  get :pollutant_forecasts, to: "forecasts#pollutant_forecasts"
   get :subscribe, to: "subscriptions#new"
   get :health_advice, to: "pages#health_advice"
   get :about, to: "pages#about"

@@ -27,6 +27,22 @@ class ForecastsController < ApplicationController
     end
   end
 
+  def pollutant_forecasts
+    @date = date
+    @day = @date ? day_from_date(@date) : day
+    @pollutant = pollutant
+
+    latest_forecasts = CercForecastService.latest_forecasts
+
+    pollutant_forecasts = latest_forecasts.each_with_object({}) do |zone_forecasts, hash|
+      zone_name = zone_forecasts.data.first.zone[:name]
+      forecast = forecast_for_day(@day, zone_forecasts.pollutant_forecasts(@pollutant))
+      hash[zone_name] = forecast
+    end
+
+    render json: pollutant_forecasts
+  end
+
   private
 
   def day_from_date(date)

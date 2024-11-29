@@ -137,4 +137,30 @@ RSpec.describe ForecastsController do
       end
     end
   end
+
+  describe "GET :pollutant_forecasts" do
+    let(:day) { nil }
+    let(:pollutant) { nil }
+
+    before do
+      allow(CercForecastService).to receive(:latest_forecasts).and_return([forecasts])
+      get :pollutant_forecasts, params: {day: day, pollutant: pollutant}
+    end
+
+    context "when a _day_ parameter is received" do
+      let(:day) { "tomorrow" }
+
+      it "returns the total forecasts for the given day" do
+        expect(response.body).to eq({"Central London" => forecasts.pollutant_forecasts("Total").second}.to_json)
+      end
+    end
+
+    context "when a _pollutant_ parameter is received" do
+      let(:pollutant) { "PM10" }
+
+      it "returns the PM10 forecasts for today" do
+        expect(response.body).to eq({"Central London" => forecasts.pollutant_forecasts("PM10").first}.to_json)
+      end
+    end
+  end
 end

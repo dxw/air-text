@@ -9,6 +9,10 @@ class CachedForecast < ApplicationRecord
       .order(:zone_id, obtained_at: :desc)
   }
 
+  def pollutant_forecasts(pollutant)
+    data.map { |f| f.air_pollution[pollutant.downcase.to_sym] }
+  end
+
   def self.stale?
     latest_record = last
 
