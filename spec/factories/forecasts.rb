@@ -31,7 +31,7 @@ FactoryBot.define do
     transient do
       air_pollution_level { 1 }
     end
-    air_pollution { FactoryBot.build(:air_pollution_prediction, value: air_pollution_level) }
+    air_pollution { FactoryBot.build(:air_pollution_prediction, total: air_pollution_level) }
 
     initialize_with { new(**attributes) }
   end

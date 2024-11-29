@@ -46,7 +46,6 @@ module AirText
         Date,
         Forecast,
         ForecastZone,
-        AirPollutionPrediction,
         UvPrediction,
         PollenPrediction,
         TemperaturePrediction

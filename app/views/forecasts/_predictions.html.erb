@@ -5,5 +5,5 @@
     <%= render(PredictionComponent.new(prediction: @day_forecast.pollen)) %>
     <%= render "temperature_prediction", prediction: @day_forecast.temperature %>
   </dl>
-  <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution.forecasted_at.strftime("%H:%M on %A %d %B %Y") %></span>
+  <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution[:forecasted_at].strftime("%H:%M on %A %d %B %Y") %></span>
 </turbo-frame>

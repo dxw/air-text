@@ -29,16 +29,7 @@ module Features
       expect(page).to have_content("air quality alert for #{date}")
     end
 
-    def expect_to_see_alert_level(level)
-      label = case level
-      when :moderate
-        "Moderate"
-      when :high
-        "High"
-      when :very_high
-        "Very high"
-      end
-
+    def expect_to_see_alert_level(label)
       expect(page).to have_css(".daqi-label", text: label)
     end
 

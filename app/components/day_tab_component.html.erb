@@ -1,4 +1,4 @@
-<%= tag.div class: "tab #{@day} #{@active ? 'active' : 'inactive'} #{@forecast.air_pollution.label == 'LOW' ? 'bg-white' : daqi_indicator_colour_class}",
+<%= tag.div class: "tab #{@day} #{@active ? 'active' : 'inactive'} #{@forecast.air_pollution[:label] == 'LOW' ? 'bg-white' : daqi_indicator_colour_class}",
   data: {
     date: @forecast.date.to_s,
     day: @day,
@@ -12,14 +12,14 @@
     <%= @forecast.date.strftime("%d %B") %>
   </div>
   <div class="daqi-indicator <%= daqi_indicator_colour_class %> <%= icon_stroke_colour_class %>">
-    <% if @forecast.air_pollution.label != 'LOW' %>
+    <% if @forecast.air_pollution[:label] != 'LOW' %>
       <%= helpers.render_svg "exclamation_triangle" %>
     <% end %>
   </div>
   <div class="daqi-label">
-    <%= @forecast.air_pollution.label.capitalize %>
+    <%= @forecast.air_pollution[:label].capitalize %>
   </div>
   <div class="daqi-value">
-    Index <%= @forecast.air_pollution.value %>/10
+    Index <%= @forecast.air_pollution[:total] %>/10
   </div>
 <% end %>

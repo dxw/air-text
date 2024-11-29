@@ -15,56 +15,9 @@ RSpec.describe AirQualityAlert do
     end
   end
 
-  describe "tag_colour" do
-    context "when the #daqi_level is 'moderate'" do
-      let(:forecast) do
-        FactoryBot.build(
-          :forecast,
-          air_pollution: FactoryBot.build(:air_pollution_prediction, :moderate)
-        )
-      end
-
-      it "returns _yellow_" do
-        expect(alert.tag_colour).to eq(:yellow)
-      end
-    end
-
-    context "when the #daqi_level is 'high'" do
-      let(:forecast) do
-        FactoryBot.build(
-          :forecast,
-          air_pollution: FactoryBot.build(:air_pollution_prediction, :high)
-        )
-      end
-
-      it "returns _red_" do
-        expect(alert.tag_colour).to eq(:red)
-      end
-    end
-
-    context "when the #daqi_level is 'very high'" do
-      let(:forecast) do
-        FactoryBot.build(
-          :forecast,
-          air_pollution: FactoryBot.build(:air_pollution_prediction, :very_high)
-        )
-      end
-
-      it "returns _purple_" do
-        expect(alert.tag_colour).to eq(:purple)
-      end
-    end
-  end
-
   describe "#daqi_label" do
     it "returns the associated forecast's air pollution prediction's daqi_label" do
-      expect(alert.daqi_label).to eq("High")
-    end
-  end
-
-  describe "#daqi_level" do
-    it "returns the associated forecast's air pollution prediction's daqi_level" do
-      expect(alert.daqi_level).to eq(:high)
+      expect(alert.daqi_label).to eq("HIGH")
     end
   end
 
