@@ -56,17 +56,22 @@
   border-radius: 0 0 10px 10px;
 }
 
-.map {
-  @apply w-full h-80 mt-2;
-}
+#map-wrapper {
+  @apply flex mt-2;
 
-.daqi-scale {
-  @apply flex flex-row;
+  .map {
+    @apply w-full h-80;
+  }
 
-  div {
-    @apply flex py-1 justify-center items-center;
+  .daqi-scale {
+    @apply flex flex-col-reverse;
 
-    width: 10%;
+    div {
+      @apply flex py-1 justify-center items-center;
+
+      width: 2rem;
+      height: 10%;
+    }
   }
 }
 

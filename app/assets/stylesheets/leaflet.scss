@@ -27,10 +27,16 @@
   }
 }
 
+.leaflet-control-attribution {
+  font-size: 50%;
+}
+
+.leaflet-bottom.leaflet-left {
+  bottom: 10px !important;
+}
+
 .leaflet-container {
   a {
-    left: 2px !important;
-
     img {
       width: 50px; /* Make the Maptiler logo smaller to fit on mobile */
     }
