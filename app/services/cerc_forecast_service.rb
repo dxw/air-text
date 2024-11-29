@@ -41,12 +41,12 @@ class CercForecastService
             label: forecast.fetch("total_status")
           },
 
-          uv: UvPrediction.new(value: forecast.fetch("uv")),
-          pollen: PollenPrediction.new(value: forecast.fetch("pollen")),
-          temperature: TemperaturePrediction.new(
+          uv: forecast.fetch("uv"),
+          pollen: forecast.fetch("pollen"),
+          temperature: {
             min: forecast.fetch("temp_min"),
             max: forecast.fetch("temp_max")
-          )
+          }
         })
       end
     end

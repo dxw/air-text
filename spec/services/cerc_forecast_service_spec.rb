@@ -18,7 +18,7 @@ RSpec.describe CercForecastService do
 
       it "caches a built forecast for each zone" do
         api_temperature = latest_forecasts_from_api["zones"].first["forecasts"].first["temp_max"]
-        cached_temperature = CercForecastService.latest_forecasts_for(zone).data.first.temperature.max_c
+        cached_temperature = CercForecastService.latest_forecasts_for(zone).data.first.temperature[:max]
         expect(cached_temperature).to eq(api_temperature)
       end
     end
@@ -93,16 +93,12 @@ RSpec.describe CercForecastService do
         expect(forecast.air_pollution[:total]).to eq(10)
         expect(forecast.air_pollution[:label]).to eq("VERY HIGH")
 
-        expect(forecast.uv.value).to eq(2)
-        expect(forecast.uv.daqi_label).to eq("Low")
-        expect(forecast.uv.guidance).to eq("No action required. You can safely stay outside.")
+        expect(forecast.uv).to eq(2)
 
-        expect(forecast.pollen.value).to eq(-999)
+        expect(forecast.pollen).to eq(-999)
 
-        expect(forecast.temperature.min_c).to eq(10.0)
-        expect(forecast.temperature.min_f).to eq(50.0)
-        expect(forecast.temperature.max_c).to eq(16.6)
-        expect(forecast.temperature.max_f).to eq(61.88)
+        expect(forecast.temperature[:min]).to eq(10.0)
+        expect(forecast.temperature[:max]).to eq(16.6)
       end
     end
   end

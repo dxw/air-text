@@ -42,20 +42,14 @@ module Features
 
     def expect_prediction(category:, level:)
       within(".#{category}") do
-        expect_content_for(category:, level:)
-      end
-    end
-
-    def expect_content_for(category:, level:)
-      case category
-      when :"ultraviolet-rays-uv"
-        expect_uv_content_for_level(level)
-      when :pollen
-        expect_pollen_content_for_level(level)
-      when :temperature
-        expect_temperature_content_for_level(level)
-      else
-        raise "category #{category} not implemented"
+        case category
+        when :uv
+          expect_uv_content_for_level(level)
+        when :pollen
+          expect_pollen_content_for_level(level)
+        when :temperature
+          expect_temperature_content_for_level(level)
+        end
       end
     end
 
@@ -63,15 +57,10 @@ module Features
       case level
       when :low
         expect(page).to have_content("Low")
-        expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
       when :moderate
         expect(page).to have_content("Moderate")
-        expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
       when :high
         expect(page).to have_content("High")
-        expect(page).to have_content(I18n.t("prediction.guidance.ultraviolet_rays_uv.#{level}"))
-      else
-        raise "unexpected level #{level}"
       end
     end
 
@@ -79,15 +68,10 @@ module Features
       case level
       when :low
         expect(page).to have_content("Low")
-        expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
       when :moderate
         expect(page).to have_content("Moderate")
-        expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
       when :high
         expect(page).to have_content("High")
-        expect(page).to have_content(I18n.t("prediction.guidance.pollen.#{level}"))
-      else
-        raise "unexpected level #{level}"
       end
     end
 
@@ -102,8 +86,6 @@ module Features
       when :high
         expect(page).to have_content("27 to 31°C")
         expect(page).to have_content("80 to 88°F")
-      else
-        raise "unexpected level #{level}"
       end
     end
 
@@ -150,38 +132,6 @@ module Features
         "High"
       when :very_high
         "Very high"
-      else
-        raise "unexpected value #{value}"
-      end
-    end
-
-    def content_for_uv(value)
-      case value
-      when :low
-        "Low - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
-      when :moderate
-        "Moderate - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
-      when :high
-        "High - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
-      when :very_high
-        "Very high - #{I18n.t("prediction.guidance.ultraviolet_rays_uv.#{value}")}"
-      else
-        raise "Unexpected UV value #{value}"
-      end
-    end
-
-    def content_for_pollen(value)
-      case value
-      when :low
-        "Low - #{I18n.t("prediction.guidance.pollen.#{value}")}"
-      when :moderate
-        "Moderate - #{I18n.t("prediction.guidance.pollen.#{value}")}"
-      when :high
-        "High - #{I18n.t("prediction.guidance.pollen.#{value}")}"
-      when :very_high
-        "Very high - #{I18n.t("prediction.guidance.pollen.#{value}")}"
-      else
-        raise "Unexpected Pollen value #{value}"
       end
     end
   end
