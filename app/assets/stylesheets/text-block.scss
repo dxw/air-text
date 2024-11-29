@@ -1,0 +1,139 @@
+.h1 {
+  @apply text-2xl font-bold mt-5 mb-3;
+}
+
+.h2 {
+  @apply text-xl font-bold mt-5 mb-3;
+}
+
+.h3 {
+  @apply text-lg font-bold mt-5 mb-3;
+}
+
+.h4 {
+  @apply text-base font-bold mt-3 mb-1;
+}
+
+.a {
+  @apply text-blue-500 underline;
+}
+
+.text-block {
+  h1 {
+    @apply h1;
+  }
+
+  h2 {
+    @apply h2;
+  }
+
+  h3 {
+    @apply h3;
+  }
+
+  h4 {
+    @apply h4;
+  }
+
+  ul.bullets {
+    @apply list-disc list-inside;
+
+    li {
+      @apply ml-2;
+    }
+  }
+
+  p {
+    @apply mb-2;
+
+    a {
+      @apply a;
+    }
+  }
+
+  table {
+    @apply max-w-sm border-collapse;
+
+    th {
+      @apply px-2 py-1 border border-gray-400;
+    }
+
+    td {
+      @apply px-2 py-1 border border-gray-400;
+    }
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-top: 1px solid #ccc;
+
+    dt,
+    dd {
+      @apply p-2;
+
+      border-bottom: 1px solid #ccc;
+    }
+
+    dt {
+      @apply font-bold bg-gray-200;
+    }
+  }
+
+  ul {
+    border-top: 1px solid #ccc;
+
+    li {
+      @apply py-2;
+
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+
+details {
+  summary {
+    cursor: pointer;
+
+    &::marker {
+      content: none; /* Hide the default marker */
+    }
+
+    h4 {
+      margin: 0 !important;
+
+      &::after {
+        content: "\002B"; /* Unicode character for plus sign */
+        display: flex;
+        width: 1.5rem;
+        aspect-ratio: 1;
+        float: right;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 3px;
+        font-size: 1.3rem;
+        line-height: 0;
+        font-weight: normal;
+        color: black;
+        border: 1px solid black;
+        border-radius: 100%;
+      }
+    }
+
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  &[open] summary h4 {
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "\2212"; /* Unicode character for minus sign */
+    }
+  }
+}
+
+select {
+  @apply inline-flex flex-row w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
+}

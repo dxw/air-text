@@ -126,12 +126,6 @@ GEM
     cuprite (0.15.1)
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
-    database_cleaner (2.1.0)
-      database_cleaner-active_record (>= 2, < 3)
-    database_cleaner-active_record (2.2.0)
-      activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0.0)
-    database_cleaner-core (2.0.1)
     date (3.3.4)
     debug_inspector (1.2.0)
     diff-lcs (1.5.1)
@@ -464,7 +458,6 @@ DEPENDENCIES
   climate_control
   cssbundling-rails (~> 1.4)
   cuprite
-  database_cleaner
   dotenv
   factory_bot_rails
   faker
