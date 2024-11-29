@@ -415,9 +415,6 @@ GEM
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
@@ -500,7 +497,6 @@ DEPENDENCIES
   stimulus-rails
   terser
   turbo-rails
-  turbolinks (~> 5)
   tzinfo-data
   view_component
   web-console (>= 3.3.0)
