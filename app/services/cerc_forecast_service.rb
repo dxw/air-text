@@ -1,9 +1,13 @@
 class CercForecastService
   class << self
-    def latest_forecasts_for(zone)
+    def latest_forecasts(zone = nil)
       refresh_cache if CachedForecast.stale?
 
-      CachedForecast.latest_for(zone)
+      if zone.nil?
+        CachedForecast.latest_for_all_zones
+      else
+        CachedForecast.latest_for(zone)
+      end
     end
 
     private

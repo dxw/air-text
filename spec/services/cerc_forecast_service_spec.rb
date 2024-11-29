@@ -1,5 +1,5 @@
 RSpec.describe CercForecastService do
-  describe "::latest_forecasts_for(zone)" do
+  describe "::latest_forecasts(zone)" do
     let(:zone) { FactoryBot.create(:zone, cerc_id: 55) }
 
     context "when the cache is stale" do
@@ -11,14 +11,14 @@ RSpec.describe CercForecastService do
       end
 
       it "asks the CercApiClient for the latest_forecasts (for all zones)" do
-        CercForecastService.latest_forecasts_for(zone)
+        CercForecastService.latest_forecasts(zone)
 
         expect(CercApiClient).to have_received(:latest_forecasts).with(no_args)
       end
 
       it "caches a built forecast for each zone" do
         api_temperature = latest_forecasts_from_api["zones"].first["forecasts"].first["temp_max"]
-        cached_temperature = CercForecastService.latest_forecasts_for(zone).data.first.temperature[:max]
+        cached_temperature = CercForecastService.latest_forecasts(zone).data.first.temperature[:max]
         expect(cached_temperature).to eq(api_temperature)
       end
     end
@@ -32,13 +32,26 @@ RSpec.describe CercForecastService do
       end
 
       it "does not ask the CercApiClient for the latest_forecasts" do
-        CercForecastService.latest_forecasts_for(zone)
+        CercForecastService.latest_forecasts(zone)
 
         expect(CercApiClient).not_to have_received(:latest_forecasts)
       end
 
       it "returns the cached forecast for the given zone" do
-        expect(CercForecastService.latest_forecasts_for(zone)).to eq(latest_forecast_from_cache)
+        expect(CercForecastService.latest_forecasts(zone)).to eq(latest_forecast_from_cache)
+      end
+    end
+
+    context "when no zone is given" do
+      let(:latest_forecast_from_cache) { double("CachedForecast") }
+
+      before do
+        allow(CachedForecast).to receive(:stale?).and_return(false)
+        allow(CachedForecast).to receive(:latest_for_all_zones).and_return([latest_forecast_from_cache])
+      end
+
+      it "returns the latest forecasts for all zones" do
+        expect(CercForecastService.latest_forecasts).to match_array([latest_forecast_from_cache])
       end
     end
   end

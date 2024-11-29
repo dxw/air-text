@@ -5,7 +5,7 @@ class ForecastsController < ApplicationController
     @day = @date ? day_from_date(@date) : day
     @pollutant = pollutant
 
-    @forecasts = CercForecastService.latest_forecasts_for(@zone).data
+    @forecasts = CercForecastService.latest_forecasts(@zone).data
     @day_forecast = forecast_for_day(@day, @forecasts)
     @share_message = @day_forecast.share_message
 

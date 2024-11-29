@@ -4,6 +4,10 @@ class CachedForecast < ApplicationRecord
   serialize :data
 
   scope :latest_for, ->(zone) { where("zone_id = ?", zone.id).last }
+  scope :latest_for_all_zones, -> {
+    select("DISTINCT ON (zone_id) *")
+      .order(:zone_id, obtained_at: :desc)
+  }
 
   def self.stale?
     latest_record = last

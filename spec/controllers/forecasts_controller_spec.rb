@@ -4,7 +4,6 @@ RSpec.describe ForecastsController do
 
   before do
     allow(Zone).to receive(:default).and_return(central_london)
-    allow(CercForecastService).to receive(:latest_forecasts_for).and_return(forecasts)
   end
 
   let(:forecasts) do
@@ -12,11 +11,15 @@ RSpec.describe ForecastsController do
   end
 
   describe "GET :show" do
+    before do
+      allow(CercForecastService).to receive(:latest_forecasts).and_return(forecasts)
+    end
+
     context "when NO zone is given" do
       it "obtains forecasts for the default zone (Central London) from the CercForecastService" do
         get :show
 
-        expect(CercForecastService).to have_received(:latest_forecasts_for).with(central_london)
+        expect(CercForecastService).to have_received(:latest_forecasts).with(central_london)
       end
     end
 
@@ -26,7 +29,7 @@ RSpec.describe ForecastsController do
 
         get :show, params: {zone: "Barnet"}
 
-        expect(CercForecastService).to have_received(:latest_forecasts_for).with(barnet)
+        expect(CercForecastService).to have_received(:latest_forecasts).with(barnet)
       end
     end
 
@@ -111,26 +114,26 @@ RSpec.describe ForecastsController do
         end
       end
     end
-  end
 
-  context "when a _pollutant_ parameter is received" do
-    before do
-      get :show, params: {pollutant: pollutant}
-    end
-
-    context "when the pollutant is recognised" do
-      let(:pollutant) { "PM10" }
-
-      it "set the pollutant to the given value" do
-        expect(assigns(:pollutant)).to eq("PM10")
+    context "when a _pollutant_ parameter is received" do
+      before do
+        get :show, params: {pollutant: pollutant}
       end
-    end
 
-    context "when the pollutant is not recognised" do
-      let(:pollutant) { "invalid" }
+      context "when the pollutant is recognised" do
+        let(:pollutant) { "PM10" }
 
-      it "defaults to showing the Total forecast" do
-        expect(assigns(:pollutant)).to eq("Total")
+        it "set the pollutant to the given value" do
+          expect(assigns(:pollutant)).to eq("PM10")
+        end
+      end
+
+      context "when the pollutant is not recognised" do
+        let(:pollutant) { "invalid" }
+
+        it "defaults to showing the Total forecast" do
+          expect(assigns(:pollutant)).to eq("Total")
+        end
       end
     end
   end
