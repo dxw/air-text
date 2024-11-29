@@ -1,12 +1,14 @@
-<%= select_tag :pollutant, 
-options_for_select({
-  "All pollutants" => 'Total',
-  "Nitrogen Dioxide" => 'NO2',
-  "Particles < 2.5µm" => 'PM25',
-  "Particles < 10µm" => 'PM10',
-  "Ozone" => 'O3',
-}, @pollutant),
-class: "mt-5",
-data: { action: "forecast#changePollutant", "map-target": "pollutantSelector", "forecast-target": "pollutantSelector" },
-form: "forecast-form"
-%>
+<%= form_tag(false) do %>
+  <%= select_tag :pollutant, 
+  options_for_select({
+    "All pollutants" => 'Total',
+    "Nitrogen Dioxide" => 'NO2',
+    "Particles < 2.5µm" => 'PM25',
+    "Particles < 10µm" => 'PM10',
+    "Ozone" => 'O3',
+  }, @pollutant),
+  class: "mt-5",
+  data: { action: "forecast#changePollutant", "map-target": "pollutantSelector", "forecast-target": "pollutantSelector" },
+  form: "forecast-form"
+  %>
+<% end %>
