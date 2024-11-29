@@ -8,6 +8,7 @@
       {
         "ignoreAtRules": ["tailwind"]
       }
-    ]
+    ],
+    "scss/load-partial-extension": "always"
   }
 }

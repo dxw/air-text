@@ -1,0 +1,106 @@
+.tabs {
+  @apply flex flex-row items-stretch border-b-[1px] border-zinc-500 mx-4;
+
+  border-radius: 10px 10px 0 0;
+  gap: 0.5rem;
+
+  .tab {
+    @apply flex-1 px-1 py-4 text-xs text-center font-bold border-[1px] cursor-pointer;
+
+    border-radius: 10px 10px 0 0;
+
+    &.active {
+      @apply border-zinc-500 border-solid border-b-0 -mb-[1px];
+    }
+
+    &.inactive {
+      @apply border-gray-400 border-dashed border-b-0 text-gray-400 bg-white;
+    }
+
+    .daqi-indicator {
+      @apply size-7 rounded-full mx-auto my-1 flex justify-center items-center p-[3px];
+    }
+
+    .daqi-label {
+      @apply text-base;
+    }
+
+    .daqi-value {
+      @apply font-normal;
+    }
+  }
+}
+
+.tab-contents {
+  @apply p-4 mx-4 border-[1px] border-t-0 border-zinc-500;
+
+  border-radius: 0 0 10px 10px;
+}
+
+#map-wrapper {
+  @apply flex mt-2;
+
+  .map {
+    @apply w-full h-80;
+  }
+
+  .daqi-scale {
+    @apply flex flex-col-reverse;
+
+    div {
+      @apply flex py-1 justify-center items-center;
+
+      width: 2rem;
+      height: 10%;
+    }
+  }
+}
+
+.predictions {
+  > * {
+    @apply py-2 border-b border-gray-300;
+  }
+
+  dd {
+    @apply text-right;
+  }
+
+  .guidance {
+    @apply text-sm mt-2 p-4;
+  }
+}
+
+.forecast-timestamp {
+  @apply text-xs text-gray-500 text-center mt-2 block italic;
+}
+
+.sharing {
+  button {
+    @apply flex mx-auto mt-2 px-8 py-2 rounded-md text-white justify-center;
+
+    background-color: var(--main-colour);
+  }
+}
+
+.learning,
+.subscribe {
+  background-color: var(--main-colour-light);
+
+  @apply p-8 mt-4 text-center;
+
+  header {
+    @apply font-bold;
+  }
+
+  a {
+    @apply inline-block py-2 px-8 rounded-md text-white mt-4;
+
+    background-color: var(--main-colour);
+  }
+}
+
+.how-forecasts-are-made {
+  @apply py-8 px-4;
+
+  background-color: #eee;
+}
