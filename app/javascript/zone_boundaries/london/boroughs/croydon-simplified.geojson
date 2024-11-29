@@ -3,7 +3,8 @@
   "properties": {
     "name": "Croydon",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.0947, 51.3714]
   },
   "geometry": {
     "type": "Polygon",

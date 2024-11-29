@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "South London",
-    "level": 1
+    "level": 1,
+    "center": [-0.048377521681050015, 51.39016184541809]
   },
   "geometry": {
     "type": "Polygon",

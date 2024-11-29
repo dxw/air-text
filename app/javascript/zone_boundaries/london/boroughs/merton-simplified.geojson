@@ -3,7 +3,8 @@
   "properties": {
     "name": "Merton",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.1958, 51.4014]
   },
   "geometry": {
     "type": "Polygon",

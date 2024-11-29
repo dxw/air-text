@@ -1,6 +1,6 @@
-export { default as chelmsford } from "./east/chelmsford-simplified.geojson";
-export { default as colchester } from "./east/colchester-simplified.geojson";
-export { default as maldon } from "./east/maldon-simplified.geojson";
+export { default as chelmsford } from "./essex/chelmsford-simplified.geojson";
+export { default as colchester } from "./essex/colchester-simplified.geojson";
+export { default as maldon } from "./essex/maldon-simplified.geojson";
 
 export { default as barkingAndDagenham } from "./london/boroughs/barking-and-dagenham-simplified.geojson";
 export { default as barnet } from "./london/boroughs/barnet-simplified.geojson";

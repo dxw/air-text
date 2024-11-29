@@ -3,7 +3,8 @@
   "properties": {
     "name": "Haringey",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.1119, 51.59]
   },
   "geometry": {
     "type": "Polygon",

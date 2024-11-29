@@ -3,7 +3,8 @@
   "properties": {
     "name": "Westminster",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.156, 51.511]
   },
   "geometry": {
     "type": "Polygon",

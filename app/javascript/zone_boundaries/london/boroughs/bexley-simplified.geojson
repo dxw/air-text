@@ -3,7 +3,8 @@
   "properties": {
     "name": "Bexley",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [0.1505, 51.4549]
   },
   "geometry": {
     "type": "Polygon",

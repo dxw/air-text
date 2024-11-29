@@ -88,6 +88,35 @@ RSpec.describe CachedForecast do
     end
   end
 
+  describe "::latest_for_all_zones" do
+    let(:brent) { FactoryBot.create(:zone, name: "Brent") }
+    let(:barnet) { FactoryBot.create(:zone, name: "Barnet") }
+
+    let!(:first_brent) {
+      FactoryBot.create(:cached_forecast, zone: brent, obtained_at: Time.current - 2.days)
+    }
+    let!(:last_brent) {
+      FactoryBot.create(:cached_forecast, zone: brent, obtained_at: Time.current)
+    }
+    let!(:middle_brent) {
+      FactoryBot.create(:cached_forecast, zone: brent, obtained_at: Time.current - 1.day)
+    }
+
+    let!(:first_barnet) {
+      FactoryBot.create(:cached_forecast, zone: barnet, obtained_at: Time.current - 2.days)
+    }
+    let!(:last_barnet) {
+      FactoryBot.create(:cached_forecast, zone: barnet, obtained_at: Time.current)
+    }
+    let!(:middle_barnet) {
+      FactoryBot.create(:cached_forecast, zone: barnet, obtained_at: Time.current - 1.day)
+    }
+
+    it "returns the latest record for each zone" do
+      expect(CachedForecast.latest_for_all_zones).to match_array([last_brent, last_barnet])
+    end
+  end
+
   describe "::store" do
     let(:active_record_zone) { FactoryBot.create(:zone, cerc_id: 123) }
     let(:forecast_zone) { FactoryBot.build(:forecast_zone, id: 123) }

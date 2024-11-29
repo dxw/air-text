@@ -3,7 +3,8 @@
   "properties": {
     "name": "Barnet",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.215, 51.616]
   },
   "geometry": {
     "type": "Polygon",

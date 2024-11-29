@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Colchester",
-    "level": 1
+    "level": 1,
+    "center": [0.883, 51.87]
   },
   "geometry": {
     "type": "Polygon",

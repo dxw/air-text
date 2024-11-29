@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Maldon",
-    "level": 1
+    "level": 1,
+    "center": [0.74, 51.72]
   },
   "geometry": {
     "type": "Polygon",

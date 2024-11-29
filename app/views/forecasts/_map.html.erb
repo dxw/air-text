@@ -1,15 +1,17 @@
-<div id="map" class="map" data-maptiler-api-key="<%= @maptiler_api_key %>" data-map-target="map"></div>
-<div class="daqi-scale">
-  <div class="daqi-level-1">1</div>
-  <div class="daqi-level-2">2</div>
-  <div class="daqi-level-3">3</div>
-  <div class="daqi-level-4">4</div>
-  <div class="daqi-level-5">5</div>
-  <div class="daqi-level-6">6</div>
-  <div class="daqi-level-7">7</div>
-  <div class="daqi-level-8">8</div>
-  <div class="daqi-level-9">9</div>
-  <div class="daqi-level-10">10</div>
+<div id="map-wrapper">
+  <div id="map" class="map" data-maptiler-api-key="<%= @maptiler_api_key %>" data-map-target="map"></div>
+  <div class="daqi-scale">
+    <div class="daqi-level-1">1</div>
+    <div class="daqi-level-2">2</div>
+    <div class="daqi-level-3">3</div>
+    <div class="daqi-level-4">4</div>
+    <div class="daqi-level-5">5</div>
+    <div class="daqi-level-6">6</div>
+    <div class="daqi-level-7">7</div>
+    <div class="daqi-level-8">8</div>
+    <div class="daqi-level-9">9</div>
+    <div class="daqi-level-10">10</div>
+  </div>
 </div>
-<%= link_to("Learn more about the colour scale", health_advice_path, class: "text-sm text-blue-600 underline") %>
+<%= link_to("Learn more about the colour scale", health_advice_path, class: "text-sm text-blue-600 underline text-right block") %>
 <%= render "pollutant_selector" %>

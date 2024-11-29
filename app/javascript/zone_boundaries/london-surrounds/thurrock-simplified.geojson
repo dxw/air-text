@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Thurrock",
-    "level": 2
+    "level": 2,
+    "center": [0.372, 51.503]
   },
   "geometry": {
     "type": "Polygon",

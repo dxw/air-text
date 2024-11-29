@@ -5,7 +5,7 @@ class ForecastsController < ApplicationController
     @day = @date ? day_from_date(@date) : day
     @pollutant = pollutant
 
-    @forecasts = CercForecastService.latest_forecasts_for(@zone).data
+    @forecasts = CercForecastService.latest_forecasts(@zone).data
     @day_forecast = forecast_for_day(@day, @forecasts)
     @share_message = @day_forecast.share_message
 
@@ -25,6 +25,22 @@ class ForecastsController < ApplicationController
       end
       format.html
     end
+  end
+
+  def pollutant_forecasts
+    @date = date
+    @day = @date ? day_from_date(@date) : day
+    @pollutant = pollutant
+
+    latest_forecasts = CercForecastService.latest_forecasts
+
+    pollutant_forecasts = latest_forecasts.each_with_object({}) do |zone_forecasts, hash|
+      zone_name = zone_forecasts.data.first.zone[:name]
+      forecast = forecast_for_day(@day, zone_forecasts.pollutant_forecasts(@pollutant))
+      hash[zone_name] = forecast
+    end
+
+    render json: pollutant_forecasts
   end
 
   private

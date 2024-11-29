@@ -3,7 +3,8 @@
   "properties": {
     "name": "Richmond upon Thames",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.292, 51.432]
   },
   "geometry": {
     "type": "Polygon",

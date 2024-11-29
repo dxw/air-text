@@ -3,7 +3,8 @@
   "properties": {
     "name": "Hillingdon",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.435, 51.56]
   },
   "geometry": {
     "type": "Polygon",

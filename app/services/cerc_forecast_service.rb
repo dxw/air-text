@@ -1,9 +1,13 @@
 class CercForecastService
   class << self
-    def latest_forecasts_for(zone)
+    def latest_forecasts(zone = nil)
       refresh_cache if CachedForecast.stale?
 
-      CachedForecast.latest_for(zone)
+      if zone.nil?
+        CachedForecast.latest_for_all_zones
+      else
+        CachedForecast.latest_for(zone)
+      end
     end
 
     private
@@ -33,10 +37,10 @@ class CercForecastService
 
           air_pollution: {
             forecasted_at: Time.zone.parse(forecast.fetch("pollution_version").to_s),
-            nitrogen_dioxide: forecast.fetch("NO2"),
-            particulate_matter_10: forecast.fetch("PM10"),
-            particulate_matter_2_5: forecast.fetch("PM2.5"),
-            ozone: forecast.fetch("O3"),
+            no2: forecast.fetch("NO2"),
+            pm10: forecast.fetch("PM10"),
+            pm2_5: forecast.fetch("PM2.5"),
+            o3: forecast.fetch("O3"),
             total: forecast.fetch("total"),
             label: forecast.fetch("total_status")
           },

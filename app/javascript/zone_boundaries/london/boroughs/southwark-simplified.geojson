@@ -3,7 +3,8 @@
   "properties": {
     "name": "Southwark",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.08, 51.477]
   },
   "geometry": {
     "type": "Polygon",

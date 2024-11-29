@@ -3,7 +3,8 @@
   "properties": {
     "name": "Havering",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [0.232, 51.559]
   },
   "geometry": {
     "type": "Polygon",

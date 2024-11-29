@@ -3,7 +3,8 @@
   "properties": {
     "name": "Lambeth",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.1163, 51.4607]
   },
   "geometry": {
     "type": "Polygon",

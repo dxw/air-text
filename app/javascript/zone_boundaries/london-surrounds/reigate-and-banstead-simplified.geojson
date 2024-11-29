@@ -1,8 +1,9 @@
 {
   "type": "Feature",
   "properties": {
-    "name": "Reigate & Banstead",
-    "level": 2
+    "name": "Reigate and Banstead",
+    "level": 2,
+    "center": [-0.1875, 51.2752]
   },
   "geometry": {
     "type": "MultiPolygon",

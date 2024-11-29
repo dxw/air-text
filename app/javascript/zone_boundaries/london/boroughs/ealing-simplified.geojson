@@ -3,7 +3,8 @@
   "properties": {
     "name": "Ealing",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.3089, 51.513]
   },
   "geometry": {
     "type": "Polygon",

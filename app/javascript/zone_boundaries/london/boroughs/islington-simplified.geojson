@@ -3,7 +3,8 @@
   "properties": {
     "name": "Islington",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.1022, 51.5416]
   },
   "geometry": {
     "type": "Polygon",

@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Cambridge",
-    "level": 1
+    "level": 1,
+    "center": [0.13, 52.2]
   },
   "geometry": {
     "type": "Polygon",

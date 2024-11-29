@@ -3,7 +3,8 @@
   "properties": {
     "name": "Brent",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.2817, 51.5588]
   },
   "geometry": {
     "type": "Polygon",

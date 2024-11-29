@@ -3,7 +3,8 @@
   "properties": {
     "name": "Hackney",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.0553, 51.545]
   },
   "geometry": {
     "type": "Polygon",

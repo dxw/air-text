@@ -3,7 +3,8 @@
   "properties": {
     "name": "Harrow",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.3346, 51.5898]
   },
   "geometry": {
     "type": "Polygon",

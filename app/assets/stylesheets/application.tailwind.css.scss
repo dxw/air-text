@@ -56,17 +56,22 @@
   border-radius: 0 0 10px 10px;
 }
 
-.map {
-  @apply w-full h-80 mt-2;
-}
+#map-wrapper {
+  @apply flex mt-2;
 
-.daqi-scale {
-  @apply flex flex-row;
+  .map {
+    @apply w-full h-80;
+  }
 
-  div {
-    @apply flex py-1 justify-center items-center;
+  .daqi-scale {
+    @apply flex flex-col-reverse;
 
-    width: 10%;
+    div {
+      @apply flex py-1 justify-center items-center;
+
+      width: 2rem;
+      height: 10%;
+    }
   }
 }
 
@@ -204,4 +209,8 @@
   @apply py-8 px-4;
 
   background-color: #eee;
+}
+
+select {
+  @apply inline-flex flex-row w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
 }

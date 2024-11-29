@@ -3,7 +3,8 @@
   "properties": {
     "name": "Wandsworth",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.196, 51.452]
   },
   "geometry": {
     "type": "Polygon",

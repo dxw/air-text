@@ -2,7 +2,8 @@
   "type": "Feature",
   "properties": {
     "name": "Chelmsford",
-    "level": 1
+    "level": 1,
+    "center": [0.481, 51.74]
   },
   "geometry": {
     "type": "Polygon",

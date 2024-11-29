@@ -3,7 +3,8 @@
   "properties": {
     "name": "Enfield",
     "level": 2,
-    "londonBorough": true
+    "londonBorough": true,
+    "center": [-0.0799, 51.6538]
   },
   "geometry": {
     "type": "Polygon",
