@@ -1,57 +1,97 @@
+:root {
+  --daqi-level-1-bg: rgb(149 225 114);
+  --daqi-level-2-bg: rgb(147 191 115);
+  --daqi-level-3-bg: rgb(89 153 121);
+  --daqi-level-4-bg: rgb(252 255 117);
+  --daqi-level-5-bg: rgb(251 219 110);
+  --daqi-level-6-bg: rgb(251 194 107);
+  --daqi-level-7-bg: rgb(251 150 100);
+  --daqi-level-8-bg: rgb(250 92 96);
+  --daqi-level-9-bg: rgb(154 88 108);
+  --daqi-level-10-bg: rgb(86 86 86);
+  --daqi-level-1-text: black;
+  --daqi-level-2-text: black;
+  --daqi-level-3-text: black;
+  --daqi-level-4-text: black;
+  --daqi-level-5-text: black;
+  --daqi-level-6-text: black;
+  --daqi-level-7-text: white;
+  --daqi-level-8-text: white;
+  --daqi-level-9-text: white;
+  --daqi-level-10-text: white;
+}
+
+.daqi-scale,
+.tabs {
+  .daqi-level-1 {
+    background-color: var(--daqi-level-1-bg);
+    color: var(--daqi-level-1-text);
+  }
+
+  .daqi-level-2 {
+    background-color: var(--daqi-level-2-bg);
+    color: var(--daqi-level-2-text);
+  }
+
+  .daqi-level-3 {
+    background-color: var(--daqi-level-3-bg);
+    color: var(--daqi-level-3-text);
+  }
+
+  .daqi-level-4 {
+    background-color: var(--daqi-level-4-bg);
+    color: var(--daqi-level-4-text);
+  }
+
+  .daqi-level-5 {
+    background-color: var(--daqi-level-5-bg);
+    color: var(--daqi-level-5-text);
+  }
+
+  .daqi-level-6 {
+    background-color: var(--daqi-level-6-bg);
+    color: var(--daqi-level-6-text);
+  }
+
+  .daqi-level-7 {
+    background-color: var(--daqi-level-7-bg);
+    color: var(--daqi-level-7-text);
+  }
+
+  .daqi-level-8 {
+    background-color: var(--daqi-level-8-bg);
+    color: var(--daqi-level-8-text);
+  }
+
+  .daqi-level-9 {
+    background-color: var(--daqi-level-9-bg);
+    color: var(--daqi-level-9-text);
+  }
+
+  .daqi-level-10 {
+    background-color: var(--daqi-level-10-bg);
+    color: var(--daqi-level-10-text);
+  }
+}
+
 .daqi-low-level {
-  @apply text-black bg-lime-400;
+  color: var(--daqi-level-2-text);
+  background-color: var(--daqi-level-2-bg);
 }
 
 .daqi-moderate-level {
-  @apply text-black bg-yellow-300;
+  color: var(--daqi-level-5-text);
+  background-color: var(--daqi-level-5-bg);
 }
 
 .daqi-high-level {
-  @apply text-white bg-red-500;
+  color: var(--daqi-level-8-text);
+  background-color: var(--daqi-level-8-bg);
 }
 
 .daqi-very-high-level {
-  @apply text-white bg-red-800;
-}
-
-.daqi-level-1 {
-  @apply text-black bg-lime-400;
-}
-
-.daqi-level-2 {
-  @apply text-black bg-green-400;
-}
-
-.daqi-level-3 {
-  @apply text-black bg-lime-600;
-}
-
-.daqi-level-4 {
-  @apply text-black bg-yellow-300;
-}
-
-.daqi-level-5 {
-  @apply text-black bg-amber-200;
-}
-
-.daqi-level-6 {
-  @apply text-black bg-yellow-500;
-}
-
-.daqi-level-7 {
-  @apply text-white bg-orange-500;
-}
-
-.daqi-level-8 {
-  @apply text-white bg-red-500;
-}
-
-.daqi-level-9 {
-  @apply text-white bg-red-800;
-}
-
-.daqi-level-10 {
-  @apply text-white bg-stone-700;
+  color: var(--daqi-level-10-text);
+  background-color: var(--daqi-level-10-bg);
 }
 
 .stroke-white {
