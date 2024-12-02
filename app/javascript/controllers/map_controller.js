@@ -11,7 +11,7 @@ export default class MapController extends Controller {
     "map",
     "pollutantSelector",
     "zoneSelector",
-    "daySelector",
+    "dateSelector",
     "latField",
     "lngField",
     "zoomField",
@@ -36,7 +36,7 @@ export default class MapController extends Controller {
 
   updateSettings() {
     const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.daySelectorTarget.value;
+    const date = this.dateSelectorTarget.value;
     const url = new URL(window.location.href);
     const lat = parseFloat(url.searchParams.get("lat"));
     const lng = parseFloat(url.searchParams.get("lng"));
@@ -304,7 +304,7 @@ export default class MapController extends Controller {
 
   async getForecastData() {
     const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.daySelectorTarget.value;
+    const date = this.dateSelectorTarget.value;
 
     const response = await fetch(
       `/pollutant_forecasts?pollutant=${pollutant}&date=${date}`
