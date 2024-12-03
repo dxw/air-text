@@ -240,7 +240,7 @@ export default class MapController extends Controller {
   }
 
   async updateZoneLabels() {
-    const pollutant_forecasts = await this.getForecastData();
+    const pollutantForecasts = await this.getForecastData();
 
     // Remove existing zone labels
     this.layers.zoneLabels?.forEach((marker) => this.map.removeLayer(marker));
@@ -257,13 +257,13 @@ export default class MapController extends Controller {
           lat: zone.properties.center[1],
           lng: zone.properties.center[0],
         };
-        const pollutant_value = pollutant_forecasts[zone.properties.name];
+        const pollutantValue = pollutantForecasts[zone.properties.name];
 
         const marker = L.marker(center, {
           icon: L.divIcon({
             className:
               "zone-label " + `zone-label-level-${zone.properties.level}`,
-            html: `<div class="wrapper"><span class="daqi-indicator">${pollutant_value}</span><span class="zone-name">${zone.properties.name}</span></div>`,
+            html: `<div class="wrapper"><span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span><span class="zone-name">${zone.properties.name}</span></div>`,
           }),
         });
         marker.addTo(this.map);
