@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class ForecastController extends Controller {
-  static targets = ["zoneSelector", "daySelector", "pollutantSelector"];
+  static targets = ["zoneSelector", "dateSelector", "pollutantSelector"];
 
   changeZone() {
     this.updateUrl({ zone: this.zoneSelectorTarget.value });
@@ -13,8 +13,8 @@ export default class ForecastController extends Controller {
 
     this.updateUrl({ date: selectedDate });
 
-    // Update contents of daySelector
-    this.daySelectorTarget.value = selectedDate;
+    // Update contents of dateSelector
+    this.dateSelectorTarget.value = selectedDate;
 
     this.updateForecast();
   }
