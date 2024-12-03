@@ -1,0 +1,46 @@
+.advice-table {
+  @apply border-collapse mb-4;
+
+  th,
+  td {
+    border-left: 1px solid white;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 0.25rem 0.5rem;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+
+  thead {
+    @apply bg-gray-500 py-4;
+
+    color: white;
+
+    th {
+      font-weight: normal;
+    }
+  }
+
+  tr.levels {
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
+    background: var(--main-colour-light);
+
+    td:first-child {
+      text-align: left;
+      background: var(--main-colour-lightest);
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-weight: bold;
+  }
+}

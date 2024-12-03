@@ -19,19 +19,19 @@
 }
 
 .text-block {
-  h1 {
+  > h1 {
     @apply h1;
   }
 
-  h2 {
+  > h2 {
     @apply h2;
   }
 
-  h3 {
+  > h3 {
     @apply h3;
   }
 
-  h4 {
+  > h4 {
     @apply h4;
   }
 
@@ -51,7 +51,7 @@
     }
   }
 
-  table {
+  .table {
     @apply max-w-sm border-collapse;
 
     th {
