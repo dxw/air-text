@@ -4,6 +4,7 @@
 @import "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
 @import "header.scss";
 @import "forecast-page.scss";
+@import "health-advice-page.scss";
 @import "map.scss";
 @import "daqi-levels.scss";
 @import "share.scss";
@@ -17,4 +18,5 @@
 :root {
   --main-colour: #3880d1;
   --main-colour-light: #dae7f7;
+  --main-colour-lightest: #edf4fb;
 }
