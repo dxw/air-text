@@ -12,7 +12,7 @@ RSpec.feature "Forecasts page - sharing" do
   end
 
   before do
-    stub_cerc_api_with(forecasts)
+    HttpStubs.stub_cerc_api_with(forecasts)
   end
 
   describe "Sharing forecasts" do

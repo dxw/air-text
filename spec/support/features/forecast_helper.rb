@@ -1,10 +1,5 @@
 module Features
   module ForecastHelper
-    def stub_cerc_api_with(forecasts)
-      forecast_response = Fixtures::API.all_forecasts(forecasts)
-      HttpStubs.stub_forecasts_with(forecast_response)
-    end
-
     def switch_to_tab_for(day)
       case day
       when :tomorrow
