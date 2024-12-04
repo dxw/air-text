@@ -1,0 +1,82 @@
+.air-quality-alerts-table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+
+  th,
+  td {
+    padding: 0.5rem;
+  }
+
+  .zone-name {
+    font-weight: bold;
+    background-color: var(--main-colour-lightest);
+  }
+
+  .levels {
+    td {
+      border-right: 1px solid #ccc;
+
+      .label {
+        font-weight: bold;
+        margin-bottom: -5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &::after {
+          content: "";
+          float: right;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          border: 1px solid var(--main-colour-light);
+        }
+
+        &.daqi-level-1::after {
+          background-color: var(--daqi-level-1-bg);
+        }
+
+        &.daqi-level-2::after {
+          background-color: var(--daqi-level-2-bg);
+        }
+
+        &.daqi-level-3::after {
+          background-color: var(--daqi-level-3-bg);
+        }
+
+        &.daqi-level-4::after {
+          background-color: var(--daqi-level-4-bg);
+        }
+
+        &.daqi-level-5::after {
+          background-color: var(--daqi-level-5-bg);
+        }
+
+        &.daqi-level-6::after {
+          background-color: var(--daqi-level-6-bg);
+        }
+
+        &.daqi-level-7::after {
+          background-color: var(--daqi-level-7-bg);
+        }
+
+        &.daqi-level-8::after {
+          background-color: var(--daqi-level-8-bg);
+        }
+
+        &.daqi-level-9::after {
+          background-color: var(--daqi-level-9-bg);
+        }
+
+        &.daqi-level-10::after {
+          background-color: var(--daqi-level-10-bg);
+        }
+      }
+
+      .value {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get :forecast, to: "forecasts#show"
   get :pollutant_forecasts, to: "forecasts#pollutant_forecasts"
+  get :alerts, to: "forecasts#alerts"
   get :subscribe, to: "subscriptions#new"
   get :health_advice, to: "pages#health_advice"
   get :about, to: "pages#about"
