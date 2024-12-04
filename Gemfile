@@ -31,7 +31,6 @@ group :development do
   gem "spring-commands-rspec"
   gem "web-console", ">= 3.3.0"
   gem "htmlbeautifier"
-  gem "solargraph"
 end
 
 group :development, :test do
