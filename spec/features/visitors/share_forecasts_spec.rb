@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.feature "Forecasts page - sharing", feature: true do
-  include Features::ForecastHelper
+RSpec.feature "Forecasts page - sharing" do
+  include Features::ForecastPageHelper
 
   let(:forecasts) do
     [
@@ -12,7 +12,7 @@ RSpec.feature "Forecasts page - sharing", feature: true do
   end
 
   before do
-    stub_cerc_api_with(forecasts)
+    HttpStubs.stub_cerc_api_with(forecasts)
   end
 
   describe "Sharing forecasts" do

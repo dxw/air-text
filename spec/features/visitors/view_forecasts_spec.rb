@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.feature "Forecasts page", feature: true do
-  include Features::ForecastHelper
+RSpec.feature "Forecasts page" do
+  include Features::ForecastPageHelper
 
   describe "Viewing forecasts" do
     describe "Viewing forecasts for 3 days" do
@@ -30,7 +30,7 @@ RSpec.feature "Forecasts page", feature: true do
             uv: :high
           )
         ]
-        stub_cerc_api_with(forecasts)
+        HttpStubs.stub_cerc_api_with(forecasts)
       end
 
       it "shows the forecasts for today, tomorrow and the day after tomorrow" do
@@ -149,7 +149,7 @@ RSpec.feature "Forecasts page", feature: true do
             Fixtures::API.zone_forecast(day: :tomorrow),
             Fixtures::API.zone_forecast(day: :day_after_tomorrow)
           ]
-          stub_cerc_api_with(forecasts)
+          HttpStubs.stub_cerc_api_with(forecasts)
         end
 
         it "shows the pollen prediction" do

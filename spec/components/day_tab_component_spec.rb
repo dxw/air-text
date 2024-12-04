@@ -2,10 +2,12 @@
 
 RSpec.describe DayTabComponent, type: :component do
   describe "daqi_indicator_colour_class" do
+    let(:component) {
+      DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: air_pollution_level), day: :today)
+    }
+
     context "when the air pollution level is 1" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 1), day: :today)
-      }
+      let(:air_pollution_level) { 1 }
 
       it "returns _daqi-level-1_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-1")
@@ -13,9 +15,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 2" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 2), day: :today)
-      }
+      let(:air_pollution_level) { 2 }
 
       it "returns _daqi-level-2_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-2")
@@ -23,9 +23,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 3" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 3), day: :today)
-      }
+      let(:air_pollution_level) { 3 }
 
       it "returns _daqi-level-3_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-3")
@@ -33,9 +31,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 4" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 4), day: :today)
-      }
+      let(:air_pollution_level) { 4 }
 
       it "returns _daqi-level-4_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-4")
@@ -43,9 +39,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 5" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 5), day: :today)
-      }
+      let(:air_pollution_level) { 5 }
 
       it "returns _daqi-level-5_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-5")
@@ -53,9 +47,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 6" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 6), day: :today)
-      }
+      let(:air_pollution_level) { 6 }
 
       it "returns _daqi-level-6_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-6")
@@ -63,9 +55,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 7" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 7), day: :today)
-      }
+      let(:air_pollution_level) { 7 }
 
       it "returns _daqi-level-7_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-7")
@@ -73,9 +63,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 8" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 8), day: :today)
-      }
+      let(:air_pollution_level) { 8 }
 
       it "returns _daqi-level-8_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-8")
@@ -83,9 +71,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 9" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 9), day: :today)
-      }
+      let(:air_pollution_level) { 9 }
 
       it "returns _daqi-level-9_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-9")
@@ -93,9 +79,7 @@ RSpec.describe DayTabComponent, type: :component do
     end
 
     context "when the air pollution level is 10" do
-      let(:component) {
-        DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: 10), day: :today)
-      }
+      let(:air_pollution_level) { 10 }
 
       it "returns _daqi-level-10_" do
         expect(component.daqi_indicator_colour_class).to eq("daqi-level-10")

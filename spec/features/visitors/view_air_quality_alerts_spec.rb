@@ -1,5 +1,5 @@
-RSpec.feature "Air quality alerts", feature: true do
-  include Features::ForecastHelper
+RSpec.feature "Forecasts page - air quality alerts" do
+  include Features::ForecastPageHelper
 
   before do
     forecasts = [
@@ -18,7 +18,7 @@ RSpec.feature "Air quality alerts", feature: true do
         daqi_value: 10
       )
     ]
-    stub_cerc_api_with(forecasts)
+    HttpStubs.stub_cerc_api_with(forecasts)
   end
 
   describe "View air quality alert for today" do
