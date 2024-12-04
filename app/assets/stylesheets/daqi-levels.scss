@@ -23,7 +23,8 @@
 
 .daqi-scale,
 .tabs,
-.daqi-table {
+.daqi-table,
+.air-quality-alert-banner {
   .daqi-level-1 {
     background-color: var(--daqi-level-1-bg);
     color: var(--daqi-level-1-text);
@@ -75,22 +76,22 @@
   }
 }
 
-.daqi-low-level {
+.daqi-level-low {
   color: var(--daqi-level-2-text);
   background-color: var(--daqi-level-2-bg);
 }
 
-.daqi-moderate-level {
+.daqi-level-moderate {
   color: var(--daqi-level-5-text);
   background-color: var(--daqi-level-5-bg);
 }
 
-.daqi-high-level {
+.daqi-level-high {
   color: var(--daqi-level-8-text);
   background-color: var(--daqi-level-8-bg);
 }
 
-.daqi-very-high-level {
+.daqi-level-very-high {
   color: var(--daqi-level-10-text);
   background-color: var(--daqi-level-10-bg);
 }
