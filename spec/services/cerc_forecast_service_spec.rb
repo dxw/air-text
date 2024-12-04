@@ -54,6 +54,18 @@ RSpec.describe CercForecastService do
         expect(CercForecastService.latest_forecasts).to match_array([latest_forecast_from_cache])
       end
     end
+
+    context "when the DUMMY_FORECAST environment variable is set" do
+      before do
+        allow(CachedForecast).to receive(:stale?).and_return(false)
+      end
+
+      it "returns the dummy forecasts" do
+        ClimateControl.modify DUMMY_FORECAST: "1" do
+          expect(CercForecastService.latest_forecasts(zone).data.first.air_pollution[:label]).to eq("HIGH")
+        end
+      end
+    end
   end
 
   describe "::zone_forecasts" do
