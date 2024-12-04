@@ -1,0 +1,47 @@
+<div class="text-block p-4 mx-0">
+  <h1>Air pollution alerts for Greater London and the South East</h1>
+  <p>The list below show all of the air pollution alerts fot the next three days.</p>
+  <p>If an area is not shown below, the air pollution is expected to be low for that region for all three days.</p>
+  <p>See the <%= link_to "health advice", health_advice_path %> page to learn more about how the expected pollution levels might affect your health.</p>
+
+  <table class="air-quality-alerts-table">
+    <colgroup>
+      <col class="w-1/3">
+      <col class="w-1/3">
+      <col class="w-1/3">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Today
+        <th><%= (Date.today + 1.day).strftime("%A") %></th>
+        <th><%= (Date.today + 2.days).strftime("%A") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% no_alerts = true %>
+      <% CercForecastService.latest_forecasts.each do |cached_forecast| %>
+        <% next unless cached_forecast.data.map { |f| f.air_quality_alert? }.count(true).positive? %>
+        <% no_alerts = false %>
+        <tr class="zone-name">
+          <td colspan="3"><%= cached_forecast.data.first.zone[:name] %></td>
+        </tr>
+        <tr class="levels">
+          <% cached_forecast.data.each do |forecast| %>
+            <td>
+              <span class="label <%= "daqi-level-#{forecast.air_pollution[:total]}"%>"><%= forecast.air_pollution[:label].humanize %></span>
+              <span class="value">Index <%= forecast.air_pollution[:total] %>/10</span>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+
+      <% if no_alerts %>
+        <tr class="text-center">
+          <td>No alerts</td>
+          <td>No alerts</td>
+          <td>No alerts</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

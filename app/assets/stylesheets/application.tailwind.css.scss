@@ -3,8 +3,10 @@
 @import "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
 @import "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
 @import "header.scss";
+@import "air-quality-alert-banner.scss";
 @import "forecast-page.scss";
 @import "health-advice-page.scss";
+@import "air-quality-alerts-page.scss";
 @import "map.scss";
 @import "daqi-levels.scss";
 @import "share.scss";
@@ -19,4 +21,26 @@
   --main-colour: #3880d1;
   --main-colour-light: #dae7f7;
   --main-colour-lightest: #edf4fb;
+}
+
+.air-quality-alert-banner {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  &.no-alert {
+    background-color: var(--main-colour-lightest);
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+    margin-bottom: 2px;
+    display: inline-block;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
