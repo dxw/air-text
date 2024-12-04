@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.feature "Forecasts page" do
-  include Features::ForecastHelper
+  include Features::ForecastPageHelper
 
   describe "Viewing forecasts" do
     describe "Viewing forecasts for 3 days" do

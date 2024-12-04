@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.feature "Forecasts page - sharing" do
-  include Features::ForecastHelper
+  include Features::ForecastPageHelper
 
   let(:forecasts) do
     [

@@ -1,5 +1,5 @@
 module Features
-  module ForecastHelper
+  module ForecastPageHelper
     def switch_to_tab_for(day)
       case day
       when :tomorrow

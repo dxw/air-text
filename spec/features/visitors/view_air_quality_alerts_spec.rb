@@ -1,5 +1,5 @@
 RSpec.feature "Forecasts page - air quality alerts" do
-  include Features::ForecastHelper
+  include Features::ForecastPageHelper
 
   before do
     forecasts = [
