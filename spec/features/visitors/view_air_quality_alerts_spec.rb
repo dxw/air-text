@@ -1,4 +1,4 @@
-RSpec.feature "Air quality alerts", feature: true do
+RSpec.feature "Forecasts page - air quality alerts" do
   include Features::ForecastHelper
 
   before do

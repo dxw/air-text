@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.feature "Forecasts page", feature: true do
+RSpec.feature "Forecasts page" do
   include Features::ForecastHelper
 
   describe "Viewing forecasts" do
