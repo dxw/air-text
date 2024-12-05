@@ -41,6 +41,7 @@ class ForecastsController < ApplicationController
     @date = date
     @day = @date ? day_from_date(@date) : day
     @pollutant = pollutant
+    @dummy = ENV.fetch("DUMMY_FORECAST", nil)
   end
 
   private

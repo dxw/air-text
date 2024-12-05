@@ -4,8 +4,10 @@ class CercForecastService
       refresh_cache if CachedForecast.stale?
 
       if zone.nil?
+        return [dummy_forecasts] if dummy_forecast?
         CachedForecast.latest_for_all_zones
       else
+        return dummy_forecasts if dummy_forecast?
         CachedForecast.latest_for(zone)
       end
     end
@@ -21,6 +23,28 @@ class CercForecastService
           zone_forecasts(zone, obtained_at: obtained_at)
         )
       end
+    end
+
+    def dummy_forecast?
+      ENV.fetch("DUMMY_FORECAST", nil).present?
+    end
+
+    def dummy_forecasts
+      forecast_sets = {
+        1 => [ # A high, moderate, and low air pollution forecast
+          FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :high), date: Date.today),
+          FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :moderate), date: Date.tomorrow),
+          FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :low), date: Date.tomorrow + 1.day)
+        ],
+        2 => [ # High UV, moderate pollen, and extreme temperature forecast
+          FactoryBot.build(:forecast, uv: 6, date: Date.today),
+          FactoryBot.build(:forecast, pollen: 8, date: Date.tomorrow),
+          FactoryBot.build(:forecast, temperature: {min: -10, max: 40}, date: Date.tomorrow + 1.day)
+        ]
+      }
+
+      set_number = (ENV.fetch("DUMMY_FORECAST").presence || 1).to_i
+      FactoryBot.build(:cached_forecast, data: forecast_sets[set_number])
     end
 
     def zone_forecasts(zone, obtained_at: Time.current)

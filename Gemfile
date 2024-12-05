@@ -22,6 +22,7 @@ gem "terser"
 gem "httparty"
 gem "view_component"
 gem "seed-fu"
+gem "factory_bot_rails"
 
 group :development do
   gem "better_errors"
@@ -39,7 +40,6 @@ group :development, :test do
   gem "bullet"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv"
-  gem "factory_bot_rails"
   gem "faker"
   gem "rspec-rails"
   gem "rails-controller-testing"
