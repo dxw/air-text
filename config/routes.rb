@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get :forecast, to: "forecasts#show"
   get :pollutant_forecasts, to: "forecasts#pollutant_forecasts"
   get :alerts, to: "forecasts#alerts"
-  get :subscribe, to: "subscriptions#new"
+  resources :subscriptions
+  get :resend_verification_code, to: "subscriptions#resend_verification_code"
   get :health_advice, to: "pages#health_advice"
   get :about, to: "pages#about"
   get :contact, to: "pages#contact"

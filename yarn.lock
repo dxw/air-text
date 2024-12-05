@@ -2192,6 +2192,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
+stimulus-use@^0.52.2:
+  version "0.52.2"
+  resolved "https://registry.yarnpkg.com/stimulus-use/-/stimulus-use-0.52.2.tgz#fc992fababe03f8d8bc2d9470c8cdb40bd075917"
+  integrity sha512-413+tIw9n6Jnb0OFiQE1i3aP01i0hhGgAnPp1P6cNuBbhhqG2IOp8t1O/4s5Tw2lTvSYrFeLNdaY8sYlDaULeg==
+
 string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"

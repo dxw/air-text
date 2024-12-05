@@ -1,0 +1,36 @@
+<div class="p-4">
+  <h1 class="h1">Air pollution alert service subscription</h1>
+  <h2 class="h2">Step <%= @step_number %></h2>
+
+  <%= form_for @form, url: wizard_path, method: :put, data: { controller: "subscription", turbo: false }, html: { class: "form" } do |f| %>
+    <%= f.hidden_field :current_step, value: @current_step %>
+
+    <% if @form.errors.any? %>
+      <div class="form-errors">
+        <ul>
+          <% @form.errors.messages.each do |message| %>
+            <li><%= message.second.first %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= yield f if block_given? %>
+
+    <div class="buttons">
+      <% if @first_step %>
+        <div></div>
+      <% else %>
+        <%= link_to "Back", previous_wizard_path %>
+      <% end %>
+      <%= f.submit @final_step ? "Submit" : "Next" %>
+    </div>
+  <% end %>
+
+  <details>
+    <summary>Debugging info</summary>
+    <pre>
+      <%= JSON.pretty_generate(@form.as_json["attributes"]) %>
+    </pre>
+  </details>
+</div>

@@ -1,0 +1,33 @@
+<%= render 'form_step' do |f| %>
+  <h3 class="h3">A few final questions</h3>
+
+  <div class="mb-6">
+    <%= f.label :reason, "Why are you signing up for airTEXT alerts?" %>
+    <%= f.collection_select :reason, SubscriptionForm::REASONS, :first, :second, prompt: "Select..." %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :source, "How did you hear about airTEXT?" %>
+    <%= f.collection_select :source, SubscriptionForm::SOURCES, :first, :second, prompt: "Select..." %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :research, "May we contact you in the future for research purposes?" %>
+    <%= f.collection_radio_buttons :research, [["Yes, I’m ok to collaborate", true], ["No, thank you", false]], :last, :first do |b| %>
+    <div>
+      <%= b.radio_button %>
+      <%= b.label %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="mb-6 checkbox-wrapper">
+    <%= f.check_box :terms %>
+    <%= f.label :terms, "I have read and agree to the #{link_to "terms and conditions", terms_and_conditions_path, class: "a"} of the airTEXT service".html_safe %>
+  </div>
+
+  <div class="mb-6 checkbox-wrapper">
+    <%= f.check_box :privacy %>
+    <%= f.label :privacy, "I have read and agree to the #{link_to "privacy policy", privacy_policy_path, class: "a"} of the airTEXT service".html_safe %>
+  </div>
+<% end %>

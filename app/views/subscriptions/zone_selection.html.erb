@@ -1,0 +1,42 @@
+<%= render 'form_step' do |f| %>
+  <div class="text-block">
+    <section>
+      <h3>Enter places you'd like to receive alerts for</h3>
+      <p>Forecasts are produced for zones. You may select up to five zones</p>
+    
+      <%= f.label :zone_search, "Enter a place, address or postcode", class: "sr-only" %>
+      <%= f.text_field :zone_search, 
+        placeholder: "Enter a place, address or postcode",
+        type: "search", 
+        data: { 
+          action: "subscription#search", 
+          "subscription-target": "searchField",
+          "maptiler-api-key": ENV["MAPTILER_API_KEY"] 
+        } %>
+      <ul id="search-results" data-subscription-target="searchResults" class="hidden"></ul>
+      <div id="tags" data-subscription-target="tags"></div>
+    </section>
+
+    <section>
+      <h3>Or select from the list below</h3>
+      <div class="border-t border-gray-200">
+        <% ZoneGroup.all.order(:order).each do |group| %>
+        <details class="border-b border-gray-200 py-4">
+          <summary>
+            <h4 class="m-0"><%= group.name %></h4>
+            <%= content_tag :p, group.description, class: "italic" if group.description.present? %>
+          </summary>
+          <% group.zones.order(cerc_type: :desc, name: :asc).group_by(&:cerc_type).each do |level, zones| %>
+            <%= f.collection_check_boxes :zones, zones, :name, :name, { multiple: true } do |b| %>
+              <div>
+                <%= b.check_box %>
+                <%= b.label %>
+              </div>
+            <% end %>
+          <% end %>
+        </details>
+        <% end %>
+      </div>
+    </section>
+  </div>
+<% end %>

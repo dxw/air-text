@@ -24,6 +24,7 @@ gem "httparty"
 gem "view_component"
 gem "seed-fu"
 gem "factory_bot_rails"
+gem "wicked" # for multi-step forms
 
 group :development do
   gem "better_errors"

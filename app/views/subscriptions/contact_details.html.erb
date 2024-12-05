@@ -1,0 +1,45 @@
+<div class="text-block p-4">
+  <h1>Air pollution alert service subscription</h1>
+  <p>Receive alerts by email, text, or voicemail when pollution levels are forecasted to be moderate, high, or very high.</p>
+  <p>You can select up to five areas to receive alerts for, and you can unsubscribe from the service at any time.</p>
+</div>
+
+<%= render 'form_step' do |f| %>
+  <h3 class="h3">Choose the channels you would like to receive alerts on.</h3>
+
+  <div class="flex gap-2 justify-between">
+    <%= f.label :receive_email, "Receive email alerts", class: "mt-6 relative bottom-[2px]" %>
+    <div class="switch">
+      <%= f.check_box :receive_email, class:"mt-6 peer", data: { action: "subscription#toggleEmail" } %>
+      <%= f.label :receive_email, "&#8203;".html_safe, class: "mt-6 peer-checked:translate-x-6 peer-checked:border-airtext-main" %>
+    </div>
+  </div>
+  <div data-subscription-target="email" class="<%= 'hidden' unless @form.receive_email == "1" %>">
+    <%= f.label :email, class: "sr-only" %>
+    <%= f.email_field :email, placeholder: "Enter your email address" %>
+  </div>
+
+  <div class="flex gap-2 justify-between">
+    <%= f.label :receive_sms, "Receive text alerts", class: "mt-6 relative bottom-[2px]" %>
+    <div class="switch">
+      <%= f.check_box :receive_sms, class:"mt-6 peer", data: { action: "subscription#toggleSms" } %>
+      <%= f.label :receive_sms, "&#8203;".html_safe, class: "mt-6 peer-checked:translate-x-6 peer-checked:border-airtext-main" %>
+    </div>
+  </div>
+  <div data-subscription-target="sms" class="<%= 'hidden' unless @form.receive_sms == "1" %>">
+    <%= f.label :sms_number, "Mobile number", class: "sr-only" %>
+    <%= f.phone_field :sms_number, placeholder: "Enter your mobile number" %>
+  </div>
+
+  <div class="flex gap-2 justify-between">
+    <%= f.label :receive_voice, "Receive voicemail alerts", class: "mt-6 relative bottom-[2px]" %>
+    <div class="switch">
+      <%= f.check_box :receive_voice, class:"mt-6 peer", data: { action: "subscription#toggleVoice" } %>
+      <%= f.label :receive_voice, "&#8203;".html_safe, class: "mt-6 peer-checked:translate-x-6 peer-checked:border-airtext-main" %>
+    </div>
+  </div>
+  <div data-subscription-target="voice" class="<%= 'hidden' unless @form.receive_voice == "1" %>">
+    <%= f.label :voice_number, "Phone number", class: "sr-only" %>
+    <%= f.phone_field :voice_number, placeholder: "Enter your phone number" %>
+  </div>
+<% end %>

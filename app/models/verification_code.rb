@@ -1,0 +1,34 @@
+class VerificationCode < ApplicationRecord
+  def expired?
+    expires_at < Time.current
+  end
+
+  class << self
+    def generate(target)
+      where(target: digest(target)).destroy_all
+      create!({
+        code: new_code,
+        expires_at: 1.hour.from_now,
+        target: digest(target)
+      })
+    end
+
+    def verify(inputted_code, inputted_target)
+      return false if inputted_code.blank? || inputted_target.blank?
+
+      verification_code = find_by(target: digest(inputted_target))
+
+      return false if verification_code.nil? || verification_code.expired?
+
+      digest(inputted_target) == verification_code.target && inputted_code == verification_code.code
+    end
+
+    def new_code
+      SecureRandom.hex(3).upcase
+    end
+
+    def digest(target)
+      Digest::SHA256.hexdigest(target)
+    end
+  end
+end

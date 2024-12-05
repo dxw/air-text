@@ -37,6 +37,7 @@
     "@turf/boolean-point-in-polygon": "^7.1.0",
     "depcheck": "^1.4.7",
     "leaflet.fullscreen": "^3.0.2",
-    "leaflet.locatecontrol": "^0.82.0"
+    "leaflet.locatecontrol": "^0.82.0",
+    "stimulus-use": "^0.52.2"
   }
 }
