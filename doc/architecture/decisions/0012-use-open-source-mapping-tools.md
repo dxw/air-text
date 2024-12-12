@@ -9,8 +9,8 @@ Accepted
 ## Context
 
 Representing air pollution and other environment characteristics visually on a
-map is an important part of the UX in airTEXT. The [original
-airTEXT implementation][] and the [sister project for York][] both used Google Maps.
+map is an important part of the UX in airTEXT. The [original airTEXT
+implementation][] and the [sister project for York][] both used Google Maps.
 
 However, using this commercial product with its fundamental data privacy
 uncertainties is not necessary and should be challenged.
