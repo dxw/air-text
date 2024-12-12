@@ -32,7 +32,7 @@ class VerificationCode < ApplicationRecord
     end
 
     def digest(target)
-      Digest::SHA256.hexdigest(target)
+      OpenSSL::HMAC.hexdigest("SHA256", ENV.fetch("SECRET_KEY"), target)
     end
   end
 end
