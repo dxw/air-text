@@ -18,7 +18,9 @@
 
 require "simplecov"
 SimpleCov.minimum_coverage 99
-SimpleCov.start "rails"
+SimpleCov.start "rails" do
+  add_filter "/lib/tasks/"
+end
 
 require "webmock/rspec"
 WebMock.disable_net_connect!(allow_localhost: true, allow: [
