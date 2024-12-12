@@ -1,5 +1,6 @@
 .advice-table {
-  @apply border-collapse mb-4;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
 
   th,
   td {
@@ -14,8 +15,8 @@
   }
 
   thead {
-    @apply bg-gray-500 py-4;
-
+    background-color: #6b7280;
+    padding: 1rem 0;
     color: white;
 
     th {

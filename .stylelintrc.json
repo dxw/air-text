@@ -3,13 +3,6 @@
   "rules": {
     "import-notation": "string",
     "at-rule-no-unknown": null,
-    "no-descending-specificity": null,
-    "scss/at-rule-no-unknown": [
-      true,
-      {
-        "ignoreAtRules": ["tailwind"]
-      }
-    ],
-    "scss/load-partial-extension": "always"
+    "no-descending-specificity": null
   }
 }

@@ -9,7 +9,6 @@
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
     "lint:all:fix": "yarn run lint:js:fix && yarn run lint:css:fix && yarn run lint:format:fix && standardrb --fix",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css.scss -o ./app/assets/builds/application.css --minify",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --loader:.geojson=json --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
@@ -38,7 +37,6 @@
     "@turf/boolean-point-in-polygon": "^7.1.0",
     "depcheck": "^1.4.7",
     "leaflet.fullscreen": "^3.0.2",
-    "leaflet.locatecontrol": "^0.82.0",
-    "tailwindcss": "^3.4.13"
+    "leaflet.locatecontrol": "^0.82.0"
   }
 }
