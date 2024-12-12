@@ -1,0 +1,51 @@
+@use "margins-padding";
+@use "leaflet/dist/leaflet.css";
+@use "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
+@use "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
+@use "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
+@use "header";
+@use "air-quality-alert-banner";
+@use "forecast-page";
+@use "health-advice-page";
+@use "air-quality-alerts-page";
+@use "map";
+@use "daqi-levels";
+@use "share";
+@use "text-block";
+@use "footer";
+
+:root {
+  --main-colour: #3880d1;
+  --main-colour-light: #dae7f7;
+  --main-colour-lightest: #edf4fb;
+}
+
+.hidden {
+  display: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}

@@ -1,32 +1,35 @@
 .site-footer {
-  @apply text-white py-8 px-6;
-
+  color: white;
+  padding: 2rem 1.5rem;
   background-color: var(--main-colour);
 
   nav {
     li {
-      @apply py-2;
+      padding: 0.5rem 0;
 
       a.active {
-        @apply font-bold underline;
+        font-weight: bold;
+        text-decoration: underline;
       }
     }
   }
 
   .terms-and-conditions {
-    @apply mt-6;
-
+    margin-top: 1.5rem;
     font-size: 0; /* Remove whitespace between inline-block elements */
 
     li {
-      @apply text-xs inline-block border-r-white border-r px-2;
+      font-size: 0.75rem;
+      display: inline-block;
+      border-right: 1px solid white;
+      padding: 0 0.5rem;
 
       &:first-child {
-        @apply pl-0;
+        padding-left: 0;
       }
 
       &:last-child {
-        @apply border-0;
+        border: 0;
       }
     }
   }

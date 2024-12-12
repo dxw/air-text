@@ -130,7 +130,7 @@ RUN \
   chromium-driver \
   yarn
 
-RUN yarn build:css && yarn build
+RUN bundle exec rails dartsass:build && yarn build
 
 COPY eslint.config.mjs ${APP_HOME}/eslint.config.mjs
 COPY .prettierignore ${APP_HOME}/.prettierignore
