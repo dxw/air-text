@@ -131,6 +131,7 @@ details {
       content: none; /* Hide the default marker */
     }
 
+    h3,
     h4 {
       margin: 0 !important;
 
@@ -151,36 +152,14 @@ details {
         border-radius: 100%;
       }
     }
-
-    p {
-      margin: 0 !important;
-    }
   }
 
-  &[open] summary h4 {
-    margin-bottom: 1rem;
-
-    &::after {
-      content: "\2212"; /* Unicode character for minus sign */
+  &[open] summary {
+    h3,
+    h4 {
+      &::after {
+        content: "\2212"; /* Unicode character for minus sign */
+      }
     }
-  }
-}
-
-select {
-  display: inline-flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 0.375rem;
-  border-radius: 0.375rem;
-  background-color: white;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #6b7280;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
-  border: 1px solid #d1d5db;
-
-  &:hover {
-    background-color: #f9fafb;
   }
 }
