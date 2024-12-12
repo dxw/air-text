@@ -53,9 +53,11 @@ group :test do
   gem "capybara-screenshot"
   gem "cuprite"
   gem "launchy"
+  gem "puffing-billy", "~> 4.0"
   gem "selenium-webdriver"
   gem "simplecov"
   gem "shoulda-matchers", "~> 6.0"
+  gem "table_print", "~> 1.5"
   gem "climate_control"
   gem "webmock"
 end

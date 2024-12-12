@@ -240,38 +240,153 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
 
     describe "Zone selection" do
       before do
+        Billy.config.record_stub_requests = true
         fill_form_up_to(:email_verification)
         visit subscriptions_path(id: :zone_selection)
       end
 
+      let(:st_pauls_response) do
+        {
+          "type" => "FeatureCollection",
+          "features" => [
+            {
+              "type" => "Feature",
+              "properties" => {
+                "ref" => "osm =>w369161987",
+                "country_code" => "gb",
+                "wikidata" => "Q173882",
+                "categories" => [
+                  "attraction",
+                  "cathedral",
+                  "place of worship"
+                ]
+              },
+              "geometry" => {
+                "type" => "Point",
+                "coordinates" => [
+                  -0.09845067545739992,
+                  51.51378719266546
+                ]
+              },
+              "bbox" => [
+                -0.09845067545739992,
+                51.51378719266546,
+                -0.09845067545739992,
+                51.51378719266546
+              ],
+              "center" => [
+                -0.09845067545739992,
+                51.51378719266546
+              ],
+              "place_name" => "St Paul's Cathedral, Cheap, City of London, United Kingdom",
+              "place_type" => [
+                "poi"
+              ],
+              "relevance" => 1,
+              "id" => "poi.28251191",
+              "text" => "St Paul's Cathedral"
+            }
+          ],
+          "query" => [
+            "st",
+            "pauls",
+            "cathedral"
+          ],
+          "attribution" => "<a href=\"https =>//www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https =>//www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>"
+        }
+      end
+
       describe "Searching for zones" do
-        it "shows a list of zones when I search for a location" do
-          search_for_location("St Paul's")
+        before do
+          stub_maptiler_geocoding(search: search_term, response: response)
+        end
 
-          within "#search-results" do
-            expect(page).to have_text("City of London")
-            expect(page).to have_text("Central London")
+        context "when I search for a location within the zones" do
+          let(:search_term) { "St Pauls" }
+          let(:response) { st_pauls_response }
+
+          it "shows a list of zones when I search for a location" do
+            search_for_location("St Pauls")
+
+            within "#search-results" do
+              expect(page).to have_text("City of London")
+              expect(page).to have_text("Central London")
+            end
+          end
+
+          it "adds a zone when I click on the search result" do
+            search_for_location("St Pauls")
+
+            within "#search-results" do
+              find("li", text: "Central London").click
+            end
+
+            within "#tags" do
+              expect(page).to have_text("Central London")
+            end
+            expect(page).to have_checked_field("Central London")
           end
         end
 
-        it "adds a zone when I click on the search result" do
-          search_for_location("St Paul's")
-          within "#search-results" do
-            find("li", text: "Central London").click
+        context "when I search for a location outside the zones" do
+          let(:search_term) { "York" }
+          let(:response) do
+            {
+              type: "FeatureCollection",
+              features: [
+                {
+                  type: "Feature",
+                  properties: {
+                    ref: "osm:n4205059843",
+                    country_code: "gb",
+                    wikidata: "Q8055506",
+                    categories: [
+                      "police"
+                    ]
+                  },
+                  geometry: {
+                    type: "Point",
+                    coordinates: [
+                      -1.0815246775746346,
+                      53.962439180387925
+                    ]
+                  },
+                  bbox: [
+                    -1.0815246775746346,
+                    53.962439180387925,
+                    -1.0815246775746346,
+                    53.962439180387925
+                  ],
+                  center: [
+                    -1.0815246775746346,
+                    53.962439180387925
+                  ],
+                  place_name: "Minster Police Office, York, York, United Kingdom",
+                  place_type: [
+                    "poi"
+                  ],
+                  relevance: 1,
+                  id: "poi.7063901",
+                  text: "Minster Police Office",
+                  matching_text: "York Minster",
+                  matching_place_name: "York Minster, York, York, United Kingdom"
+                }
+              ],
+              query: [
+                "york"
+              ],
+              attribution: "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>"
+            }
           end
 
-          within "#tags" do
-            expect(page).to have_text("Central London")
-          end
-          expect(page).to have_checked_field("Central London")
-        end
+          it "shows a message if no zones are found" do
+            search_for_location("York")
 
-        it "shows a message if no zones are found" do
-          search_for_location("New York City, USA")
-          find("#subscription_form_zone_search").trigger("change")
+            find("#subscription_form_zone_search").trigger("change")
 
-          within "#search-results" do
-            expect(page).to have_text("No results found within the area covered by airTEXT")
+            within "#search-results" do
+              expect(page).to have_text("No results found within the area covered by airTEXT")
+            end
           end
         end
       end
@@ -411,4 +526,9 @@ def fill_form_up_to(step)
     session_data[:subscription_form] ||= @subscription_form.attributes
     session_data
   end
+end
+
+def stub_maptiler_geocoding(search:, response:)
+  proxy.stub("https://api.maptiler.com:443/geocoding/#{CGI.escape_uri_component(search)}.json")
+    .and_return(json: response)
 end
