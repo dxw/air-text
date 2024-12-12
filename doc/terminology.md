@@ -24,8 +24,8 @@ environmental **`predictions`**:
 - Wind
 - Rain
 
-Each **prediction** has an **`DAQI level`**. This [DAQI (Daily Air
-Quality Index)][] scoring uses the range 1-10:
+Each **prediction** has an **`DAQI level`**. This [DAQI (Daily Air Quality
+Index)][] scoring uses the range 1-10:
 
 - low (1-3)
 - moderate (4-6)

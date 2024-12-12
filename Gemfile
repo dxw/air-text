@@ -6,6 +6,7 @@ ruby "3.3.6"
 
 gem "active_link_to", "~> 1.0" # Active links with CSS classes
 gem "bootsnap", ">= 1.1.0", require: false
+gem "dartsass-rails", "~> 0.5.1"
 gem "high_voltage"
 gem "jbuilder", "~> 2.11"
 gem "lograge", "~> 0.12"
@@ -15,7 +16,7 @@ gem "pry-byebug"
 gem "puma", "~> 6.4"
 gem "rollbar"
 gem "rails", "~> 7.2"
-gem "sass-rails", "~> 6.0"
+gem "sprockets-rails", "~> 3.5"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "terser"

@@ -8,10 +8,10 @@ Accepted
 
 ## Context
 
-The airTEXT service we're building obtains forecasts from [CERC's API][]. These forecasts
-are available for a particular day, from 50 areas or "zones". The forecasts are updated
-occasionally during the day (we're not clear as to the exact schedule of updates).
-A single request to the CERC API can be for:
+The airTEXT service we're building obtains forecasts from [CERC's API][]. These
+forecasts are available for a particular day, from 50 areas or "zones". The
+forecasts are updated occasionally during the day (we're not clear as to the
+exact schedule of updates). A single request to the CERC API can be for:
 
 - a particular zone or for all zones
 
