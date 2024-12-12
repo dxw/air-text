@@ -15,7 +15,7 @@ class CercForecastService
     private
 
     def refresh_cache
-      cerc_forecasts = CercApiClient.latest_forecasts
+      cerc_forecasts = CercForecastApiClient.latest_forecasts
       obtained_at = Time.zone.parse(cerc_forecasts.fetch("forecastdate"))
 
       cerc_forecasts.fetch("zones").each do |zone|

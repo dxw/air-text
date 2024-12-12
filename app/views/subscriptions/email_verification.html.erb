@@ -1,0 +1,9 @@
+<%= render 'form_step' do |f| %>
+  <h3 class="h3">Verify your email address</h3>
+  <p class="mb-2">A code has been sent to <b><%= @form.email %></b>.</p>
+  <%= f.label :verification_code_email, "Verification code", class: "sr-only" %>
+  <%= f.text_field :verification_code_email, placeholder: 'Enter the code', value: nil, class: "mb-2" %>
+  <p>If the code does not arrive, please check your spam folder. You can also
+  <%= button_tag "resend the code", data: { "subscription-target": "resendVerificationButton", action: "subscription#resendVerification", mode: "email" }, type: :button, class: "a" %>.
+  </p>
+<% end %>

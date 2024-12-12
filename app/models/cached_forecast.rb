@@ -18,7 +18,7 @@ class CachedForecast < ApplicationRecord
 
     return true if latest_record.nil?
 
-    threshold = Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
+    threshold = Time.current - ENV.fetch("CERC_FORECAST_API_CACHE_LIMIT_MINS").to_i.minutes
     latest_record.obtained_at < threshold
   end
 

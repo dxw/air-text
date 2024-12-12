@@ -1,0 +1,9 @@
+<%= render 'form_step' do |f| %>
+  <h3 class="h3">Verify your phone number for voicemail messages</h3>
+  <p class="mb-2">A code has been sent to your voicemail for <b><%= @form.voice_number %></b>.</p>
+  <%= f.label :verification_code_voice_number, "Verification code", class: "sr-only" %>
+  <%= f.text_field :verification_code_voice_number, placeholder: 'Enter the code', value: nil, class: "mb-2" %>
+  <p>You can also 
+  <%= button_tag "resend the code", data: { "subscription-target": "resendVerificationButton", action: "subscription#resendVerification", mode: "voice" }, type: :button, class: "a" %>.
+  </p>
+<% end %>

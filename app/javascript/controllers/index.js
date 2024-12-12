@@ -21,3 +21,6 @@ application.register("navigation", NavigationController);
 
 import ShareController from "./share_controller";
 application.register("share", ShareController);
+
+import SubscriptionController from "./subscription_controller";
+application.register("subscription", SubscriptionController);

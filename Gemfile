@@ -24,6 +24,7 @@ gem "httparty"
 gem "view_component"
 gem "seed-fu"
 gem "factory_bot_rails"
+gem "wicked" # for multi-step forms
 
 group :development do
   gem "better_errors"
@@ -52,9 +53,11 @@ group :test do
   gem "capybara-screenshot"
   gem "cuprite"
   gem "launchy"
+  gem "puffing-billy", "~> 4.0"
   gem "selenium-webdriver"
   gem "simplecov"
   gem "shoulda-matchers", "~> 6.0"
+  gem "table_print", "~> 1.5"
   gem "climate_control"
   gem "webmock"
 end

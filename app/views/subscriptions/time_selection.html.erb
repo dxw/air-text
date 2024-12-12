@@ -1,0 +1,12 @@
+<%= render 'form_step' do |f| %>
+  <div>
+    <h3 class="h3">Select your preferred time to receive alerts</h3>
+
+    <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, :last, prompt: "Select a time", required: true do |b| %>
+    <div>
+      <%= b.radio_button %>
+      <%= b.label %>
+    </div>
+    <% end %>
+  </div>
+<% end %>

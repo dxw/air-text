@@ -21,7 +21,16 @@ SimpleCov.minimum_coverage 99
 SimpleCov.start "rails"
 
 require "webmock/rspec"
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: [
+  "safebrowsingohttpgateway.googleapis.com", # For Puffing Billy proxy
+  "accounts.google.com", # For Puffing Billy proxy
+  "content-autofill.googleapis.com", # For Puffing Billy proxy
+  "optimizationguide-pa.googleapis.com", # For Puffing Billy proxy
+  "update.googleapis.com", # For Puffing Billy proxy
+  "edgedl.me.gvt1.com", # For Puffing Billy proxy
+  "airtext.info",
+  "api.maptiler.com"
+])
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

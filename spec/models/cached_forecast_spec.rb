@@ -1,6 +1,6 @@
 RSpec.describe CachedForecast do
   around do |example|
-    env_vars = {CERC_API_CACHE_LIMIT_MINS: "60"}
+    env_vars = {CERC_FORECAST_API_CACHE_LIMIT_MINS: "60"}
     ClimateControl.modify(env_vars) { example.run }
   end
 
@@ -16,10 +16,10 @@ RSpec.describe CachedForecast do
 
   describe "::stale?" do
     def time_at_cache_limit
-      Time.current - ENV.fetch("CERC_API_CACHE_LIMIT_MINS").to_i.minutes
+      Time.current - ENV.fetch("CERC_FORECAST_API_CACHE_LIMIT_MINS").to_i.minutes
     end
 
-    context "when the last record is older than the CERC_API_CACHE_LIMIT_MINS" do
+    context "when the last record is older than the CERC_FORECAST_API_CACHE_LIMIT_MINS" do
       before do
         FactoryBot.create(
           :cached_forecast,
@@ -32,7 +32,7 @@ RSpec.describe CachedForecast do
       end
     end
 
-    context "when the last record is younger than the CERC_API_CACHE_LIMIT_MINS" do
+    context "when the last record is younger than the CERC_FORECAST_API_CACHE_LIMIT_MINS" do
       before do
         FactoryBot.create(
           :cached_forecast,

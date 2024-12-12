@@ -1,0 +1,44 @@
+
+  <%= render 'form_step' do |f| %>
+  <div class="text-block">
+    <h2>Subscription Confirmation</h2>
+    <p>You will receive alerts for the following channels and areas:</p>
+
+    <section>
+      <header class="flex items-baseline">
+        <h4 class="flex-auto">Channels</h4>
+        <p><%= link_to "Edit", wizard_path(:contact_details) %></p>
+      </header>
+      <dl>
+        <dt>Email</dt>
+        <dd><%= @form.email.presence || "Not selected" %></dd>
+        <dt>Text</dt>
+        <dd><%= @form.sms_number.presence || "Not selected" %></dd>
+        <dt>Voicemail</dt>
+        <dd><%= @form.voice_number.presence || "Not selected" %></dd>
+      </dl>
+    </section>
+
+    <section>
+      <header class="flex items-baseline">
+        <h4 class="flex-auto">Alert areas</h4>
+        <p><%= link_to "Edit", wizard_path(:zone_selection) %></p>
+      </header>
+      <ul>
+        <% @form.zones.each do |zone| %>
+          <li><%= zone %></li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section>
+      <header class="flex items-baseline">
+        <h4 class="flex-auto">Selected time</h4>
+        <p><%= link_to "Edit", wizard_path(:time_selection) %></p>
+      </header>
+      <ul>
+        <li><%= SubscriptionForm::TIMES[@form.time] %></li>
+      </ul>
+    </section>
+  </div>
+<% end %>
