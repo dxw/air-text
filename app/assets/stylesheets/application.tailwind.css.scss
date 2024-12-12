@@ -1,17 +1,17 @@
-@import "leaflet/dist/leaflet.css";
-@import "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
-@import "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
-@import "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
-@import "header.scss";
-@import "air-quality-alert-banner.scss";
-@import "forecast-page.scss";
-@import "health-advice-page.scss";
-@import "air-quality-alerts-page.scss";
-@import "map.scss";
-@import "daqi-levels.scss";
-@import "share.scss";
-@import "text-block.scss";
-@import "footer.scss";
+@use "leaflet/dist/leaflet.css";
+@use "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
+@use "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
+@use "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
+@use "header.scss";
+@use "air-quality-alert-banner.scss";
+@use "forecast-page.scss";
+@use "health-advice-page.scss";
+@use "air-quality-alerts-page.scss";
+@use "map.scss";
+@use "daqi-levels.scss";
+@use "shar.scsse";
+@use "text-block.scss";
+@use "footer.scss";
 
 @tailwind base;
 @tailwind components;
