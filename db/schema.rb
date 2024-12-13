@@ -45,8 +45,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_05_174315) do
     t.integer "cerc_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
     t.uuid "zone_group_id"
     t.index ["cerc_id"], name: "index_zones_on_cerc_id", unique: true
     t.index ["zone_group_id"], name: "index_zones_on_zone_group_id"
