@@ -13,6 +13,10 @@ class VerificationCode < ApplicationRecord
       })
     end
 
+    def remove_expired
+      where("expires_at < ?", Time.current).destroy_all
+    end
+
     def verify(inputted_code, inputted_target)
       return false if inputted_code.blank? || inputted_target.blank?
 
@@ -28,7 +32,7 @@ class VerificationCode < ApplicationRecord
     end
 
     def digest(target)
-      Digest::SHA256.hexdigest(target)
+      OpenSSL::HMAC.hexdigest("SHA256", ENV.fetch("SECRET_KEY"), target)
     end
   end
 end
