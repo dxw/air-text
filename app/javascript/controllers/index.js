@@ -10,6 +10,9 @@ const application = Application.start();
 application.debug = false;
 window.Stimulus = application;
 
+import ApplicationController from "./application_controller";
+application.register("application", ApplicationController);
+
 import MapController from "./map_controller";
 application.register("map", MapController);
 

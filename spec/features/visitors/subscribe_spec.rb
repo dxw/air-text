@@ -17,10 +17,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
     it "shows a form when I click on the subscribe button" do
       visit root_path
 
-      click_on "Sign up for alerts"
+      click_on "Sign up for air quality alerts"
 
       expect(page).to have_text("Air pollution alert service subscription")
-      expect(page).to have_text("Step 1")
+      expect(page).to have_text("Choose the channels")
     end
   end
 
@@ -87,7 +87,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
           fill_in "Email", with: "hello@example.com"
           click_on "Next"
 
-          expect(page).to have_text("Step 2")
+          expect(page).to have_text("Verify your email address")
         end
       end
     end

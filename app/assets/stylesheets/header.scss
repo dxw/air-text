@@ -2,20 +2,20 @@
   background-color: var(--main-colour);
   display: flex;
   flex-flow: row wrap;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 
   .site-title {
     color: white;
     text-align: center;
 
     .site-name {
-      font-size: 2.25rem; /* equivalent to text-4xl */
+      font-size: 1.4rem;
       font-weight: bold;
       display: block;
     }
 
     .site-strapline {
-      font-size: 0.75rem; /* equivalent to text-xs */
+      font-size: 0.5rem;
       display: block;
     }
   }

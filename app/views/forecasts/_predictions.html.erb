@@ -1,9 +1,8 @@
 <turbo-frame id="predictions-frame">
-  <dl class="predictions mt-3">
-    <h3 class="text-xl font-bold">Other environmental forecasts</h3>
-    <%= render(UvPredictionComponent.new(@day_forecast.uv)) %>
+  <dl class="predictions mt-2">
+    <h3 class="h3 my-0">Other environmental forecasts</h3>
     <%= render(PollenPredictionComponent.new(@day_forecast.pollen)) %>
     <%= render(TemperaturePredictionComponent.new(@day_forecast.temperature)) %>
+    <%= render(UvPredictionComponent.new(@day_forecast.uv)) %>
   </dl>
-  <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution[:forecasted_at].strftime("%H:%M on %A %d %B %Y") %></span>
 </turbo-frame>

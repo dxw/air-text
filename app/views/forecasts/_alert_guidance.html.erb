@@ -1,11 +1,11 @@
 <turbo-frame id="alert-guidance-frame">
 <% if @day_forecast.air_quality_alert? %>
-  <div class="alert-guidance bg-<%= @day_forecast.air_pollution[:label].parameterize %>-alert-guidance-panel p-4">
-    <p class="font-semibold mb-4">
-      <%= t("air_quality_alert.#{@day_forecast.air_pollution[:label].parameterize(separator: "_")}.guidance.title") %>
-    </p>
-    <div class="text-xs">
+  <div class="alert-guidance text-block daqi-level-<%= @day_forecast.air_pollution[:label].parameterize %> p-2 mb-1">
+    <h3 class="mb-1"><%= t("air_quality_alert.#{@day_forecast.air_pollution[:label].parameterize(separator: "_")}.guidance.title") %></h3>
+    <div>
       <%= t("air_quality_alert.#{@day_forecast.air_pollution[:label].parameterize(separator: "_")}.guidance.detail_html") %>
+      <p><%= link_to("Learn more about the air pollution alert", alerts_path) %></p>
+      <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution[:forecasted_at].strftime("%H:%M on %A %d %B %Y") %></span>
     </div>
   </div>
 <% end %>

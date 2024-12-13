@@ -21,89 +21,56 @@
   --daqi-level-10-text: white;
 }
 
-.daqi-scale,
-.tabs,
-.daqi-table,
-.air-quality-alert-banner {
-  .daqi-level-1 {
-    background-color: var(--daqi-level-1-bg);
-    color: var(--daqi-level-1-text);
-  }
+@for $i from 1 through 10 {
+  .daqi-scale,
+  .tabs,
+  .daqi-table,
+  .air-quality-alert-banner {
+    .daqi-level-#{$i} {
+      --daqi-color: var(--daqi-level-#{$i}-bg);
 
-  .daqi-level-2 {
-    background-color: var(--daqi-level-2-bg);
-    color: var(--daqi-level-2-text);
-  }
-
-  .daqi-level-3 {
-    background-color: var(--daqi-level-3-bg);
-    color: var(--daqi-level-3-text);
-  }
-
-  .daqi-level-4 {
-    background-color: var(--daqi-level-4-bg);
-    color: var(--daqi-level-4-text);
-  }
-
-  .daqi-level-5 {
-    background-color: var(--daqi-level-5-bg);
-    color: var(--daqi-level-5-text);
-  }
-
-  .daqi-level-6 {
-    background-color: var(--daqi-level-6-bg);
-    color: var(--daqi-level-6-text);
-  }
-
-  .daqi-level-7 {
-    background-color: var(--daqi-level-7-bg);
-    color: var(--daqi-level-7-text);
-  }
-
-  .daqi-level-8 {
-    background-color: var(--daqi-level-8-bg);
-    color: var(--daqi-level-8-text);
-  }
-
-  .daqi-level-9 {
-    background-color: var(--daqi-level-9-bg);
-    color: var(--daqi-level-9-text);
-  }
-
-  .daqi-level-10 {
-    background-color: var(--daqi-level-10-bg);
-    color: var(--daqi-level-10-text);
+      background-color: var(--daqi-color);
+      color: var(--daqi-level-#{$i}-text);
+    }
   }
 }
 
 .daqi-level-low {
+  --daqi-color: var(--daqi-level-2-bg);
+
+  background-color: var(--daqi-color);
   color: var(--daqi-level-2-text);
-  background-color: var(--daqi-level-2-bg);
 }
 
 .daqi-level-moderate {
+  --daqi-color: var(--daqi-level-5-bg);
+
+  background-color: var(--daqi-color);
   color: var(--daqi-level-5-text);
-  background-color: var(--daqi-level-5-bg);
 }
 
 .daqi-level-high {
+  --daqi-color: var(--daqi-level-8-bg);
+
+  background-color: var(--daqi-color);
   color: var(--daqi-level-8-text);
-  background-color: var(--daqi-level-8-bg);
 }
 
 .daqi-level-very-high {
+  --daqi-color: var(--daqi-level-10-bg);
+
+  background-color: var(--daqi-color);
   color: var(--daqi-level-10-text);
-  background-color: var(--daqi-level-10-bg);
 }
 
-.stroke-white {
-  svg {
-    stroke: white;
-  }
-}
+// .stroke-white {
+//   svg {
+//     stroke: white;
+//   }
+// }
 
-.stroke-black {
-  svg {
-    stroke: black;
-  }
-}
+// .stroke-black {
+//   svg {
+//     stroke: black;
+//   }
+// }

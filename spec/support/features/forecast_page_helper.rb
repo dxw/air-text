@@ -31,7 +31,7 @@ module Features
     def expect_to_see_guidance_for(level)
       expect(page).to have_content(I18n.t("air_quality_alert.#{level}.guidance.title"))
       expect(page).to have_content(
-        I18n.t("air_quality_alert.#{level}.guidance.detail_html").truncate(20, omission: "")
+        ActionView::Base.full_sanitizer.sanitize(I18n.t("air_quality_alert.#{level}.guidance.detail_html").truncate(20, omission: ""))
       )
     end
 

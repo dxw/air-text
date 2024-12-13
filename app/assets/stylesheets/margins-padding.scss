@@ -30,6 +30,10 @@
   }
 }
 
+.mx-auto {
+  margin: auto;
+}
+
 @for $i from -12 through 12 {
   .pb-#{$i} {
     padding-bottom: $i * 0.5rem;

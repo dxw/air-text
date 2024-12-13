@@ -1,14 +1,16 @@
 .form {
   section {
-    @apply mb-4;
+    margin-bottom: 1rem;
 
     > div {
-      @apply mb-2 block;
+      margin-bottom: 0.5rem;
+      display: block;
     }
   }
 
   label {
-    @apply block mb-1;
+    display: block;
+    margin-bottom: 0.25rem;
   }
 
   input[type="text"],
@@ -16,72 +18,194 @@
   input[type="email"],
   input[type="tel"],
   input[type="password"],
-  textarea {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500;
+  textarea,
+  select {
+    width: calc(100% - 1.5rem);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--divider-color);
+    outline: none;
+
+    &:focus {
+      border-color: var(--main-colour);
+    }
   }
 
   input[type="checkbox"],
   input[type="radio"] {
-    @apply inline-block mr-2;
+    display: inline-block;
+    margin: 0 0.5rem 0 0;
 
     + label {
-      @apply inline-block;
+      display: inline-block;
     }
+  }
+
+  .radio-wrapper {
+    display: flex;
+  }
+
+  .checkbox-wrapper {
+    display: flex;
+    align-items: baseline;
   }
 
   select {
-    @apply inline-flex flex-row w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-base text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .switch-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
   }
 
   .switch {
-    @apply relative inline-block w-11 h-5;
+    position: relative;
+    display: inline-block;
+
+    --switch-width: 2rem;
+    --switch-height: 1rem;
+    --dot-size: 0.875rem;
+    --offset: 0.25rem;
 
     input[type="checkbox"] {
-      @apply appearance-none w-11 h-5 bg-airtext-main-light rounded-full checked:bg-airtext-main cursor-pointer transition-colors duration-300;
+      margin: 0;
+      appearance: none;
+      width: calc(var(--switch-width) + var(--offset));
+      height: calc(var(--switch-height) + var(--offset));
+      border-radius: 9999px;
+      border: 1px solid var(--main-colour);
+
+      &:checked {
+        background-color: var(--main-colour);
+
+        + label {
+          transform: translateX(
+            calc(2rem - var(--dot-size) - var(--offset) + 2px)
+          );
+          background-color: white;
+        }
+      }
+
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
+    // The label is the dot that moves
     label {
-      @apply absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-airtext-main shadow-sm transition-transform duration-300 cursor-pointer;
+      position: absolute;
+      top: calc(
+        var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2
+      );
+      left: calc(var(--offset) - 1px);
+      width: var(--dot-size);
+      height: var(--dot-size);
+      background-color: var(--main-colour);
+      border-radius: 9999px;
+      transition: transform 0.3s;
+      cursor: pointer;
     }
   }
 
+  %button {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    color: white;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+  }
+
   .buttons {
-    @apply flex justify-between gap-2 mt-4;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1rem;
 
     > * {
-      @apply w-1/2;
+      flex: 1;
     }
 
     a {
-      @apply inline-block px-4 py-2 font-semibold text-white bg-gray-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-airtext-main focus:border-airtext-main cursor-pointer text-center;
+      @extend %button;
+
+      background-color: #777;
+      border: 2px solid #777;
+
+      &:hover {
+        background-color: white;
+        color: #777;
+      }
     }
   }
 
   button[type="submit"],
   input[type="submit"] {
-    @apply inline-block px-4 py-2 font-semibold text-white bg-airtext-main rounded-md hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-airtext-main focus:border-airtext-main cursor-pointer;
+    @extend %button;
+
+    background-color: var(--main-colour);
+    border: 2px solid var(--main-colour);
+
+    &:hover {
+      background-color: white;
+      color: var(--main-colour);
+    }
   }
 
   .form-errors {
-    @apply bg-red-100 text-red-700 p-4 mt-4;
+    --warn-color: #df1313;
+
+    color: var(--warn-color);
+    border: 1px solid var(--warn-color);
   }
 }
 
-#search-results {
-  @apply mt-4;
+#zone-selection-page {
+  #search-results {
+    margin-top: 1rem;
 
-  li {
-    @apply cursor-pointer;
+    li {
+      cursor: pointer;
+    }
+  }
+
+  #zone-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+
+    .zone-tag {
+      padding: 0.25rem 0.5rem;
+      background-color: #e5e7eb;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+    }
+  }
+
+  .zone-group {
+    border-top: 1px solid var(--divider-color);
+
+    &:last-child {
+      border-bottom: 1px solid var(--divider-color);
+    }
+  }
+
+  .zone-checkboxes {
+    margin-top: 1rem;
   }
 }
 
-#tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
-
-  .tag {
-    @apply px-2 py-1 bg-gray-200 rounded-md cursor-pointer;
+#confirmation-page {
+  section {
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
   }
 }
