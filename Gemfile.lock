@@ -133,7 +133,7 @@ GEM
     debug_inspector (1.2.0)
     diff-lcs (1.5.1)
     docile (1.4.0)
-    dotenv (3.1.4)
+    dotenv (3.1.6)
     drb (2.2.1)
     em-http-request (1.1.7)
       addressable (>= 2.3.4)
