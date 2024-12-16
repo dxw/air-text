@@ -1,18 +1,19 @@
-@use "margins-padding";
 @use "leaflet/dist/leaflet.css";
 @use "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
 @use "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
 @use "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
+@use "daqi-levels";
 @use "header";
 @use "air-quality-alert-banner";
 @use "forecast-page";
 @use "health-advice-page";
 @use "air-quality-alerts-page";
 @use "map";
-@use "daqi-levels";
 @use "share";
 @use "text-block";
 @use "footer";
+@use "subscription-form";
+@use "margins-padding";
 
 :root {
   --main-colour: #3880d1;
@@ -20,8 +21,42 @@
   --main-colour-lightest: #edf4fb;
 }
 
+body {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .hidden {
   display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dd,
+dt {
+  margin: 0;
 }
 
 a {
@@ -35,25 +70,17 @@ ul {
   margin: 0;
 }
 
-button {
+button,
+input[type="submit"] {
   background: none;
-  border: none;
   cursor: pointer;
-}
-
-body {
-  width: 100%;
-  max-width: 1152px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding: 0;
+  border: none;
 }
 
 .alert {
   padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 0.25rem;
+  margin: 1.5rem;
 
   &.alert-success {
     background-color: var(--main-colour-light);

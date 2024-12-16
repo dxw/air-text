@@ -1,1 +1,3 @@
-<%= render(AirQualityAlertBannerComponent.new) %>
+<% unless params[:controller] == 'forecasts' && params[:action] == 'show' %>
+  <%= render(AirQualityAlertBannerComponent.new) %>
+<% end %>

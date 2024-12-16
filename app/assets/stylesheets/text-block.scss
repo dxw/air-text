@@ -1,34 +1,28 @@
 %h1 {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 1.25rem;
-  margin-bottom: 0.75rem;
 }
 
 %h2 {
   font-size: 1.25rem;
   font-weight: bold;
-  margin-top: 1.25rem;
-  margin-bottom: 0.75rem;
 }
 
 %h3 {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: bold;
-  margin-top: 1.25rem;
-  margin-bottom: 0.75rem;
 }
 
 %h4 {
   font-size: 1rem;
   font-weight: bold;
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
 }
 
 %a {
-  color: #3b82f6;
+  color: var(--main-colour);
   text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
 }
 
 .h1 {
@@ -78,7 +72,8 @@
   }
 
   p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
 
     a {
       @extend %a;
@@ -99,26 +94,26 @@
   dl {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--divider-color);
 
     dt,
     dd {
       padding: 0.5rem;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid var(--divider-color);
     }
 
     dt {
       font-weight: bold;
-      background-color: #e5e7eb;
+      background-color: var(--main-colour-lightest);
     }
   }
 
   ul {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--divider-color);
 
     li {
       padding: 0.5rem 0;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid var(--divider-color);
     }
   }
 }
@@ -131,34 +126,40 @@ details {
       content: none; /* Hide the default marker */
     }
 
-    h3,
-    h4 {
-      margin: 0 !important;
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
 
-      &::after {
-        content: "\002B"; /* Unicode character for plus sign */
-        display: flex;
-        width: 1.5rem;
+      &::before {
+        content: "";
+        width: 1rem;
         aspect-ratio: 1;
-        float: right;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 3px;
-        font-size: 1.3rem;
-        line-height: 0;
-        font-weight: normal;
-        color: black;
         border: 1px solid black;
         border-radius: 100%;
+        background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>');
+        background-size: 9px;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      &::after {
+        content: "Show";
+        text-decoration: underline;
       }
     }
   }
 
-  &[open] summary {
-    h3,
-    h4 {
-      &::after {
-        content: "\2212"; /* Unicode character for minus sign */
+  &[open] {
+    summary {
+      button {
+        &::before {
+          transform: rotate(180deg);
+        }
+
+        &::after {
+          content: "Hide";
+        }
       }
     }
   }

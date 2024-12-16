@@ -1,12 +1,12 @@
 
   <%= render 'form_step' do |f| %>
-  <div class="text-block">
-    <h2>Subscription Confirmation</h2>
+  <div class="text-block" id="confirmation-page">
+    <h2 class="mb-2">Subscription Confirmation</h2>
     <p>You will receive alerts for the following channels and areas:</p>
 
     <section>
-      <header class="flex items-baseline">
-        <h4 class="flex-auto">Channels</h4>
+      <header>
+        <h4>Channels</h4>
         <p><%= link_to "Edit", wizard_path(:contact_details) %></p>
       </header>
       <dl>
@@ -20,8 +20,8 @@
     </section>
 
     <section>
-      <header class="flex items-baseline">
-        <h4 class="flex-auto">Alert areas</h4>
+      <header>
+        <h4>Alert areas</h4>
         <p><%= link_to "Edit", wizard_path(:zone_selection) %></p>
       </header>
       <ul>
@@ -32,8 +32,8 @@
     </section>
 
     <section>
-      <header class="flex items-baseline">
-        <h4 class="flex-auto">Selected time</h4>
+      <header>
+        <h4>Selected time</h4>
         <p><%= link_to "Edit", wizard_path(:time_selection) %></p>
       </header>
       <ul>

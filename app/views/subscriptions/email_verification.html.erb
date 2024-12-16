@@ -1,5 +1,5 @@
 <%= render 'form_step' do |f| %>
-  <h3 class="h3">Verify your email address</h3>
+  <h3 class="h3 mb-2">Verify your email address</h3>
   <p class="mb-2">A code has been sent to <b><%= @form.email %></b>.</p>
   <%= f.label :verification_code_email, "Verification code", class: "sr-only" %>
   <%= f.text_field :verification_code_email, placeholder: 'Enter the code', value: nil, class: "mb-2" %>

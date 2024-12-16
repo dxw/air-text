@@ -16,7 +16,7 @@ RSpec.describe UvPredictionComponent, type: :component do
 
   describe "#name" do
     it "renders the #name in .name" do
-      expect(page).to have_css(".name", text: "Ultraviolet rays (UV)")
+      expect(page).to have_css(".name", text: "Ultraviolet (UV) rays")
     end
   end
 

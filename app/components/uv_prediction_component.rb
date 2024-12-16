@@ -2,7 +2,7 @@
 
 class UvPredictionComponent < PredictionComponent
   def name
-    "Ultraviolet rays (UV)"
+    "Ultraviolet (UV) rays"
   end
 
   def css_name

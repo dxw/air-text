@@ -1,7 +1,7 @@
 <div class="prediction <%= css_name %>">
-  <div class="summary flex flex-row">
-    <dt class="name w-1/2"> <%= name %></dt>
-    <dd class="display-value w-1/2"><%= display_value&.html_safe %></dd>
+  <div class="summary">
+    <dt class="name"><%= name %></dt>
+    <dd class="display-value"><%= display_value&.html_safe %></dd>
   </div>
   <div class="guidance <%= guidance_visible? ? "visible" : "hidden" %> <%= guidance_panel_colour %>"><%= guidance_text&.html_safe %></div>
 </div>
