@@ -10,7 +10,7 @@
     "lint:js:fix": "yarn run lint:js --fix",
     "lint:all:fix": "yarn run lint:js:fix && yarn run lint:css:fix && yarn run lint:format:fix && standardrb --fix",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --loader:.geojson=json --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "rails dartsass",
+    "build:css": "rails dartsass:build",
     "build:css:watch": "rails dartsass:watch"
   },
   "devDependencies": {
