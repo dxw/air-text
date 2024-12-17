@@ -100,23 +100,60 @@ a.primary-cta {
 
   #map-wrapper {
     display: flex;
+    position: relative;
 
     .map {
       width: 100%;
-      height: 20rem;
+      height: 80vh;
     }
 
     .daqi-scale {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      z-index: 1000;
+      top: 50px; // 50px for the search box
+      height: calc(
+        100% - 50px - 20px
+      ); // 50px for the search box, 20px for the bottom padding
 
-      div {
-        display: flex;
-        padding: 0.25rem 0;
-        justify-content: center;
-        align-items: center;
-        width: 2rem;
-        height: 10%;
+      > div {
+        flex: 1;
+        display: grid;
+
+        span {
+          grid-column: 2;
+          grid-row: 1 / 4;
+          writing-mode: vertical-lr;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 50%;
+          background-color: var(--main-colour-lightest);
+          padding: 2px;
+          border-bottom: 0.5px solid black;
+        }
+
+        &:first-child {
+          span {
+            grid-row: 1 / 1;
+          }
+        }
+
+        &:last-child {
+          span {
+            border-bottom: 0;
+          }
+        }
+
+        > div {
+          grid-column: 1;
+          width: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
 
