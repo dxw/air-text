@@ -3,7 +3,7 @@
 RSpec.describe DayTabComponent, type: :component do
   describe "daqi_indicator_colour_class" do
     let(:component) {
-      DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: air_pollution_level), day: :today)
+      DayTabComponent.new(forecast: FactoryBot.build(:forecast, air_pollution_level: air_pollution_level), active_date: Date.today)
     }
 
     context "when the air pollution level is 1" do
@@ -90,7 +90,7 @@ RSpec.describe DayTabComponent, type: :component do
   describe "icon_stroke_colour_class" do
     let(:component) {
       forecast = FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, level))
-      DayTabComponent.new(forecast: forecast, day: :today)
+      DayTabComponent.new(forecast: forecast, active_date: Date.today)
     }
 
     context "when the air pollution label is _Very high_" do

@@ -1,7 +1,6 @@
-<%= tag.div class: "tab #{@day} #{@active ? 'active' : 'inactive'} #{@forecast.air_pollution[:label] == 'LOW' ? 'low' : daqi_indicator_colour_class}",
+<%= tag.div class: "tab #{@active ? 'active' : 'inactive'} #{@forecast.air_pollution[:label] == 'LOW' ? 'low' : daqi_indicator_colour_class}",
   data: {
     date: @forecast.date.to_s,
-    day: @day,
     action: "click->forecast#changeDay",
   } do
   %>
