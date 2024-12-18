@@ -4,6 +4,56 @@ RSpec.describe CachedForecast do
     ClimateControl.modify(env_vars) { example.run }
   end
 
+  describe "validations" do
+    it { should validate_presence_of(:obtained_at) }
+    it { should validate_presence_of(:zone) }
+    it { should validate_presence_of(:data) }
+
+    it "validates that #data is an array of three forecasts" do
+      cached_forecast = FactoryBot.build(:cached_forecast, data: FactoryBot.build_list(:forecast, 2))
+
+      expect(cached_forecast).not_to be_valid
+      expect(cached_forecast.errors[:data]).to include("must be an array of three forecasts")
+    end
+
+    it "validates that each forecast in #data has a :forecasted_at date" do
+      cached_forecast = FactoryBot.build(:cached_forecast, data: [
+        FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, forecasted_at: "2024-10-21"))
+      ])
+
+      expect(cached_forecast).not_to be_valid
+      expect(cached_forecast.errors[:data]).to include("forecasted_at must be a date")
+    end
+
+    it "validates that each forecast in #data has integer values for air pollution" do
+      cached_forecast = FactoryBot.build(:cached_forecast, data: [
+        FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, no2: "1"))
+      ])
+
+      expect(cached_forecast).not_to be_valid
+      expect(cached_forecast.errors[:data]).to include("no2 must be an integer")
+    end
+
+    it "validates that each forecast in #data has a valid :label" do
+      cached_forecast = FactoryBot.build(:cached_forecast, data: [
+        FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, label: "invalid"))
+      ])
+
+      expect(cached_forecast).not_to be_valid
+      expect(cached_forecast.errors[:data]).to include("label must be one of the expected values")
+    end
+
+    it "validates that each forecast in #data has integer values for UV and pollen" do
+      cached_forecast = FactoryBot.build(:cached_forecast, data: [
+        FactoryBot.build(:forecast, uv: "1", pollen: "2")
+      ])
+
+      expect(cached_forecast).not_to be_valid
+      expect(cached_forecast.errors[:data]).to include("uv must be an integer")
+      expect(cached_forecast.errors[:data]).to include("pollen must be an integer")
+    end
+  end
+
   describe "::last" do
     let!(:first) { FactoryBot.create(:cached_forecast, obtained_at: Time.current - 2.days) }
     let!(:last) { FactoryBot.create(:cached_forecast, obtained_at: Time.current) }

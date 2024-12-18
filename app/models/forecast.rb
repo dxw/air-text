@@ -3,6 +3,13 @@ class Forecast
 
   attr_accessor :obtained_at, :date, :zone, :air_pollution, :uv, :pollen, :temperature
 
+  AIR_POLLUTION_LABELS = [
+    "LOW",
+    "MODERATE",
+    "HIGH",
+    "VERY HIGH"
+  ]
+
   def air_quality_alert?
     air_pollution[:label] != "LOW"
   end
