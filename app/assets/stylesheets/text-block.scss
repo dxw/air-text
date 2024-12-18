@@ -152,6 +152,8 @@ details {
 
   &[open] {
     summary {
+      background: #f5f5f5;
+
       button {
         &::before {
           transform: rotate(180deg);

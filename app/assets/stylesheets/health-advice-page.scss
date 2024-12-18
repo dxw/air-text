@@ -1,47 +1,57 @@
-.advice-table {
-  border-collapse: collapse;
-  margin-bottom: 1rem;
+#health-advice {
+  details {
+    border-top: 1px solid var(--border-color);
 
-  th,
-  td {
-    border-left: 1px solid white;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 0.25rem 0.5rem;
-
-    &:first-child {
-      border-left: none;
+    &:last-of-type {
+      border-bottom: 1px solid var(--border-color);
     }
   }
 
-  thead {
-    background-color: #6b7280;
-    padding: 1rem 0;
-    color: white;
+  .advice-table {
+    border-collapse: collapse;
+    margin-bottom: 1rem;
 
-    th {
-      font-weight: normal;
+    th,
+    td {
+      border-left: 1px solid white;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 0.25rem 0.5rem;
+
+      &:first-child {
+        border-left: none;
+      }
     }
-  }
 
-  tr.levels {
-    font-weight: bold;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-width: 1px 0;
-    background: var(--main-colour-light);
+    thead {
+      background-color: #6b7280;
+      padding: 1rem 0;
+      color: white;
 
-    td:first-child {
-      text-align: left;
-      background: var(--main-colour-lightest);
+      th {
+        font-weight: normal;
+      }
     }
-  }
 
-  h3 {
-    font-size: 1.25rem;
-  }
+    tr.levels {
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-width: 1px 0;
+      background: var(--main-colour-light);
 
-  h4 {
-    font-weight: bold;
+      td:first-child {
+        text-align: left;
+        background: var(--main-colour-lightest);
+      }
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    h4 {
+      font-weight: bold;
+    }
   }
 }
