@@ -1,0 +1,124 @@
+<article class="text-block p-4" id="daqi-scale-guide">
+  <h1 class="mb-2">Air pollution index and health advice</h1>
+  <p>Adults and children with heart or lung problems are at greater risk of symptoms. Follow your doctor's usual advice about exercising and managing your condition.</p>
+  <p>Anyone experiencing symptoms should follow the guidance provided below.</p>
+
+  <section>
+    <div class="daqi-scale">
+      <h3>Low</h3>
+      <span class="daqi-level-1">1</span>
+      <span class="daqi-level-2">2</span>
+      <span class="daqi-level-3">3</span>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>At-risk individuals and general population</strong> should enjoy their usual outdoor activities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="daqi-scale">
+      <h3>Moderate</h3>
+      <span class="daqi-level-4">4</span>
+      <span class="daqi-level-5">5</span>
+      <span class="daqi-level-6">6</span>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "no-exercise" %>
+        <%= render_svg "no-outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>Adults and children with lung problems and those with heart problems who experience symptoms</strong> should consider reducing strenuous physical activity, particularly outdoors.</p>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>General population</strong> could enjoy their usual outdoor activities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="daqi-scale">
+      <h3>High</h3>
+      <span class="daqi-level-7">7</span>
+      <span class="daqi-level-8">8</span>
+      <span class="daqi-level-9">9</span>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "no-exercise" %>
+        <%= render_svg "no-outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>Adults and children with lung problems and those with heart problems who experience symptoms</strong> should consider reducing strenuous physical activity, particularly outdoors.</p>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "asthma" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>People with asthma</strong> may need to use their reliever inhaler more often.</p>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "no-exercise" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>Older people</strong> should reduce physical exertion.</p>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "no-exercise" %>
+        <%= render_svg "no-outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>Anyone from general population experiencing discomfort such as sore eyes, cough or sore throat</strong> should consider reducing activity, particularly outdoors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="daqi-scale">
+      <h3>Very high</h3>
+      <span class="daqi-level-10">10</span>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "no-exercise" %>
+        <%= render_svg "no-outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>Adults and children with lung problems and those with heart problems who experience symptoms</strong> should consider reducing strenuous physical activity, particularly outdoors.</p>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "asthma" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>People with asthma</strong> may need to use their reliever inhaler more often.</p>
+      </div>
+    </div>
+    <div class="guidance">
+      <div class="guidance-icons">
+        <%= render_svg "no-exercise" %>
+        <%= render_svg "no-outdoors" %>
+      </div>
+      <div class="guidance-text">
+        <p><strong>General population</strong> should reduce physical exertion, particularly outdoors, <strong>especially if experiencing cough or sore throat symptoms</strong>.</p>
+      </div>
+    </div>
+  </section>
+</article>

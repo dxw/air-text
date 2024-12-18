@@ -14,6 +14,7 @@
 @use "footer";
 @use "subscription-form";
 @use "margins-padding";
+@use "daqi-scale-guide";
 
 :root {
   --main-colour: #3880d1;
@@ -84,5 +85,31 @@ input[type="submit"] {
 
   &.alert-success {
     background-color: var(--main-colour-light);
+  }
+}
+
+.flyout {
+  position: fixed;
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  z-index: 1000;
+  right: -500px;
+  transition: right 0.3s;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+
+  &.open {
+    right: 0;
+  }
+
+  button.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: 2rem;
   }
 }
