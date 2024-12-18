@@ -193,6 +193,10 @@
     &:last-child {
       border-bottom: 1px solid var(--divider-color);
     }
+
+    &[open] summary {
+      background: none;
+    }
   }
 
   .zone-checkboxes {
