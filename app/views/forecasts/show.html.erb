@@ -25,6 +25,6 @@
 <%= render "how_forecasts_made" %>
 
 <div class="flyout">
-  <%= button_tag("×", class: "close", data: { action: "click->map#closeDaqiScaleFlyout", controller: "map" }) %>
+  <%= button_tag("Close", class: "close", data: { action: "click->map#closeDaqiScaleFlyout", controller: "map" }) %>
   <%= render "pages/daqi_scale_guide" %>
 </div>
