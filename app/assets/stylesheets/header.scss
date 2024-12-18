@@ -21,7 +21,6 @@
   }
 
   button {
-    font-size: 3rem; /* equivalent to text-5xl */
     flex: 1 1 auto;
     color: white;
     text-align: right;
@@ -29,20 +28,26 @@
     margin-right: -7px;
     background: none;
     border: none;
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
-    &::before {
+    &::after {
       content: "☰";
-      font-size: 4rem;
-      bottom: 0.25rem;
+      font-size: 1.5rem;
       position: relative;
+      bottom: 0.15rem;
+      margin-left: 3px;
     }
 
     &.menu-open {
-      &::before {
+      &::after {
         content: "✕";
-        font-size: 3.25rem;
+        font-size: 1.25rem;
         bottom: 0;
-        right: 8px;
+        margin-right: 3px;
+        margin-left: 6px;
       }
     }
   }
@@ -52,7 +57,7 @@
     width: 100%;
 
     ul {
-      font-size: 1.25rem; /* equivalent to text-xl */
+      font-size: 1.25rem;
       margin: 1rem 0;
       list-style: none;
       padding: 0;
