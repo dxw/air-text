@@ -8,20 +8,53 @@
   --border-radius: 8px;
 }
 
-a.primary-cta {
-  display: inline-block;
+%cta {
   padding: 0.5rem 2rem;
   width: calc(100% - 4rem);
   max-width: 400px;
+  border: 2px solid;
   border-radius: var(--border-radius);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.primary-cta {
+  @extend %cta;
+
   color: white;
   background-color: var(--main-colour);
-  text-align: center;
-  border: 2px solid var(--main-colour);
+  border-color: var(--main-colour);
 
   &:hover {
-    background-color: white;
-    color: var(--main-colour);
+    background-color: var(--main-colour-dark);
+    border-color: var(--main-colour-dark);
+  }
+
+  &:focus {
+    background-color: var(--main-colour-dark);
+    border-color: var(--main-colour-highlight);
+    outline: 2px solid var(--main-colour-highlight);
+  }
+}
+
+.secondary-cta {
+  @extend %cta;
+
+  color: var(--main-colour);
+  background-color: white;
+  border-color: var(--main-colour);
+
+  &:hover {
+    background-color: var(--main-colour-light);
+  }
+
+  &:focus {
+    background-color: var(--main-colour-light);
+    border-color: var(--main-colour-highlight);
+    outline: 2px solid var(--main-colour-highlight);
   }
 }
 
@@ -60,6 +93,7 @@ a.primary-cta {
       border-style: dashed;
       border-bottom: 0;
       color: var(--inactive-tab-text-color);
+      background-color: color-mix(in srgb, var(--daqi-color) 20%, transparent);
     }
 
     .daqi-indicator {
