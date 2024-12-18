@@ -39,28 +39,6 @@ RSpec.describe ForecastsController do
       expect(response).to render_template("show")
     end
 
-    context "when a _day_ parameter is received" do
-      before do
-        get :show, params: {day: day}
-      end
-
-      context "when a recognised _day_ parameter is received" do
-        let(:day) { "tomorrow" }
-
-        it "shows the forecast for the given day" do
-          expect(assigns(:day_forecast)).to eq(forecasts.data.second)
-        end
-      end
-
-      context "when an unrecognised _day_ parameter is received" do
-        let(:day) { "invalid" }
-
-        it "shows today's forecast" do
-          expect(assigns(:day_forecast)).to eq(forecasts.data.first)
-        end
-      end
-    end
-
     context "when a _date_ parameter is received" do
       before do
         get :show, params: {date: date.to_s}

@@ -1,8 +1,7 @@
 class DayTabComponent < ViewComponent::Base
-  def initialize(forecast:, day:, active: false)
+  def initialize(forecast:, active_date:)
     @forecast = forecast
-    @day = day
-    @active = active
+    @active = active_date == forecast.date
   end
 
   def daqi_indicator_colour_class

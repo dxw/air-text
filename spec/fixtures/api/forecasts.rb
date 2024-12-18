@@ -13,7 +13,7 @@ module Fixtures
 
       def zone_object(zone_id: 55, forecasts: [])
         {
-          "forecasts" => forecasts.presence || [zone_forecast],
+          "forecasts" => forecasts.presence || [zone_forecast(day: :today), zone_forecast(day: :tomorrow), zone_forecast(day: :day_after_tomorrow)],
           "zone_id" => zone_id,
           "zone_name" => "Central London",
           "zone_type" => 1

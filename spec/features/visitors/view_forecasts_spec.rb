@@ -4,6 +4,10 @@ RSpec.feature "Forecasts page" do
   include Features::ForecastPageHelper
 
   describe "Viewing forecasts" do
+    tab_selector_today = ".tab[data-date='#{Date.today}']"
+    tab_selector_tomorrow = ".tab[data-date='#{Date.tomorrow}']"
+    tab_selector_day_after_tomorrow = ".tab[data-date='#{Date.tomorrow + 1.day}']"
+
     describe "Viewing forecasts for 3 days" do
       before do
         forecasts = [
@@ -51,13 +55,13 @@ RSpec.feature "Forecasts page" do
         expect(page).to have_content("Air quality forecast")
 
         # Today tab is active
-        expect(page).to have_css(".tab.today.active")
+        expect(page).to have_css("#{tab_selector_today}.active")
 
-        expect(page).to have_css(".tab.tomorrow.inactive")
-        expect(page).to have_css(".tab.day_after_tomorrow.inactive")
+        expect(page).to have_css("#{tab_selector_tomorrow}.inactive")
+        expect(page).to have_css("#{tab_selector_day_after_tomorrow}.inactive")
 
-        expect(page).not_to have_css(".tab.tomorrow.active")
-        expect(page).not_to have_css(".tab.day_after_tomorrow.active")
+        expect(page).not_to have_css("#{tab_selector_tomorrow}.active")
+        expect(page).not_to have_css("#{tab_selector_day_after_tomorrow}.active")
 
         # Air pollution status for each day
         expect_air_pollution_prediction(day: :today, value: :high)
@@ -86,16 +90,19 @@ RSpec.feature "Forecasts page" do
         ##
 
         visit forecast_path
-        switch_to_tab_for(:tomorrow)
+        tab_selector_today = ".tab[data-date='#{Date.today}']"
+        tab_selector_tomorrow = ".tab[data-date='#{Date.tomorrow}']"
+        tab_selector_day_after_tomorrow = ".tab[data-date='#{Date.tomorrow + 1.day}']"
+        find(tab_selector_tomorrow).trigger("click")
 
         # See that the tomorrow tab is active
-        expect(page).to have_css(".tab.tomorrow.active")
+        expect(page).to have_css("#{tab_selector_tomorrow}.active")
 
-        expect(page).to have_css(".tab.today.inactive")
-        expect(page).to have_css(".tab.day_after_tomorrow.inactive")
+        expect(page).to have_css("#{tab_selector_today}.inactive")
+        expect(page).to have_css("#{tab_selector_day_after_tomorrow}.inactive")
 
-        expect(page).not_to have_css(".tab.today.active")
-        expect(page).not_to have_css(".tab.day_after_tomorrow.active")
+        expect(page).not_to have_css("#{tab_selector_today}.active")
+        expect(page).not_to have_css("#{tab_selector_day_after_tomorrow}.active")
 
         # Predicted UV level for tomorrow
         expect_prediction(category: :uv, level: :moderate)
@@ -119,16 +126,16 @@ RSpec.feature "Forecasts page" do
         ##
 
         visit forecast_path
-        switch_to_tab_for(:day_after_tomorrow)
+        find(tab_selector_day_after_tomorrow).trigger("click")
 
         # See that the day after tomorrow tab is active
-        expect(page).to have_css(".tab.day_after_tomorrow.active")
+        expect(page).to have_css("#{tab_selector_day_after_tomorrow}.active")
 
-        expect(page).to have_css(".tab.today.inactive")
-        expect(page).to have_css(".tab.tomorrow.inactive")
+        expect(page).to have_css("#{tab_selector_today}.inactive")
+        expect(page).to have_css("#{tab_selector_tomorrow}.inactive")
 
-        expect(page).not_to have_css(".tab.today.active")
-        expect(page).not_to have_css(".tab.tomorrow.active")
+        expect(page).not_to have_css("#{tab_selector_today}.active")
+        expect(page).not_to have_css("#{tab_selector_tomorrow}.active")
 
         # Predicted UV level for the day after tomorrow
         expect_prediction(category: :uv, level: :high)

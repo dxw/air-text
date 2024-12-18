@@ -39,7 +39,7 @@ class ForecastsController < ApplicationController
   def load_options
     @zone = zone
     @date = date
-    @day = @date ? day_from_date(@date) : day
+    @day = @date ? day_from_date(@date) : "today"
     @pollutant = pollutant
     @dummy = ENV.fetch("DUMMY_FORECAST", nil)
   end
@@ -74,15 +74,11 @@ class ForecastsController < ApplicationController
   end
 
   def date
-    Date.parse(params.fetch("date")) if params[:date].present?
+    return Date.parse(params.fetch("date")) if params[:date].present?
+
+    Date.today
   rescue ArgumentError
     Date.today # default to today
-  end
-
-  def day
-    return params.fetch("day") if %w[today tomorrow day_after_tomorrow].include?(params.dig("day"))
-
-    "today" # default to today
   end
 
   def pollutant
