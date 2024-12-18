@@ -46,24 +46,6 @@ RSpec.describe AirQualityAlertBannerComponent, type: :component do
     end
   end
 
-  describe "icon_stroke_colour_class" do
-    context "when the highest alert is HIGH" do
-      let(:air_pollution_level) { :high }
-
-      it "returns _stroke-white_" do
-        expect(component.icon_stroke_colour_class).to eq("stroke-white")
-      end
-    end
-
-    context "when the highest alert is not HIGH" do
-      let(:air_pollution_level) { :low }
-
-      it "returns _stroke-black_" do
-        expect(component.icon_stroke_colour_class).to eq("stroke-black")
-      end
-    end
-  end
-
   describe "pollution_labels" do
     let(:forecasts) {
       [

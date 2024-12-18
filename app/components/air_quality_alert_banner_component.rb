@@ -15,10 +15,6 @@ class AirQualityAlertBannerComponent < ViewComponent::Base
     end
   end
 
-  def icon_stroke_colour_class
-    ["HIGH", "VERY HIGH"].include?(@level_label) ? "stroke-white" : "stroke-black"
-  end
-
   private
 
   def highest_alert
