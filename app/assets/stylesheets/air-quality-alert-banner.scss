@@ -1,7 +1,8 @@
 .air-quality-alert-banner {
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   gap: 1rem;
+  border-top: 1px solid white;
 
   &.no-alert {
     background-color: var(--main-colour-lightest);

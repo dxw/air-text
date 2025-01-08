@@ -1,7 +1,9 @@
 <div class="air-quality-alert-banner <%= alert? ? "daqi-level-#{@level_label&.parameterize}" : "no-alert" %>">
-  <div class="air-quality-alert-icon">
-    <%= helpers.render_svg "exclamation_triangle" if alert? %>
-  </div>
+  <% if alert? %>
+    <div class="air-quality-alert-icon">
+      <%= helpers.render_svg "exclamation_triangle" %>
+    </div>
+  <% end %>
   <div class="air-quality-alert-text">
     <strong><%= message %></strong>
     <%= link_to "Learn more about the air pollution alert", alerts_path if alert? %>
