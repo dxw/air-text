@@ -8,10 +8,10 @@
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
-    "lint:all:fix": "yarn run lint:js:fix && yarn run lint:css:fix && yarn run lint:format:fix && standardrb --fix",
+    "lint:all:fix": "yarn run lint:js:fix && yarn run lint:css:fix && yarn run lint:format:fix && bundle exec standardrb --fix",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --loader:.geojson=json --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "rails dartsass:build",
-    "build:css:watch": "rails dartsass:watch"
+    "build:css": "bundle exec rails dartsass:build",
+    "build:css:watch": "bundle exec rails dartsass:watch"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
