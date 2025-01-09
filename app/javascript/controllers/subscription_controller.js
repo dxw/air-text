@@ -195,7 +195,6 @@ export default class SubscriptionController extends Controller {
   }
 
   processVerificationCodeInput(event) {
-    console.log("processVerificationCodeInput");
     const input = event.target;
     const value = input.value;
 
@@ -203,9 +202,9 @@ export default class SubscriptionController extends Controller {
     // When an input is emptied, focus the previous input
 
     if (value.length === 1) {
-      input.nextElementSibling.focus();
+      input.nextElementSibling?.focus();
     } else if (value.length === 0) {
-      input.previousElementSibling.focus();
+      input.previousElementSibling?.focus();
     }
   }
 
