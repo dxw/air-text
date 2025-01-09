@@ -1,4 +1,4 @@
-<div class="text-block p-4">
+<div class="text-block p-3">
   <h1 class="mb-2">Air pollution alert service subscription</h1>
   <p>Receive alerts by email, text, or voicemail when pollution levels are forecasted to be moderate, high, or very high.</p>
   <p>You can select up to five areas to receive alerts for, and you can unsubscribe from the service at any time.</p>
@@ -7,7 +7,7 @@
 <hr>
 
 <turbo-frame id="form-frame" data-controller="subscription">
-  <div class="p-4">
+  <div class="p-3">
     <%= form_for @form, url: wizard_path, method: :put, html: { class: "form" }, data: { turbo: @final_step ? false : nil } do |f| %>
       <%= f.hidden_field :current_step, value: @current_step %>
 
