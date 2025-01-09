@@ -1,6 +1,7 @@
 class SubscriptionForm
   include ActiveModel::Model
   include ActiveModel::Attributes
+  include ActiveRecord::Callbacks
 
   attribute :current_step
 
@@ -21,6 +22,12 @@ class SubscriptionForm
   attribute :verification_code_email
   attribute :verification_code_sms_number
   attribute :verification_code_voice_number
+
+  before_validation do
+    self.verification_code_email = verification_code_email&.join
+    self.verification_code_sms_number = verification_code_sms_number&.join
+    self.verification_code_voice_number = verification_code_voice_number&.join
+  end
 
   validates :verification_code_email, presence: {message: "You must enter the verification code"}, if: -> { on_step?("email_verification") }
   validate :verification_code_email_correct?, if: -> { on_step?("email_verification") }

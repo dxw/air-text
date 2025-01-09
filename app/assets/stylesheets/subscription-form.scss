@@ -164,6 +164,13 @@
   }
 }
 
+.verification-code {
+  input {
+    width: 2rem !important;
+    text-align: center;
+  }
+}
+
 #zone-selection-page {
   #search-results {
     margin-top: 1rem;

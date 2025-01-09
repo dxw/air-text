@@ -108,9 +108,6 @@ class SubscriptionsController < ApplicationController
       :email,
       :sms_number,
       :voice_number,
-      :verification_code_email,
-      :verification_code_sms_number,
-      :verification_code_voice_number,
       :zone_search,
       :time,
       :reason,
@@ -118,7 +115,10 @@ class SubscriptionsController < ApplicationController
       :research,
       :terms,
       :privacy,
-      zones: []
+      zones: [],
+      verification_code_email: [],
+      verification_code_sms_number: [],
+      verification_code_voice_number: []
     )
   end
 
