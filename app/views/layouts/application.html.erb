@@ -15,7 +15,7 @@
     <%= stylesheet_link_tag "application", media: 'all', "data-turbolinks-track" => "reload" %>
     <%= yield(:head) %>
   </head>
-  <body data-controller="application">
+  <body data-controller="application" class="c-<%= controller_name %> a-<%= action_name %>">
     <%= render "shared/header" %>
     <%= render "shared/alert_banner" %>
     <main role="main">
