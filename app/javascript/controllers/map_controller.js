@@ -259,11 +259,16 @@ export default class MapController extends Controller {
         };
         const pollutantValue = pollutantForecasts[zone.properties.name];
 
+        const html = `<div class="wrapper">`
+          + (pollutantValue ? `<span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span>` : "")
+          + `<span class="zone-name">${zone.properties.name}</span>`
+          + `</div>`;
+
         const marker = L.marker(center, {
           icon: L.divIcon({
             className:
               "zone-label " + `zone-label-level-${zone.properties.level}`,
-            html: `<div class="wrapper"><span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span><span class="zone-name">${zone.properties.name}</span></div>`,
+            html: html,
           }),
         });
         marker.addTo(this.map);
