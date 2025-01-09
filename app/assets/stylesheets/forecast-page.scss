@@ -195,6 +195,41 @@
       }
     }
 
+    .pollutant-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+
+      .pollutant {
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        background-color: var(--light-grey);
+        color: var(--dark-grey);
+        flex: auto;
+        text-align: center;
+
+        input {
+          display: none !important;
+        }
+
+        label {
+          cursor: pointer;
+        }
+
+        &:has(input:checked) {
+          background-color: var(--dark-grey);
+          color: var(--light-grey);
+
+          &::before {
+            content: "✓";
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
     .explanatory-link {
       font-size: 75%;
       text-align: right;
@@ -282,6 +317,10 @@
 
         .colour-scale-link {
           display: none;
+        }
+
+        .pollutant-info-link {
+          text-align: left;
         }
       }
 

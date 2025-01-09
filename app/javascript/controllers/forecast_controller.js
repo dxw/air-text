@@ -20,7 +20,11 @@ export default class ForecastController extends Controller {
   }
 
   changePollutant() {
-    this.updateUrl({ pollutant: this.pollutantSelectorTarget.value });
+    this.updateUrl({
+      pollutant: this.pollutantSelectorTarget.querySelector(
+        "input[name=pollutant]:checked"
+      ).value,
+    });
     this.updateForecast();
   }
 

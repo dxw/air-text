@@ -35,7 +35,9 @@ export default class MapController extends Controller {
   }
 
   updateSettings() {
-    const pollutant = this.pollutantSelectorTarget.value;
+    const pollutant = this.pollutantSelectorTarget.querySelector(
+      "input[name=pollutant]:checked"
+    ).value;
     const date = this.dateSelectorTarget.value;
     const url = new URL(window.location.href);
     const lat = parseFloat(url.searchParams.get("lat"));
@@ -259,10 +261,13 @@ export default class MapController extends Controller {
         };
         const pollutantValue = pollutantForecasts[zone.properties.name];
 
-        const html = `<div class="wrapper">`
-          + (pollutantValue ? `<span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span>` : "")
-          + `<span class="zone-name">${zone.properties.name}</span>`
-          + `</div>`;
+        const html =
+          `<div class="wrapper">` +
+          (pollutantValue
+            ? `<span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span>`
+            : "") +
+          `<span class="zone-name">${zone.properties.name}</span>` +
+          `</div>`;
 
         const marker = L.marker(center, {
           icon: L.divIcon({
@@ -308,8 +313,8 @@ export default class MapController extends Controller {
   }
 
   async getForecastData() {
-    const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.dateSelectorTarget.value;
+    const pollutant = this.settings.pollutant;
+    const date = this.settings.date;
 
     const response = await fetch(
       `/pollutant_forecasts?pollutant=${pollutant}&date=${date}`
