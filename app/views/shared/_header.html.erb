@@ -1,10 +1,7 @@
 <header class="site-header" data-controller="navigation">
   <div class="header-content">
     <div class="header-top">
-      <div class="site-title">
-        <%= link_to "airTEXT", root_path, class: "site-name" %>
-        <span class="site-strapline">Air quality service</span>
-      </div>
+      <%= link_to render_svg("logo", tag: :div, classes: "site-logo"), root_path %>
       <button data-action="navigation#toggleMenu" data-navigation-target="menuButton">Menu</button>
     </div>
     <hr>
