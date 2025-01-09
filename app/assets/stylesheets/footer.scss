@@ -16,11 +16,10 @@
     }
   }
 
-
   nav {
     grid-column: 1;
     grid-row: 1 / span 2;
-    
+
     ul {
       display: flex;
       flex-direction: column;
@@ -43,7 +42,7 @@
   .terms-and-conditions {
     margin: 1rem 0;
     font-size: 0; /* Remove whitespace between inline-block elements */
-    
+
     @media (min-width: variables.$mobile-breakpoint) {
       grid-column: 2;
       grid-row: 2;
