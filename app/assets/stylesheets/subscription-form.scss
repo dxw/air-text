@@ -188,8 +188,9 @@
     margin: 1rem 0;
 
     .zone-tag {
-      padding: 0.25rem 0.5rem;
-      background-color: #e5e7eb;
+      padding: 0.5rem 0.75rem;
+      background-color: var(--dark-grey);
+      color: var(--light-grey);
       border-radius: var(--border-radius);
       cursor: pointer;
 
