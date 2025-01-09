@@ -19,11 +19,15 @@
 
 body {
   width: 100%;
-  max-width: 1000px;
   margin: 0 auto;
   padding: 0;
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .hidden {
