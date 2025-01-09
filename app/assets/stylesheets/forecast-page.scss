@@ -1,3 +1,5 @@
+@use "variables";
+
 :root {
   --inactive-tab-border-color: #d9d9d9;
   --inactive-tab-text-color: #a09d9d;
@@ -240,7 +242,7 @@
   }
 }
 
-.learning {
+#health-advice {
   background-color: var(--main-colour-light);
   padding: 2rem 1.5rem;
   margin-top: 1.5rem;
@@ -249,5 +251,69 @@
   a {
     text-decoration: underline;
     cursor: pointer;
+  }
+}
+
+// Desktop layout
+main {
+  @media (min-width: variables.$mobile-breakpoint) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto 1fr;
+
+    > h1 {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    div#intro {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    div#forecast {
+      grid-row: 3;
+      grid-column: 1;
+
+      .colour-scale-link {
+        display: none;
+      }
+    }
+
+    div#health-advice {
+      grid-row: 2;
+      grid-column: 2;
+      border-radius: var(--border-radius);
+      margin-right: 1.5rem;
+    }
+
+    div#how-forecasts-are-made {
+      grid-row: 4;
+      grid-column: 1;
+      margin: 1.5rem;
+
+      details {
+        border: 1px solid #f5f5f5;
+        border-top: none;
+
+        summary {
+          border-top: 1px solid var(--border-color);
+          background: #f5f5f5;
+        }
+      }
+    }
+
+    div#daqi-scale-info {
+      grid-row: 3 / span 2;
+      grid-column: 2;
+      margin-right: 1.5rem;
+      margin-top: calc(
+        1.2rem + 1rem
+      ); // 1.2 for the height of the heading, 1 for the margin
+
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+    }
   }
 }

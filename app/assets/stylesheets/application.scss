@@ -93,18 +93,20 @@ hr {
   }
 }
 
-.flyout {
-  position: fixed;
-  background: white;
-  width: 100%;
-  max-width: 500px;
-  top: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  z-index: 1000;
-  right: -500px;
-  transition: right 0.3s;
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+.mobile-flyout {
+  @media (max-width: variables.$mobile-breakpoint) {
+    position: fixed;
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    z-index: 1000;
+    right: -500px;
+    transition: right 0.3s;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  }
 
   &.open {
     right: 0;
@@ -114,6 +116,10 @@ hr {
     padding: 1rem;
     float: right;
     font-size: 1rem;
+
+    @media (min-width: variables.$mobile-breakpoint) {
+      display: none;
+    }
 
     &::after {
       content: "✕";

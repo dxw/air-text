@@ -314,11 +314,11 @@ export default class MapController extends Controller {
 
   openDaqiScaleFlyout(e) {
     e.preventDefault();
-    document.querySelector(".flyout").classList.add("open");
+    document.querySelector(".mobile-flyout").classList.add("open");
   }
 
   closeDaqiScaleFlyout(e) {
     e.preventDefault();
-    document.querySelector(".flyout").classList.remove("open");
+    document.querySelector(".mobile-flyout").classList.remove("open");
   }
 }
