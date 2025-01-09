@@ -192,7 +192,7 @@ export default class SubscriptionController extends Controller {
 
     const tag = document.createElement("span");
     tag.textContent = zoneName;
-    tag.classList.add("tag");
+    tag.classList.add("zone-tag");
     tag.dataset.zoneName = zoneName;
     tag.dataset.action = "click->subscription#tagClicked";
     this.tagsTarget.appendChild(tag);
