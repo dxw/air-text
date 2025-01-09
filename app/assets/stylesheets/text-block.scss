@@ -75,6 +75,10 @@
     margin-bottom: 0.75rem;
     line-height: 1.5;
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     a {
       @extend %a;
     }
