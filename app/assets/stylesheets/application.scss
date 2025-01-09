@@ -1,3 +1,4 @@
+@use "variables";
 @use "leaflet/dist/leaflet.css";
 @use "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
 @use "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
@@ -15,19 +16,6 @@
 @use "subscription-form";
 @use "margins-padding";
 @use "daqi-scale-guide";
-
-:root {
-  --main-colour: #3880d1;
-  --main-colour-dark: #104b8e;
-  --main-colour-light: #dae7f7;
-  --main-colour-lightest: #edf4fb;
-  --main-colour-highlight: #70cdff;
-  --border-color: #757575;
-  --divider-color: #e5e5e5;
-  --primary-text-color: #000;
-  --secondary-text-color: #757575;
-  --border-radius: 8px;
-}
 
 body {
   width: 100%;

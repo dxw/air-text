@@ -1,5 +1,4 @@
-
-$mobile-breakpoint: 768px;
+@use "variables";
 
 .site-header {
   background-color: var(--main-colour);
@@ -51,7 +50,7 @@ $mobile-breakpoint: 768px;
       justify-content: flex-end;
       align-items: center;
 
-      @media (min-width: $mobile-breakpoint) {
+      @media (min-width: variables.$mobile-breakpoint) {
         display: none;
       }
 
@@ -85,7 +84,7 @@ nav {
     list-style: none;
     display: none;
 
-    @media (max-width: $mobile-breakpoint) {
+    @media (max-width: variables.$mobile-breakpoint) {
       flex-direction: column;
       padding: 1.5rem;
       font-size: 1.25rem;
@@ -95,7 +94,7 @@ nav {
       }
     }
 
-    @media (min-width: $mobile-breakpoint) {
+    @media (min-width: variables.$mobile-breakpoint) {
       flex-direction: row;
       padding: 0 1.5rem;
       display: flex;
@@ -118,7 +117,7 @@ nav {
       }
 
       &:has(.active) {
-        @media (min-width: $mobile-breakpoint) {
+        @media (min-width: variables.$mobile-breakpoint) {
           background-color: var(--main-colour-dark);
         }
       }

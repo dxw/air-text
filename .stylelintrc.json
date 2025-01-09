@@ -3,6 +3,7 @@
   "rules": {
     "import-notation": "string",
     "at-rule-no-unknown": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "media-query-no-invalid": null
   }
 }
