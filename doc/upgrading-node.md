@@ -1,4 +1,5 @@
 To upgrade Node, update the version number in the following files:
+
 - `.node-version`
 - `.tool-versions`
 - `package.json`
