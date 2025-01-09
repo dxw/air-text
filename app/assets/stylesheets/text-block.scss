@@ -75,6 +75,10 @@
     margin-bottom: 0.75rem;
     line-height: 1.5;
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     a {
       @extend %a;
     }
@@ -126,6 +130,10 @@ details {
       content: none; /* Hide the default marker */
     }
 
+    &:hover {
+      background: #f5f5f5;
+    }
+
     button {
       display: flex;
       align-items: center;
@@ -133,12 +141,12 @@ details {
 
       &::before {
         content: "";
-        width: 1rem;
+        width: 1.5rem;
         aspect-ratio: 1;
         border: 1px solid black;
         border-radius: 100%;
         background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>');
-        background-size: 9px;
+        background-size: 13px;
         background-repeat: no-repeat;
         background-position: center center;
       }
@@ -152,6 +160,8 @@ details {
 
   &[open] {
     summary {
+      background: #f5f5f5;
+
       button {
         &::before {
           transform: rotate(180deg);
@@ -159,6 +169,22 @@ details {
 
         &::after {
           content: "Hide";
+        }
+      }
+    }
+  }
+
+  &.details-compact {
+    summary {
+      position: relative;
+
+      button {
+        position: absolute;
+        top: calc(50% - 0.75rem);
+        right: 0;
+
+        &::after {
+          display: none;
         }
       }
     }

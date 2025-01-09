@@ -100,13 +100,15 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         end
 
         context "when I enter the correct verification code" do
+          let(:code) { "123456" }
+
           before do
-            allow(VerificationCode).to receive(:new_code).and_return("1234")
+            allow(VerificationCode).to receive(:new_code).and_return(code)
             visit subscriptions_path(id: :email_verification)
           end
 
           it "lets me proceed" do
-            fill_in "Verification code", with: "1234"
+            fill_in_verification_code(:email, code)
             click_on "Next"
 
             expect(page).to have_text("Your email is now verified")
@@ -123,7 +125,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
 
         context "when I enter the wrong verification code" do
           it "shows an error" do
-            fill_in "Verification code", with: "0000"
+            fill_in_verification_code(:email, "000000")
             click_on "Next"
 
             expect(page).to have_text("The verification code you entered is incorrect")
@@ -148,13 +150,15 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         end
 
         context "when I enter the correct verification code" do
+          let(:code) { "123456" }
+
           before do
-            allow(VerificationCode).to receive(:new_code).and_return("1234")
+            allow(VerificationCode).to receive(:new_code).and_return(code)
             visit subscriptions_path(id: :sms_number_verification)
           end
 
           it "lets me proceed" do
-            fill_in "Verification code", with: "1234"
+            fill_in_verification_code(:sms_number, code)
             click_on "Next"
 
             expect(page).to have_text("Your phone number is now verified")
@@ -171,7 +175,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
 
         context "when I enter the wrong verification code" do
           it "shows an error" do
-            fill_in "Verification code", with: "0000"
+            fill_in_verification_code(:sms_number, "000000")
             click_on "Next"
 
             expect(page).to have_text("The verification code you entered is incorrect")
@@ -196,13 +200,15 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         end
 
         context "when I enter the correct verification code" do
+          let(:code) { "123456" }
+
           before do
-            allow(VerificationCode).to receive(:new_code).and_return("1234")
+            allow(VerificationCode).to receive(:new_code).and_return(code)
             visit subscriptions_path(id: :voice_number_verification)
           end
 
           it "lets me proceed" do
-            fill_in "Verification code", with: "1234"
+            fill_in_verification_code(:voice_number, code)
             click_on "Next"
 
             expect(page).to have_text("Your phone number is now verified")
@@ -219,7 +225,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
 
         context "when I enter the wrong verification code" do
           it "shows an error" do
-            fill_in "Verification code", with: "0000"
+            fill_in_verification_code(:voice_number, "000000")
             click_on "Next"
 
             expect(page).to have_text("The verification code you entered is incorrect")
@@ -525,6 +531,12 @@ def fill_form_up_to(step)
     @subscription_form = FactoryBot.build(:subscription_form, step)
     session_data[:subscription_form] ||= @subscription_form.attributes
     session_data
+  end
+end
+
+def fill_in_verification_code(mode, code)
+  page.all("[name='subscription_form[verification_code_#{mode}][]']").each_with_index do |input, index|
+    input.fill_in with: code.slice(index)
   end
 end
 

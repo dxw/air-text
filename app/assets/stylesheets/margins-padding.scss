@@ -20,6 +20,11 @@
     margin-right: $i * 0.5rem;
   }
 
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .my-#{$i} {
     margin-top: $i * 0.5rem;
     margin-bottom: $i * 0.5rem;

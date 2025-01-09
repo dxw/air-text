@@ -45,11 +45,11 @@ class SubscriptionsController < ApplicationController
 
     case step
     when :email_verification
-      send_verification_code(@form.email)
+      send_verification_code("email")
     when :sms_number_verification
-      send_verification_code(@form.sms_number)
+      send_verification_code("sms")
     when :voice_number_verification
-      send_verification_code(@form.voice_number)
+      send_verification_code("voice")
     end
 
     render_wizard
@@ -63,23 +63,25 @@ class SubscriptionsController < ApplicationController
 
   def resend_verification_code
     mode = params[:mode]
-    case mode
-    when "email"
-      send_verification_code(@form.email)
-    when "sms"
-      send_verification_code(@form.sms_number)
-    when "voice"
-      send_verification_code(@form.voice_number)
-    else
-      raise "Invalid mode"
-    end
+    send_verification_code(mode)
 
     render json: {status: "success"}
   end
 
   private
 
-  def send_verification_code(target)
+  def send_verification_code(mode)
+    case mode
+    when "email"
+      target = @form.email
+    when "sms"
+      target = @form.sms_number
+    when "voice"
+      target = @form.voice_number
+    else
+      raise "Invalid mode"
+    end
+
     code = VerificationCode.generate(target).code
 
     # Send a verification code to the user
@@ -108,9 +110,6 @@ class SubscriptionsController < ApplicationController
       :email,
       :sms_number,
       :voice_number,
-      :verification_code_email,
-      :verification_code_sms_number,
-      :verification_code_voice_number,
       :zone_search,
       :time,
       :reason,
@@ -118,7 +117,10 @@ class SubscriptionsController < ApplicationController
       :research,
       :terms,
       :privacy,
-      zones: []
+      zones: [],
+      verification_code_email: [],
+      verification_code_sms_number: [],
+      verification_code_voice_number: []
     )
   end
 

@@ -1,28 +1,67 @@
+@use "variables";
+
 .site-footer {
   color: white;
   padding: 2rem 1.5rem;
   background-color: var(--main-colour);
 
-  nav {
-    li {
-      padding: 0.5rem 0;
+  .footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
 
-      a.active {
-        font-weight: bold;
-        text-decoration: underline;
-      }
+    @media (min-width: variables.$mobile-breakpoint) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+
+  nav {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      font-size: 1.25rem;
+      align-items: flex-start;
+    }
+  }
+
+  .site-logo {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+
+    @media (max-width: variables.$mobile-breakpoint) {
+      display: none;
     }
   }
 
   .terms-and-conditions {
-    margin-top: 1.5rem;
+    margin: 1rem 0;
     font-size: 0; /* Remove whitespace between inline-block elements */
 
+    @media (min-width: variables.$mobile-breakpoint) {
+      grid-column: 2;
+      grid-row: 2;
+      align-self: end;
+    }
+
     li {
-      font-size: 0.5rem;
-      display: inline-block;
-      border-right: 1px solid white;
-      padding: 0 0.5rem;
+      font-size: 1rem;
+
+      @media (max-width: variables.$mobile-breakpoint) {
+        display: inline-block;
+        padding: 0 0.5rem;
+        border-right: 1px solid white;
+      }
+
+      @media (min-width: variables.$mobile-breakpoint) {
+        text-align: right;
+        padding: 0.5rem 0;
+      }
 
       &:first-child {
         padding-left: 0;

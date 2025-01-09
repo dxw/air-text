@@ -1,11 +1,12 @@
 <%= render 'form_step' do |f| %>
-  <div class="text-block" id="zone-selection-page">
-    <section>
+  <div id="zone-selection-page">
+    <section class="text-block">
       <h3 class="mb-2">Enter places you'd like to receive alerts for</h3>
       <p>Forecasts are produced for zones. You may select up to five zones.</p>
     
       <%= f.label :zone_search, "Enter a place, address or postcode", class: "sr-only" %>
       <%= f.text_field :zone_search, 
+        class: "mb-2",
         placeholder: "Enter a place, address or postcode",
         type: "search", 
         data: { 
@@ -21,12 +22,12 @@
       <h3 class="mb-2">Or select from the list below</h3>
       <div>
         <% ZoneGroup.all.order(:order).each do |group| %>
-        <details class="py-2 zone-group">
-          <summary>
-            <h4 class="mb-1"><%= group.name %></h4>
+        <details class="zone-group details-compact">
+          <summary class="py-2">
+            <h4><%= group.name %></h4>
             <%= content_tag :p, group.description, class: "italic" if group.description.present? %>
           </summary>
-          <div class="zone-checkboxes">
+          <div class="zone-checkboxes py-2">
           <% group.zones.order(cerc_type: :desc, name: :asc).group_by(&:cerc_type).each do |level, zones| %>
             <%= f.collection_check_boxes :zones, zones, :name, :name, { multiple: true } do |b| %>
               <div>

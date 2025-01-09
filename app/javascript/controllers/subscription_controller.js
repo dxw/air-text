@@ -193,4 +193,47 @@ export default class SubscriptionController extends Controller {
   removeZoneTag(zoneName) {
     this.tag(zoneName).remove();
   }
+
+  processVerificationCodeInput(event) {
+    console.log("processVerificationCodeInput");
+    const input = event.target;
+    const value = input.value;
+
+    // When a verification code input is filled, focus the next input
+    // When an input is emptied, focus the previous input
+
+    if (value.length === 1) {
+      input.nextElementSibling.focus();
+    } else if (value.length === 0) {
+      input.previousElementSibling.focus();
+    }
+  }
+
+  processVerificationCodePaste(event) {
+    const input = event.target;
+    const value = event.clipboardData.getData("text");
+
+    // When a code is pasted, fill the inputs in order
+
+    if (value.length === 6) {
+      input.parentElement.querySelectorAll("input").forEach((input, index) => {
+        input.value = value[index];
+        input.focus();
+      });
+    }
+  }
+
+  processVerificationCodeMove(event) {
+    const input = event.target;
+
+    // If right arrow key is pressed, focus next input
+    if (event.keyCode === 39) {
+      input.nextElementSibling.focus();
+    }
+
+    // If left arrow key is pressed, focus previous input
+    if (event.keyCode === 37) {
+      input.previousElementSibling.focus();
+    }
+  }
 }

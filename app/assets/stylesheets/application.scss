@@ -1,3 +1,4 @@
+@use "variables";
 @use "leaflet/dist/leaflet.css";
 @use "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
 @use "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
@@ -14,20 +15,19 @@
 @use "footer";
 @use "subscription-form";
 @use "margins-padding";
-
-:root {
-  --main-colour: #3880d1;
-  --main-colour-light: #dae7f7;
-  --main-colour-lightest: #edf4fb;
-}
+@use "daqi-scale-guide";
 
 body {
   width: 100%;
-  max-width: 1000px;
   margin: 0 auto;
   padding: 0;
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .hidden {
@@ -78,11 +78,55 @@ input[type="submit"] {
   border: none;
 }
 
+hr {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--divider-color);
+}
+
 .alert {
   padding: 1rem;
   margin: 1.5rem;
 
   &.alert-success {
     background-color: var(--main-colour-light);
+  }
+}
+
+.mobile-flyout {
+  @media (max-width: variables.$mobile-breakpoint) {
+    position: fixed;
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    z-index: 1000;
+    right: -500px;
+    transition: right 0.3s;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  }
+
+  &.open {
+    right: 0;
+  }
+
+  button.close {
+    padding: 1rem;
+    float: right;
+    font-size: 1rem;
+
+    @media (min-width: variables.$mobile-breakpoint) {
+      display: none;
+    }
+
+    &::after {
+      content: "✕";
+      font-size: 1.25rem;
+      top: 2px;
+      margin-left: 6px;
+      position: relative;
+    }
   }
 }
