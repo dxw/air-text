@@ -1,6 +1,19 @@
 @use "variables";
 
 .c-subscriptions.a-show {
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      flex: 2;
+    }
+
+    aside {
+      flex: 1;
+    }
+  }
+
   .form {
     section {
       margin-bottom: 1rem;
