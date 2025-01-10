@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe TemperaturePredictionComponent, type: :component do
+  include Components::PredictionHelper
+
   let(:value) {
     {
       min: -2,
@@ -41,7 +43,7 @@ RSpec.describe TemperaturePredictionComponent, type: :component do
         }
 
         it "does not show the panel" do
-          expect(page).to have_css(".guidance.hidden")
+          expect(page).not_to have_css(".temperature .guidance")
         end
       end
 
@@ -54,7 +56,7 @@ RSpec.describe TemperaturePredictionComponent, type: :component do
         }
 
         it "shows the guidance for low temperatures" do
-          expect(page).to have_css(".guidance.bg-high-alert-guidance-panel.visible", text: component.guidance[:low_temp])
+          expect(page).to have_css(".temperature .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:temperature, :low_temp).first[:html]))
         end
       end
 
@@ -67,7 +69,7 @@ RSpec.describe TemperaturePredictionComponent, type: :component do
         }
 
         it "shows the guidance for high temperatures" do
-          expect(page).to have_css(".guidance.bg-high-alert-guidance-panel.visible", text: component.guidance[:high_temp])
+          expect(page).to have_css(".temperature .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:temperature, :high_temp).first[:html]))
         end
       end
     end

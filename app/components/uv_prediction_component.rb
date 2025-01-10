@@ -21,14 +21,4 @@ class UvPredictionComponent < PredictionComponent
       "Very high"
     end
   end
-
-  def guidance
-    {
-      low: "No action required. You can safely stay outside.",
-      moderate:
-        "Protection required. Seek shade during midday hours, cover up and wear suncream.",
-      high: "UV guidance for *high* DAQI level",
-      very_high: "UV guidance for *very high* DAQI level"
-    }
-  end
 end

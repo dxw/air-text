@@ -3,5 +3,9 @@
     <dt class="name"><%= name %></dt>
     <dd class="display-value"><%= display_value&.html_safe %></dd>
   </div>
-  <div class="guidance <%= guidance_visible? ? "visible" : "hidden" %> <%= guidance_panel_colour %>"><%= guidance_text&.html_safe %></div>
+  <% if guidance_visible? %>
+  <div class="guidance <%= guidance_panel_colour %>">
+    <%= render(HealthGuidanceComponent.new(css_name.to_sym, level_label.parameterize(separator: "_").to_sym, classes: ["mb-2"])) %>
+  </div>
+  <% end %>
 </div>

@@ -17,10 +17,6 @@ class PredictionComponent < ViewComponent::Base
     level_label != "Low"
   end
 
-  def guidance_text
-    guidance[level_label.parameterize(separator: "_").to_sym]
-  end
-
   def guidance_panel_colour
     "bg-#{level_label.parameterize}-alert-guidance-panel"
   end

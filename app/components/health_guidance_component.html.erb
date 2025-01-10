@@ -1,0 +1,15 @@
+
+<% @guidance_blocks.each do |guidance| %>
+  <div class="guidance-block <%= @classes.join %>">
+    <% if guidance[:icons].any? %>
+      <div class="guidance-icons">
+        <% guidance[:icons].each do |icon| %>
+          <%= helpers.render_svg "pictograms/#{icon}" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="guidance-text">
+      <p><%= guidance[:html].html_safe %></p>
+    </div>
+  </div>
+<% end%>

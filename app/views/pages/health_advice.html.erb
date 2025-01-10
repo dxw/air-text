@@ -22,72 +22,45 @@
         <p>Susceptible individuals may experience health effects even on Low air pollution days. Anyone experiencing symptoms should follow the guidance provided below.</p>
       </div>
 
-      <table class="advice-table daqi-table">
-        <thead>
-          <tr>
-            <th>Band</th>
-            <th colspan="3">Indexes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="levels">
-            <td><h3>Low</h3></td>
-            <td class="daqi-level-1">1</td>
-            <td class="daqi-level-2">2</td>
-            <td class="daqi-level-3">3</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="4">
-              <h4>Health advice for at-risk individuals and the general population</h4>
-              <p>Enjoy your usual outdoor activities.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td><h3>Moderate</h3></td>
-            <td class="daqi-level-4">4</td>
-            <td class="daqi-level-5">5</td>
-            <td class="daqi-level-6">6</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="4">
-              <h4>Health advice for at-risk individuals</h4>
-              <p>Adults and children with heart or lung problems should reduce physical exertion, particularly outdoors, and particularly if they experience symptoms.</p>
-              <h4>Health advice for the general population</h4>
-              <p>Enjoy your usual outdoor activities.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td><h3>High</h3></td>
-            <td class="daqi-level-7">7</td>
-            <td class="daqi-level-8">8</td>
-            <td class="daqi-level-9">9</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="4">
-              <h4>Health advice for at-risk individuals</h4>
-              <p>Adults and children with lung problems and those with heart problems who experience symptoms should consider reducing strenuous physical activity, particularly outdoors.</p>
-              <p>People with asthma may find they need to use their reliever inhaler more often.</p>
-              <p>Older people should also reduce physical exertion.</p>
-              <h4>Health advice for the general population</h4>
-              <p>Anyone experiencing discomfort such as sore eyes, cough or sore throat should consider reducing activity, particularly outdoors.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td><h3>Very high</h3></td>
-            <td class="daqi-level-10" colspan="3">10</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="4">
-              <h4>Health advice for at-risk individuals</h4>
-              <p>Adults and children with lung problems, adults with heart problems, and older people should avoid strenuous physical activity.</p>
-              <p>People with asthma may find they need to use their reliever inhaler more often.</p>
-              <p>Older people should also avoid physical exertion.</p>
-              <h4>Health advice for the general population</h4>
-              <p>Reduce physical exertion, particularly outdoors, especially if you experience cough or sore throat symptoms.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="scale-guide">
+        <section>
+          <div class="scale daqi-scale">
+            <h3>Low</h3>
+            <span class="daqi-level-1">1</span>
+            <span class="daqi-level-2">2</span>
+            <span class="daqi-level-3">3</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:air_pollution, :low)) %>
+        </section>
+
+        <section>
+          <div class="scale daqi-scale">
+            <h3>Moderate</h3>
+            <span class="daqi-level-4">4</span>
+            <span class="daqi-level-5">5</span>
+            <span class="daqi-level-6">6</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:air_pollution, :moderate)) %>
+        </section>
+
+        <section>
+          <div class="scale daqi-scale">
+            <h3>High</h3>
+            <span class="daqi-level-7">7</span>
+            <span class="daqi-level-8">8</span>
+            <span class="daqi-level-9">9</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:air_pollution, :high)) %>
+        </section>
+
+        <section>
+          <div class="scale daqi-scale">
+            <h3>Very high</h3>
+            <span class="daqi-level-10">10</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:air_pollution, :very_high)) %>
+        </section>
+      </div>
     </div>
   </details>
 
@@ -106,35 +79,36 @@
     </summary>
     <div class="text-block p-3">
       <p>Pollen forecasts are predictors of daily grass pollen. Between late March and September, pollen count is at its highest, potentiated by a warm, humid, and windy atmosphere.</p>
-      <table class="advice-table">
-        <tbody>
-          <tr class="levels">
-            <td>Low</td>
-          </tr>
-          <tr class="advice">
-            <td >
-              <p>No action needed.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td>Moderate</td>
-          </tr>
-          <tr class="advice">
-            <td>
-              <p>Individuals suffering hay fever or allergies should consider wearing a face mask and sunglasses for outdoors.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td>High and very high</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="7">
-              <p>Individuals suffering from hay fever or allergies should stay indoors with doors and windows shut, if possible. If outdoors, wear a face mask, sunglasses, or a wide-brimmed hat.</p>
-              <p>To ease the symptoms, put petroleum jelly around the nostrils, shower and change clothes after being outside.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="scale-guide">
+        <section>
+          <div class="scale">
+            <h3>Low</h3>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:pollen, :low)) %>
+        </section>
+
+        <section>
+          <div class="scale">
+            <h3>Moderate</h3>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:pollen, :moderate)) %>
+        </section>
+
+        <section>
+          <div class="scale">
+            <h3>High</h3>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:pollen, :high)) %>
+        </section>
+
+        <section>
+          <div class="scale">
+            <h3>Very high</h3>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:pollen, :very_high)) %>
+        </section>
+      </div>
 
       <p>The NHS hay fever website has more <%= link_to('advice on prevention and treatment of hay fever', 'http://www.nhs.uk/Conditions/Hay-fever/Pages/Introduction.aspx') %></p>
     </div>
@@ -147,28 +121,20 @@
     <div class="text-block p-3">
       <p>The forecasts show the minimum and maximum hourly temperatures predicted over a 24-hour period.</p>
 
-      <table class="advice-table">
-        <tbody>
-          <tr class="levels">
-            <td>Heatwave</td>
-            <td>Over 28°C</td>
-          </tr>
-          <tr class="advice">
-            <td >
-              <p>Keep out of the heat if possible. If you have to go outside, stay in the shade, especially between 11 a.m. and 3 p.m. Wear sunscreen with at least SPF 30, a hat, and light clothes, and avoid strenuous physical activity.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td colspan="2">Winter</td>
-          </tr>
-          <tr class="advice">
-            <td>
-              <p>If you're eligible, it's important to get winter flu and COVID-19 vaccinations to help you stay well in winter.</p>
-              <p>If possible, heat your home to at least 18°C (65°F), keep your bedroom window closed on cold nights, wear lots of layers of thin clothes, eat enough, and have hot drinks.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="scale-guide">
+        <section>
+          <div class="scale">
+            <h3>Heatwave</h3>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:temperature, :high_temp)) %>
+        </section>
+        <section>
+          <div class="scale">
+            <h3>Winter</h3>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:temperature, :low_temp)) %>
+        </section>
+      </div>
 
       <p>The NHS Heatwave website has <%= link_to('advice about how to keep cool in hot weather', 'http://www.nhs.uk/Livewell/Summerhealth/Pages/Heatwave.aspx') %>.</p>
       <p>The NHS Winter Health website has <%= link_to('advice about how to keep warm in cold weather', 'http://www.nhs.uk/Livewell/Winterhealth/Pages/Winterhealthhome.aspx') %>.</p>
@@ -181,45 +147,44 @@
     </summary>
     <div class="text-block p-3">
       <p>The UV forecasts predict the maximum hourly cloud-adjusted solar UV index over 24 hours. The higher the UV index number, the less time it takes for the sun to damage your skin.</p>
-      <table class="advice-table">
-        <tbody>
-          <tr class="levels">
-            <td>Low</td>
-            <td colspan="3">1</td>
-            <td colspan="3">2</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="7">
-              <p>No sun protection required.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td>Moderate</td>
-            <td colspan="2">3</td>
-            <td colspan="2">4</td>
-            <td colspan="2">5</td>
-          </tr>
-          <tr class="levels">
-            <td>High</td>
-            <td colspan="3">6</td>
-            <td colspan="3">7</td>
-          </tr>
-          <tr class="advice">
-            <td colspan="7">
-              <p>Be sun-safe and consider protecting your skin by finding shades, covering it with clothing and using sunscreen with at least SPF 30.</p>
-            </td>
-          </tr>
-          <tr class="levels">
-            <td>Very high</td>
-            <td colspan="6">8+
-          </tr>
-          <tr class="advice">
-            <td colspan="7">
-              <p>Everyone, no matter their skin tone, should prioritize protecting their skin.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="scale-guide">
+        <section>
+          <div class="scale daqi-scale">
+            <h3>Low</h3>
+            <span class="daqi-level-1">1</span>
+            <span class="daqi-level-2">2</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:uv, :low)) %>
+        </section>
+
+        <section>
+          <div class="scale daqi-scale">
+            <h3>Moderate</h3>
+            <span class="daqi-level-3">3</span>
+            <span class="daqi-level-4">4</span>
+            <span class="daqi-level-5">5</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:uv, :moderate)) %>
+        </section>
+
+        <section>
+          <div class="scale daqi-scale">
+            <h3>High</h3>
+            <span class="daqi-level-6">6</span>
+            <span class="daqi-level-7">7</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:uv, :high)) %>
+        </section>
+
+        <section>
+          <div class="scale daqi-scale">
+            <h3>Very high</h3>
+            <span class="daqi-level-8">8+</span>
+          </div>
+          <%= render(HealthGuidanceComponent.new(:uv, :very_high)) %>
+        </section>
+      </div>
 
       <p>Cancer Research UK’s website has more <%= link_to('information and advice about sun safety', 'https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/sun-uv-and-cancer/the-uv-index-and-sunburn-risk') %>.</p>
     </div>
