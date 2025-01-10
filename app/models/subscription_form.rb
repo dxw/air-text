@@ -24,17 +24,17 @@ class SubscriptionForm
   attribute :verification_code_voice_number
 
   before_validation do
-    self.verification_code_email = verification_code_email&.join
-    self.verification_code_sms_number = verification_code_sms_number&.join
-    self.verification_code_voice_number = verification_code_voice_number&.join
+    self.verification_code_email = verification_code_email&.join if verification_code_email.is_a?(Array)
+    self.verification_code_sms_number = verification_code_sms_number&.join if verification_code_sms_number.is_a?(Array)
+    self.verification_code_voice_number = verification_code_voice_number&.join if verification_code_voice_number.is_a?(Array)
   end
 
-  validates :verification_code_email, presence: {message: "You must enter the verification code"}, if: -> { on_step?("email_verification") }
-  validate :verification_code_email_correct?, if: -> { on_step?("email_verification") }
-  validates :verification_code_sms_number, presence: {message: "You must enter the verification code"}, if: -> { on_step?("sms_number_verification") }
-  validate :verification_code_sms_correct?, if: -> { on_step?("sms_number_verification") }
-  validates :verification_code_voice_number, presence: {message: "You must enter the verification code"}, if: -> { on_step?("voice_number_verification") }
-  validate :verification_code_voice_correct?, if: -> { on_step?("voice_number_verification") }
+  validates :verification_code_email, presence: {message: "You must enter the verification code"}, if: -> { on_step?("email_verification") && verification_enabled? }
+  validate :verification_code_email_correct?, if: -> { on_step?("email_verification") && verification_enabled? }
+  validates :verification_code_sms_number, presence: {message: "You must enter the verification code"}, if: -> { on_step?("sms_number_verification") && verification_enabled? }
+  validate :verification_code_sms_correct?, if: -> { on_step?("sms_number_verification") && verification_enabled? }
+  validates :verification_code_voice_number, presence: {message: "You must enter the verification code"}, if: -> { on_step?("voice_number_verification") && verification_enabled? }
+  validate :verification_code_voice_correct?, if: -> { on_step?("voice_number_verification") && verification_enabled? }
 
   # zone_selection
   attribute :zone_search
@@ -129,6 +129,10 @@ class SubscriptionForm
 
   def one_contact_method_present?
     errors.add(:base, "You must select at least one contact method") unless receiving?(:email) || receiving?(:sms) || receiving?(:voice)
+  end
+
+  def verification_enabled?
+    ActiveModel::Type::Boolean.new.cast(ENV.fetch("VERIFICATION_ENABLED", true))
   end
 
   def verification_code_email_correct?
