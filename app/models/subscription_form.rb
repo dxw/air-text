@@ -24,9 +24,9 @@ class SubscriptionForm
   attribute :verification_code_voice_number
 
   before_validation do
-    self.verification_code_email = verification_code_email&.join
-    self.verification_code_sms_number = verification_code_sms_number&.join
-    self.verification_code_voice_number = verification_code_voice_number&.join
+    self.verification_code_email = verification_code_email&.join if verification_code_email.is_a?(Array)
+    self.verification_code_sms_number = verification_code_sms_number&.join if verification_code_sms_number.is_a?(Array)
+    self.verification_code_voice_number = verification_code_voice_number&.join if verification_code_voice_number.is_a?(Array)
   end
 
   validates :verification_code_email, presence: {message: "You must enter the verification code"}, if: -> { on_step?("email_verification") }
