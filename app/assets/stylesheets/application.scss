@@ -152,3 +152,10 @@ hr {
     }
   }
 }
+
+.forecast-timestamp {
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+  display: block;
+  font-style: italic;
+}
