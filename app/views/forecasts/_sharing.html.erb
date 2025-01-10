@@ -8,31 +8,31 @@
     <div data-share-target="webShareOptions" class="share-icons hidden">
       <%= link_to "#", data: { action: "click->share#copyLink" }, target: "_blank" do %>
         <%= render_svg "share-icons/link", tag: :figure %>
-        Copy link
+        <span>Copy link</span>
       <% end %>
       <%= link_to "https://wa.me/?text=#{CGI.escape_uri_component(@share_message)}", target: "_blank" do %>
         <%= render_svg "share-icons/whatsapp", tag: :figure %>
-        WhatsApp
+        <span>WhatsApp</span>
       <% end %>
       <%= sms_to nil, body: @share_message, target: "_blank" do %>
         <%= render_svg "share-icons/sms", tag: :figure %>
-        Text message
+        <span>Text message</span>
       <% end %>
       <%= mail_to nil, subject: "Air quality forecast", body: @share_message, target: "_blank" do %>
         <%= render_svg "share-icons/email", tag: :figure %>
-        Email
+        <span>Email</span>
       <% end %>
       <%= link_to "https://x.com/intent/tweet?text=#{CGI.escape_uri_component(@share_message)}", target: "_blank" do %>
         <%= render_svg "share-icons/x-twitter", tag: :figure %>
-        X / Twitter
+        <span>X / Twitter</span>
       <% end %>
       <%= link_to "https://bsky.app/intent/compose?text=#{CGI.escape_uri_component(@share_message)}", target: "_blank" do %>
         <%= render_svg "share-icons/bluesky", tag: :figure %>
-        Bluesky
+        <span>Bluesky</span>
       <% end %>
       <%= link_to "https://facebook.com/sharer/sharer.php?u=#{request.original_url}", target: "_blank" do %>
         <%= render_svg "share-icons/facebook", tag: :figure %>
-        Facebook
+        <span>Facebook</span>
       <% end %>
     </div>
   </div>
