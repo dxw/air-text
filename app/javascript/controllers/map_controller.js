@@ -40,10 +40,16 @@ export default class MapController extends Controller {
     ).value;
     const date = this.dateSelectorTarget.value;
     const url = new URL(window.location.href);
-    const lat = parseFloat(url.searchParams.get("lat"));
-    const lng = parseFloat(url.searchParams.get("lng"));
+
+    const zone = url.searchParams.get("zone");
+    const lat =
+      parseFloat(url.searchParams.get("lat")) ||
+      this.getZoneCoordinates(zone)?.[1];
+    const lng =
+      parseFloat(url.searchParams.get("lng")) ||
+      this.getZoneCoordinates(zone)?.[0];
     const center = lat && lng ? [lat, lng] : null;
-    const zoom = parseInt(url.searchParams.get("zoom"));
+    const zoom = parseInt(url.searchParams.get("zoom")) || (zone ? 13 : null);
 
     const newSettings = {
       pollutant: pollutant,
@@ -52,6 +58,14 @@ export default class MapController extends Controller {
       zoom: zoom || this.defaultMapSettings.zoom,
     };
     this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
+  }
+
+  getZoneCoordinates(searchedZone) {
+    for (const [, zone] of Object.entries(zones)) {
+      if (zone.properties.name === searchedZone) {
+        return zone.properties.center;
+      }
+    }
   }
 
   createMap() {
