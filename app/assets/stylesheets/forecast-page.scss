@@ -205,7 +205,7 @@
         padding: 0.5rem 0.75rem;
         border-radius: var(--border-radius);
         cursor: pointer;
-        background-color: var(--light-grey);
+        background-color: var(--lightest-grey);
         color: var(--dark-grey);
         flex: auto;
         text-align: center;
@@ -220,7 +220,7 @@
 
         &:has(input:checked) {
           background-color: var(--dark-grey);
-          color: var(--light-grey);
+          color: var(--lightest-grey);
 
           &::before {
             content: "✓";
@@ -321,12 +321,12 @@
         margin: 1.5rem;
 
         details {
-          border: 1px solid var(--light-grey);
+          border: 1px solid var(--lightest-grey);
           border-top: none;
 
           summary {
             border-top: 1px solid var(--border-color);
-            background: var(--light-grey);
+            background: var(--lightest-grey);
           }
         }
       }

@@ -131,7 +131,7 @@ details {
     }
 
     &:hover {
-      background: var(--light-grey);
+      background: var(--lightest-grey);
     }
 
     button {
@@ -160,7 +160,7 @@ details {
 
   &[open] {
     summary {
-      background: var(--light-grey);
+      background: var(--lightest-grey);
 
       button {
         &::before {
