@@ -1,264 +1,266 @@
 @use "variables";
 
-.form {
-  section {
-    margin-bottom: 1rem;
+.c-subscriptions.a-show {
+  .form {
+    section {
+      margin-bottom: 1rem;
 
-    > div {
-      margin-bottom: 0.5rem;
+      > div {
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+    }
+
+    label {
       display: block;
+      margin-bottom: 0.5rem;
     }
-  }
 
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+    input[type="text"],
+    input[type="search"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    textarea,
+    select {
+      width: calc(100% - 1.5rem);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--divider-color);
+      outline: none;
+      font-size: 1rem;
 
-  input[type="text"],
-  input[type="search"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="password"],
-  textarea,
-  select {
-    width: calc(100% - 1.5rem);
-    padding: 0.5rem 0.75rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--divider-color);
-    outline: none;
-    font-size: 1rem;
-
-    &:focus {
-      border-color: var(--main-colour);
+      &:focus {
+        border-color: var(--main-colour);
+      }
     }
-  }
 
-  input[type="checkbox"],
-  input[type="radio"] {
-    display: inline-block;
-    margin: 0 0.5rem 0 0;
-
-    + label {
+    input[type="checkbox"],
+    input[type="radio"] {
       display: inline-block;
+      margin: 0 0.5rem 0 0;
+
+      + label {
+        display: inline-block;
+      }
     }
-  }
 
-  .radio-wrapper {
-    display: flex;
-  }
+    .radio-wrapper {
+      display: flex;
+    }
 
-  .checkbox-wrapper {
-    display: flex;
-    align-items: baseline;
-  }
+    .checkbox-wrapper {
+      display: flex;
+      align-items: baseline;
+    }
 
-  select {
-    width: 100%;
-    padding: 0.5rem;
-  }
+    select {
+      width: 100%;
+      padding: 0.5rem;
+    }
 
-  .switch-row {
-    display: flex;
-    gap: 2rem;
-    justify-content: space-between;
-  }
+    .switch-row {
+      display: flex;
+      gap: 2rem;
+      justify-content: space-between;
+    }
 
-  .switch {
-    position: relative;
-    display: inline-block;
+    .switch {
+      position: relative;
+      display: inline-block;
 
-    --switch-width: 2rem;
-    --switch-height: 1rem;
-    --dot-size: 0.875rem;
-    --offset: 0.25rem;
+      --switch-width: 2rem;
+      --switch-height: 1rem;
+      --dot-size: 0.875rem;
+      --offset: 0.25rem;
 
-    input[type="checkbox"] {
-      margin: 0;
-      appearance: none;
-      width: calc(var(--switch-width) + var(--offset));
-      height: calc(var(--switch-height) + var(--offset));
-      border-radius: 9999px;
-      border: 1px solid var(--main-colour);
+      input[type="checkbox"] {
+        margin: 0;
+        appearance: none;
+        width: calc(var(--switch-width) + var(--offset));
+        height: calc(var(--switch-height) + var(--offset));
+        border-radius: 9999px;
+        border: 1px solid var(--main-colour);
 
-      &:checked {
-        background-color: var(--main-colour);
+        &:checked {
+          background-color: var(--main-colour);
 
-        + label {
-          transform: translateX(
-            calc(2rem - var(--dot-size) - var(--offset) + 2px)
-          );
-          background-color: white;
+          + label {
+            transform: translateX(
+              calc(2rem - var(--dot-size) - var(--offset) + 2px)
+            );
+            background-color: white;
+          }
         }
+
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
 
+      // The label is the dot that moves
+      label {
+        position: absolute;
+        top: calc(
+          var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2
+        );
+        left: calc(var(--offset) - 1px);
+        width: var(--dot-size);
+        height: var(--dot-size);
+        background-color: var(--main-colour);
+        border-radius: 9999px;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+    }
+
+    %button {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      color: white;
+      border-radius: var(--border-radius);
+      outline: none;
       cursor: pointer;
-      transition: background-color 0.3s;
+      text-align: center;
+      font-size: 1rem;
     }
 
-    // The label is the dot that moves
-    label {
-      position: absolute;
-      top: calc(
-        var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2
-      );
-      left: calc(var(--offset) - 1px);
-      width: var(--dot-size);
-      height: var(--dot-size);
-      background-color: var(--main-colour);
-      border-radius: 9999px;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-  }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 1rem;
 
-  %button {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    color: white;
-    border-radius: var(--border-radius);
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1rem;
-  }
+      > * {
+        flex: 1;
+      }
 
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: 1rem;
+      a {
+        @extend %button;
 
-    > * {
-      flex: 1;
+        background-color: #777;
+        border: 2px solid #777;
+
+        &:hover {
+          background-color: white;
+          color: #777;
+        }
+      }
     }
 
-    a {
+    button[type="submit"],
+    input[type="submit"] {
       @extend %button;
 
-      background-color: #777;
-      border: 2px solid #777;
+      background-color: var(--main-colour);
+      border: 2px solid var(--main-colour);
 
       &:hover {
         background-color: white;
-        color: #777;
+        color: var(--main-colour);
       }
     }
-  }
 
-  button[type="submit"],
-  input[type="submit"] {
-    @extend %button;
+    .form-errors {
+      --warn-color: #df1313;
 
-    background-color: var(--main-colour);
-    border: 2px solid var(--main-colour);
-
-    &:hover {
-      background-color: white;
-      color: var(--main-colour);
+      color: var(--warn-color);
+      border: 1px solid var(--warn-color);
     }
   }
 
-  .form-errors {
-    --warn-color: #df1313;
-
-    color: var(--warn-color);
-    border: 1px solid var(--warn-color);
+  .verification-code {
+    input {
+      width: 2rem !important;
+      text-align: center;
+    }
   }
-}
 
-.verification-code {
-  input {
-    width: 2rem !important;
-    text-align: center;
-  }
-}
-
-.progress-bar {
-  border-top: 1px solid var(--light-grey-grey);
-  position: relative;
-  display: inline-flex;
-  gap: 1rem;
-
-  span {
-    display: inline-block;
-    background: var(--light-grey-grey);
-    height: 1rem;
-    width: 1rem;
-    border-radius: 100%;
+  .progress-bar {
+    border-top: 1px solid var(--light-grey-grey);
     position: relative;
-    top: -0.5rem;
+    display: inline-flex;
+    gap: 1rem;
 
-    &.completed {
-      background: var(--mid-grey);
-    }
-  }
-}
+    span {
+      display: inline-block;
+      background: var(--light-grey-grey);
+      height: 1rem;
+      width: 1rem;
+      border-radius: 100%;
+      position: relative;
+      top: -0.5rem;
 
-.form-content {
-  max-width: 912px;
-}
-
-#zone-selection-page {
-  #search-results {
-    li {
-      cursor: pointer;
-    }
-  }
-
-  #zone-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
-
-    .zone-tag {
-      padding: 0.5rem 0.75rem;
-      background-color: var(--dark-grey);
-      color: var(--lightest-grey);
-      border-radius: var(--border-radius);
-      cursor: pointer;
-
-      &::before {
-        content: "✓";
-        margin-right: 5px;
+      &.completed {
+        background: var(--mid-grey);
       }
     }
   }
 
-  .zone-region-group {
-    border-top: 1px solid var(--divider-color);
+  .form-content {
+    max-width: 912px;
+  }
 
-    &:last-child {
-      border-bottom: 1px solid var(--divider-color);
-    }
-
-    @media (min-width: variables.$mobile-breakpoint) {
-      .zone-checkboxes {
-        column-count: 2;
+  #zone-selection-page {
+    #search-results {
+      li {
+        cursor: pointer;
       }
     }
 
-    .zone-level-group {
-      &.zone-level-group-2 {
-        margin-bottom: 1rem;
+    #zone-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+
+      .zone-tag {
+        padding: 0.5rem 0.75rem;
+        background-color: var(--dark-grey);
+        color: var(--lightest-grey);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+
+        &::before {
+          content: "✓";
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .zone-region-group {
+      border-top: 1px solid var(--divider-color);
+
+      &:last-child {
+        border-bottom: 1px solid var(--divider-color);
       }
 
-      &.zone-level-group-1 {
-        .zone-letter-group {
+      @media (min-width: variables.$mobile-breakpoint) {
+        .zone-checkboxes {
+          column-count: 2;
+        }
+      }
+
+      .zone-level-group {
+        &.zone-level-group-2 {
           margin-bottom: 1rem;
+        }
+
+        &.zone-level-group-1 {
+          .zone-letter-group {
+            margin-bottom: 1rem;
+          }
         }
       }
     }
   }
-}
 
-#confirmation-page {
-  section {
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+  #confirmation-page {
+    section {
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
     }
   }
 }
