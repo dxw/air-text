@@ -115,6 +115,23 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
           end
         end
 
+        context "when I enter an expired verification code" do
+          let(:code) { "123456" }
+
+          before do
+            allow(VerificationCode).to receive(:new_code).and_return(code)
+            allow_any_instance_of(VerificationCode).to receive(:expired?).and_return(true)
+            visit subscriptions_path(id: :email_verification)
+          end
+
+          it "shows an error" do
+            fill_in_verification_code(:email, code)
+            click_on "Next"
+
+            expect(page).to have_text("The verification code you entered is incorrect")
+          end
+        end
+
         context "when I don't enter a verification code" do
           it "shows an error" do
             click_on "Next"
