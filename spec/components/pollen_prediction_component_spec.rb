@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe PollenPredictionComponent, type: :component do
+  include Components::PredictionHelper
+
   let(:value) { 5 }
   let(:component) { PollenPredictionComponent.new(value) }
 
@@ -14,7 +16,7 @@ RSpec.describe PollenPredictionComponent, type: :component do
 
   describe "#name" do
     it "renders the #name in .name" do
-      expect(page).to have_css(".name", text: "Pollen")
+      expect(page).to have_css(".pollen .name", text: "Pollen")
     end
   end
 
@@ -24,11 +26,11 @@ RSpec.describe PollenPredictionComponent, type: :component do
         let(:value) { -999 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "Low")
+          expect(page).to have_css(".pollen .display-value", text: "Low")
         end
 
         it "does not show the panel" do
-          expect(page).to have_css(".guidance.hidden")
+          expect(page).not_to have_css(".pollen .guidance")
         end
       end
 
@@ -36,11 +38,11 @@ RSpec.describe PollenPredictionComponent, type: :component do
         let(:value) { 1 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "Low")
+          expect(page).to have_css(".pollen .display-value", text: "Low")
         end
 
         it "does not show the panel" do
-          expect(page).to have_css(".guidance.hidden")
+          expect(page).not_to have_css(".pollen .guidance")
         end
       end
 
@@ -48,11 +50,11 @@ RSpec.describe PollenPredictionComponent, type: :component do
         let(:value) { 5 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "Moderate")
+          expect(page).to have_css(".pollen .display-value", text: "Moderate")
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".guidance.bg-moderate-alert-guidance-panel.visible", text: component.guidance[:moderate])
+          expect(page).to have_css(".pollen .guidance.bg-moderate-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :moderate).first[:html]))
         end
       end
 
@@ -60,11 +62,11 @@ RSpec.describe PollenPredictionComponent, type: :component do
         let(:value) { 8 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "High")
+          expect(page).to have_css(".pollen .display-value", text: "High")
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".guidance.bg-high-alert-guidance-panel.visible", text: component.guidance[:high])
+          expect(page).to have_css(".pollen .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :high).first[:html]))
         end
       end
 
@@ -72,11 +74,11 @@ RSpec.describe PollenPredictionComponent, type: :component do
         let(:value) { 10 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "Very high")
+          expect(page).to have_css(".pollen .display-value", text: "Very high")
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".guidance.bg-very-high-alert-guidance-panel.visible", text: component.guidance[:very_high])
+          expect(page).to have_css(".pollen .guidance.bg-very-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :very_high).first[:html]))
         end
       end
     end

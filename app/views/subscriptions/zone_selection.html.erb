@@ -15,27 +15,33 @@
           "maptiler-api-key": ENV["MAPTILER_API_KEY"] 
         } %>
       <ul id="search-results" data-subscription-target="searchResults" class="hidden"></ul>
-      <div id="tags" data-subscription-target="tags"></div>
+      <div id="zone-tags" data-subscription-target="tags"></div>
     </section>
 
     <section>
       <h3 class="mb-2">Or select from the list below</h3>
       <div>
         <% ZoneGroup.all.order(:order).each do |group| %>
-        <details class="zone-group details-compact">
-          <summary class="py-2">
+        <details class="zone-region-group details-compact">
+          <summary class="p-2">
             <h4><%= group.name %></h4>
             <%= content_tag :p, group.description, class: "italic" if group.description.present? %>
           </summary>
-          <div class="zone-checkboxes py-2">
-          <% group.zones.order(cerc_type: :desc, name: :asc).group_by(&:cerc_type).each do |level, zones| %>
-            <%= f.collection_check_boxes :zones, zones, :name, :name, { multiple: true } do |b| %>
-              <div>
-                <%= b.check_box %>
-                <%= b.label %>
+          <div class="zone-checkboxes p-2">
+            <% group.zones.order(cerc_type: :desc, name: :asc).group_by(&:cerc_type).each do |level, zones| %>
+              <div class="zone-level-group zone-level-group-<%= level %>">
+                <% zones.group_by{ |z| z.name[0] }.each do |letter, zones| %>
+                  <div class="zone-letter-group">
+                    <%= f.collection_check_boxes :zones, zones, :name, :name, { multiple: true } do |b| %>
+                      <div>
+                        <%= b.check_box %>
+                        <%= b.label %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             <% end %>
-          <% end %>
           </div>
         </details>
         <% end %>

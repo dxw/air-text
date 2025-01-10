@@ -1,8 +1,15 @@
+@use "variables";
+
 .air-quality-alert-banner {
   padding: 1.5rem;
   display: flex;
   gap: 1rem;
   border-top: 1px solid white;
+  width: 100%;
+
+  @media (min-width: variables.$mobile-breakpoint) {
+    margin: 1.5rem;
+  }
 
   &.no-alert {
     background-color: var(--main-colour-lightest);

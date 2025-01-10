@@ -4,6 +4,7 @@
     "import-notation": "string",
     "at-rule-no-unknown": null,
     "no-descending-specificity": null,
-    "media-query-no-invalid": null
+    "media-query-no-invalid": null,
+    "selector-class-pattern": null
   }
 }

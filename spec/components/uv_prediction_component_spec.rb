@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 RSpec.describe UvPredictionComponent, type: :component do
+  include Components::PredictionHelper
+
   let(:value) { 3 }
   let(:component) { UvPredictionComponent.new(value) }
 
@@ -16,7 +16,7 @@ RSpec.describe UvPredictionComponent, type: :component do
 
   describe "#name" do
     it "renders the #name in .name" do
-      expect(page).to have_css(".name", text: "Ultraviolet (UV) rays")
+      expect(page).to have_css(".uv .name", text: "Ultraviolet (UV) rays")
     end
   end
 
@@ -27,12 +27,12 @@ RSpec.describe UvPredictionComponent, type: :component do
 
         describe "#display_value" do
           it "renders the level label in .display-value" do
-            expect(page).to have_css(".display-value", text: "Low")
+            expect(page).to have_css(".uv .display-value", text: "Low")
           end
         end
 
         it "does not show the panel" do
-          expect(page).to have_css(".guidance.hidden")
+          expect(page).not_to have_css(".uv .guidance")
         end
       end
 
@@ -40,11 +40,11 @@ RSpec.describe UvPredictionComponent, type: :component do
         let(:value) { 3 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "Moderate")
+          expect(page).to have_css(".uv .display-value", text: "Moderate")
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".guidance.bg-moderate-alert-guidance-panel.visible", text: component.guidance[:moderate])
+          expect(page).to have_css(".uv .guidance.bg-moderate-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:uv, :moderate).first[:html]))
         end
       end
 
@@ -52,11 +52,11 @@ RSpec.describe UvPredictionComponent, type: :component do
         let(:value) { 6 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "High")
+          expect(page).to have_css(".uv .display-value", text: "High")
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".guidance.bg-high-alert-guidance-panel.visible", text: component.guidance[:high])
+          expect(page).to have_css(".uv .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:uv, :high).first[:html]))
         end
       end
 
@@ -64,11 +64,11 @@ RSpec.describe UvPredictionComponent, type: :component do
         let(:value) { 8 }
 
         it "renders the level label in .display-value" do
-          expect(page).to have_css(".display-value", text: "Very high")
+          expect(page).to have_css(".uv .display-value", text: "Very high")
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".guidance.bg-very-high-alert-guidance-panel.visible", text: component.guidance[:very_high])
+          expect(page).to have_css(".uv .guidance.bg-very-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:uv, :very_high).first[:html]))
         end
       end
     end

@@ -12,6 +12,10 @@ class CercForecastService
       end
     end
 
+    def latest_forecast_date(zone = nil)
+      latest_forecasts(zone).first&.obtained_at
+    end
+
     private
 
     def refresh_cache

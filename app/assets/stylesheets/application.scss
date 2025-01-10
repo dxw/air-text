@@ -93,6 +93,28 @@ hr {
   }
 }
 
+.block {
+  background-color: var(--main-colour-light);
+  padding: 2rem 1.5rem;
+  text-align: center;
+
+  @media (min-width: variables.$mobile-breakpoint) {
+    border-radius: var(--border-radius);
+  }
+}
+
+.mobile-only {
+  @media (min-width: variables.$mobile-breakpoint) {
+    display: none;
+  }
+}
+
+.desktop-only {
+  @media (max-width: variables.$mobile-breakpoint) {
+    display: none;
+  }
+}
+
 .mobile-flyout {
   @media (max-width: variables.$mobile-breakpoint) {
     position: fixed;
@@ -129,4 +151,11 @@ hr {
       position: relative;
     }
   }
+}
+
+.forecast-timestamp {
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+  display: block;
+  font-style: italic;
 }

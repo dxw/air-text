@@ -18,6 +18,16 @@ export default class SubscriptionController extends Controller {
 
   connect() {
     useDebounce(this);
+
+    // Update the URL to current step
+    ["turbo:load", "turbo:frame-load", "turbo:render"].forEach((eventName) => {
+      document.addEventListener(eventName, () => {
+        const currentStep = document.getElementById(
+          "subscription_form_current_step"
+        ).value;
+        this.updateUrl(currentStep);
+      });
+    });
   }
 
   // Contact details
@@ -182,7 +192,7 @@ export default class SubscriptionController extends Controller {
 
     const tag = document.createElement("span");
     tag.textContent = zoneName;
-    tag.classList.add("tag");
+    tag.classList.add("zone-tag");
     tag.dataset.zoneName = zoneName;
     tag.dataset.action = "click->subscription#tagClicked";
     this.tagsTarget.appendChild(tag);
@@ -195,7 +205,6 @@ export default class SubscriptionController extends Controller {
   }
 
   processVerificationCodeInput(event) {
-    console.log("processVerificationCodeInput");
     const input = event.target;
     const value = input.value;
 
@@ -203,9 +212,9 @@ export default class SubscriptionController extends Controller {
     // When an input is emptied, focus the previous input
 
     if (value.length === 1) {
-      input.nextElementSibling.focus();
+      input.nextElementSibling?.focus();
     } else if (value.length === 0) {
-      input.previousElementSibling.focus();
+      input.previousElementSibling?.focus();
     }
   }
 
@@ -235,5 +244,9 @@ export default class SubscriptionController extends Controller {
     if (event.keyCode === 37) {
       input.previousElementSibling.focus();
     }
+  }
+
+  updateUrl(url) {
+    window.history.pushState({}, "", url);
   }
 }

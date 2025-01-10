@@ -354,7 +354,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
               find("li", text: "Central London").click
             end
 
-            within "#tags" do
+            within "#zone-tags" do
               expect(page).to have_text("Central London")
             end
             expect(page).to have_checked_field("Central London")
@@ -429,7 +429,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
           find("summary", text: "London").click
           check "Central London"
 
-          within "#tags" do
+          within "#zone-tags" do
             expect(page).to have_text("Central London")
           end
         end

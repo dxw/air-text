@@ -55,265 +55,294 @@
   }
 }
 
-.tabs {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  border-bottom: 1px solid var(--border-color);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  gap: 0.375rem;
-
-  .tab {
-    flex: 1;
-    padding: 0.5rem 0.25rem;
-    font-size: 0.75rem;
-    line-height: 1.5;
-    text-align: center;
-    font-weight: bold;
-    border: 1px solid;
-    cursor: pointer;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-
-    &.low {
-      background-color: white;
-    }
-
-    &.active {
-      border-color: var(--border-color);
-      border-style: solid;
-      border-bottom: 0;
-      margin-bottom: -1px;
-    }
-
-    &.inactive {
-      border-color: var(--inactive-tab-border-color);
-      border-style: dashed;
-      border-bottom: 0;
-      color: var(--inactive-tab-text-color);
-      background-color: color-mix(in srgb, var(--daqi-color) 20%, transparent);
-    }
-
-    .daqi-indicator {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 50%;
-      margin: 0.25rem auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .daqi-label {
-      font-size: 1rem;
-    }
-
-    .daqi-value {
-      font-weight: normal;
-    }
-  }
-}
-
-.tab-contents {
-  padding: 0.5rem;
-  border: 1px solid var(--border-color);
-  border-top: 0;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-
-  .alert-guidance {
-    background-color: color-mix(in srgb, var(--daqi-color) 20%, transparent);
-    color: var(--primary-text-color);
-    font-size: 0.75rem;
-
-    .forecast-timestamp {
-      text-align: left;
-    }
-  }
-
-  #map-wrapper {
+.c-forecasts.a-show {
+  .tabs {
     display: flex;
-    position: relative;
+    flex-direction: row;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    gap: 0.375rem;
 
-    .map {
-      width: 100%;
-      min-height: 300px;
-      height: 60vh;
+    .tab {
+      flex: 1;
+      padding: 0.5rem 0.25rem;
+      font-size: 0.75rem;
+      line-height: 1.5;
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid;
+      cursor: pointer;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+      &.low {
+        background-color: white;
+      }
+
+      &.active {
+        border-color: var(--border-color);
+        border-style: solid;
+        border-bottom: 0;
+        margin-bottom: -1px;
+      }
+
+      &.inactive {
+        border-color: var(--inactive-tab-border-color);
+        border-style: dashed;
+        border-bottom: 0;
+        color: var(--inactive-tab-text-color);
+        background-color: color-mix(
+          in srgb,
+          var(--daqi-color) 20%,
+          transparent
+        );
+      }
+
+      .daqi-indicator {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        margin: 0.25rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .daqi-label {
+        font-size: 1rem;
+      }
+
+      .daqi-value {
+        font-weight: normal;
+      }
+    }
+  }
+
+  .tab-contents {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-top: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+    .alert-guidance {
+      background-color: color-mix(in srgb, var(--daqi-color) 20%, transparent);
+      color: var(--primary-text-color);
+      font-size: 0.75rem;
+
+      .forecast-timestamp {
+        text-align: left;
+      }
     }
 
-    .daqi-scale {
+    #map-wrapper {
       display: flex;
-      flex-direction: column;
-      position: absolute;
-      right: 0;
-      z-index: 1000;
-      top: 50px; // 50px for the search box
-      height: calc(
-        100% - 50px - 20px
-      ); // 50px for the search box, 20px for the bottom padding
+      position: relative;
 
-      > div {
-        flex: 1;
-        display: grid;
+      .map {
+        width: 100%;
+        min-height: 300px;
+        height: 60vh;
+      }
 
-        span {
-          grid-column: 2;
-          grid-row: 1 / 4;
-          writing-mode: vertical-lr;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 50%;
-          background-color: var(--main-colour-lightest);
-          padding: 2px;
-          border-bottom: 0.5px solid black;
-        }
-
-        &:first-child {
-          span {
-            grid-row: 1 / 1;
-          }
-        }
-
-        &:last-child {
-          span {
-            border-bottom: 0;
-          }
-        }
+      .daqi-scale {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        z-index: 1000;
+        top: 50px; // 50px for the search box
+        height: calc(
+          100% - 50px - 20px
+        ); // 50px for the search box, 20px for the bottom padding
 
         > div {
-          grid-column: 1;
-          width: 2rem;
+          flex: 1;
+          display: grid;
+
+          span {
+            grid-column: 2;
+            grid-row: 1 / 4;
+            writing-mode: vertical-lr;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50%;
+            background-color: var(--main-colour-lightest);
+            padding: 2px;
+            border-bottom: 0.5px solid black;
+          }
+
+          &:first-child {
+            span {
+              grid-row: 1 / 1;
+            }
+          }
+
+          &:last-child {
+            span {
+              border-bottom: 0;
+            }
+          }
+
+          > div {
+            grid-column: 1;
+            width: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+
+    .pollutant-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+
+      .pollutant {
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        background-color: var(--light-grey);
+        color: var(--dark-grey);
+        flex: auto;
+        text-align: center;
+
+        input {
+          display: none !important;
+        }
+
+        label {
+          cursor: pointer;
+        }
+
+        &:has(input:checked) {
+          background-color: var(--dark-grey);
+          color: var(--light-grey);
+
+          &::before {
+            content: "✓";
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    .explanatory-link {
+      font-size: 75%;
+      text-align: right;
+    }
+
+    .pollution-index-notice {
+      padding: 1rem;
+      background-color: var(--main-colour-lightest);
+      font-size: 0.75rem;
+    }
+
+    .predictions {
+      > * {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--divider-color);
+      }
+
+      .prediction {
+        font-size: 0.875rem;
+
+        .summary {
           display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-  }
+          gap: 0.5rem;
+          justify-content: space-between;
 
-  .explanatory-link {
-    font-size: 75%;
-    text-align: right;
-  }
+          dt {
+            font-weight: bold;
+          }
 
-  .pollution-index-notice {
-    padding: 1rem;
-    background-color: var(--main-colour-lightest);
-    font-size: 0.75rem;
-  }
-
-  .predictions {
-    > * {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--divider-color);
-    }
-
-    .prediction {
-      font-size: 0.875rem;
-
-      .summary {
-        display: flex;
-        gap: 0.5rem;
-        justify-content: space-between;
-
-        dt {
-          font-weight: bold;
+          dd {
+            margin-left: 0;
+            text-align: right;
+          }
         }
 
-        dd {
-          margin-left: 0;
-          text-align: right;
-        }
-      }
-
-      .guidance {
-        margin-top: 0.5rem;
-        padding: 1rem;
-      }
-    }
-  }
-
-  .forecast-timestamp {
-    font-size: 0.75rem;
-    color: var(--secondary-text-color);
-    text-align: center;
-    margin-top: 0.5rem;
-    display: block;
-    font-style: italic;
-  }
-}
-
-#health-advice {
-  background-color: var(--main-colour-light);
-  padding: 2rem 1.5rem;
-  margin-top: 1.5rem;
-  text-align: center;
-
-  a {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
-
-// Desktop layout
-main {
-  @media (min-width: variables.$mobile-breakpoint) {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto auto 1fr;
-
-    > h1 {
-      grid-row: 1;
-      grid-column: 1;
-    }
-
-    div#intro {
-      grid-row: 2;
-      grid-column: 1;
-    }
-
-    div#forecast {
-      grid-row: 3;
-      grid-column: 1;
-
-      .colour-scale-link {
-        display: none;
-      }
-    }
-
-    div#health-advice {
-      grid-row: 2;
-      grid-column: 2;
-      border-radius: var(--border-radius);
-      margin-right: 1.5rem;
-    }
-
-    div#how-forecasts-are-made {
-      grid-row: 4;
-      grid-column: 1;
-      margin: 1.5rem;
-
-      details {
-        border: 1px solid #f5f5f5;
-        border-top: none;
-
-        summary {
-          border-top: 1px solid var(--border-color);
-          background: #f5f5f5;
+        .guidance {
+          margin-top: 0.5rem;
+          padding: 1rem;
         }
       }
     }
 
-    div#daqi-scale-info {
-      grid-row: 3 / span 2;
-      grid-column: 2;
-      margin-right: 1.5rem;
-      margin-top: calc(
-        1.2rem + 1rem
-      ); // 1.2 for the height of the heading, 1 for the margin
+    .forecast-timestamp {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  }
 
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
+  // Desktop layout
+  main {
+    @media (min-width: variables.$mobile-breakpoint) {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto auto 1fr;
+
+      > h1 {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      div#intro {
+        grid-row: 2;
+        grid-column: 1;
+      }
+
+      div#forecast {
+        grid-row: 3;
+        grid-column: 1;
+
+        .colour-scale-link {
+          display: none;
+        }
+
+        .pollutant-info-link {
+          text-align: left;
+        }
+      }
+
+      div#health-advice-block {
+        grid-row: 2;
+        grid-column: 2;
+        border-radius: var(--border-radius);
+        margin-right: 1.5rem;
+      }
+
+      div#how-forecasts-are-made {
+        grid-row: 4;
+        grid-column: 1;
+        margin: 1.5rem;
+
+        details {
+          border: 1px solid var(--light-grey);
+          border-top: none;
+
+          summary {
+            border-top: 1px solid var(--border-color);
+            background: var(--light-grey);
+          }
+        }
+      }
+
+      div#daqi-scale-info {
+        grid-row: 3 / span 2;
+        grid-column: 2;
+        margin-right: 1.5rem;
+        margin-top: calc(
+          1.2rem + 1rem
+        ); // 1.2 for the height of the heading, 1 for the margin
+
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+      }
     }
   }
 }

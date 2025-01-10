@@ -9,13 +9,6 @@ class TemperaturePredictionComponent < PredictionComponent
     "#{values[:min_c].round}&nbsp;to&nbsp;#{values[:max_c].round}°C / #{values[:min_f].round}&nbsp;to&nbsp;#{values[:max_f].round}°F"
   end
 
-  def guidance
-    {
-      low_temp: "Temperature guidance for *low*",
-      high_temp: "Temperature guidance for *high*"
-    }
-  end
-
   def values
     {
       min_c: @value[:min],
@@ -30,12 +23,15 @@ class TemperaturePredictionComponent < PredictionComponent
   end
 
   def guidance_visible?
-    @value[:min] < 2 || @value[:max] > 25
+    level_label.present?
   end
 
-  def guidance_text
-    return guidance[:low_temp] if @value[:min] <= 2
-    guidance[:high_temp] if @value[:max] >= 25
+  def level_label
+    if @value[:min] <= 2
+      "Low temp"
+    elsif @value[:max] >= 25
+      "High temp"
+    end
   end
 
   def guidance_panel_colour

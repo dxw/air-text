@@ -1,3 +1,5 @@
+@use "variables";
+
 .form {
   section {
     margin-bottom: 1rem;
@@ -174,8 +176,6 @@
 
 #zone-selection-page {
   #search-results {
-    margin-top: 1rem;
-
     li {
       cursor: pointer;
     }
@@ -188,23 +188,43 @@
     margin: 1rem 0;
 
     .zone-tag {
-      padding: 0.25rem 0.5rem;
-      background-color: #e5e7eb;
+      padding: 0.5rem 0.75rem;
+      background-color: var(--dark-grey);
+      color: var(--light-grey);
       border-radius: var(--border-radius);
       cursor: pointer;
+
+      &::before {
+        content: "✓";
+        margin-right: 5px;
+      }
     }
   }
 
-  .zone-group {
+  .zone-region-group {
     border-top: 1px solid var(--divider-color);
 
     &:last-child {
       border-bottom: 1px solid var(--divider-color);
     }
-  }
 
-  .zone-checkboxes {
-    margin-top: 1rem;
+    @media (min-width: variables.$mobile-breakpoint) {
+      .zone-checkboxes {
+        column-count: 2;
+      }
+    }
+
+    .zone-level-group {
+      &.zone-level-group-2 {
+        margin-bottom: 1rem;
+      }
+
+      &.zone-level-group-1 {
+        .zone-letter-group {
+          margin-bottom: 1rem;
+        }
+      }
+    }
   }
 }
 

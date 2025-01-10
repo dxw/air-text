@@ -7,32 +7,32 @@
     <span data-share-target="shareMessage" class="hidden"><%= @share_message %></span>
     <div data-share-target="webShareOptions" class="share-icons hidden">
       <%= link_to "#", data: { action: "click->share#copyLink" }, target: "_blank" do %>
-        <%= render_svg "link", tag: :figure %>
-        Copy link
+        <%= render_svg "share-icons/link", tag: :figure %>
+        <span>Copy link</span>
       <% end %>
       <%= link_to "https://wa.me/?text=#{CGI.escape_uri_component(@share_message)}", target: "_blank" do %>
-        <%= render_svg "whatsapp", tag: :figure %>
-        WhatsApp
+        <%= render_svg "share-icons/whatsapp", tag: :figure %>
+        <span>WhatsApp</span>
       <% end %>
       <%= sms_to nil, body: @share_message, target: "_blank" do %>
-        <%= render_svg "sms", tag: :figure %>
-        Text message
+        <%= render_svg "share-icons/sms", tag: :figure %>
+        <span>Text message</span>
       <% end %>
       <%= mail_to nil, subject: "Air quality forecast", body: @share_message, target: "_blank" do %>
-        <%= render_svg "email", tag: :figure %>
-        Email
+        <%= render_svg "share-icons/email", tag: :figure %>
+        <span>Email</span>
       <% end %>
       <%= link_to "https://x.com/intent/tweet?text=#{CGI.escape_uri_component(@share_message)}", target: "_blank" do %>
-        <%= render_svg "x-twitter", tag: :figure %>
-        X / Twitter
+        <%= render_svg "share-icons/x-twitter", tag: :figure %>
+        <span>X / Twitter</span>
       <% end %>
       <%= link_to "https://bsky.app/intent/compose?text=#{CGI.escape_uri_component(@share_message)}", target: "_blank" do %>
-        <%= render_svg "bluesky", tag: :figure %>
-        Bluesky
+        <%= render_svg "share-icons/bluesky", tag: :figure %>
+        <span>Bluesky</span>
       <% end %>
       <%= link_to "https://facebook.com/sharer/sharer.php?u=#{request.original_url}", target: "_blank" do %>
-        <%= render_svg "facebook", tag: :figure %>
-        Facebook
+        <%= render_svg "share-icons/facebook", tag: :figure %>
+        <span>Facebook</span>
       <% end %>
     </div>
   </div>

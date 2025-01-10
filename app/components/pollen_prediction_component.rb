@@ -19,13 +19,4 @@ class PollenPredictionComponent < PredictionComponent
       "Very high"
     end
   end
-
-  def guidance
-    {
-      low: "Pollen guidance for *low* DAQI level",
-      moderate: "Pollen guidance for *moderate* DAQI level",
-      high: "Pollen guidance for *high* DAQI level",
-      very_high: "Pollen guidance for *very high* DAQI level"
-    }
-  end
 end

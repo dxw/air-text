@@ -35,13 +35,21 @@ export default class MapController extends Controller {
   }
 
   updateSettings() {
-    const pollutant = this.pollutantSelectorTarget.value;
+    const pollutant = this.pollutantSelectorTarget.querySelector(
+      "input[name=pollutant]:checked"
+    ).value;
     const date = this.dateSelectorTarget.value;
     const url = new URL(window.location.href);
-    const lat = parseFloat(url.searchParams.get("lat"));
-    const lng = parseFloat(url.searchParams.get("lng"));
+
+    const zone = url.searchParams.get("zone");
+    const lat =
+      parseFloat(url.searchParams.get("lat")) ||
+      this.getZoneCoordinates(zone)?.[1];
+    const lng =
+      parseFloat(url.searchParams.get("lng")) ||
+      this.getZoneCoordinates(zone)?.[0];
     const center = lat && lng ? [lat, lng] : null;
-    const zoom = parseInt(url.searchParams.get("zoom"));
+    const zoom = parseInt(url.searchParams.get("zoom")) || (zone ? 13 : null);
 
     const newSettings = {
       pollutant: pollutant,
@@ -50,6 +58,14 @@ export default class MapController extends Controller {
       zoom: zoom || this.defaultMapSettings.zoom,
     };
     this.settings = Object.assign({}, this.defaultMapSettings, newSettings);
+  }
+
+  getZoneCoordinates(searchedZone) {
+    for (const [, zone] of Object.entries(zones)) {
+      if (zone.properties.name === searchedZone) {
+        return zone.properties.center;
+      }
+    }
   }
 
   createMap() {
@@ -259,11 +275,19 @@ export default class MapController extends Controller {
         };
         const pollutantValue = pollutantForecasts[zone.properties.name];
 
+        const html =
+          `<div class="wrapper">` +
+          (pollutantValue
+            ? `<span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span>`
+            : "") +
+          `<span class="zone-name">${zone.properties.name}</span>` +
+          `</div>`;
+
         const marker = L.marker(center, {
           icon: L.divIcon({
             className:
               "zone-label " + `zone-label-level-${zone.properties.level}`,
-            html: `<div class="wrapper"><span class="daqi-indicator daqi-level-${pollutantValue}">${pollutantValue}</span><span class="zone-name">${zone.properties.name}</span></div>`,
+            html: html,
           }),
         });
         marker.addTo(this.map);
@@ -303,8 +327,8 @@ export default class MapController extends Controller {
   }
 
   async getForecastData() {
-    const pollutant = this.pollutantSelectorTarget.value;
-    const date = this.dateSelectorTarget.value;
+    const pollutant = this.settings.pollutant;
+    const date = this.settings.date;
 
     const response = await fetch(
       `/pollutant_forecasts?pollutant=${pollutant}&date=${date}`
