@@ -5,7 +5,7 @@
   display: flex;
   gap: 1rem;
   border-top: 1px solid white;
-  width: 100%;
+  flex-basis: 100%;
 
   @media (min-width: variables.$mobile-breakpoint) {
     margin: 1.5rem;
