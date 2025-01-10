@@ -158,6 +158,16 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
             expect(VerificationCode).to have_received(:generate).with(@subscription_form.email)
           end
         end
+
+        context "when verification is disabled" do
+          it "lets me proceed without entering a verification code" do
+            ClimateControl.modify VERIFICATION_ENABLED: "false" do
+              click_on "Next"
+
+              expect(page).to have_text("Your email is now verified")
+            end
+          end
+        end
       end
 
       describe "SMS number verification" do
