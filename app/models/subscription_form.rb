@@ -121,8 +121,8 @@ class SubscriptionForm
   end
 
   def after_step?(step_name)
-    current_step_index = current_step.present? ? SubscriptionsController::ALL_STEPS.index(current_step.to_sym) : 0
-    this_step_index = SubscriptionsController::ALL_STEPS.index(step_name.to_sym) || 0
+    current_step_index = current_step.present? ? SubscriptionsController::ALL_STEPS.flatten.index(current_step.to_sym) : 0
+    this_step_index = SubscriptionsController::ALL_STEPS.flatten.index(step_name.to_sym) || 0
 
     current_step_index >= this_step_index
   end
