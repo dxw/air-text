@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import "@maptiler/leaflet-maptilersdk";
+import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
 import "@maptiler/geocoding-control/leaflet"; // Geocoding (search) control
 import { LocateControl } from "leaflet.locatecontrol"; // Geolocation control
 import "leaflet.fullscreen"; // Fullscreen control
@@ -186,7 +186,7 @@ export default class MapController extends Controller {
   }
 
   addStreetMapLayer() {
-    const streetMap = new L.MaptilerLayer({
+    const streetMap = new MaptilerLayer({
       apiKey: this.settings.maptilerApiKey,
       style: "13be04a7-d035-45cd-b5cf-6c0c50fdf6a8",
       pane: "street-map",
@@ -195,7 +195,7 @@ export default class MapController extends Controller {
   }
 
   addPlaceNamesLayer() {
-    const placeNames = new L.MaptilerLayer({
+    const placeNames = new MaptilerLayer({
       apiKey: this.settings.maptilerApiKey,
       style: "1cc6214b-0f45-4e3d-a5bc-8e81b82cca7a",
       pane: "place-names",
