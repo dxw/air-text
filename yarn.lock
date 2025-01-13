@@ -418,15 +418,15 @@
     quick-lru "^7.0.0"
 
 "@maptiler/geocoding-control@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@maptiler/geocoding-control/-/geocoding-control-2.0.1.tgz#8f4d798758c95e601cb163f3b44766c2a4abdc8c"
-  integrity sha512-fHa6QgRfYGbviMdDY1QoDNs2yIQyc2LS8rTOwoj71dTAWwSiQfw6s+ohhiM9zEBmfwYVoELByAG8qwC9brafww==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@maptiler/geocoding-control/-/geocoding-control-2.1.2.tgz#a010825370eabf535e7ea08fc0c59771debcb801"
+  integrity sha512-aEwzGOo66fnLvUZQ1L2XZsb5N1X7PUIpw6eDyrsI6qHNWs1R6x6yxPaZaBAjVPYYjPTM5FZPLzylvWfw/M9muA==
   dependencies:
-    "@turf/bbox" "^7.1.0"
-    "@turf/clone" "^7.1.0"
-    "@turf/difference" "^7.1.0"
-    "@turf/flatten" "^7.1.0"
-    "@turf/union" "^7.1.0"
+    "@turf/bbox" "^7.2.0"
+    "@turf/clone" "^7.2.0"
+    "@turf/difference" "^7.2.0"
+    "@turf/flatten" "^7.2.0"
+    "@turf/union" "^7.2.0"
     geo-coordinates-parser "^1.7.4"
 
 "@maptiler/leaflet-maptilersdk@^4.0.0":
@@ -475,15 +475,15 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.2.101.tgz#d0544b1bc51d420c1bb27f3281ccae54945e70f6"
   integrity sha512-YgFCyD+9mBhpJdfgf4QtJwk+vZbByVMXsEGREM6GrPk9A1pYXkkIpzYd3+843E+33e3S81yywhqZc3DyrZGPSg==
 
-"@turf/bbox@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-7.1.0.tgz#45a9287c084f7b79577ee88b7b539d83562b923b"
-  integrity sha512-PdWPz9tW86PD78vSZj2fiRaB8JhUHy6piSa/QXb83lucxPK+HTAdzlDQMTKj5okRCU8Ox/25IR2ep9T8NdopRA==
+"@turf/bbox@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-7.2.0.tgz#9db338d6407380f66a72050657f1998c5c5ccc4a"
+  integrity sha512-wzHEjCXlYZiDludDbXkpBSmv8Zu6tPGLmJ1sXQ6qDwpLE1Ew3mcWqt8AaxfTP5QwDNQa3sf2vvgTEzNbPQkCiA==
   dependencies:
-    "@turf/helpers" "^7.1.0"
-    "@turf/meta" "^7.1.0"
+    "@turf/helpers" "^7.2.0"
+    "@turf/meta" "^7.2.0"
     "@types/geojson" "^7946.0.10"
-    tslib "^2.6.2"
+    tslib "^2.8.1"
 
 "@turf/boolean-point-in-polygon@^7.1.0":
   version "7.2.0"
@@ -496,43 +496,35 @@
     point-in-polygon-hao "^1.1.0"
     tslib "^2.8.1"
 
-"@turf/clone@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/clone/-/clone-7.1.0.tgz#b0cbf60b84fadd30ae8411f12d3bdcd3e773577f"
-  integrity sha512-5R9qeWvL7FDdBIbEemd0eCzOStr09oburDvJ1hRiPCFX6rPgzcZBQ0gDmZzoF4AFcNLb5IwknbLZjVLaUGWtFA==
+"@turf/clone@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/clone/-/clone-7.2.0.tgz#1dbf6e2f82ba2f9da45285fb870aa40662ccc55f"
+  integrity sha512-JlGUT+/5qoU5jqZmf6NMFIoLDY3O7jKd53Up+zbpJ2vzUp6QdwdNzwrsCeONhynWM13F0MVtPXH4AtdkrgFk4g==
   dependencies:
-    "@turf/helpers" "^7.1.0"
+    "@turf/helpers" "^7.2.0"
     "@types/geojson" "^7946.0.10"
-    tslib "^2.6.2"
+    tslib "^2.8.1"
 
-"@turf/difference@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/difference/-/difference-7.1.0.tgz#c69b56bf16d3642fc35f5432f829d2e9589f7fd8"
-  integrity sha512-+JVzdskICQ8ULKQ9CpWUM5kBvoXxN4CO78Ez/Ki3/7NXl7+HM/nb12B0OyM8hkJchpb8TsOi0YwyJiKMqEpTBA==
+"@turf/difference@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/difference/-/difference-7.2.0.tgz#f404b256fde3ddfd5fc75f336797d4cad938fbff"
+  integrity sha512-NHKD1v3s8RX+9lOpvHJg6xRuJOKiY3qxHhz5/FmE0VgGqnCkE7OObqWZ5SsXG+Ckh0aafs5qKhmDdDV/gGi6JA==
   dependencies:
-    "@turf/helpers" "^7.1.0"
-    "@turf/meta" "^7.1.0"
+    "@turf/helpers" "^7.2.0"
+    "@turf/meta" "^7.2.0"
     "@types/geojson" "^7946.0.10"
-    polygon-clipping "^0.15.3"
-    tslib "^2.6.2"
+    polyclip-ts "^0.16.8"
+    tslib "^2.8.1"
 
-"@turf/flatten@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/flatten/-/flatten-7.1.0.tgz#db1353e6dd9aafc414422a7ef028a37e0d6b1c50"
-  integrity sha512-Kb23pqEarcLsdBqnQcK0qTrSMiWNTVb9tOFrNlZc66DIhDLAdpOKG4eqk00CMoUzWTixlnawDgJRqcStRrR4WA==
+"@turf/flatten@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/flatten/-/flatten-7.2.0.tgz#b3cca9dcf7b7ec4532c966a919065744b2c0de9f"
+  integrity sha512-q38Qsqr4l7mxp780zSdn0gp/WLBX+sa+gV6qIbDQ1HKCrrPK8QQJmNx7gk1xxEXVot6tq/WyAPysCQdX+kLmMA==
   dependencies:
-    "@turf/helpers" "^7.1.0"
-    "@turf/meta" "^7.1.0"
+    "@turf/helpers" "^7.2.0"
+    "@turf/meta" "^7.2.0"
     "@types/geojson" "^7946.0.10"
-    tslib "^2.6.2"
-
-"@turf/helpers@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-7.1.0.tgz#eb734e291c9c205822acdd289fe20e91c3cb1641"
-  integrity sha512-dTeILEUVeNbaEeoZUOhxH5auv7WWlOShbx7QSd4s0T4Z0/iz90z9yaVCtZOLbU89umKotwKaJQltBNO9CzVgaQ==
-  dependencies:
-    "@types/geojson" "^7946.0.10"
-    tslib "^2.6.2"
+    tslib "^2.8.1"
 
 "@turf/helpers@^7.2.0":
   version "7.2.0"
@@ -551,24 +543,24 @@
     "@types/geojson" "^7946.0.10"
     tslib "^2.8.1"
 
-"@turf/meta@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-7.1.0.tgz#b2af85afddd0ef08aeae8694a12370a4f06b6d13"
-  integrity sha512-ZgGpWWiKz797Fe8lfRj7HKCkGR+nSJ/5aKXMyofCvLSc2PuYJs/qyyifDPWjASQQCzseJ7AlF2Pc/XQ/3XkkuA==
+"@turf/meta@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-7.2.0.tgz#6a6b1918890b4d9d2b5ff10b3ad47e2fd7470912"
+  integrity sha512-igzTdHsQc8TV1RhPuOLVo74Px/hyPrVgVOTgjWQZzt3J9BVseCdpfY/0cJBdlSRI4S/yTmmHl7gAqjhpYH5Yaw==
   dependencies:
-    "@turf/helpers" "^7.1.0"
+    "@turf/helpers" "^7.2.0"
     "@types/geojson" "^7946.0.10"
 
-"@turf/union@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/union/-/union-7.1.0.tgz#7b8f0cc7fd24c1269224eaa5f76946458bbb9c01"
-  integrity sha512-7VI8jONdBg9qmbfNlLQycPr93l5aU9HGMgWI9M6pb4ERuU2+p8KgffCgs2NyMtP2HxPrKSybzj31g7bnbEKofQ==
+"@turf/union@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/union/-/union-7.2.0.tgz#f396ca5c8a66c424a0e2d0664280ef3d16974dac"
+  integrity sha512-Xex/cfKSmH0RZRWSJl4RLlhSmEALVewywiEXcu0aIxNbuZGTcpNoI0h4oLFrE/fUd0iBGFg/EGLXRL3zTfpg6g==
   dependencies:
-    "@turf/helpers" "^7.1.0"
-    "@turf/meta" "^7.1.0"
+    "@turf/helpers" "^7.2.0"
+    "@turf/meta" "^7.2.0"
     "@types/geojson" "^7946.0.10"
-    polygon-clipping "^0.15.3"
-    tslib "^2.6.2"
+    polyclip-ts "^0.16.8"
+    tslib "^2.8.1"
 
 "@types/estree@^1.0.6":
   version "1.0.6"
@@ -763,6 +755,11 @@ balanced-match@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-2.0.0.tgz#dc70f920d78db8b858535795867bf48f820633d9"
   integrity sha512-1ugUSr8BHXRnK23KfuYS+gVMC3LB8QGH9W1iGtDPsNWoQbgtXSExkBu2aDR4epiGWZOjZsj6lDl/N/AqqTC3UA==
+
+bignumber.js@^9.1.0:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.2.tgz#b7c4242259c008903b13707983b5f4bbd31eda0c"
+  integrity sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -1885,13 +1882,13 @@ point-in-polygon-hao@^1.1.0:
   dependencies:
     robust-predicates "^3.0.2"
 
-polygon-clipping@^0.15.3:
-  version "0.15.7"
-  resolved "https://registry.yarnpkg.com/polygon-clipping/-/polygon-clipping-0.15.7.tgz#3823ca1e372566f350795ce9dd9a7b19e97bdaad"
-  integrity sha512-nhfdr83ECBg6xtqOAJab1tbksbBAOMUltN60bU+llHVOL0e5Onm1WpAXXWXVB39L8AJFssoIhEVuy/S90MmotA==
+polyclip-ts@^0.16.8:
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/polyclip-ts/-/polyclip-ts-0.16.8.tgz#503160d05e9d56380533aab0bc2dae835d6da5f9"
+  integrity sha512-JPtKbDRuPEuAjuTdhR62Gph7Is2BS1Szx69CFOO3g71lpJDFo78k4tFyi+qFOMVPePEzdSKkpGU3NBXPHHjvKQ==
   dependencies:
-    robust-predicates "^3.0.2"
-    splaytree "^3.1.0"
+    bignumber.js "^9.1.0"
+    splaytree-ts "^1.0.2"
 
 postcss-media-query-parser@^0.2.3:
   version "0.2.3"
@@ -2131,10 +2128,10 @@ source-map-js@^1.0.1, source-map-js@^1.2.0, source-map-js@^1.2.1:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.1.tgz#1ce5650fddd87abc099eda37dcff024c2667ae46"
   integrity sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==
 
-splaytree@^3.1.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/splaytree/-/splaytree-3.1.2.tgz#d1db2691665a3c69d630de98d55145a6546dc166"
-  integrity sha512-4OM2BJgC5UzrhVnnJA4BkHKGtjXNzzUfpQjCO8I05xYPsfS/VuQDwjCGGMi8rYQilHEV4j8NBqTFbls/PZEE7A==
+splaytree-ts@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/splaytree-ts/-/splaytree-ts-1.0.2.tgz#34963704587aff45eaa09c24713f552bbf56e8f0"
+  integrity sha512-0kGecIZNIReCSiznK3uheYB8sbstLjCZLiwcQwbmLhgHJj2gz6OnSPkVzJQCMnmEz1BQ4gPK59ylhBoEWOhGNA==
 
 sprintf-js@~1.0.2:
   version "1.0.3"
@@ -2313,7 +2310,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tslib@^2.6.2, tslib@^2.8.1:
+tslib@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
