@@ -4,7 +4,7 @@
     <h2 class="mb-2">Subscription Confirmation</h2>
     <p>You will receive alerts for the following channels and areas:</p>
 
-    <section>
+    <section class="mb-2">
       <header>
         <h4>Channels</h4>
         <p><%= link_to "Edit", wizard_path(:contact_details) %></p>
@@ -19,19 +19,19 @@
       </dl>
     </section>
 
-    <section>
+    <section class="mb-2">
       <header>
         <h4>Alert areas</h4>
         <p><%= link_to "Edit", wizard_path(:zone_selection) %></p>
       </header>
-      <ul>
+      <ul class="list">
         <% @form.zones.each do |zone| %>
           <li><%= zone %></li>
         <% end %>
       </ul>
     </section>
 
-    <section>
+    <section class="mb-2">
       <header>
         <h4>Selected time</h4>
         <p><%= link_to "Edit", wizard_path(:time_selection) %></p>
