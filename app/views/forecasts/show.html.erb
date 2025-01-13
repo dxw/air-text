@@ -26,5 +26,9 @@
 
 <div id="daqi-scale-info" class="mobile-flyout">
   <%= button_tag("Close", class: "close", data: { action: "click->map#closeDaqiScaleFlyout", controller: "map" }) %>
-  <%= render "pages/daqi_scale_guide" %>
+  <%= render "daqi_scale_guide" %>
+</div>
+
+<div class="mb-2 mx-3">
+  <%= render "shared/back_to_top" %>
 </div>

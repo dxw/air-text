@@ -22,4 +22,8 @@ export default class ApplicationController extends Controller {
       }
     });
   }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0 });
+  }
 }

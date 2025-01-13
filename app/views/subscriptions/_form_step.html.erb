@@ -1,13 +1,25 @@
-<div class="text-block p-3">
-  <h1 class="mb-2">Air pollution alert service subscription</h1>
-  <p>Receive alerts by email, text, or voicemail when pollution levels are forecasted to be moderate, high, or very high.</p>
-  <p>You can select up to five areas to receive alerts for, and you can unsubscribe from the service at any time.</p>
+<div class="intro mb-2">
+  <div class="text-block p-3">
+    <h1 class="mb-2">Air pollution alert service subscription</h1>
+    <p>Receive alerts by email, text, or voicemail when pollution levels are forecasted to be moderate, high, or very high.</p>
+    <p>You can select up to five areas to receive alerts for, and you can unsubscribe from the service at any time.</p>
+  </div>
+
+  <aside class="desktop-only mt-3 mr-3">
+    <%= render "shared/health_advice" %>
+  </aside>
 </div>
 
-<hr>
+<hr class="mx-3">
 
 <turbo-frame id="form-frame" data-controller="subscription">
-  <div class="p-3">
+  <div class="form-content p-3">
+    <div class="progress-bar my-2">
+      <% 4.times do |i| %>
+        <span class="<%= i <= @step_group ? "completed" : "" %>"></span>
+      <% end %>
+    </div>
+
     <%= form_for @form, url: wizard_path, method: :put, html: { class: "form" }, data: { turbo: @final_step ? false : nil } do |f| %>
       <%= f.hidden_field :current_step, value: @current_step %>
 

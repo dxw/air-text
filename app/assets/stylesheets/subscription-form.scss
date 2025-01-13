@@ -1,239 +1,292 @@
 @use "variables";
 
-.form {
-  section {
-    margin-bottom: 1rem;
-
-    > div {
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-  }
-
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  input[type="text"],
-  input[type="search"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="password"],
-  textarea,
-  select {
-    width: calc(100% - 1.5rem);
-    padding: 0.5rem 0.75rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--divider-color);
-    outline: none;
-    font-size: 1rem;
-
-    &:focus {
-      border-color: var(--main-colour);
-    }
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    display: inline-block;
-    margin: 0 0.5rem 0 0;
-
-    + label {
-      display: inline-block;
-    }
-  }
-
-  .radio-wrapper {
+.c-subscriptions.a-show {
+  .intro {
     display: flex;
-  }
+    flex-wrap: wrap;
 
-  .checkbox-wrapper {
-    display: flex;
-    align-items: baseline;
-  }
-
-  select {
-    width: 100%;
-    padding: 0.5rem;
-  }
-
-  .switch-row {
-    display: flex;
-    gap: 2rem;
-    justify-content: space-between;
-  }
-
-  .switch {
-    position: relative;
-    display: inline-block;
-
-    --switch-width: 2rem;
-    --switch-height: 1rem;
-    --dot-size: 0.875rem;
-    --offset: 0.25rem;
-
-    input[type="checkbox"] {
-      margin: 0;
-      appearance: none;
-      width: calc(var(--switch-width) + var(--offset));
-      height: calc(var(--switch-height) + var(--offset));
-      border-radius: 9999px;
-      border: 1px solid var(--main-colour);
-
-      &:checked {
-        background-color: var(--main-colour);
-
-        + label {
-          transform: translateX(
-            calc(2rem - var(--dot-size) - var(--offset) + 2px)
-          );
-          background-color: white;
-        }
-      }
-
-      cursor: pointer;
-      transition: background-color 0.3s;
+    div {
+      flex: 2;
     }
 
-    // The label is the dot that moves
-    label {
-      position: absolute;
-      top: calc(
-        var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2
-      );
-      left: calc(var(--offset) - 1px);
-      width: var(--dot-size);
-      height: var(--dot-size);
-      background-color: var(--main-colour);
-      border-radius: 9999px;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-  }
-
-  %button {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    color: white;
-    border-radius: var(--border-radius);
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1rem;
-  }
-
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: 1rem;
-
-    > * {
+    aside {
       flex: 1;
     }
+  }
 
-    a {
+  .form {
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="search"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    textarea,
+    select {
+      width: calc(100% - 1.5rem);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--divider-color);
+      outline: none;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: var(--main-colour);
+      }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      display: inline-block;
+      margin: 0 0.5rem 0 0;
+      position: relative;
+      top: 1px;
+    }
+
+    .radio-wrapper {
+      display: flex;
+      align-items: baseline;
+
+      label {
+        margin: 0;
+      }
+
+      .hint {
+        display: block;
+        font-size: 75%;
+      }
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: baseline;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    .switch-row {
+      display: flex;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+
+      --switch-width: 2rem;
+      --switch-height: 1rem;
+      --dot-size: 0.875rem;
+      --offset: 0.25rem;
+
+      input[type="checkbox"] {
+        margin: 0;
+        appearance: none;
+        width: calc(var(--switch-width) + var(--offset));
+        height: calc(var(--switch-height) + var(--offset));
+        border-radius: 9999px;
+        border: 1px solid var(--main-colour);
+
+        &:checked {
+          background-color: var(--main-colour);
+
+          + label {
+            transform: translateX(
+              calc(2rem - var(--dot-size) - var(--offset) + 2px)
+            );
+            background-color: white;
+          }
+        }
+
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      // The label is the dot that moves
+      label {
+        position: absolute;
+        top: calc(
+          var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2 +
+            1px
+        );
+        left: calc(var(--offset) - 1px);
+        width: var(--dot-size);
+        height: var(--dot-size);
+        background-color: var(--main-colour);
+        border-radius: 9999px;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+    }
+
+    %button {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      color: white;
+      border-radius: var(--border-radius);
+      outline: none;
+      cursor: pointer;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 1rem;
+
+      > * {
+        flex: 1;
+      }
+
+      a {
+        @extend %button;
+
+        background-color: #777;
+        border: 2px solid #777;
+
+        &:hover {
+          background-color: white;
+          color: #777;
+        }
+      }
+    }
+
+    button[type="submit"],
+    input[type="submit"] {
       @extend %button;
 
-      background-color: #777;
-      border: 2px solid #777;
+      background-color: var(--main-colour);
+      border: 2px solid var(--main-colour);
 
       &:hover {
         background-color: white;
-        color: #777;
+        color: var(--main-colour);
+      }
+    }
+
+    .form-errors {
+      --warn-color: #df1313;
+
+      color: var(--warn-color);
+      border: 1px solid var(--warn-color);
+    }
+  }
+
+  .verification-code {
+    input {
+      width: 2rem !important;
+      text-align: center;
+    }
+  }
+
+  .progress-bar {
+    border-top: 1px solid var(--light-grey-grey);
+    position: relative;
+    display: inline-flex;
+    gap: 1rem;
+
+    span {
+      display: inline-block;
+      background: var(--light-grey-grey);
+      height: 1rem;
+      width: 1rem;
+      border-radius: 100%;
+      position: relative;
+      top: -0.5rem;
+
+      &.completed {
+        background: var(--mid-grey);
       }
     }
   }
 
-  button[type="submit"],
-  input[type="submit"] {
-    @extend %button;
-
-    background-color: var(--main-colour);
-    border: 2px solid var(--main-colour);
-
-    &:hover {
-      background-color: white;
-      color: var(--main-colour);
-    }
+  .form-content {
+    max-width: 912px;
   }
 
-  .form-errors {
-    --warn-color: #df1313;
+  #zone-selection-page {
+    #zone-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
 
-    color: var(--warn-color);
-    border: 1px solid var(--warn-color);
-  }
-}
+      ul#search-results,
+      ul#selected-zones {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
 
-.verification-code {
-  input {
-    width: 2rem !important;
-    text-align: center;
-  }
-}
+        &.hidden {
+          display: none;
+        }
 
-#zone-selection-page {
-  #search-results {
-    li {
-      cursor: pointer;
-    }
-  }
+        &.no-results {
+          flex-basis: 100%;
+        }
 
-  #zone-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
+        li.zone-tag {
+          padding: 0.5rem 0.75rem;
+          color: var(--dark-grey);
+          background-color: var(--lightest-grey);
+          border-radius: var(--border-radius);
+          cursor: pointer;
 
-    .zone-tag {
-      padding: 0.5rem 0.75rem;
-      background-color: var(--dark-grey);
-      color: var(--light-grey);
-      border-radius: var(--border-radius);
-      cursor: pointer;
+          &.selected {
+            background-color: var(--dark-grey);
+            color: var(--lightest-grey);
 
-      &::before {
-        content: "✓";
-        margin-right: 5px;
-      }
-    }
-  }
-
-  .zone-region-group {
-    border-top: 1px solid var(--divider-color);
-
-    &:last-child {
-      border-bottom: 1px solid var(--divider-color);
-    }
-
-    @media (min-width: variables.$mobile-breakpoint) {
-      .zone-checkboxes {
-        column-count: 2;
+            &::before {
+              content: "✓";
+              margin-right: 5px;
+            }
+          }
+        }
       }
     }
 
-    .zone-level-group {
-      &.zone-level-group-2 {
-        margin-bottom: 1rem;
+    .zone-region-group {
+      border-top: 1px solid var(--divider-color);
+
+      &:last-child {
+        border-bottom: 1px solid var(--divider-color);
       }
 
-      &.zone-level-group-1 {
-        .zone-letter-group {
+      @media (min-width: variables.$mobile-breakpoint) {
+        .zone-checkboxes {
+          column-count: 2;
+        }
+      }
+
+      .zone-level-group {
+        &.zone-level-group-2 {
           margin-bottom: 1rem;
+        }
+
+        &.zone-level-group-1 {
+          .zone-letter-group {
+            margin-bottom: 1rem;
+          }
         }
       }
     }
   }
-}
 
-#confirmation-page {
-  section {
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+  #confirmation-page {
+    section {
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
     }
   }
 }

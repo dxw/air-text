@@ -14,8 +14,8 @@
 
   <%
     {
-      level_2: "grouped areas",
-      level_1: "individual areas"
+      level_1: "grouped areas",
+      level_2: "individual areas",
     }.each do |level, description|
   %>
   <table class="air-quality-alerts-table">
@@ -62,6 +62,10 @@
     </tfoot>
   </table>
   <% end %>
+
+  <div class="mt-2">
+    <%= render "shared/back_to_top" %>
+  </div>
 </article>
 
 <aside class="desktop-only mt-3 mr-3">

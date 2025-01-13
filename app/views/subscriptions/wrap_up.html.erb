@@ -14,10 +14,10 @@
   <div class="mb-2">
     <%= f.label :research, "May we contact you in the future for research purposes?" %>
     <%= f.collection_radio_buttons :research, [["Yes, I’m ok to collaborate", true], ["No, thank you", false]], :last, :first do |b| %>
-    <div class="radio-wrapper">
-      <%= b.radio_button %>
-      <%= b.label %>
-    </div>
+      <div class="radio-wrapper">
+        <%= b.radio_button %>
+        <%= b.label %>
+      </div>
     <% end %>
   </div>
 

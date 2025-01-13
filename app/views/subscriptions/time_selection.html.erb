@@ -2,10 +2,13 @@
   <div>
     <h3 class="h3 mb-2">Select your preferred time to receive alerts</h3>
 
-    <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, :last, prompt: "Select a time", required: true do |b| %>
-    <div>
+    <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, ->(o) { o.second[:label].html_safe }, prompt: "Select a time", required: true do |b| %>
+    <div class="radio-wrapper mb-1">
       <%= b.radio_button %>
-      <%= b.label %>
+      <div>
+        <%= b.label %>
+        <span class="hint"><%= b.object.second[:hint] %></span>
+      </div>
     </div>
     <% end %>
   </div>

@@ -98,13 +98,14 @@ nav {
     }
 
     li {
-      padding: 1.25rem 1rem;
-
-      &:hover {
-        background-color: var(--main-colour-dark);
-      }
-
       a {
+        padding: 1.25rem 1rem;
+        display: inline-block;
+
+        &:hover {
+          background-color: var(--main-colour-dark);
+        }
+
         &.active {
           font-weight: bold;
           text-decoration: underline;

@@ -59,8 +59,8 @@ class SubscriptionForm
   validates :privacy, acceptance: {message: "You must agree to the privacy policy"}, if: -> { after_step?("wrap_up") }
 
   TIMES = {
-    "AM" => "Morning – 6am",
-    "PM" => "Evening – 6pm"
+    "AM" => {label: "Morning – 6am", hint: "Morning option is for receiving the current day's forecast."},
+    "PM" => {label: "Evening – 6pm", hint: "Evening option is for receiving the next day's forecast."}
   }
 
   REASONS = {
@@ -121,8 +121,8 @@ class SubscriptionForm
   end
 
   def after_step?(step_name)
-    current_step_index = current_step.present? ? SubscriptionsController::ALL_STEPS.index(current_step.to_sym) : 0
-    this_step_index = SubscriptionsController::ALL_STEPS.index(step_name.to_sym) || 0
+    current_step_index = current_step.present? ? SubscriptionsController::ALL_STEPS.flatten.index(current_step.to_sym) : 0
+    this_step_index = SubscriptionsController::ALL_STEPS.flatten.index(step_name.to_sym) || 0
 
     current_step_index >= this_step_index
   end

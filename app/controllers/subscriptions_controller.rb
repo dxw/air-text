@@ -5,23 +5,31 @@ class SubscriptionsController < ApplicationController
   before_action :set_steps
   before_action :setup_wizard
 
-  ALL_STEPS = %i[
-    contact_details
-    email_verification
-    email_verification_success
-    sms_number_verification
-    sms_number_verification_success
-    voice_number_verification
-    voice_number_verification_success
-    zone_selection
-    time_selection
-    wrap_up
-    confirmation
+  ALL_STEPS = [
+    %i[
+      contact_details
+      email_verification
+      email_verification_success
+      sms_number_verification
+      sms_number_verification_success
+      voice_number_verification
+      voice_number_verification_success
+    ],
+    %i[
+      zone_selection
+    ],
+    %i[
+      time_selection
+    ],
+    %i[
+      wrap_up
+      confirmation
+    ]
   ]
 
   def set_steps
     load_form
-    form_steps = ALL_STEPS.dup
+    form_steps = ALL_STEPS.flatten.dup
     form_steps.reject! { |step| step == :email_verification } unless @form.receiving?(:email)
     form_steps.reject! { |step| step == :email_verification_success } unless @form.receiving?(:email)
     form_steps.reject! { |step| step == :sms_number_verification } unless @form.receiving?(:sms)
@@ -99,6 +107,13 @@ class SubscriptionsController < ApplicationController
     @current_step = step
     @first_step = (step == steps.first)
     @final_step = (step == steps.last)
+    @step_group = step_group
+  end
+
+  def step_group
+    ALL_STEPS.each_with_index do |step_group, index|
+      return index if step_group.include?(step)
+    end
   end
 
   def subscription_params

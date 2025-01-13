@@ -11,8 +11,8 @@ export default class SubscriptionController extends Controller {
     "voice",
     "searchField",
     "searchResults",
+    "selectedZones",
     "resendVerificationButton",
-    "tags",
   ];
   static debounces = ["search"];
 
@@ -124,6 +124,7 @@ export default class SubscriptionController extends Controller {
     this.searchResultsTarget.classList.remove("hidden");
 
     if (!results || results.length === 0) {
+      this.searchResultsTarget.classList.add("no-results");
       const li = document.createElement("li");
       li.textContent = "No results found within the area covered by airTEXT";
       this.searchResultsTarget.appendChild(li);
@@ -131,22 +132,28 @@ export default class SubscriptionController extends Controller {
     }
 
     results.forEach((result) => {
+      if (this.tag(result.properties.name)) {
+        return;
+      }
+
+      this.searchResultsTarget.classList.remove("no-results");
       const li = document.createElement("li");
       li.textContent = result.properties.name;
       li.dataset.action = "click->subscription#selectSearchResult";
+      li.classList.add("zone-tag");
       this.searchResultsTarget.appendChild(li);
     });
   }
 
   selectSearchResult(event) {
     const zoneName = event.target.textContent;
-    this.addZoneTag(zoneName);
+    this.addSelectedZone(zoneName);
 
     // Remove from search results
     event.target.remove();
   }
 
-  tagsTargetConnected() {
+  selectedZonesTargetConnected() {
     const checkboxes = document.querySelectorAll(
       "input[name='subscription_form[zones][]']"
     );
@@ -156,7 +163,7 @@ export default class SubscriptionController extends Controller {
       );
 
       if (checkbox.checked) {
-        this.addZoneTag(checkbox.value);
+        this.addSelectedZone(checkbox.value);
       }
     });
   }
@@ -164,9 +171,9 @@ export default class SubscriptionController extends Controller {
   checkboxChanged(event) {
     const zoneName = event.target.value;
     if (event.target.checked) {
-      this.addZoneTag(zoneName);
+      this.addSelectedZone(zoneName);
     } else {
-      this.removeZoneTag(zoneName);
+      this.removeSelectedZone(zoneName);
     }
   }
 
@@ -177,7 +184,9 @@ export default class SubscriptionController extends Controller {
   }
 
   tag(zoneName) {
-    return this.tagsTarget.querySelector(`span[data-zone-name="${zoneName}"]`);
+    return this.selectedZonesTarget.querySelector(
+      `li[data-zone-name="${zoneName}"]`
+    );
   }
 
   tagClicked(event) {
@@ -185,22 +194,22 @@ export default class SubscriptionController extends Controller {
     this.setCheckboxState(zoneName, false);
   }
 
-  addZoneTag(zoneName) {
+  addSelectedZone(zoneName) {
     if (this.tag(zoneName)) {
       return;
     }
 
-    const tag = document.createElement("span");
+    const tag = document.createElement("li");
     tag.textContent = zoneName;
-    tag.classList.add("zone-tag");
+    tag.classList.add("zone-tag", "selected");
     tag.dataset.zoneName = zoneName;
     tag.dataset.action = "click->subscription#tagClicked";
-    this.tagsTarget.appendChild(tag);
+    this.selectedZonesTarget.appendChild(tag);
 
     this.setCheckboxState(zoneName, true);
   }
 
-  removeZoneTag(zoneName) {
+  removeSelectedZone(zoneName) {
     this.tag(zoneName).remove();
   }
 

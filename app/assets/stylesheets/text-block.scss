@@ -112,7 +112,7 @@
     }
   }
 
-  ul {
+  ul.list {
     border-top: 1px solid var(--divider-color);
 
     li {
@@ -126,12 +126,14 @@ details {
   summary {
     cursor: pointer;
 
-    &::marker {
-      content: none; /* Hide the default marker */
+    &::marker,
+    &::-webkit-details-marker {
+      content: none; /* Hide the default marker on Chrome */
+      display: none; /* Hide the default marker on Safari */
     }
 
     &:hover {
-      background: var(--light-grey);
+      background: var(--lightest-grey);
     }
 
     button {
@@ -160,7 +162,7 @@ details {
 
   &[open] {
     summary {
-      background: var(--light-grey);
+      background: var(--lightest-grey);
 
       button {
         &::before {

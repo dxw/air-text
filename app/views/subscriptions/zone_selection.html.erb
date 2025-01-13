@@ -14,8 +14,10 @@
           "subscription-target": "searchField",
           "maptiler-api-key": ENV["MAPTILER_API_KEY"] 
         } %>
-      <ul id="search-results" data-subscription-target="searchResults" class="hidden"></ul>
-      <div id="zone-tags" data-subscription-target="tags"></div>
+      <div id="zone-tags" class="mb-2">
+        <ul id="search-results" data-subscription-target="searchResults" class="hidden"></ul>
+        <ul id="selected-zones" data-subscription-target="selectedZones"></ul>
+      </div>
     </section>
 
     <section>
@@ -33,7 +35,7 @@
                 <% zones.group_by{ |z| z.name[0] }.each do |letter, zones| %>
                   <div class="zone-letter-group">
                     <%= f.collection_check_boxes :zones, zones, :name, :name, { multiple: true } do |b| %>
-                      <div>
+                      <div class="checkbox-wrapper">
                         <%= b.check_box %>
                         <%= b.label %>
                       </div>
