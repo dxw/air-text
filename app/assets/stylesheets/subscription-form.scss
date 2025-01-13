@@ -113,7 +113,8 @@
       label {
         position: absolute;
         top: calc(
-          var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2
+          var(--switch-height) / 2 - var(--dot-size) / 2 + var(--offset) / 2 +
+            1px
         );
         left: calc(var(--offset) - 1px);
         width: var(--dot-size);
