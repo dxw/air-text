@@ -37,7 +37,7 @@
         <p><%= link_to "Edit", wizard_path(:time_selection) %></p>
       </header>
       <ul>
-        <li><%= SubscriptionForm::TIMES[@form.time] %></li>
+        <li><%= SubscriptionForm::TIMES[@form.time][:label] %></li>
       </ul>
     </section>
   </div>
