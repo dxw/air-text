@@ -14,8 +14,10 @@
           "subscription-target": "searchField",
           "maptiler-api-key": ENV["MAPTILER_API_KEY"] 
         } %>
-      <ul id="search-results" data-subscription-target="searchResults" class="hidden"></ul>
-      <div id="zone-tags" data-subscription-target="tags"></div>
+      <div id="zone-tags" class="mb-2">
+        <ul id="search-results" data-subscription-target="searchResults" class="hidden"></ul>
+        <ul id="selected-zones" data-subscription-target="selectedZones"></ul>
+      </div>
     </section>
 
     <section>
