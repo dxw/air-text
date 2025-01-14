@@ -1,7 +1,7 @@
 <header class="site-header" data-controller="navigation">
   <div class="header-content">
     <div class="header-top">
-      <%= link_to render_svg("logo", tag: :div, classes: "site-logo"), root_path %>
+      <%= link_to render_svg("logo", tag: :div, classes: "site-logo"), root_path, title: "airTEXT homepage" %>
       <button data-action="navigation#toggleMenu" data-navigation-target="menuButton">Menu</button>
     </div>
     <hr>
