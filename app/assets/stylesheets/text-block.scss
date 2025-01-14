@@ -136,10 +136,11 @@ details {
       background: var(--lightest-grey);
     }
 
-    button {
+    button.show-button {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      text-decoration: underline;
 
       &::before {
         content: "";
@@ -152,11 +153,6 @@ details {
         background-repeat: no-repeat;
         background-position: center center;
       }
-
-      &::after {
-        content: "Show";
-        text-decoration: underline;
-      }
     }
   }
 
@@ -164,13 +160,9 @@ details {
     summary {
       background: var(--lightest-grey);
 
-      button {
+      button.show-button {
         &::before {
           transform: rotate(180deg);
-        }
-
-        &::after {
-          content: "Hide";
         }
       }
     }
