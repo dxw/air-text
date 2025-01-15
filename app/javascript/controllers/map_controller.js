@@ -342,10 +342,12 @@ export default class MapController extends Controller {
   openDaqiScaleFlyout(e) {
     e.preventDefault();
     document.querySelector(".mobile-flyout").classList.add("open");
+    document.querySelector(".mobile-flyout .close").focus();
   }
 
   closeDaqiScaleFlyout(e) {
     e.preventDefault();
     document.querySelector(".mobile-flyout").classList.remove("open");
+    document.querySelector(".colour-scale-link button").focus();
   }
 }
