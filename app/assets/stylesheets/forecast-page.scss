@@ -243,11 +243,15 @@
     .predictions {
       > * {
         padding: 0.75rem 0;
-        border-bottom: 1px solid var(--divider-color);
       }
 
       .prediction {
         font-size: 0.875rem;
+        border-top: 1px solid var(--divider-color);
+
+        &:last-child {
+          border-bottom: 1px solid var(--divider-color);
+        }
 
         .summary {
           display: flex;
