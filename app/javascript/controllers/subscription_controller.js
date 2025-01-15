@@ -24,8 +24,10 @@ export default class SubscriptionController extends Controller {
       document.addEventListener(eventName, () => {
         const currentStep = document.getElementById(
           "subscription_form_current_step"
-        ).value;
-        this.updateUrl(currentStep);
+        )?.value;
+        if (currentStep) {
+          this.updateUrl(currentStep);
+        }
       });
     });
   }
