@@ -1,0 +1,16 @@
+@use "variables";
+
+.c-pages.a-about {
+  main {
+    display: flex;
+    flex-wrap: wrap;
+
+    article {
+      flex: 2;
+    }
+
+    aside {
+      flex: 1;
+    }
+  }
+}

@@ -189,14 +189,14 @@
   }
 
   .progress-bar {
-    border-top: 1px solid var(--light-grey-grey);
+    border-top: 1px solid var(--light-grey);
     position: relative;
     display: inline-flex;
     gap: 1rem;
 
     span {
       display: inline-block;
-      background: var(--light-grey-grey);
+      background: var(--light-grey);
       height: 1rem;
       width: 1rem;
       border-radius: 100%;

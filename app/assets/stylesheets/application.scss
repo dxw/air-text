@@ -9,6 +9,7 @@
 @use "forecast-page";
 @use "health-advice-page";
 @use "air-quality-alerts-page";
+@use "about-page";
 @use "map";
 @use "share";
 @use "text-block";
@@ -158,4 +159,12 @@ hr {
   color: var(--secondary-text-color);
   display: block;
   font-style: italic;
+}
+
+.guidance-icons {
+  svg {
+    width: 3rem;
+    background: white;
+    border-radius: 100%;
+  }
 }

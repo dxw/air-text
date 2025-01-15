@@ -39,3 +39,11 @@
     <%= render "shared/back_to_top" %>
   </div>
 </article>
+
+<aside class="desktop-only mt-3 mr-3">
+  <div id="sign-up-block" class="block mb-2">
+    <h3 class="h3 mb-2">Subscribe to receive free air quality alerts ﻿for your area</h3>
+    <%= link_to("Sign up for air quality alerts", subscriptions_path, class: "button primary-cta") %>
+  </div>
+  <%= render "shared/health_advice" %>
+</aside>

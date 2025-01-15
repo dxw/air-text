@@ -5,11 +5,11 @@
   --main-colour-lightest: #edf4fb;
   --main-colour-highlight: #70cdff;
   --border-color: var(--mid-grey);
-  --divider-color: var(--light-grey-grey);
+  --divider-color: var(--light-grey);
   --primary-text-color: var(--black);
   --secondary-text-color: var(--mid-grey);
   --lightest-grey: #f5f5f5;
-  --light-grey-grey: #e5e5e5;
+  --light-grey: #e5e5e5;
   --mid-grey: #757575;
   --dark-grey: #2c2c2c;
   --black: #000;
@@ -17,4 +17,4 @@
   --max-width: 1400px;
 }
 
-$mobile-breakpoint: 768px; // CSS variables can't currently be used in media queries, so we use SCSS variables instead
+$mobile-breakpoint: 1024px; // CSS variables can't currently be used in media queries, so we use SCSS variables instead
