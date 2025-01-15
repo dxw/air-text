@@ -192,6 +192,7 @@ export default class MapController extends Controller {
       pane: "street-map",
     });
     this.map.addLayer(streetMap);
+    streetMap.getCanvas().removeAttribute("tabindex");
   }
 
   addPlaceNamesLayer() {
@@ -201,6 +202,7 @@ export default class MapController extends Controller {
       pane: "place-names",
     });
     this.map.addLayer(placeNames);
+    placeNames.getCanvas().removeAttribute("tabindex");
   }
 
   addPollutionLayer() {
@@ -289,6 +291,7 @@ export default class MapController extends Controller {
               "zone-label " + `zone-label-level-${zone.properties.level}`,
             html: html,
           }),
+          keyboard: false,
         });
         marker.addTo(this.map);
         this.layers.zoneLabels.push(marker);
@@ -339,10 +342,12 @@ export default class MapController extends Controller {
   openDaqiScaleFlyout(e) {
     e.preventDefault();
     document.querySelector(".mobile-flyout").classList.add("open");
+    document.querySelector(".mobile-flyout .close").focus();
   }
 
   closeDaqiScaleFlyout(e) {
     e.preventDefault();
     document.querySelector(".mobile-flyout").classList.remove("open");
+    document.querySelector(".colour-scale-link button").focus();
   }
 }

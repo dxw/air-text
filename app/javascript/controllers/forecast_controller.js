@@ -19,6 +19,14 @@ export default class ForecastController extends Controller {
     this.updateForecast();
   }
 
+  selectPollutant(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      console.log(event.currentTarget);
+      event.currentTarget.click();
+    }
+  }
+
   changePollutant() {
     this.updateUrl({
       pollutant: this.pollutantSelectorTarget.querySelector(

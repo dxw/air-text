@@ -102,6 +102,10 @@
   bottom: 10px !important;
 }
 
+.maplibregl-control-container {
+  display: none;
+}
+
 .leaflet-container {
   a {
     img {

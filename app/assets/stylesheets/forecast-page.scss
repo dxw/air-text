@@ -5,56 +5,6 @@
   --inactive-tab-text-color: #a09d9d;
 }
 
-%cta {
-  padding: 0.5rem 2rem;
-  width: calc(100% - 4rem);
-  max-width: 400px;
-  border: 2px solid;
-  border-radius: var(--border-radius);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-}
-
-.primary-cta {
-  @extend %cta;
-
-  color: white;
-  background-color: var(--main-colour);
-  border-color: var(--main-colour);
-
-  &:hover {
-    background-color: var(--main-colour-dark);
-    border-color: var(--main-colour-dark);
-  }
-
-  &:focus {
-    background-color: var(--main-colour-dark);
-    border-color: var(--main-colour-highlight);
-    outline: 2px solid var(--main-colour-highlight);
-  }
-}
-
-.secondary-cta {
-  @extend %cta;
-
-  color: var(--main-colour);
-  background-color: white;
-  border-color: var(--main-colour);
-
-  &:hover {
-    background-color: var(--main-colour-light);
-  }
-
-  &:focus {
-    background-color: var(--main-colour-light);
-    border-color: var(--main-colour-highlight);
-    outline: 2px solid var(--main-colour-highlight);
-  }
-}
-
 .c-forecasts.a-show {
   .tabs {
     display: flex;
@@ -166,7 +116,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 50%;
+            font-size: 75%;
             background-color: var(--main-colour-lightest);
             padding: 2px;
             border-bottom: 0.5px solid black;
@@ -243,11 +193,15 @@
     .predictions {
       > * {
         padding: 0.75rem 0;
-        border-bottom: 1px solid var(--divider-color);
       }
 
       .prediction {
         font-size: 0.875rem;
+        border-top: 1px solid var(--divider-color);
+
+        &:last-child {
+          border-bottom: 1px solid var(--divider-color);
+        }
 
         .summary {
           display: flex;

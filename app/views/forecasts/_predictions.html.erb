@@ -1,8 +1,8 @@
 <turbo-frame id="predictions-frame">
-  <dl class="predictions mt-2">
-    <h3 class="h3 my-0">Other environmental forecasts</h3>
+  <h3 class="h3 my-2">Other environmental forecasts</h3>
+  <div class="predictions">
     <%= render(PollenPredictionComponent.new(@day_forecast.pollen)) %>
     <%= render(TemperaturePredictionComponent.new(@day_forecast.temperature)) %>
     <%= render(UvPredictionComponent.new(@day_forecast.uv)) %>
-  </dl>
+  </div>
 </turbo-frame>

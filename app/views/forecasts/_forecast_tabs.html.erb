@@ -1,6 +1,6 @@
 <turbo-frame id="forecast-tabs-frame">
-  <h3 class="h3 my-2"> Air pollution forecast for <%= @zone[:name] %></h3>
-  <div class="tabs">
+  <h2 class="h2 my-2"> Air pollution forecast for <%= @zone[:name] %></h2>
+  <div class="tabs" role="tablist">
     <%= render(DayTabComponent.new(forecast: @forecasts.first, active_date: @date)) %>
     <%= render(DayTabComponent.new(forecast: @forecasts.second, active_date: @date)) %>
     <%= render(DayTabComponent.new(forecast: @forecasts.third, active_date: @date)) %>

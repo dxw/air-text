@@ -13,8 +13,10 @@
     <%= yield(:head) %>
   </head>
   <body data-controller="application" class="c-<%= controller_name %> a-<%= action_name %>">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <%= render "shared/header" %>
-    <main role="main">
+    <main role="main" id="main-content">
       <%= render "shared/alert_banner" %>
       <%= render "layouts/messages" %>
       <%= yield %>

@@ -1,8 +1,8 @@
 <div class="prediction <%= css_name %>">
-  <div class="summary">
+  <dl class="summary">
     <dt class="name"><%= name %></dt>
     <dd class="display-value"><%= display_value&.html_safe %></dd>
-  </div>
+  </dl>
   <% if guidance_visible? %>
   <div class="guidance <%= guidance_panel_colour %>">
     <%= render(HealthGuidanceComponent.new(css_name.to_sym, level_label.parameterize(separator: "_").to_sym, classes: ["mb-2"])) %>

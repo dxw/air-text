@@ -73,7 +73,7 @@ module Features
     end
 
     def expect_air_pollution_prediction(day:, value:)
-      within("div[data-date='#{date(day)}']") do
+      within("button[data-date='#{date(day)}']") do
         expect(page).to have_content(content_for_air_pollution(value))
       end
     end

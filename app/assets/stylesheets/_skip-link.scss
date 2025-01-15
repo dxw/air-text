@@ -1,0 +1,20 @@
+// From https://www.makethingsaccessible.com/guides/creating-a-skip-to-content-link/
+
+.skip-link {
+  position: absolute;
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  line-height: 1;
+  font-size: 1.25rem;
+  background-color: rebeccapurple;
+  color: white;
+
+  /* Ensure the Y position is set to zero and any movement on the transform property */
+  transform: translateY(0);
+  transition: transform 250ms ease-in;
+}
+
+/* When it is not focused, transform its Y position by its total height, using a negative value, so it hides above the viewport */
+.skip-link:not(:focus) {
+  transform: translateY(-2rem);
+}

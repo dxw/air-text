@@ -1,4 +1,5 @@
 @use "variables";
+@use "buttons";
 
 .c-subscriptions.a-show {
   .intro {
@@ -126,50 +127,13 @@
       }
     }
 
-    %button {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      color: white;
-      border-radius: var(--border-radius);
-      outline: none;
-      cursor: pointer;
-      text-align: center;
-      font-size: 1rem;
-    }
-
     .buttons {
       display: flex;
-      justify-content: space-between;
       gap: 0.5rem;
       margin-top: 1rem;
 
       > * {
         flex: 1;
-      }
-
-      a {
-        @extend %button;
-
-        background-color: #777;
-        border: 2px solid #777;
-
-        &:hover {
-          background-color: white;
-          color: #777;
-        }
-      }
-    }
-
-    button[type="submit"],
-    input[type="submit"] {
-      @extend %button;
-
-      background-color: var(--main-colour);
-      border: 2px solid var(--main-colour);
-
-      &:hover {
-        background-color: white;
-        color: var(--main-colour);
       }
     }
 
