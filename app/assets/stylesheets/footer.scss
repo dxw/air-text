@@ -26,6 +26,12 @@
       padding: 0;
       font-size: 1.25rem;
       align-items: flex-start;
+
+      @media (max-width: variables.$mobile-breakpoint) {
+        li {
+          margin-left: -1rem;
+        }
+      }
     }
   }
 
