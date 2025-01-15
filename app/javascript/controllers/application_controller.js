@@ -13,10 +13,12 @@ export default class ApplicationController extends Controller {
     this.element.querySelectorAll("summary").forEach((summary) => {
       if (!summary.querySelector(".show-button")) {
         const button = document.createElement("button");
+        button.innerHTML = "Show";
         button.className = "show-button";
         button.onclick = (e) => {
           e.preventDefault();
           summary.parentElement.open = !summary.parentElement.open;
+          button.innerHTML = summary.parentElement.open ? "Hide" : "Show";
         };
         summary.appendChild(button);
       }
