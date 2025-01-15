@@ -160,3 +160,11 @@ hr {
   display: block;
   font-style: italic;
 }
+
+.guidance-icons {
+  svg {
+    width: 3rem;
+    background: white;
+    border-radius: 100%;
+  }
+}
