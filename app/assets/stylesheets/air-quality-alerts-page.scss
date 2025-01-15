@@ -1,3 +1,5 @@
+@use "variables";
+
 .c-forecasts.a-alerts {
   main {
     display: flex;
@@ -13,43 +15,96 @@
   }
 
   .air-quality-alerts-table {
-    margin-top: 1rem;
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid var(--lightest-grey);
+    @media (min-width: variables.$mobile-breakpoint) {
+      border: 1px solid var(--light-grey);
+    }
 
-    th,
-    td {
+    .cell {
       padding: 1rem;
-      text-align: left;
     }
 
-    thead {
-      tr:first-child {
-        background-color: #e6e6e6;
+    .table-header {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+      @media (max-width: variables.$mobile-breakpoint) {
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 2rem;
+      }
+
+      h2 {
+        padding: 1rem;
+        background: var(--light-grey);
+        grid-row: 1;
+        grid-column: 1 / span 4;
+      }
+
+      h3 {
+        grid-row: 2;
+        text-align: center;
+
+        @media (min-width: variables.$mobile-breakpoint) {
+          @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+              grid-column: #{$i + 1};
+            }
+          }
+        }
       }
     }
 
-    tbody {
-      tr:nth-child(2n + 1) {
-        background-color: var(--lightest-grey);
-      }
+    .table-body {
+      .row {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
 
-      .day-labels {
-        th {
-          text-align: center;
+        @media (max-width: variables.$mobile-breakpoint) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &:nth-child(2n + 1) {
+          @media (min-width: variables.$mobile-breakpoint) {
+            background-color: var(--lightest-grey);
+          }
         }
       }
 
-      td.zone-name {
+      .zone-name {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        @media (max-width: variables.$mobile-breakpoint) {
+          grid-column: 1 / span 4;
+          background-color: var(--light-grey);
+        }
+
+        h4 {
+          font-weight: bold;
+        }
+
         a {
-          float: right;
+          color: var(--black);
         }
       }
 
-      td.zone-day-alert {
+      .zone-day-alert {
         border-left: 1px solid var(--mid-grey);
-        width: 22%;
+        grid-row: 1;
+        border-collapse: collapse;
+
+        @media (max-width: variables.$mobile-breakpoint) {
+          grid-row: 2;
+          border-left: 1px solid var(--light-grey);
+          border-bottom: 1px solid var(--light-grey);
+
+          &:last-child {
+            border-right: 1px solid var(--light-grey);
+          }
+        }
 
         .label {
           display: flex;
@@ -63,11 +118,13 @@
             height: 18px;
             border-radius: 50%;
             border: 1px solid var(--mid-grey);
+            display: none;
           }
 
           @for $i from 1 through 10 {
             &.daqi-level-#{$i}::after {
               background-color: var(--daqi-level-#{$i}-color);
+              display: block;
             }
           }
         }
@@ -77,7 +134,7 @@
         }
       }
 
-      tr.no-alerts {
+      .no-alerts {
         background: none;
 
         span {

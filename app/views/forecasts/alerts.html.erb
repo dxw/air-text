@@ -18,49 +18,46 @@
       level_2: "individual areas",
     }.each do |level, description|
   %>
-  <table class="air-quality-alerts-table">
-    <thead>
-      <tr>
-        <th colspan="4"><h2 class="h2">Alerts raised per <%= description %></h2></th>
-      </tr>
+  <div class="air-quality-alerts-table">
+    <div class="table-header">
+      <h2 class="h2 cell">Alerts raised per <%= description %></h2>
+
       <% if @alerts[level].any? %>
-      <tr class="day-labels">
-        <th>&nbsp;</th>
-        <th>Today</th>
-        <th><%= (Date.today + 1.day).strftime("%A") %></th>
-        <th><%= (Date.today + 2.days).strftime("%A") %></th>
-      </tr>
+        <h3 class="cell">Today</h3>
+        <h3 class="cell"><%= (Date.today + 1.day).strftime("%A") %></h3>
+        <h3 class="cell"><%= (Date.today + 2.days).strftime("%A") %></h3>
       <% end %>
-    </thead>
-    <tbody>
+    </div>
+    <div class="table-body">
       <% @alerts[level].each do |alert| %>
-          <td class="zone-name">
-            <b><%= alert.data.first.zone[:name] %></b>
+        <div class="row">
+          <div class="zone-name cell">
+            <h4><%= alert.data.first.zone[:name] %></h4>
             <%= link_to "Forecast", forecast_path(zone: alert.data.first.zone[:name], zoom: 10), class: "a" %>
-          </td>
+          </div>
           <% alert.data.each do |forecast| %>
-            <td class="zone-day-alert">
-              <span class="label <%= "daqi-level-#{forecast.air_pollution[:total]}"%>"><%= forecast.air_pollution[:label].humanize %></span>
-              <span class="value">Index <%= forecast.air_pollution[:total] %>/10</span>
-            </td>
+            <div class="zone-day-alert cell">
+              <% if forecast.air_pollution[:label] == "LOW" %>
+                <span class="label">No alert</span>
+              <% else %>
+                <span class="label <%= "daqi-level-#{forecast.air_pollution[:total]}"%>"><%= forecast.air_pollution[:label].humanize %></span>
+                <span class="value">Index <%= forecast.air_pollution[:total] %>/10</span>
+              <% end %>
+            </div>
           <% end %>
-        </tr>
+        </div>
       <% end %>
 
       <% if @alerts[level].none? %>
-        <tr class="no-alerts">
-          <td><span>No air pollution alerts are raised for any area within the next three days.</span></td>
-        </tr>
+        <div class="no-alerts cell">
+          <span>No air pollution alerts are raised for any area within the next three days.</span>
+        </div>
       <% end %>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="4">
-          <span class="forecast-timestamp">Forecast updated at <%= CercForecastService.latest_forecast_date.strftime("%H:%M on %A %d %B %Y") %></span>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+    </div>
+    <div class="table-footer">
+      <span class="forecast-timestamp cell">Forecast updated at <%= CercForecastService.latest_forecast_date.strftime("%H:%M on %A %d %B %Y") %></span>
+    </div>
+  </div>
   <% end %>
 
   <div class="mt-2">
