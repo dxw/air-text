@@ -41,9 +41,9 @@
         <% if @first_step %>
           <div></div>
         <% else %>
-          <%= link_to "Back", previous_wizard_path %>
+          <%= link_to "Back", previous_wizard_path, class: "secondary-cta" %>
         <% end %>
-        <%= f.submit @final_step ? "Submit" : "Next" %>
+        <%= f.submit @final_step ? "Submit" : "Next", class: "primary-cta" %>
       </div>
     <% end %>
   </div>
