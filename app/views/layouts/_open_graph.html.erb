@@ -1,0 +1,26 @@
+<%
+title = CGI.unescapeHTML([yield(:title).presence, 'airTEXT'].compact.join(' - '))
+domain = 'air-text.info'
+description = yield(:description).presence || "airTEXT is a free service for the public providing air quality alerts by text, email and voicemail and 3-day forecasts of air quality, pollen, UV and temperature."
+image = yield(:image).presence
+url = url_for(only_path: false)
+%>
+
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://<%= domain %>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:image" content="<%= image %>">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@airTEXT"/>
+<meta property="twitter:domain" content="<%= domain %>">
+<meta property="twitter:url" content="<%= url %>">
+<meta name="twitter:title" content="<%= title %>">
+<meta name="twitter:description" content="<%= description %>">
+<meta name="twitter:image" content="<%= image %>">

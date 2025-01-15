@@ -1,8 +1,8 @@
 @use "variables";
-@use "leaflet/dist/leaflet.css";
-@use "@maptiler/geocoding-control/style.css"; /* Geocoding (search) control */
-@use "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; /* Geolocation button */
-@use "leaflet.fullscreen/Control.FullScreen.css"; /* Fullscreen button */
+@use "leaflet/dist/leaflet";
+@use "@maptiler/geocoding-control/style"; /* Geocoding (search) control */
+@use "leaflet.locatecontrol/dist/L.Control.Locate"; /* Geolocation button */
+@use "leaflet.fullscreen/Control.FullScreen"; /* Fullscreen button */
 @use "daqi-levels";
 @use "header";
 @use "air-quality-alert-banner";
