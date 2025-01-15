@@ -9,7 +9,7 @@
   }, :second, :first, checked: @pollutant do |b| %>
     <div class="pollutant">
       <%= b.radio_button data: { action: "forecast#changePollutant" }, form: "forecast-form" %>
-      <%= b.label %>
+      <%= b.label tabindex: 0, data: { action: "keydown->forecast#selectPollutant" }  %>
     </div>
   <% end %>
 <% end %>
