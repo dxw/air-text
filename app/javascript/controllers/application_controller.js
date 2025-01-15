@@ -15,6 +15,7 @@ export default class ApplicationController extends Controller {
         const button = document.createElement("button");
         button.innerHTML = "Show";
         button.className = "show-button";
+        button.tabIndex = -1;
         button.onclick = (e) => {
           e.preventDefault();
           summary.parentElement.open = !summary.parentElement.open;
