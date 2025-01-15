@@ -18,18 +18,6 @@ export default class SubscriptionController extends Controller {
 
   connect() {
     useDebounce(this);
-
-    // Update the URL to current step
-    ["turbo:load", "turbo:frame-load", "turbo:render"].forEach((eventName) => {
-      document.addEventListener(eventName, () => {
-        const currentStep = document.getElementById(
-          "subscription_form_current_step"
-        )?.value;
-        if (currentStep) {
-          this.updateUrl(currentStep);
-        }
-      });
-    });
   }
 
   // Contact details
@@ -255,9 +243,5 @@ export default class SubscriptionController extends Controller {
     if (event.keyCode === 37) {
       input.previousElementSibling.focus();
     }
-  }
-
-  updateUrl(url) {
-    window.history.pushState({}, "", url);
   }
 }
