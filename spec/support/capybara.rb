@@ -39,3 +39,7 @@ Capybara.register_driver :chrome do |app|
   driver(app)
 end
 Capybara.javascript_driver = :chrome
+
+# AxeCapybara.configure(:chrome) do |config|
+#   config.page = driver(nil) # I don't fully understand this line, but it works for DfE (https://github.com/DFE-Digital/npq-registration/blob/cc942c503f92fa7b04371b33196c5af0f0105505/spec/rails_helper.rb#L50)
+# end

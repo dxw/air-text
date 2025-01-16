@@ -34,6 +34,9 @@ WebMock.disable_net_connect!(allow_localhost: true, allow: [
   "api.maptiler.com"
 ])
 
+require "axe-capybara" # Accessibility testing
+require "axe-rspec" # Accessibility testing
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
