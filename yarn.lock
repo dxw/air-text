@@ -426,9 +426,9 @@
     quick-lru "^7.0.0"
 
 "@maptiler/geocoding-control@^2.0.0":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@maptiler/geocoding-control/-/geocoding-control-2.1.2.tgz#a010825370eabf535e7ea08fc0c59771debcb801"
-  integrity sha512-aEwzGOo66fnLvUZQ1L2XZsb5N1X7PUIpw6eDyrsI6qHNWs1R6x6yxPaZaBAjVPYYjPTM5FZPLzylvWfw/M9muA==
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@maptiler/geocoding-control/-/geocoding-control-2.1.4.tgz#1a1e54dbdffb4b94f5a9ea669f47f206c908ca16"
+  integrity sha512-OPWKJqjELEqhRSt707N4Vm1oedKn+tn1RyQv/UDXT5UB19+Ej5KeJ7TghGkPMuTikJPLSjQAdqfbru2mP7wycQ==
   dependencies:
     "@turf/bbox" "^7.2.0"
     "@turf/clone" "^7.2.0"
