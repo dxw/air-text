@@ -16,6 +16,11 @@ RSpec.feature "Air quality alerts page" do
         visit alerts_path
         expect(page).to have_content "No air pollution alerts"
       end
+
+      it "is accessible", js: true do
+        visit alerts_path
+        expect(page).to be_accessible
+      end
     end
 
     context "when there are alerts" do
@@ -44,6 +49,11 @@ RSpec.feature "Air quality alerts page" do
         expect(page).to have_content "High"
         expect(page).to have_content "Moderate"
         expect(page).to have_content "Very high"
+      end
+
+      it "is accessible", js: true do
+        visit alerts_path
+        expect(page).to be_accessible
       end
     end
   end

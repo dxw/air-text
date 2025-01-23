@@ -15,5 +15,10 @@ RSpec.feature "Health advice page" do
       visit "health_advice"
       expect(page).to have_content "Health advice"
     end
+
+    it "is accessible", js: true do
+      visit "health_advice"
+      expect(page).to be_accessible
+    end
   end
 end

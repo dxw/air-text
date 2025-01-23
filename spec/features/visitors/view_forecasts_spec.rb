@@ -146,6 +146,11 @@ RSpec.feature "Forecasts page" do
         # Predicted temperature level for the day after tomorrow
         expect_prediction(category: :temperature, level: :high)
       end
+
+      it "is accessible", js: true do
+        visit forecast_path
+        expect(page).to be_accessible
+      end
     end
 
     describe "Viewing pollen prediction" do
