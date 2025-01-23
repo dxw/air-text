@@ -3,9 +3,18 @@
 RSpec.feature "Air quality alerts page" do
   describe "Visit the air quality alerts page" do
     context "when there are no alerts" do
+      before do
+        forecasts = [
+          Fixtures::API.zone_forecast(day: :today),
+          Fixtures::API.zone_forecast(day: :tomorrow),
+          Fixtures::API.zone_forecast(day: :day_after_tomorrow)
+        ]
+        HttpStubs.stub_cerc_api_with(forecasts)
+      end
+
       it "should display a message" do
         visit alerts_path
-        expect(page).to have_content "No alerts"
+        expect(page).to have_content "No air pollution alerts"
       end
     end
 
