@@ -177,6 +177,9 @@ export default class MapController extends Controller {
         this.updateForecastZone(e.feature?.geometry?.coordinates);
       })
       .addTo(this.map);
+
+    const searchButton = document.getElementsByClassName("search-button")[0];
+    searchButton.setAttribute("aria-label", "Search for a location");
   }
 
   addGeolocationControl() {
@@ -193,6 +196,7 @@ export default class MapController extends Controller {
     });
     this.map.addLayer(streetMap);
     streetMap.getCanvas().removeAttribute("tabindex");
+    streetMap.getCanvas().setAttribute("aria-label", "Street map layer");
   }
 
   addPlaceNamesLayer() {
@@ -203,6 +207,7 @@ export default class MapController extends Controller {
     });
     this.map.addLayer(placeNames);
     placeNames.getCanvas().removeAttribute("tabindex");
+    placeNames.getCanvas().setAttribute("aria-label", "Place names map layer");
   }
 
   addPollutionLayer() {
