@@ -12,14 +12,12 @@ export default class ApplicationController extends Controller {
   addShowButtonToSummaryTags() {
     this.element.querySelectorAll("summary").forEach((summary) => {
       if (!summary.querySelector(".show-button")) {
-        const button = document.createElement("button");
+        const button = document.createElement("span");
         button.innerHTML = "Show";
         button.className = "show-button";
         button.tabIndex = -1;
-        button.onclick = (e) => {
-          e.preventDefault();
-          summary.parentElement.open = !summary.parentElement.open;
-          button.innerHTML = summary.parentElement.open ? "Hide" : "Show";
+        button.onclick = () => {
+          button.innerHTML = summary.parentElement.open ? "Show" : "Hide";
         };
         summary.appendChild(button);
       }
