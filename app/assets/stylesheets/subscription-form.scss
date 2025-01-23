@@ -135,6 +135,10 @@
       > * {
         flex: 1;
       }
+
+      input[type="submit"] {
+        @extend .primary-cta;
+      }
     }
 
     .form-errors {

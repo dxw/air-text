@@ -5,6 +5,7 @@
     "no-descending-specificity": null,
     "media-query-no-invalid": null,
     "selector-class-pattern": null,
-    "scss/operator-no-newline-after": null
+    "scss/operator-no-newline-after": null,
+    "scss/at-extend-no-missing-placeholder": null
   }
 }
