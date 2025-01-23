@@ -566,5 +566,8 @@ end
 
 def stub_maptiler_geocoding(search:, response:)
   proxy.stub("https://api.maptiler.com:443/geocoding/#{CGI.escape_uri_component(search)}.json")
-    .and_return(json: response)
+    .and_return(
+      headers: {"Access-Control-Allow-Origin" => "*"},
+      json: response
+    )
 end
