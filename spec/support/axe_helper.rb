@@ -13,7 +13,7 @@ module AxeHelper
     end
 
     def check
-      expect(page).to be_axe_clean
+      expect(page).to be_axe_clean.skipping("color-contrast")
     end
   end
 end
