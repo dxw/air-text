@@ -354,9 +354,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
               find("li", text: "Central London").click
             end
 
-            within "#zone-tags" do
-              expect(page).to have_text("Central London")
-            end
+            find("h4", text: "London").click # to expand details tag
             expect(page).to have_checked_field("Central London")
           end
         end
