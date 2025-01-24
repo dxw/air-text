@@ -136,7 +136,7 @@ details {
       background: var(--lightest-grey);
     }
 
-    button.show-button {
+    span.show-button {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -160,7 +160,7 @@ details {
     summary {
       background: var(--lightest-grey);
 
-      button.show-button {
+      span.show-button {
         &::before {
           transform: rotate(180deg);
         }
@@ -172,7 +172,7 @@ details {
     summary {
       position: relative;
 
-      button {
+      span.show-button {
         position: absolute;
         top: calc(50% - 0.75rem);
         right: 1rem;

@@ -15,5 +15,10 @@ RSpec.feature "About page" do
       visit "about"
       expect(page).to have_content "About airTEXT"
     end
+
+    it "is accessible", js: true do
+      visit "about"
+      expect(page).to be_accessible
+    end
   end
 end

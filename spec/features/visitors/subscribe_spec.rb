@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.feature "Subscribing to alerts", type: :feature, js: true do
+RSpec.feature "Subscribing to alerts", js: true do
   let(:forecasts) do
     [
       Fixtures::API.zone_forecast(day: :today),
@@ -22,12 +22,21 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
       expect(page).to have_text("Air pollution alert service subscription")
       expect(page).to have_text("Choose the channels")
     end
+
+    it "is accessible" do
+      visit root_path
+      expect(page).to be_accessible
+    end
   end
 
   describe "Subscribing to alerts" do
     describe "Contact details" do
       before do
         visit subscriptions_path(id: :contact_details)
+      end
+
+      it "is accessible" do
+        expect(page).to be_accessible
       end
 
       it "shows the email field when I select the email option" do
@@ -97,6 +106,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         before do
           fill_form_up_to(:contact_details_email)
           visit subscriptions_path(id: :email_verification)
+        end
+
+        it "is accessible" do
+          expect(page).to be_accessible
         end
 
         context "when I enter the correct verification code" do
@@ -176,6 +189,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
           visit subscriptions_path(id: :sms_number_verification)
         end
 
+        it "is accessible" do
+          expect(page).to be_accessible
+        end
+
         context "when I enter the correct verification code" do
           let(:code) { "123456" }
 
@@ -224,6 +241,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         before do
           fill_form_up_to(:contact_details_voice)
           visit subscriptions_path(id: :voice_number_verification)
+        end
+
+        it "is accessible" do
+          expect(page).to be_accessible
         end
 
         context "when I enter the correct verification code" do
@@ -327,6 +348,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
           ],
           "attribution" => "<a href=\"https =>//www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https =>//www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>"
         }
+      end
+
+      it "is accessible" do
+        expect(page).to be_accessible
       end
 
       describe "Searching for zones" do
@@ -478,6 +503,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         visit subscriptions_path(id: :time_selection)
       end
 
+      it "is accessible" do
+        expect(page).to be_accessible
+      end
+
       describe "Validating the form" do
         it "shows an error if I don't select a time" do
           click_on "Next"
@@ -498,6 +527,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
       before do
         fill_form_up_to(:time_selection)
         visit subscriptions_path(id: :wrap_up)
+      end
+
+      it "is accessible" do
+        expect(page).to be_accessible
       end
 
       describe "Validating the form" do
@@ -528,6 +561,10 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
         fill_form_up_to(:wrap_up)
         visit subscriptions_path(id: :confirmation)
         allow(CercSubscriberApiClient).to receive(:create_subscription).and_return(true)
+      end
+
+      it "is accessible" do
+        expect(page).to be_accessible
       end
 
       it "shows the confirmation page" do

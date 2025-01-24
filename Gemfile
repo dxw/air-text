@@ -38,6 +38,8 @@ group :development do
 end
 
 group :development, :test do
+  gem "axe-core-capybara" # Accessibility testing
+  gem "axe-core-rspec" # Accessibility testing
   gem "binding_of_caller"
   gem "brakeman"
   gem "bullet"
