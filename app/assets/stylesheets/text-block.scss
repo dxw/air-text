@@ -140,6 +140,7 @@ details {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      margin-top: 0.5rem;
 
       &::before {
         content: "";
@@ -184,6 +185,7 @@ details {
         position: absolute;
         top: calc(50% - 0.75rem);
         right: 1rem;
+        margin-top: 0;
 
         &::after {
           display: none;
