@@ -24,6 +24,20 @@ class ForecastsController < ApplicationController
     end
   end
 
+  def alerts
+    @alerts = {}
+    CercForecastService.latest_forecasts.each do |alert|
+      zone_group = alert.zone.zone_group.name
+      @alerts[zone_group] ||= []
+      @alerts[zone_group] << alert if alert.data.map { |f| f.air_quality_alert? }.count(true).positive?
+    end
+
+    # Sort the alerts by type
+    @alerts.each do |zone_group, alerts|
+      alerts.sort_by! { |alert| [-alert.zone.cerc_type, alert.zone.name] }
+    end
+  end
+
   def pollutant_forecasts
     load_options
     latest_forecasts = CercForecastService.latest_forecasts

@@ -1,9 +1,9 @@
 <div id="how-forecasts-are-made" class="text-block">
   <details>
-    <summary class="p-3">
+    <summary class="p-2">
       <h3 class="mb-1">Learn how the forecasts are made</h3>
     </summary>
-    <div class="p-3">
+    <div class="p-2">
       <p>The air quality forecasts are produced using <%= link_to("CERC's air pollution forecasting system", 'https://www.cerc.co.uk/forecast', target: '_blank') %>. Information from weather forecasts, forecasts of pollution across Europe from the <%= link_to('CAMS', 'https://atmosphere.copernicus.eu/', target: '_blank') %> Regional Ensemble and very detailed data on about 30,000 pollution sources across London are fed into the world-leading <%= link_to('ADMS-Urban', 'https://www.cerc.co.uk/environmental-software/ADMS-Urban-model.html', target: '_blank') %> air quality model to produce forecasts of air quality at a high degree of spatial resolution (10m). These forecasts are issued twice a day at about 7am and 7pm. The forecasts are updated throughout the day using real-time monitoring data from LondonAir. We compare the forecasts with observed pollution levels to assess the accuracy of the forecasts. These performance statistics are available <%= link_to('here', './pdfs/airTEXT 2023 performance.pdf', target: '_blank') %>.</p>
       <p>The hourly concentrations of four pollutants are calculated: nitrogen dioxide (NO2), particulates (PM10 and PM2.5) and ozone (O3). From the hourly concentrations the daily air quality index (<%= link_to('DAQI', 'https://uk-air.defra.gov.uk/air-pollution/daqi', target: '_blank') %>) of each pollutant is derived. The overall air quality index is determined by the highest index for any of these pollutants.</p>
       <p>airTEXT issues an alert for a local authority or region if at least 10% of the geographical area is predicted to reach MODERATE or above.</p>

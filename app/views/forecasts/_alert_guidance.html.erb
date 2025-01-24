@@ -1,7 +1,6 @@
 <turbo-frame id="alert-guidance-frame">
 <% if @day_forecast.air_quality_alert? %>
   <div class="alert-guidance text-block daqi-level-<%= @day_forecast.air_pollution[:label].parameterize %> p-2 mb-1">
-    <h3 class="mb-2">Action required</h3>
     <%= render(HealthGuidanceComponent.new(:air_pollution, @day_forecast.air_pollution[:label].parameterize(separator: "_").to_sym, classes: ["mb-2"])) %>
     <p><%= link_to("Learn more about the air pollution alert", alerts_path) %></p>
     <span class="forecast-timestamp">Forecast updated at <%= @day_forecast.air_pollution[:forecasted_at].strftime("%H:%M on %A %d %B %Y") %></span>

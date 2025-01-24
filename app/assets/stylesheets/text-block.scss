@@ -140,7 +140,7 @@ details {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      text-decoration: underline;
+      margin-top: 0.5rem;
 
       &::before {
         content: "";
@@ -153,6 +153,11 @@ details {
         background-repeat: no-repeat;
         background-position: center center;
       }
+
+      &::after {
+        content: "Show";
+        text-decoration: underline;
+      }
     }
   }
 
@@ -163,6 +168,10 @@ details {
       span.show-button {
         &::before {
           transform: rotate(180deg);
+        }
+
+        &::after {
+          content: "Hide";
         }
       }
     }
@@ -176,6 +185,7 @@ details {
         position: absolute;
         top: calc(50% - 0.75rem);
         right: 1rem;
+        margin-top: 0;
 
         &::after {
           display: none;

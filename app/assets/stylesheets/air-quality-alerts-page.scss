@@ -14,9 +14,31 @@
     }
   }
 
+  .details-wrapper {
+    @media (max-width: variables.$mobile-breakpoint) {
+      margin: 0 -1rem;
+    }
+  }
+
+  details {
+    summary {
+      border-top: 1px solid var(--border-color);
+    }
+
+    &:last-child {
+      summary {
+        border-bottom: 1px solid var(--border-color);
+      }
+    }
+
+    &[open] {
+      margin-bottom: 1rem;
+    }
+  }
+
   .air-quality-alerts-table {
     @media (min-width: variables.$mobile-breakpoint) {
-      border: 1px solid var(--light-grey);
+      border: 1px solid var(--lightest-grey);
     }
 
     .cell {
@@ -26,10 +48,11 @@
     .table-header {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      background-color: var(--main-colour-lightest);
 
       @media (max-width: variables.$mobile-breakpoint) {
         grid-template-columns: 1fr 1fr 1fr;
-        margin-top: 2rem;
+        margin-bottom: 1rem;
       }
 
       h2 {
@@ -62,7 +85,7 @@
           grid-template-columns: 1fr 1fr 1fr;
         }
 
-        &:nth-child(2n + 1) {
+        &:nth-child(2n) {
           @media (min-width: variables.$mobile-breakpoint) {
             background-color: var(--lightest-grey);
           }

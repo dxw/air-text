@@ -27,7 +27,7 @@
         <details class="zone-region-group details-compact">
           <summary class="p-2">
             <h4><%= group.name %></h4>
-            <%= content_tag :p, group.description, class: "italic" if group.description.present? %>
+            <%= content_tag :p, group.description, class: "mt-1" if group.description.present? %>
           </summary>
           <div class="zone-checkboxes p-2">
             <% group.zones.order(cerc_type: :desc, name: :asc).group_by(&:cerc_type).each do |level, zones| %>
