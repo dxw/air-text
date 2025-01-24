@@ -93,7 +93,7 @@ RSpec.feature "Forecasts page" do
         tab_selector_today = ".tab[data-date='#{Date.today}']"
         tab_selector_tomorrow = ".tab[data-date='#{Date.tomorrow}']"
         tab_selector_day_after_tomorrow = ".tab[data-date='#{Date.tomorrow + 1.day}']"
-        find(tab_selector_tomorrow).trigger("click")
+        find(tab_selector_tomorrow).click
 
         # See that the tomorrow tab is active
         expect(page).to have_css("#{tab_selector_tomorrow}.active")
@@ -126,7 +126,7 @@ RSpec.feature "Forecasts page" do
         ##
 
         visit forecast_path
-        find(tab_selector_day_after_tomorrow).trigger("click")
+        find(tab_selector_day_after_tomorrow).click
 
         # See that the day after tomorrow tab is active
         expect(page).to have_css("#{tab_selector_day_after_tomorrow}.active")

@@ -354,9 +354,7 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
               find("li", text: "Central London").click
             end
 
-            within "#zone-tags" do
-              expect(page).to have_text("Central London")
-            end
+            find("h4", text: "London").click # to expand details tag
             expect(page).to have_checked_field("Central London")
           end
         end
@@ -414,8 +412,6 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
 
           it "shows a message if no zones are found" do
             search_for_location("York")
-
-            find("#subscription_form_zone_search").trigger("change")
 
             within "#search-results" do
               expect(page).to have_text("No results found within the area covered by airTEXT")
@@ -549,7 +545,6 @@ end
 
 def search_for_location(location)
   fill_in "subscription_form_zone_search", with: location
-  find("#subscription_form_zone_search").trigger("change")
 end
 
 def fill_form_up_to(step)
@@ -569,5 +564,8 @@ end
 
 def stub_maptiler_geocoding(search:, response:)
   proxy.stub("https://api.maptiler.com:443/geocoding/#{CGI.escape_uri_component(search)}.json")
-    .and_return(json: response)
+    .and_return(
+      headers: {"Access-Control-Allow-Origin" => "*"},
+      json: response
+    )
 end
