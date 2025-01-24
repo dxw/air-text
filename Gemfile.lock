@@ -123,9 +123,6 @@ GEM
     cssbundling-rails (1.4.1)
       railties (>= 6.0.0)
     csv (3.3.0)
-    cuprite (0.15.1)
-      capybara (~> 3.0)
-      ferrum (~> 0.15.0)
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
@@ -157,11 +154,6 @@ GEM
       railties (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    ferrum (0.15)
-      addressable (~> 2.5)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -429,7 +421,6 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webrick (1.9.0)
     websocket (1.2.11)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -460,7 +451,6 @@ DEPENDENCIES
   capybara-screenshot
   climate_control
   cssbundling-rails (~> 1.4)
-  cuprite
   dartsass-rails (~> 0.5.1)
   dotenv
   factory_bot_rails

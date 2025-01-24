@@ -39,7 +39,7 @@ RSpec.feature "Forecasts page - air quality alerts" do
     it "shows an air quality alert of moderate for tomorrow" do
       visit forecast_path
       tab_selector = ".tab[data-date='#{Date.tomorrow}']"
-      find(tab_selector).trigger("click")
+      find(tab_selector).click
 
       within(tab_selector) do
         expect_to_see_alert_level("Moderate")
@@ -56,7 +56,7 @@ RSpec.feature "Forecasts page - air quality alerts" do
     it "shows an air quality alert of very high for the day after tomorrow" do
       visit forecast_path
       tab_selector = ".tab[data-date='#{Date.tomorrow + 1.day}']"
-      find(tab_selector).trigger("click")
+      find(tab_selector).click
 
       within(tab_selector) do
         expect_to_see_alert_level("Very high")

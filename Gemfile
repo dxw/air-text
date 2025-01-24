@@ -51,7 +51,6 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "capybara-screenshot"
-  gem "cuprite"
   gem "launchy"
   gem "puffing-billy", "~> 4.0"
   gem "selenium-webdriver"

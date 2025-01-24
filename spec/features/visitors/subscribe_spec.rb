@@ -415,8 +415,6 @@ RSpec.feature "Subscribing to alerts", type: :feature, js: true do
           it "shows a message if no zones are found" do
             search_for_location("York")
 
-            find("#subscription_form_zone_search").trigger("change")
-
             within "#search-results" do
               expect(page).to have_text("No results found within the area covered by airTEXT")
             end
@@ -549,7 +547,6 @@ end
 
 def search_for_location(location)
   fill_in "subscription_form_zone_search", with: location
-  find("#subscription_form_zone_search").trigger("change")
 end
 
 def fill_form_up_to(step)
