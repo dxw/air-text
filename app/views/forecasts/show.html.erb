@@ -3,13 +3,13 @@
    <meta name="turbo-cache-control" content="no-cache">
 <% end %>
 
-<h1 class="h1 px-3 mt-3 mb-2">Air quality forecast</h1>
-<div id="intro" class="text-block px-3">
+<h1 class="h1 px-2 mt-3 mb-2">Air quality forecast</h1>
+<div id="intro" class="text-block px-2">
   <p>The air quality forecast displays levels of air pollution, ultraviolet (UV) rays, pollen, and temperature over the next three days for London, Surrey, Chelmsford, Maldon, Colchester and Cambridge.</p>
   <%= link_to("Sign up for air quality alerts", subscriptions_path, class: "button primary-cta") %>
 </div>
 
-<div id="forecast" data-controller="map forecast" class="px-3 mb-2">
+<div id="forecast" data-controller="map forecast" class="px-2 mb-2">
   <%= render "forecast_form" %>
   <%= render "forecast_tabs" %>
 
@@ -30,6 +30,6 @@
   <%= render "daqi_scale_guide" %>
 </div>
 
-<div class="mb-2 mx-3">
+<div class="mb-2 mx-2">
   <%= render "shared/back_to_top" %>
 </div>
