@@ -1,7 +1,14 @@
 FactoryBot.define do
   factory :cached_forecast do
     obtained_at { Time.current }
-    association(:zone, factory: :zone)
     data { FactoryBot.build_list(:forecast, 3) }
+
+    transient do
+      zone { nil }
+    end
+
+    after(:build) do |cached_forecast, evaluator|
+      cached_forecast.zone_id = evaluator.zone&.id || Zone.find_by_name(cached_forecast.data.first.zone[:name]) || FactoryBot.create(:zone).id
+    end
   end
 end
