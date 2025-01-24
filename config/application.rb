@@ -44,7 +44,9 @@ module AirText
         ActiveSupport::TimeZone,
         Time,
         Date,
-        Forecast
+        Zone,
+        Forecast,
+        ActiveModel::Attribute.const_get(:FromDatabase) # Per https://github.com/rails/rails/issues/45609
       ]
     end
   end

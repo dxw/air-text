@@ -58,6 +58,7 @@ RSpec.describe CercForecastService do
     context "when the DUMMY_FORECAST environment variable is set" do
       before do
         allow(CachedForecast).to receive(:stale?).and_return(false)
+        FactoryBot.create(:zone, name: "Central London")
       end
 
       it "returns the dummy forecasts" do

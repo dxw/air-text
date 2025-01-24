@@ -34,16 +34,17 @@ class CercForecastService
     end
 
     def dummy_forecasts
+      zone = Zone.find_by(name: "Central London")
       forecast_sets = {
         1 => [ # A high, moderate, and low air pollution forecast
-          FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :high), date: Date.today),
-          FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :moderate), date: Date.tomorrow),
-          FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :low), date: Date.tomorrow + 1.day)
+          FactoryBot.build(:forecast, zone: zone, air_pollution: FactoryBot.build(:air_pollution_prediction, :high), date: Date.today),
+          FactoryBot.build(:forecast, zone: zone, air_pollution: FactoryBot.build(:air_pollution_prediction, :moderate), date: Date.tomorrow),
+          FactoryBot.build(:forecast, zone: zone, air_pollution: FactoryBot.build(:air_pollution_prediction, :low), date: Date.tomorrow + 1.day)
         ],
         2 => [ # High UV, moderate pollen, and extreme temperature forecast
-          FactoryBot.build(:forecast, uv: 6, date: Date.today),
-          FactoryBot.build(:forecast, pollen: 8, date: Date.tomorrow),
-          FactoryBot.build(:forecast, temperature: {min: -10, max: 40}, date: Date.tomorrow + 1.day)
+          FactoryBot.build(:forecast, zone: zone, uv: 6, date: Date.today),
+          FactoryBot.build(:forecast, zone: zone, pollen: 8, date: Date.tomorrow),
+          FactoryBot.build(:forecast, zone: zone, temperature: {min: -10, max: 40}, date: Date.tomorrow + 1.day)
         ]
       }
 
