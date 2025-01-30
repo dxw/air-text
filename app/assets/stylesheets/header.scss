@@ -1,7 +1,7 @@
 @use "variables";
 
 .site-header {
-  background-color: var(--main-colour);
+  background-color: var(--main-colour-700);
 
   .header-content {
     max-width: var(--max-width);
@@ -10,7 +10,7 @@
 
   hr {
     border: none;
-    border-top: 1px solid var(--divider-color);
+    border-top: 1px solid var(--grey-200);
     width: 100vw;
     position: absolute;
     left: 0;
@@ -103,7 +103,7 @@ nav {
         display: inline-block;
 
         &:hover {
-          background-color: var(--main-colour-dark);
+          background-color: var(--main-colour-800);
         }
 
         &.active {
@@ -114,7 +114,7 @@ nav {
 
       &:has(.active) {
         @media (min-width: variables.$mobile-breakpoint) {
-          background-color: var(--main-colour-dark);
+          background-color: var(--main-colour-800);
         }
       }
     }

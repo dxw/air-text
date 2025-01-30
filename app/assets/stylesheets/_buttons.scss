@@ -17,16 +17,16 @@
   @extend %cta;
 
   color: white;
-  background-color: var(--main-colour);
-  border-color: var(--main-colour);
+  background-color: var(--main-colour-700);
+  border-color: var(--main-colour-700);
 
   &:hover {
-    background-color: var(--main-colour-dark);
-    border-color: var(--main-colour-dark);
+    background-color: var(--main-colour-800);
+    border-color: var(--main-colour-800);
   }
 
   &:focus {
-    background-color: var(--main-colour-dark);
+    background-color: var(--main-colour-800);
     border-color: var(--main-colour-highlight);
     outline: 2px solid var(--main-colour-highlight);
   }
@@ -35,16 +35,16 @@
 .secondary-cta {
   @extend %cta;
 
-  color: var(--main-colour);
+  color: var(--main-colour-700);
   background-color: white;
-  border-color: var(--main-colour);
+  border-color: var(--main-colour-700);
 
   &:hover {
-    background-color: var(--main-colour-light);
+    background-color: var(--main-colour-300);
   }
 
   &:focus {
-    background-color: var(--main-colour-light);
+    background-color: var(--main-colour-300);
     border-color: var(--main-colour-highlight);
     outline: 2px solid var(--main-colour-highlight);
   }

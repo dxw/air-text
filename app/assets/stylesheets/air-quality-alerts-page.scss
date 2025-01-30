@@ -22,12 +22,12 @@
 
   details {
     summary {
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--grey-300);
     }
 
     &:last-child {
       summary {
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--grey-300);
       }
     }
 
@@ -38,7 +38,7 @@
 
   .air-quality-alerts-table {
     @media (min-width: variables.$mobile-breakpoint) {
-      border: 1px solid var(--lightest-grey);
+      border: 1px solid var(--grey-100);
     }
 
     .cell {
@@ -48,7 +48,7 @@
     .table-header {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      background-color: var(--main-colour-lightest);
+      background-color: var(--main-colour-200);
 
       @media (max-width: variables.$mobile-breakpoint) {
         grid-template-columns: 1fr 1fr 1fr;
@@ -57,7 +57,7 @@
 
       h2 {
         padding: 1rem;
-        background: var(--light-grey);
+        background: var(--grey-200);
         grid-row: 1;
         grid-column: 1 / span 4;
       }
@@ -87,7 +87,7 @@
 
         &:nth-child(2n) {
           @media (min-width: variables.$mobile-breakpoint) {
-            background-color: var(--lightest-grey);
+            background-color: var(--grey-100);
           }
         }
       }
@@ -102,7 +102,7 @@
 
         @media (max-width: variables.$mobile-breakpoint) {
           grid-column: 1 / span 4;
-          background-color: var(--light-grey);
+          background-color: var(--grey-200);
         }
 
         h4 {
@@ -115,17 +115,17 @@
       }
 
       .zone-day-alert {
-        border-left: 1px solid var(--mid-grey);
+        border-left: 1px solid var(--grey-300);
         grid-row: 1;
         border-collapse: collapse;
 
         @media (max-width: variables.$mobile-breakpoint) {
           grid-row: 2;
-          border-left: 1px solid var(--light-grey);
-          border-bottom: 1px solid var(--light-grey);
+          border-left: 1px solid var(--grey-200);
+          border-bottom: 1px solid var(--grey-200);
 
           &:last-child {
-            border-right: 1px solid var(--light-grey);
+            border-right: 1px solid var(--grey-200);
           }
         }
 
@@ -140,7 +140,7 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            border: 1px solid var(--mid-grey);
+            border: 1px solid var(--grey-300);
             display: none;
           }
 
@@ -161,7 +161,7 @@
         background: none;
 
         span {
-          background: var(--main-colour-lightest);
+          background: var(--main-colour-200);
           display: block;
           padding: 2rem;
           text-align: center;
