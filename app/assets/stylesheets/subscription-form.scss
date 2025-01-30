@@ -31,12 +31,12 @@
       width: calc(100% - 1.5rem);
       padding: 0.5rem 0.75rem;
       border-radius: var(--border-radius);
-      border: 1px solid var(--divider-color);
+      border: 1px solid var(--grey-200);
       outline: none;
       font-size: 1rem;
 
       &:focus {
-        border-color: var(--main-colour);
+        border-color: var(--main-colour-700);
       }
     }
 
@@ -93,10 +93,10 @@
         width: calc(var(--switch-width) + var(--offset));
         height: calc(var(--switch-height) + var(--offset));
         border-radius: 9999px;
-        border: 1px solid var(--main-colour);
+        border: 1px solid var(--main-colour-700);
 
         &:checked {
-          background-color: var(--main-colour);
+          background-color: var(--main-colour-700);
 
           + label {
             transform: translateX(
@@ -120,7 +120,7 @@
         left: calc(var(--offset) - 1px);
         width: var(--dot-size);
         height: var(--dot-size);
-        background-color: var(--main-colour);
+        background-color: var(--main-colour-700);
         border-radius: 9999px;
         transition: transform 0.3s;
         cursor: pointer;
@@ -157,14 +157,14 @@
   }
 
   .progress-bar {
-    border-top: 1px solid var(--light-grey);
+    border-top: 1px solid var(--grey-200);
     position: relative;
     display: inline-flex;
     gap: 1rem;
 
     span {
       display: inline-block;
-      background: var(--light-grey);
+      background: var(--grey-200);
       height: 1rem;
       width: 1rem;
       border-radius: 100%;
@@ -172,7 +172,7 @@
       top: -0.5rem;
 
       &.completed {
-        background: var(--mid-grey);
+        background: var(--grey-300);
       }
     }
   }
@@ -203,14 +203,14 @@
 
         li.zone-tag {
           padding: 0.5rem 0.75rem;
-          color: var(--dark-grey);
-          background-color: var(--lightest-grey);
+          color: var(--grey-400);
+          background-color: var(--grey-100);
           border-radius: var(--border-radius);
           cursor: pointer;
 
           &.selected {
-            background-color: var(--dark-grey);
-            color: var(--lightest-grey);
+            background-color: var(--grey-400);
+            color: var(--grey-100);
 
             &::before {
               content: "✓";
@@ -222,10 +222,10 @@
     }
 
     .zone-region-group {
-      border-top: 1px solid var(--divider-color);
+      border-top: 1px solid var(--grey-200);
 
       &:last-child {
-        border-bottom: 1px solid var(--divider-color);
+        border-bottom: 1px solid var(--grey-200);
       }
 
       @media (min-width: variables.$mobile-breakpoint) {

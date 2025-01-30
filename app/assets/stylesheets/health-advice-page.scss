@@ -22,15 +22,15 @@
     }
 
     &[open] {
-      border: 1px solid var(--lightest-grey);
+      border: 1px solid var(--grey-100);
     }
 
     &:last-of-type {
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--grey-300);
     }
 
     summary {
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--grey-300);
     }
   }
 }

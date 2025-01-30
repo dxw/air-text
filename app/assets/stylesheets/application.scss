@@ -53,7 +53,7 @@ main {
 hr {
   margin: 0;
   border: none;
-  border-top: 1px solid var(--divider-color);
+  border-top: 1px solid var(--grey-200);
 }
 
 .alert {
@@ -61,12 +61,12 @@ hr {
   margin: 1.5rem;
 
   &.alert-success {
-    background-color: var(--main-colour-light);
+    background-color: var(--main-colour-300);
   }
 }
 
 .block {
-  background-color: var(--main-colour-light);
+  background-color: var(--main-colour-300);
   padding: 2rem 1.5rem;
   text-align: center;
 
