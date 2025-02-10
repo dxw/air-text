@@ -59,6 +59,10 @@
     @media (max-width: variables.$mobile-breakpoint) {
       display: none;
     }
+
+    svg {
+      max-height: 40px;
+    }
   }
 
   .terms-and-conditions {
