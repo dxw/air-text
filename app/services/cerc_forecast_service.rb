@@ -49,7 +49,7 @@ class CercForecastService
       }
 
       set_number = (ENV.fetch("DUMMY_FORECAST").presence || 1).to_i
-      [FactoryBot.build(:cached_forecast, data: forecast_sets[set_number])]
+      [FactoryBot.build(:cached_forecast, data: forecast_sets[set_number], zone: central_london)]
     end
 
     def zone_forecasts(zone, obtained_at: Time.current)
