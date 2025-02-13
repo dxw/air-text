@@ -15,7 +15,7 @@
   </div>
   <div class="daqi-indicator <%= daqi_indicator_colour_class %>">
     <% if @forecast.air_pollution[:label] != 'LOW' %>
-      <%= helpers.render_svg "exclamation_triangle" %>
+      <%= helpers.render_svg "warning_triangle_filled" %>
     <% end %>
   </div>
   <div class="daqi-label">

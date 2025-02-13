@@ -1,10 +1,5 @@
 @use "variables";
 
-:root {
-  --inactive-tab-border-color: #d9d9d9;
-  --inactive-tab-text-color: #a09d9d;
-}
-
 .c-forecasts.a-show {
   .tabs {
     display: flex;
@@ -24,10 +19,7 @@
       border: 1px solid;
       cursor: pointer;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
-
-      &.low {
-        background-color: white;
-      }
+      background-color: white;
 
       &.active {
         border-color: var(--grey-400);
@@ -37,15 +29,11 @@
       }
 
       &.inactive {
-        border-color: var(--inactive-tab-border-color);
+        border-color: var(--grey-300);
         border-style: dashed;
         border-bottom: 0;
-        color: var(--inactive-tab-text-color);
-        background-color: color-mix(
-          in srgb,
-          var(--daqi-color) 20%,
-          transparent
-        );
+        color: var(--grey-400);
+        background: var(--grey-50);
       }
 
       .daqi-indicator {
@@ -56,6 +44,34 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.daqi-label-low {
+          background: var(--daqi-color);
+        }
+
+        &.daqi-label-moderate {
+          --triangle-fill: var(--daqi-color);
+          --triangle-stroke: var(--grey-400);
+          --exclamation-mark-color: var(--grey-400);
+        }
+
+        &.daqi-label-high,
+        &.daqi-label-very-high {
+          --triangle-fill: var(--daqi-color);
+          --triangle-stroke: transparent;
+          --exclamation-mark-color: white;
+        }
+
+        svg {
+          #triangle {
+            fill: var(--triangle-fill);
+            stroke: var(--triangle-stroke);
+          }
+
+          #exclamation-mark {
+            stroke: var(--exclamation-mark-color);
+          }
+        }
       }
 
       .daqi-label {

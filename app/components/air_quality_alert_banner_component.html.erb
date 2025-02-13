@@ -1,11 +1,11 @@
 <div class="air-quality-alert-banner <%= daqi_classes %>">
   <% if alert? %>
     <div class="air-quality-alert-icon">
-      <%= helpers.render_svg "exclamation_triangle" %>
+      <%= helpers.render_svg "warning_triangle_filled" %>
     </div>
   <% end %>
   <div class="air-quality-alert-text">
-    <strong><%= message %></strong>
+    <strong class="mb-1"><%= message %></strong>
     <%= link_to "Learn more about the air pollution alert", alerts_path if alert? %>
   </div>
 </div>
