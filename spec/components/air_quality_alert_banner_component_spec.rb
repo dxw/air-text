@@ -46,7 +46,7 @@ RSpec.describe AirQualityAlertBannerComponent, type: :component do
     end
   end
 
-  describe "pollution_labels" do
+  describe "pollution_values" do
     let(:forecasts) {
       [
         FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, :low)),
@@ -55,7 +55,7 @@ RSpec.describe AirQualityAlertBannerComponent, type: :component do
     }
 
     it "returns the labels of the air pollution predictions" do
-      expect(component.send(:pollution_labels)).to eq([["LOW", "HIGH"]])
+      expect(component.send(:pollution_values)).to eq([[{label: "LOW", value: 2}, {label: "HIGH", value: 8}]])
     end
   end
 
@@ -71,7 +71,7 @@ RSpec.describe AirQualityAlertBannerComponent, type: :component do
       let(:air_pollution_level) { :very_high }
 
       it "returns VERY HIGH" do
-        expect(component.send(:highest_alert)).to eq("VERY HIGH")
+        expect(component.send(:highest_alert)[:label]).to eq("VERY HIGH")
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe AirQualityAlertBannerComponent, type: :component do
       let(:air_pollution_level) { :high }
 
       it "returns LOW" do
-        expect(component.send(:highest_alert)).to eq("HIGH")
+        expect(component.send(:highest_alert)[:label]).to eq("HIGH")
       end
     end
   end

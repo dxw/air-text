@@ -172,7 +172,7 @@
       top: -0.5rem;
 
       &.completed {
-        background: var(--grey-300);
+        background: var(--grey-400);
       }
     }
   }
@@ -203,13 +203,13 @@
 
         li.zone-tag {
           padding: 0.5rem 0.75rem;
-          color: var(--grey-400);
+          color: var(--grey-500);
           background-color: var(--grey-100);
           border-radius: var(--border-radius);
           cursor: pointer;
 
           &.selected {
-            background-color: var(--grey-400);
+            background-color: var(--grey-500);
             color: var(--grey-100);
 
             &::before {

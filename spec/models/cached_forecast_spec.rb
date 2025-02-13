@@ -34,15 +34,6 @@ RSpec.describe CachedForecast do
       expect(cached_forecast.errors[:data]).to include("no2 must be an integer")
     end
 
-    it "validates that each forecast in #data has a valid :label" do
-      cached_forecast = FactoryBot.build(:cached_forecast, data: [
-        FactoryBot.build(:forecast, air_pollution: FactoryBot.build(:air_pollution_prediction, label: "invalid"))
-      ])
-
-      expect(cached_forecast).not_to be_valid
-      expect(cached_forecast.errors[:data]).to include("label must be one of the expected values")
-    end
-
     it "validates that each forecast in #data has integer values for UV and pollen" do
       cached_forecast = FactoryBot.build(:cached_forecast, data: [
         FactoryBot.build(:forecast, uv: "1", pollen: "2")

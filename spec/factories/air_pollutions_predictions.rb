@@ -6,7 +6,19 @@ FactoryBot.define do
     pm2_5 { 2 }
     o3 { 2 }
     total { 2 }
-    label { "LOW" }
+    after(:build) do |air_pollution_prediction|
+      label = case air_pollution_prediction[:total]
+      when 1..3
+        "LOW"
+      when 4..6
+        "MODERATE"
+      when 7..9
+        "HIGH"
+      else
+        "VERY HIGH"
+      end
+      air_pollution_prediction[:label] = label
+    end
 
     trait :low do
       total { 2 }

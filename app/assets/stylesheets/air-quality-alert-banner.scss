@@ -6,19 +6,42 @@
   gap: 1rem;
   border-top: 1px solid white;
   flex-basis: 100%;
+  background-color: color-mix(in srgb, var(--daqi-color) 15%, transparent);
 
   @media (min-width: variables.$mobile-breakpoint) {
     margin: 1.5rem;
   }
 
-  &.no-alert {
+  &.daqi-label-low {
     background-color: var(--main-colour-200);
+  }
+
+  &.daqi-label-moderate {
+    --triangle-fill: var(--daqi-color);
+    --triangle-stroke: var(--primary-text-color);
+    --exclamation-mark-color: var(--primary-text-color);
+  }
+
+  &.daqi-label-high,
+  &.daqi-label-very-high {
+    --triangle-fill: var(--daqi-color);
+    --triangle-stroke: transparent;
+    --exclamation-mark-color: white;
   }
 
   .air-quality-alert-icon {
     svg {
       width: 3rem;
       margin-top: 5px;
+
+      #triangle {
+        fill: var(--triangle-fill);
+        stroke: var(--triangle-stroke);
+      }
+
+      #exclamation-mark {
+        stroke: var(--exclamation-mark-color);
+      }
     }
   }
 
