@@ -5,6 +5,6 @@ class DayTabComponent < ViewComponent::Base
   end
 
   def daqi_indicator_colour_class
-    "daqi-level-#{@forecast.air_pollution[:total]}"
+    "daqi-level-#{@forecast.air_pollution[:total]} daqi-label-#{@forecast.air_pollution[:label].parameterize}"
   end
 end

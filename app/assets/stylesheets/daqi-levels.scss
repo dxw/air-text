@@ -12,36 +12,17 @@
   --daqi-level-8-color: #fa2200;
   --daqi-level-9-color: #6b0820;
   --daqi-level-10-color: #000;
-  --daqi-level-1-text: black;
-  --daqi-level-2-text: black;
-  --daqi-level-3-text: black;
-  --daqi-level-4-text: black;
-  --daqi-level-5-text: black;
-  --daqi-level-6-text: black;
-  --daqi-level-7-text: white;
-  --daqi-level-8-text: white;
-  --daqi-level-9-text: white;
-  --daqi-level-10-text: white;
   --pollution-layer-opacity: 60%;
   --map-layer-background-color: #ddd;
 }
 
 @for $i from 1 through 10 {
-  .tabs,
-  .daqi-table,
-  .air-quality-alert-banner {
-    .daqi-level-#{$i} {
-      --daqi-color: var(--daqi-level-#{$i}-color);
-
-      background-color: var(--daqi-color);
-      color: var(--daqi-level-#{$i}-text);
-    }
+  .daqi-level-#{$i} {
+    --daqi-color: var(--daqi-level-#{$i}-color);
   }
 
   .daqi-scale {
     .daqi-level-#{$i} {
-      --daqi-color: var(--daqi-level-#{$i}-color);
-
       background-color: color-mix(
         in srgb,
         var(--daqi-color) var(--pollution-layer-opacity),
@@ -77,32 +58,4 @@
       );
     }
   }
-}
-
-.daqi-level-low {
-  --daqi-color: var(--daqi-level-2-color);
-
-  background-color: var(--daqi-color);
-  color: var(--daqi-level-2-text);
-}
-
-.daqi-level-moderate {
-  --daqi-color: var(--daqi-level-5-color);
-
-  background-color: var(--daqi-color);
-  color: var(--daqi-level-5-text);
-}
-
-.daqi-level-high {
-  --daqi-color: var(--daqi-level-8-color);
-
-  background-color: var(--daqi-color);
-  color: var(--daqi-level-8-text);
-}
-
-.daqi-level-very-high {
-  --daqi-color: var(--daqi-level-10-color);
-
-  background-color: var(--daqi-color);
-  color: var(--daqi-level-10-text);
 }

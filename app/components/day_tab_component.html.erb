@@ -1,4 +1,4 @@
-<%= tag.button class: "tab #{@active ? 'active' : 'inactive'} #{@forecast.air_pollution[:label] == 'LOW' ? 'low' : daqi_indicator_colour_class}",
+<%= tag.button class: "tab #{@active ? 'active' : 'inactive'}",
   role: "tab",
   tabindex: 0,
   "aria-selected": @active,
@@ -13,7 +13,7 @@
   <div class="date">
     <%= @forecast.date.strftime("%d %B") %>
   </div>
-  <div class="daqi-indicator <%= daqi_indicator_colour_class if @forecast.air_pollution[:label] == 'LOW' %>">
+  <div class="daqi-indicator <%= daqi_indicator_colour_class %>">
     <% if @forecast.air_pollution[:label] != 'LOW' %>
       <%= helpers.render_svg "exclamation_triangle" %>
     <% end %>
