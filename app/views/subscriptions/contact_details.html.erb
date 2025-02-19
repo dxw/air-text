@@ -2,11 +2,11 @@
   <h3 class="h3">Choose the channels you would like to receive alerts on.</h3>
 
   <div class="switch-row">
-    <%= f.label :receive_email, "Receive email alerts", class: "mt-2" %>
     <div class="switch mt-2">
       <%= f.check_box :receive_email, data: { action: "subscription#toggleEmail" } %>
       <%= f.label :receive_email, "&#8203;".html_safe %>
     </div>
+    <%= f.label :receive_email, "Receive email alerts", class: "mt-2" %>
   </div>
   <div data-subscription-target="email" class="<%= 'hidden' unless @form.receive_email == "1" %>">
     <%= f.label :email, class: "sr-only" %>
@@ -14,11 +14,11 @@
   </div>
 
   <div class="switch-row">
-    <%= f.label :receive_sms, "Receive text alerts", class: "mt-2" %>
     <div class="switch mt-2">
       <%= f.check_box :receive_sms, data: { action: "subscription#toggleSms" } %>
       <%= f.label :receive_sms, "&#8203;".html_safe %>
     </div>
+    <%= f.label :receive_sms, "Receive text alerts", class: "mt-2" %>
   </div>
   <div data-subscription-target="sms" class="<%= 'hidden' unless @form.receive_sms == "1" %>">
     <%= f.label :sms_number, "Mobile number", class: "sr-only" %>
@@ -26,11 +26,11 @@
   </div>
 
   <div class="switch-row">
-    <%= f.label :receive_voice, "Receive voicemail alerts", class: "mt-2" %>
     <div class="switch mt-2">
       <%= f.check_box :receive_voice, data: { action: "subscription#toggleVoice" } %>
       <%= f.label :receive_voice, "&#8203;".html_safe %>
     </div>
+    <%= f.label :receive_voice, "Receive voicemail alerts", class: "mt-2" %>
   </div>
   <div data-subscription-target="voice" class="<%= 'hidden' unless @form.receive_voice == "1" %>">
     <%= f.label :voice_number, "Phone number", class: "sr-only" %>
