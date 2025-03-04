@@ -22,11 +22,13 @@
   }
 
   .daqi-scale {
+    background: var(--map-layer-background-color);
+
     .daqi-level-#{$i} {
       background-color: color-mix(
         in srgb,
         var(--daqi-color) var(--pollution-layer-opacity),
-        var(--map-layer-background-color)
+        transparent
       );
       color: white;
       text-shadow: 0 0 2px black;
@@ -40,12 +42,12 @@
       --first-half: color-mix(
         in srgb,
         var(--daqi-level-#{$i}-color) var(--pollution-layer-opacity),
-        var(--map-layer-background-color)
+        transparent
       );
       --second-half: color-mix(
         in srgb,
         var(--daqi-level-#{$i}-5-color) var(--pollution-layer-opacity),
-        var(--map-layer-background-color)
+        transparent
       );
 
       background: var(--first-half);
