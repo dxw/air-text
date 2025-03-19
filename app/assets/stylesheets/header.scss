@@ -76,6 +76,7 @@
   nav {
     color: white;
     width: 100%;
+    position: relative; // This is needed to prevent the HR from overlapping the nav
 
     ul {
       margin: 0;
@@ -104,9 +105,18 @@
         a {
           padding: 1.25rem 2.5rem;
           display: block;
+          font-weight: 500;
+
+          &:focus {
+            background-color: var(--main-colour-800);
+            border-color: var(--main-colour-highlight);
+            outline: 2px solid var(--main-colour-highlight);
+            color: white;
+          }
 
           &:hover {
-            background-color: var(--main-colour-800);
+            background-color: var(--main-colour-400);
+            color: black;
           }
 
           &.active {
