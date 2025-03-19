@@ -56,7 +56,7 @@ RSpec.describe TemperaturePredictionComponent, type: :component do
         }
 
         it "shows the guidance for low temperatures" do
-          expect(page).to have_css(".temperature .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:temperature, :low_temp).first[:html]))
+          expect(page).to have_css(".temperature .guidance", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:temperature, :low_temp).first[:html]))
         end
       end
 
@@ -69,7 +69,7 @@ RSpec.describe TemperaturePredictionComponent, type: :component do
         }
 
         it "shows the guidance for high temperatures" do
-          expect(page).to have_css(".temperature .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:temperature, :high_temp).first[:html]))
+          expect(page).to have_css(".temperature .guidance", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:temperature, :high_temp).first[:html]))
         end
       end
     end

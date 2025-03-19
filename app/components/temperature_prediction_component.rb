@@ -33,8 +33,4 @@ class TemperaturePredictionComponent < PredictionComponent
       "High temp"
     end
   end
-
-  def guidance_panel_colour
-    "bg-high-alert-guidance-panel"
-  end
 end
