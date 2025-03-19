@@ -96,7 +96,6 @@
     .alert-guidance {
       background-color: color-mix(in srgb, var(--daqi-color) 15%, transparent);
       color: var(--primary-text-color);
-      font-size: 0.75rem;
 
       .forecast-timestamp {
         text-align: left;
@@ -199,14 +198,12 @@
     }
 
     .explanatory-link {
-      font-size: 75%;
       text-align: right;
     }
 
     .pollution-index-notice {
       padding: 1rem;
       background-color: var(--main-colour-200);
-      font-size: 0.75rem;
     }
 
     .predictions {
@@ -215,7 +212,6 @@
       }
 
       .prediction {
-        font-size: 0.875rem;
         border-top: 1px solid var(--grey-200);
 
         &:last-child {
