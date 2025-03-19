@@ -1,10 +1,10 @@
 
   <%= render 'form_step' do |f| %>
   <div class="text-block" id="confirmation-page">
-    <h2 class="mb-2">Subscription Confirmation</h2>
+    <h2 class="mb-4">Subscription Confirmation</h2>
     <p>You will receive alerts for the following channels and areas:</p>
 
-    <section class="mb-2">
+    <section class="mb-4">
       <header>
         <h3>Channels</h3>
         <p><%= link_to "Edit", wizard_path(:contact_details) %></p>
@@ -19,7 +19,7 @@
       </dl>
     </section>
 
-    <section class="mb-2">
+    <section class="mb-4">
       <header>
         <h3>Alert areas</h3>
         <p><%= link_to "Edit", wizard_path(:zone_selection) %></p>
@@ -31,7 +31,7 @@
       </ul>
     </section>
 
-    <section class="mb-2">
+    <section class="mb-4">
       <header>
         <h3>Selected time</h3>
         <p><%= link_to "Edit", wizard_path(:time_selection) %></p>

@@ -9,7 +9,7 @@
   background-color: color-mix(in srgb, var(--daqi-color) 15%, transparent);
 
   @media (min-width: variables.$mobile-breakpoint) {
-    margin: 1.5rem;
+    margin: 1rem;
   }
 
   &.daqi-label-low {

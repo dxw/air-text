@@ -2,7 +2,7 @@
 
 .site-footer {
   color: white;
-  padding: 2rem 1.5rem;
+  padding: 1rem;
   background-color: var(--main-colour-700);
 
   .footer-content {
@@ -46,7 +46,7 @@
   }
 
   .terms-and-conditions {
-    margin: 1rem 0;
+    margin-top: 1rem;
     font-size: 0; /* Remove whitespace between inline-block elements */
 
     @media (min-width: variables.$mobile-breakpoint) {

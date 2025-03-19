@@ -1,20 +1,20 @@
 <%= render 'form_step' do |f| %>
   <h3 class="h3">A few final questions</h3>
 
-  <div class="mb-2">
+  <div class="mb-4">
     <%= f.label :reason, "Why are you signing up for airTEXT alerts?" %>
     <%= f.collection_select :reason, SubscriptionForm::REASONS, :first, :second, prompt: "Select..." %>
   </div>
 
-  <div class="mb-2">
+  <div class="mb-4">
     <%= f.label :source, "How did you hear about airTEXT?" %>
     <%= f.collection_select :source, SubscriptionForm::SOURCES, :first, :second, prompt: "Select..." %>
   </div>
 
-  <div class="mb-2">
+  <div class="mb-4">
     <%= f.label :research, "May we contact you in the future for research purposes?" %>
     <%= f.collection_radio_buttons :research, [["Yes, I’m ok to collaborate", true], ["No, thank you", false]], :last, :first do |b| %>
-      <div class="radio-wrapper">
+      <div class="radio-wrapper mb-2">
         <%= b.radio_button %>
         <%= b.label %>
       </div>

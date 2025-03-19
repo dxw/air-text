@@ -80,6 +80,7 @@
       .row {
         display: grid;
         grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        margin: 0 1rem;
 
         @media (max-width: variables.$mobile-breakpoint) {
           grid-template-columns: 1fr 1fr 1fr;
