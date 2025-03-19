@@ -3,6 +3,10 @@
 .site-header {
   background-color: var(--main-colour-700);
 
+  &:has(.menu-open) {
+    height: 100vh;
+  }
+
   .header-content {
     max-width: var(--max-width);
     margin: 0 auto;
