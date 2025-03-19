@@ -64,6 +64,8 @@
         }
 
         svg {
+          width: 100%;
+
           #triangle {
             fill: var(--triangle-fill);
             stroke: var(--triangle-stroke);
@@ -238,6 +240,7 @@
         .guidance {
           margin-top: 0.5rem;
           padding: 1rem;
+          background: var(--grey-100);
         }
       }
     }
