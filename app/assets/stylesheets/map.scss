@@ -104,6 +104,7 @@
 .leaflet-top:has(.leaflet-ctrl-geocoder) {
   .leaflet-ctrl-geocoder {
     max-width: 100%;
+    z-index: 10;
 
     form {
       max-width: 100%;
@@ -112,6 +113,10 @@
         height: 30px;
       }
     }
+  }
+
+  .leaflet-control-locate {
+    z-index: 9;
   }
 }
 
