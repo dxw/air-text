@@ -4,7 +4,7 @@
   <p>Anyone experiencing symptoms should follow the guidance provided below.</p>
 
   <div class="scale-guide">
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>Low</h3>
         <span class="daqi-level-1">1</span>
@@ -14,7 +14,7 @@
       <%= render(HealthGuidanceComponent.new(:air_pollution, :low)) %>
     </section>
 
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>Moderate</h3>
         <span class="daqi-level-4">4</span>
@@ -24,7 +24,7 @@
       <%= render(HealthGuidanceComponent.new(:air_pollution, :moderate)) %>
     </section>
 
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>High</h3>
         <span class="daqi-level-7">7</span>
@@ -34,7 +34,7 @@
       <%= render(HealthGuidanceComponent.new(:air_pollution, :high)) %>
     </section>
 
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>Very high</h3>
         <span class="daqi-level-10">10</span>

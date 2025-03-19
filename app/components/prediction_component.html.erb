@@ -5,7 +5,7 @@
   </dl>
   <% if guidance_visible? %>
   <div class="guidance">
-    <%= render(HealthGuidanceComponent.new(css_name.to_sym, level_label.parameterize(separator: "_").to_sym, classes: ["mb-2"])) %>
+    <%= render(HealthGuidanceComponent.new(css_name.to_sym, level_label.parameterize(separator: "_").to_sym, classes: ["mb-3"])) %>
   </div>
   <% end %>
 </div>

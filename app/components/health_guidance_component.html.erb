@@ -2,7 +2,7 @@
 <% @guidance_blocks.each do |guidance| %>
   <div class="guidance-block <%= @classes.join %>">
     <% if guidance[:icons].any? %>
-      <div class="guidance-icons">
+      <div class="guidance-icons mb-1">
         <% guidance[:icons].each do |icon| %>
           <%= helpers.render_svg "pictograms/#{icon}" %>
         <% end %>

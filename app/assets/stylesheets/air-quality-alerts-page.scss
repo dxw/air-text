@@ -16,7 +16,8 @@
 
   .details-wrapper {
     @media (max-width: variables.$mobile-breakpoint) {
-      margin: 0 -1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
     }
   }
 
