@@ -37,6 +37,13 @@
         background: var(--grey-50);
       }
 
+      .day,
+      .date {
+        @media (min-width: variables.$mobile-breakpoint) {
+          display: inline-block;
+        }
+      }
+
       .daqi-indicator {
         width: 1.5rem;
         height: 1.5rem;
