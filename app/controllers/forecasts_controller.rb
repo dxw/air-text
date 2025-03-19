@@ -11,6 +11,8 @@ class ForecastsController < ApplicationController
     @map_lon = params.fetch("lon", nil)
     @map_zoom = params.fetch("zoom", nil)
 
+    @hide_alert_banner = true
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -36,6 +38,8 @@ class ForecastsController < ApplicationController
     @alerts.each do |zone_group, alerts|
       alerts.sort_by! { |alert| [-alert.zone.cerc_type, alert.zone.name] }
     end
+
+    @hide_alert_banner = true
   end
 
   def pollutant_forecasts
