@@ -111,6 +111,7 @@ hr {
     padding: 1rem;
     float: right;
     font-size: 1rem;
+    color: var(--primary-text-color);
 
     @media (min-width: variables.$mobile-breakpoint) {
       display: none;

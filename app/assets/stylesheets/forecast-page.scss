@@ -20,6 +20,7 @@
       cursor: pointer;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
       background-color: white;
+      color: var(--primary-text-color);
 
       &.active {
         border-color: var(--grey-400);
