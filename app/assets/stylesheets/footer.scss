@@ -27,6 +27,22 @@
       font-size: 1.25rem;
       align-items: flex-start;
 
+      li {
+        a {
+          padding: 0.5rem 1rem;
+          display: block;
+
+          &:hover {
+            background-color: var(--main-colour-800);
+          }
+
+          &.active {
+            font-weight: bold;
+            text-decoration: underline;
+          }
+        }
+      }
+
       @media (max-width: variables.$mobile-breakpoint) {
         li {
           margin-left: -1rem;
