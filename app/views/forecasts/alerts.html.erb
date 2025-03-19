@@ -6,6 +6,10 @@
     <p>The list below show all of the air pollution alerts fot the next three days.</p>
     <p>If an area is not shown below, the air pollution is expected to be low for that region for all three days.</p>
     <p>See the <%= link_to "health advice", health_advice_path %> page to learn more about how the expected pollution levels might affect your health.</p>
+
+    <div class="mb-2 mobile-only">
+      <%= link_to("Sign up for air quality alerts", subscriptions_path, class: "primary-cta my-4") %>
+    </div>
   </div>
 
   <div class="details-wrapper">
@@ -59,8 +63,8 @@
     <% end %>
   </div>
 
-  <div class="mt-2">
-    <%= render "shared/back_to_top" %>
+  <div class="mb-2 mobile-only">
+    <%= link_to("Learn more about health information", health_advice_path, class: "secondary-cta my-4") %>
   </div>
 </article>
 
