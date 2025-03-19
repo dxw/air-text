@@ -107,6 +107,10 @@ export default class MapController extends Controller {
   }
 
   updateForecastZone(coordinatesLatLng) {
+    if (!coordinatesLatLng) {
+      return;
+    }
+
     const coordinatesLngLat = [coordinatesLatLng[1], coordinatesLatLng[0]];
     const zones = this.findZones(coordinatesLngLat);
     let zone;
