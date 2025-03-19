@@ -1,8 +1,8 @@
 <% content_for :title, 'Air pollution alerts' %>
 
-<article class="p-2">
-  <div class="text-block mb-4">
-    <h1 class="mb-2">Air pollution alerts for Greater London and the South East</h1>
+<article>
+  <div class="text-block px-3 mb-4">
+    <h1 class="mt-3 mb-2">Air pollution alerts for Greater London and the South East</h1>
     <p>The list below show all of the air pollution alerts fot the next three days.</p>
     <p>If an area is not shown below, the air pollution is expected to be low for that region for all three days.</p>
     <p>See the <%= link_to "health advice", health_advice_path %> page to learn more about how the expected pollution levels might affect your health.</p>
@@ -14,7 +14,7 @@
 
   <div class="details-wrapper pb-2">
     <%  ZoneGroup.all.order(:order).each do |group| %>
-    <details class="zone-region-group">
+    <details class="zone-region-group px-3">
       <summary class="p-2">
         <h2><%= group.name %></h4>
         <%= content_tag :p, group.description, class: "mt-1" if group.description.present? %>
@@ -63,7 +63,7 @@
     <% end %>
   </div>
 
-  <div class="mobile-only my-4">
+  <div class="mobile-only my-4 px-3">
     <%= link_to("Learn more about health information", health_advice_path, class: "secondary-cta") %>
   </div>
 </article>
