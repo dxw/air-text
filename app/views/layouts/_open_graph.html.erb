@@ -2,7 +2,7 @@
 title = CGI.unescapeHTML([yield(:title).presence, 'airTEXT'].compact.join(' - '))
 domain = 'air-text.info'
 description = yield(:description).presence || "airTEXT is a free service for the public providing air quality alerts by text, email and voicemail and 3-day forecasts of air quality, pollen, UV and temperature."
-image = yield(:image).presence
+image = yield(:image).presence || image_url('open-graph-image.png')
 url = url_for(only_path: false)
 %>
 
