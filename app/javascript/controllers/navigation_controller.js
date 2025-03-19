@@ -6,5 +6,7 @@ export default class NavigationController extends Controller {
   toggleMenu() {
     this.menuListTarget.classList.toggle("menu-open");
     this.menuButtonTarget.classList.toggle("menu-open");
+    this.menuButtonTarget.textContent =
+      this.menuButtonTarget.textContent === "Menu" ? "Close" : "Menu";
   }
 }
