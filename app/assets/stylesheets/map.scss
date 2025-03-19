@@ -114,3 +114,13 @@
     }
   }
 }
+
+// Search result marker
+.leaflet-marker-icon.leaflet-zoom-animated {
+  svg {
+    path {
+      fill: black !important;
+      stroke: white !important;
+    }
+  }
+}
