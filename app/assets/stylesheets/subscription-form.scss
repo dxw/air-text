@@ -47,6 +47,7 @@
       margin: 0 0.5rem 0 0;
       position: relative;
       top: 1px;
+      transform: scale(1.5);
     }
 
     .radio-wrapper {
@@ -95,6 +96,7 @@
         height: calc(var(--switch-height) + var(--offset));
         border-radius: 9999px;
         border: 1px solid var(--main-colour-700);
+        transform: none;
 
         &:checked {
           background-color: var(--main-colour-700);
