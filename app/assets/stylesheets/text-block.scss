@@ -78,7 +78,10 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
 
+  p,
+  li {
     a {
       @extend %a;
     }
@@ -119,6 +122,10 @@
       padding: 0.5rem 0;
       border-bottom: 1px solid var(--grey-200);
     }
+  }
+
+  address {
+    margin-bottom: 0.75rem;
   }
 }
 
