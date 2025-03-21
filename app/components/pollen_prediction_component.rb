@@ -5,6 +5,10 @@ class PollenPredictionComponent < PredictionComponent
     "Pollen"
   end
 
+  def sentence_name
+    "pollen"
+  end
+
   def level_label
     case @value
     when -999

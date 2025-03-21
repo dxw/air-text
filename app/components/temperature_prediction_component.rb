@@ -5,6 +5,10 @@ class TemperaturePredictionComponent < PredictionComponent
     "Temperature"
   end
 
+  def sentence_name
+    "temperature"
+  end
+
   def display_value
     "#{values[:min_c].round}&nbsp;to&nbsp;#{values[:max_c].round}°C / #{values[:min_f].round}&nbsp;to&nbsp;#{values[:max_f].round}°F"
   end
