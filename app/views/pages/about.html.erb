@@ -1,10 +1,11 @@
 <% content_for :title, 'About' %>
 
-<article class="text-block px-3">
-  <h1 class="mb-2 mt-3">About airTEXT</h1>
+<article class="text-block p-3">
+  <h1>About airTEXT</h1>
   <p>airTEXT is a free service for the public providing air pollution alerts by email, text message, and voicemail and 3-day forecasts of air quality, pollen, UV and temperature across Greater London. airTEXT is an independent service, operated by <%= link_to "Cambridge Environmental Research Consultants (CERC) Ltd", "https://www.cerc.co.uk/", target: "_blank" %> in partnership with a consortium made up of representatives from all the member local authorities, the GLA, UK Health Security Agency and the Environment Agency. The airTEXT Consortium is chaired by Islington Council.</p>
   <p>airTEXT air quality maps at 10m resolution are created using CERC's world-leading urban air quality dispersion modelling system <%= link_to "ADMS-Urban", "https://www.cerc.co.uk/ADMS-urban", target: "_blank" %>.</p>
   <p>Member local authorities pay a small annual subscription to be part of the service. The maintenance and development of the core airTEXT service is funded jointly by CERC and research projects in which CERC is involved. Grants from national and local government have contributed to airTEXT service developments in the past. airTEXT works in partnership with the GLA from time to time, for example on the Mayor of London's <%= link_to "public notifications", "https://www.london.gov.uk/press-releases/mayoral/air-quality-alerts-warn-londoners-about-pollution", target: "_blank" %> during high pollution episodes.</p>
+
   <h2>Partners</h2>
   <p>The airTEXT consortium consists of London boroughs, Slough Borough Council, 4 Essex councils, 6 Surrey councils, the Greater London Authority, the Environment Agency and the UK Health Security Agency.</p>
   <h3>Islington Council</h3>
@@ -19,7 +20,8 @@
   <p>The <%= link_to "Department for Environment, Food and Rural Affairs", "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs", target: "_blank" %> has provided support through air quality grants to member councils. Grants to Islington and Hackney in 2012 funded the development of the daily bulletins for each borough. A grant to Southwark and Lambeth Council in 2022 funded the re-development of the operational system using cloud technology and the development of web APIs for integrating airTEXT data in other apps and services.</p>
   <h3>European Space Agency</h3>
   <p><%= link_to "ESA", "https://www.esa.int/", target: "_blank" %> supported the initial development of airTEXT through the <%= link_to "PROMOTE", "https://www.esa.int/Our_Activities/Space_Engineering_Technology/Space_for_health/Air_quality_and_pollution", target: "_blank" %> projects.</p>
-  <div class="my-3">
+
+  <div class="mt-3">
     <%= render "shared/back_to_top" %>
   </div>
 </article>

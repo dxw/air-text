@@ -1,6 +1,6 @@
 <%= render 'form_step' do |f| %>
   <div class="text-block">
-    <h3 class="mb-2">Verify your mobile number for SMS messages</h3>
+    <h3>Verify your mobile number for SMS messages</h3>
     <p>A code has been sent to <b><%= @form.sms_number %></b>.</p>
   </div>
   <%= f.label :verification_code_sms_number, "Verification code", class: "sr-only" %>
