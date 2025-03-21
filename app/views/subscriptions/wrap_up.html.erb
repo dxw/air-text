@@ -25,7 +25,7 @@
 
   <div class="mb-2 checkbox-wrapper">
     <%= f.check_box :terms %>
-    <%= f.label :terms, "I have read and I agree to the #{link_to "terms and conditions", terms_and_conditions_path, class: "a"}".html_safe %>
+    <%= f.label :terms, "I have read and I agree to the #{link_to "terms and conditions", terms_and_conditions_path, class: "a", data: { "turbo-frame": :_top }}".html_safe %>
   </div>
 
   <div class="mb-6 checkbox-wrapper">
