@@ -1,6 +1,8 @@
 <%= render 'form_step' do |f| %>
-  <h3 class="h3 mb-2">Verify your phone number for voicemail messages</h3>
-  <p class="mb-2">A code has been sent to your voicemail for <b><%= @form.voice_number %></b>.</p>
+  <div class="text-block">
+    <h3 class="mb-2">Verify your phone number for voicemail messages</h3>
+    <p>A code has been sent to your voicemail for <b><%= @form.voice_number %></b>.</p>
+  </div>
   <%= f.label :verification_code_voice_number, "Verification code", class: "sr-only" %>
   <div class="mb-2 verification-code">
     <% 6.times do |i| %>

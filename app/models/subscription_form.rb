@@ -59,8 +59,8 @@ class SubscriptionForm
   validates :privacy, acceptance: {message: "You must agree to the privacy policy"}, if: -> { after_step?("wrap_up") }
 
   TIMES = {
-    "AM" => {label: "Morning – 6am", hint: "Morning option is for receiving the current day's forecast."},
-    "PM" => {label: "Evening – 6pm", hint: "Evening option is for receiving the next day's forecast."}
+    "AM" => {label: "Morning: 7am", hint: "Alert for the current day (email, text and voicemail)"},
+    "PM" => {label: "Evening: 7pm", hint: "Alert for the next day (text and voicemail)"}
   }
 
   REASONS = {

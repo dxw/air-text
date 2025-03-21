@@ -1,18 +1,17 @@
 
   <%= render 'form_step' do |f| %>
   <div class="text-block" id="confirmation-page">
-    <h2 class="mb-4">Subscription Confirmation</h2>
-    <p>You will receive alerts for the following channels and areas:</p>
+    <h2 class="mb-4">Your air pollution alert preferences </h2>
 
     <section class="mb-4">
       <header>
-        <h3>Channels</h3>
+        <h3>How you get your alerts</h3>
         <p><%= link_to "Edit", wizard_path(:contact_details) %></p>
       </header>
       <dl>
         <dt>Email</dt>
         <dd><%= @form.email.presence || "Not selected" %></dd>
-        <dt>Text</dt>
+        <dt>Text message</dt>
         <dd><%= @form.sms_number.presence || "Not selected" %></dd>
         <dt>Voicemail</dt>
         <dd><%= @form.voice_number.presence || "Not selected" %></dd>
@@ -21,7 +20,7 @@
 
     <section class="mb-4">
       <header>
-        <h3>Alert areas</h3>
+        <h3>Your chosen areas</h3>
         <p><%= link_to "Edit", wizard_path(:zone_selection) %></p>
       </header>
       <ul class="list">
@@ -33,7 +32,7 @@
 
     <section class="mb-4">
       <header>
-        <h3>Selected time</h3>
+        <h3>When you get your alerts</h3>
         <p><%= link_to "Edit", wizard_path(:time_selection) %></p>
       </header>
       <ul class="list">

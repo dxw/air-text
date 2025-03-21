@@ -14,7 +14,7 @@ RSpec.feature "Air quality alerts page" do
 
       it "should display a message" do
         visit alerts_path
-        expect(page).to have_content "No air pollution alerts"
+        expect(page).to have_content "No alerts forecast for this area within the next 3 days."
       end
 
       it "is accessible", js: true do

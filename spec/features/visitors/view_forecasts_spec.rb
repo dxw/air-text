@@ -52,7 +52,7 @@ RSpec.feature "Forecasts page" do
         visit forecast_path
 
         # See the forecasts page
-        expect(page).to have_content("Air quality forecast")
+        expect(page).to have_content("Air pollution forecast")
 
         # Today tab is active
         expect(page).to have_css("#{tab_selector_today}.active")

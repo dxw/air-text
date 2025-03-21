@@ -140,6 +140,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def redirect_to_finish_wizard(options = {}, params = {})
-    redirect_to forecast_path, notice: "You have successfully subscribed to air pollution alerts"
+    redirect_to forecast_path, notice: "You are now subscribed to receive air pollution alerts."
   end
 end
