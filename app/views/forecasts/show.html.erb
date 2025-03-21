@@ -28,6 +28,17 @@
 <%= render "shared/health_advice" %>
 <%= render "how_forecasts_are_made" %>
 
+<div id="info-block" class="multi-block">
+  <section>
+    <h2 class="h3 mt-0 mb-2">Get free air pollution alerts for where you live, work, travel, and more – choose up to five areas.</h2>
+    <%= link_to "Sign up for free alerts", subscriptions_path, class: "a" %>
+  </section>
+  <section>
+    <h2 class="h3 mt-0 mb-2">Follow the health guidance to reduce the effects of air pollution, pollen, extreme weather, and UV. </h2>
+    <%= link_to "Get health guidance", health_advice_path, class: "a" %>
+  </section>
+</div>
+
 <div id="daqi-scale-info" class="mobile-flyout">
   <%= button_tag("Close", class: "close", data: { action: "click->map#closeDaqiScaleFlyout", controller: "map" }) %>
   <%= render "daqi_scale_guide" %>

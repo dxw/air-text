@@ -76,6 +76,26 @@ hr {
   }
 }
 
+.multi-block {
+  background-color: var(--main-colour-300);
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+
+  @media (min-width: variables.$mobile-breakpoint) {
+    border-radius: var(--border-radius);
+  }
+
+  section {
+    border-right: 1px solid var(--grey-400);
+    padding: 1rem;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
 .mobile-only {
   @media (min-width: variables.$mobile-breakpoint) {
     display: none;
