@@ -140,7 +140,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
-    csv (3.3.0)
+    csv (3.3.3)
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
@@ -185,7 +185,7 @@ GEM
     high_voltage (4.0.0)
     htmlbeautifier (1.4.3)
     http_parser.rb (0.6.0)
-    httparty (0.22.0)
+    httparty (0.23.1)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
