@@ -184,7 +184,7 @@ GEM
     hashdiff (1.1.2)
     high_voltage (4.0.0)
     htmlbeautifier (1.4.3)
-    http_parser.rb (0.6.0)
+    http_parser.rb (0.8.0)
     httparty (0.23.1)
       csv
       mini_mime (>= 1.0.0)
@@ -268,13 +268,13 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puffing-billy (4.0.0)
+    puffing-billy (4.0.1)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
       eventmachine (~> 1.2)
       eventmachine_httpserver
-      http_parser.rb (~> 0.6.0)
+      http_parser.rb (~> 0.8.0)
       multi_json
     puma (6.6.0)
       nio4r (~> 2.0)
