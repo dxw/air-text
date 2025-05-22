@@ -6,20 +6,211 @@
   <p>airTEXT air quality maps at 10m resolution are created using CERC's world-leading urban air quality dispersion modelling system <%= link_to "ADMS-Urban", "https://www.cerc.co.uk/ADMS-urban", target: "_blank" %>.</p>
   <p>Member local authorities pay a small annual subscription to be part of the service. The maintenance and development of the core airTEXT service is funded jointly by CERC and research projects in which CERC is involved. Grants from national and local government have contributed to airTEXT service developments in the past. airTEXT works in partnership with the GLA from time to time, for example on the Mayor of London's <%= link_to "public notifications", "https://www.london.gov.uk/press-releases/mayoral/air-quality-alerts-warn-londoners-about-pollution", target: "_blank" %> during high pollution episodes.</p>
 
-  <h2>Partners</h2>
-  <p>The airTEXT consortium consists of London boroughs, Slough Borough Council, 4 Essex councils, 6 Surrey councils, the Greater London Authority, the Environment Agency and the UK Health Security Agency.</p>
-  <h3>Islington Council</h3>
-  <p><%= link_to "Islington Council", "https://www.islington.gov.uk/", target: "_blank" %> currently leads the airTEXT consortium.</p>
-  <h3>Cambridge:</h3>
+  <p>The airTEXT consortium consists of London boroughs, Slough Borough Council, 4 Essex councils, 6 Surrey councils, the Greater London Authority, the Environment Agency and the UK Health Security Agency. <%= link_to "Islington Council", "https://www.islington.gov.uk/", target: "_blank" %> currently leads the airTEXT consortium.</p>
+
+  <ul class="consortium-list">
+  <%
+    [
+      {
+        name: "Barnet",
+        website: "https://barnet.gov.uk"
+      },
+      {
+        name: "Barking and Dagenham",
+        website: "https://lbbd.gov.uk"
+      },
+      {
+        name: "Bexley",
+        website: "https://bexley.gov.uk"
+      },
+      {
+        name: "Brent",
+        website: "https://brent.gov.uk"
+      },
+      {
+        name: "Bromley",
+        website: "https://bromley.gov.uk"
+      },
+      {
+        name: "Camden",
+        website: "https://camden.gov.uk"
+      },
+      {
+        name: "Chelmsford",
+        website: "https://chelmsford.gov.uk"
+      },
+      {
+        name: "City of London",
+        website: "https://cityoflondon.gov.uk"
+      },
+      {
+        name: "City of Westminster",
+        website: "https://westminster.gov.uk"
+      },
+      {
+        name: "Colchester",
+        website: "https://colchester.gov.uk"
+      },
+      {
+        name: "Croydon",
+        website: "https://croydon.gov.uk"
+      },
+      {
+        name: "Ealing",
+        website: "https://ealing.gov.uk"
+      },
+      {
+        name: "Elmbridge",
+        website: "https://elmbridge.gov.uk"
+      },
+      {
+        name: "Enfield",
+        website: "https://enfield.gov.uk"
+      },
+      {
+        name: "Greenwich (Royal Borough of Greenwich)",
+        website: "https://royalgreenwich.gov.uk"
+      },
+      {
+        name: "Hackney",
+        website: "https://hackney.gov.uk"
+      },
+      {
+        name: "Hammersmith and Fulham",
+        website: "https://lbhf.gov.uk"
+      },
+      {
+        name: "Haringey",
+        website: "https://haringey.gov.uk"
+      },
+      {
+        name: "Harrow",
+        website: "https://harrow.gov.uk"
+      },
+      {
+        name: "Havering",
+        website: "https://havering.gov.uk"
+      },
+      {
+        name: "Hillingdon",
+        website: "https://hillingdon.gov.uk"
+      },
+      {
+        name: "Hounslow",
+        website: "https://hounslow.gov.uk"
+      },
+      {
+        name: "Islington",
+        website: "https://islington.gov.uk"
+      },
+      {
+        name: "Kensington and Chelsea",
+        website: "https://rbkc.gov.uk"
+      },
+      {
+        name: "Kingston upon Thames",
+        website: "https://kingston.gov.uk"
+      },
+      {
+        name: "Lambeth",
+        website: "https://lambeth.gov.uk"
+      },
+      {
+        name: "Lewisham",
+        website: "https://lewisham.gov.uk"
+      },
+      {
+        name: "Maldon",
+        website: "https://maldon.gov.uk"
+      },
+      {
+        name: "Merton",
+        website: "https://merton.gov.uk"
+      },
+      {
+        name: "Mole Valley",
+        website: "https://molevalley.gov.uk"
+      },
+      {
+        name: "Newham",
+        website: "https://newham.gov.uk"
+      },
+      {
+        name: "Redbridge",
+        website: "https://redbridge.gov.uk"
+      },
+      {
+        name: "Reigate and Banstead",
+        website: "https://reigate-banstead.gov.uk"
+      },
+      {
+        name: "Richmond upon Thames",
+        website: "https://richmond.gov.uk"
+      },
+      {
+        name: "Runnymede",
+        website: "https://runnymede.gov.uk"
+      },
+      {
+        name: "Slough",
+        website: "https://slough.gov.uk"
+      },
+      {
+        name: "Southwark",
+        website: "https://southwark.gov.uk"
+      },
+      {
+        name: "Spelthorne",
+        website: "https://spelthorne.gov.uk"
+      },
+      {
+        name: "Sutton",
+        website: "https://sutton.gov.uk"
+      },
+      {
+        name: "Tandridge",
+        website: "https://tandridge.gov.uk"
+      },
+      {
+        name: "Thurrock",
+        website: "https://thurrock.gov.uk"
+      },
+      {
+        name: "Tower Hamlets",
+        website: "https://towerhamlets.gov.uk"
+      },
+      {
+        name: "Waltham Forest",
+        website: "https://walthamforest.gov.uk"
+      },
+      {
+        name: "Wandsworth",
+        website: "https://wandsworth.gov.uk"
+      },
+      {
+        name: "Greater London Authority",
+        website: "https://london.gov.uk"
+      },
+      {
+        name: "Environment Agency",
+        website: "https://gov.uk/government/organisations/environment-agency"
+      },
+      {
+        name: "UK Health Security Agency",
+        website: "https://www.gov.uk/government/organisations/uk-health-security-agency"
+      }
+    ].each do |member| %>
+      <li>
+        <%= link_to member[:name], member[:website], target: "_blank" %>
+      </li>
+    <% end %>
+  </ul>
+
   <p>Additional forecasts are provided for Cambridge although the council is not a member of the airTEXT consortium.</p>
-  <h3>CERC</h3>
   <p><%= link_to "CERC", "https://www.cerc.co.uk/", target: "_blank" %> develops and operates the airTEXT forecasting and alert system, which has operated across London since March 2007.</p>
-  <h3>European Commission</h3>
   <p>CERC has been a partner in a number of EU-funded projects which have contributed to the development of airTEXT, including PASODOBLE and the series of MACC projects. CERC is a member of the team delivering the EU's <%= link_to "Copernicus Atmospheric Monitoring Service (CAMS)", "https://atmosphere.copernicus.eu/", target: "_blank" %>. CERC is part of the sub-team facilitating user interaction.</p>
-  <h3>Defra</h3>
   <p>The <%= link_to "Department for Environment, Food and Rural Affairs", "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs", target: "_blank" %> has provided support through air quality grants to member councils. Grants to Islington and Hackney in 2012 funded the development of the daily bulletins for each borough. A grant to Southwark and Lambeth Council in 2022 funded the re-development of the operational system using cloud technology and the development of web APIs for integrating airTEXT data in other apps and services.</p>
-  <h3>European Space Agency</h3>
-  <p><%= link_to "ESA", "https://www.esa.int/", target: "_blank" %> supported the initial development of airTEXT through the <%= link_to "PROMOTE", "https://www.esa.int/Our_Activities/Space_Engineering_Technology/Space_for_health/Air_quality_and_pollution", target: "_blank" %> projects.</p>
+  <p>The <%= link_to "European Space Agency", "https://www.esa.int/", target: "_blank" %> supported the initial development of airTEXT through the <%= link_to "PROMOTE", "https://www.esa.int/Our_Activities/Space_Engineering_Technology/Space_for_health/Air_quality_and_pollution", target: "_blank" %> projects.</p>
 
   <div class="mt-3">
     <%= render "shared/back_to_top" %>
