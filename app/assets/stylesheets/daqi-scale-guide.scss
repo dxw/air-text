@@ -47,16 +47,7 @@
     }
 
     .guidance-block {
-      display: flex;
-      gap: 1rem;
-
-      .guidance-icons {
-        flex: 0;
-      }
-
-      .guidance-text {
-        flex: 1;
-      }
+      margin-bottom: 1rem;
     }
   }
 }

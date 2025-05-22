@@ -13,7 +13,7 @@ RSpec.feature "Health advice page" do
   describe "Visit the health advice page" do
     it "should display the health advice page" do
       visit "health_advice"
-      expect(page).to have_content "Health advice"
+      expect(page).to have_content "Health guidance"
     end
 
     it "is accessible", js: true do
