@@ -13,11 +13,11 @@ class CercSubscriberApiClient
       request("subscriptions/#{subscriber_id}", :get)
     end
 
-    def create_subscription(zone:, mode:, ampm:, subscriber_id: nil, phone: nil, email: nil, subscriber_details: nil)
+    def create_subscription(zone:, medium:, ampm:, subscriber_id: nil, phone: nil, email: nil, subscriber_details: nil)
       query = {
         subscriberId: subscriber_id,
         zone: zone,
-        mode: mode,
+        mode: medium,
         phone: phone,
         email: email,
         ampm: ampm,
