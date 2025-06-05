@@ -20,10 +20,10 @@ RSpec.describe VerificationCode do
   end
 
   describe ".generate" do
-    it "creates a new verification code for the target that expires in 1 hour" do
+    it "creates a new verification code for the target that expires in 15 minutes" do
       expect { VerificationCode.generate("target") }.to change { VerificationCode.count }.by(1)
       expect(VerificationCode.last.target).to eq(VerificationCode.digest("target"))
-      expect(VerificationCode.last.expires_at).to be_within(1.second).of(1.hour.from_now)
+      expect(VerificationCode.last.expires_at).to be_within(1.second).of(15.minutes.from_now)
     end
   end
 

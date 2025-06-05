@@ -8,7 +8,7 @@ class VerificationCode < ApplicationRecord
       where(target: digest(target)).destroy_all
       create!({
         code: new_code,
-        expires_at: 1.hour.from_now,
+        expires_at: 15.minutes.from_now,
         target: digest(target)
       })
     end
