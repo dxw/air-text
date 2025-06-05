@@ -11,6 +11,7 @@ RSpec.feature "Subscribing to alerts", js: true do
 
   before do
     HttpStubs.stub_forecasts_api_with(forecasts)
+    HttpStubs.stub_send_verification_code
   end
 
   describe "Subscribing to alerts" do
@@ -164,11 +165,17 @@ RSpec.feature "Subscribing to alerts", js: true do
 
         context "when I request a new verification code" do
           it "sends a new verification code" do
-            allow(VerificationCode).to receive(:generate).and_call_original
+            allow(CercSubscriberApiClient).to receive(:send_verification_code).and_call_original
+
             click_on "resend the code"
 
             expect(page).to have_text("sent successfully")
-            expect(VerificationCode).to have_received(:generate).with(@subscription_form.email)
+            expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
+              medium: "email",
+              verification_code: match(/[A-Z0-9]{6}/),
+              email: @subscription_form.email,
+              phone: nil
+            )
           end
         end
 
@@ -228,11 +235,17 @@ RSpec.feature "Subscribing to alerts", js: true do
 
         context "when I request a new verification code" do
           it "sends a new verification code" do
-            allow(VerificationCode).to receive(:generate).and_call_original
+            allow(CercSubscriberApiClient).to receive(:send_verification_code).and_call_original
+
             click_on "resend the code"
 
             expect(page).to have_text("sent successfully")
-            expect(VerificationCode).to have_received(:generate).with(@subscription_form.sms_number)
+            expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
+              medium: "sms",
+              verification_code: match(/[A-Z0-9]{6}/),
+              email: nil,
+              phone: @subscription_form.sms_number
+            )
           end
         end
       end
@@ -282,11 +295,17 @@ RSpec.feature "Subscribing to alerts", js: true do
 
         context "when I request a new verification code" do
           it "sends a new verification code" do
-            allow(VerificationCode).to receive(:generate).and_call_original
+            allow(CercSubscriberApiClient).to receive(:send_verification_code).and_call_original
+
             click_on "resend the code"
 
             expect(page).to have_text("sent successfully")
-            expect(VerificationCode).to have_received(:generate).with(@subscription_form.voice_number)
+            expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
+              medium: "voice",
+              verification_code: match(/[A-Z0-9]{6}/),
+              email: nil,
+              phone: @subscription_form.voice_number
+            )
           end
         end
       end
