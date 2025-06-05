@@ -58,7 +58,7 @@ hr {
 }
 
 .alert {
-  padding: 1rem;
+  padding: 1.5rem;
   margin: 1.5rem;
 
   &.alert-success {
@@ -68,11 +68,31 @@ hr {
 
 .block {
   background-color: var(--main-colour-300);
-  padding: 2rem 1.5rem;
+  padding: 3rem;
   text-align: center;
 
   @media (min-width: variables.$mobile-breakpoint) {
     border-radius: var(--border-radius);
+  }
+}
+
+.multi-block {
+  background-color: var(--main-colour-300);
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+
+  @media (min-width: variables.$mobile-breakpoint) {
+    border-radius: var(--border-radius);
+  }
+
+  section {
+    border-right: 1px solid var(--grey-400);
+    padding: 1rem;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 
@@ -111,6 +131,7 @@ hr {
     padding: 1rem;
     float: right;
     font-size: 1rem;
+    color: var(--primary-text-color);
 
     @media (min-width: variables.$mobile-breakpoint) {
       display: none;

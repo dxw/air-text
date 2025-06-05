@@ -54,7 +54,7 @@ RSpec.describe PollenPredictionComponent, type: :component do
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".pollen .guidance.bg-moderate-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :moderate).first[:html]))
+          expect(page).to have_css(".pollen .guidance", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :moderate).first[:html]))
         end
       end
 
@@ -66,7 +66,7 @@ RSpec.describe PollenPredictionComponent, type: :component do
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".pollen .guidance.bg-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :high).first[:html]))
+          expect(page).to have_css(".pollen .guidance", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :high).first[:html]))
         end
       end
 
@@ -78,7 +78,7 @@ RSpec.describe PollenPredictionComponent, type: :component do
         end
 
         it "shows the prediction's guidance" do
-          expect(page).to have_css(".pollen .guidance.bg-very-high-alert-guidance-panel", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :very_high).first[:html]))
+          expect(page).to have_css(".pollen .guidance", text: ActionView::Base.full_sanitizer.sanitize(health_guidance(:pollen, :very_high).first[:html]))
         end
       end
     end

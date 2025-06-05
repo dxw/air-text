@@ -1,10 +1,10 @@
 <% content_for :title, 'Air pollution alert service' %>
 
-<div class="intro mb-2">
-  <div class="text-block p-2">
-    <h1 class="mb-2">Air pollution alert service subscription</h1>
-    <p>Receive alerts by email, text, or voicemail when pollution levels are forecasted to be moderate, high, or very high.</p>
-    <p>You can select up to five areas to receive alerts for, and you can unsubscribe from the service at any time.</p>
+<div class="intro">
+  <div class="text-block p-3">
+    <h1>Air pollution alert service</h1>
+    <p>Receive free alerts when air pollution levels are forecast to be moderate, high, or very high.</p>
+    <p>Use the alerts to plan your clothing, medication, routes and outdoor activities.</p>
   </div>
 
   <aside class="desktop-only mt-3 mr-3">
@@ -12,11 +12,11 @@
   </aside>
 </div>
 
-<hr class="mx-2">
+<hr class="mx-3">
 
 <turbo-frame id="form-frame" data-controller="subscription">
-  <div class="form-content p-2">
-    <div class="progress-bar my-2">
+  <div class="form-content p-3">
+    <div class="progress-bar">
       <% 4.times do |i| %>
         <span class="<%= i <= @step_group ? "completed" : "" %>"></span>
       <% end %>
@@ -37,7 +37,7 @@
 
       <%= yield f if block_given? %>
 
-      <div class="buttons">
+      <div class="buttons mt-4 mb-2">
         <% if @first_step %>
           <div></div>
         <% else %>

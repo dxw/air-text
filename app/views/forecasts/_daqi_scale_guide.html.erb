@@ -1,10 +1,11 @@
-<article class="text-block p-2">
-  <h2 class="mb-2">Air pollution index and health advice</h2>
-  <p>Adults and children with heart or lung problems are at greater risk of symptoms. Follow your doctor's usual advice about exercising and managing your condition.</p>
-  <p>Anyone experiencing symptoms should follow the guidance provided below.</p>
+<article class="text-block p-4">
+  <h2>Air pollution index and health guidance</h2>
+  <p>Air pollution affects all of us, but it can have a bigger effect on the health of people in some groups. This at-risk group includes older people, children, pregnant people, those with cardio (heart) and respiratory (lung) conditions.</p>
+  <p>Adults and children with heart or lung conditions are at greater risk of symptoms. Follow your doctor's usual advice about exercising and managing your conditions.</p>
+  <p>Anyone experiencing symptoms should follow the guidance provided.</p>
 
   <div class="scale-guide">
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>Low</h3>
         <span class="daqi-level-1">1</span>
@@ -14,7 +15,7 @@
       <%= render(HealthGuidanceComponent.new(:air_pollution, :low)) %>
     </section>
 
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>Moderate</h3>
         <span class="daqi-level-4">4</span>
@@ -24,7 +25,7 @@
       <%= render(HealthGuidanceComponent.new(:air_pollution, :moderate)) %>
     </section>
 
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>High</h3>
         <span class="daqi-level-7">7</span>
@@ -34,7 +35,7 @@
       <%= render(HealthGuidanceComponent.new(:air_pollution, :high)) %>
     </section>
 
-    <section>
+    <section class="mb-2">
       <div class="scale daqi-scale">
         <h3>Very high</h3>
         <span class="daqi-level-10">10</span>
@@ -43,5 +44,5 @@
     </section>
   </div>
 
-  <%= link_to("Learn more about health information", health_advice_path, class: "secondary-cta mt-4") %>
+  <%= link_to("Get more health guidance", health_advice_path, class: "secondary-cta mt-4") %>
 </article>

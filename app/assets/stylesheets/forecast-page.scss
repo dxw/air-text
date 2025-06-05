@@ -20,6 +20,7 @@
       cursor: pointer;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
       background-color: white;
+      color: var(--primary-text-color);
 
       &.active {
         border-color: var(--grey-400);
@@ -34,6 +35,13 @@
         border-bottom: 0;
         color: var(--grey-400);
         background: var(--grey-50);
+      }
+
+      .day,
+      .date {
+        @media (min-width: variables.$mobile-breakpoint) {
+          display: inline-block;
+        }
       }
 
       .daqi-indicator {
@@ -63,6 +71,8 @@
         }
 
         svg {
+          width: 100%;
+
           #triangle {
             fill: var(--triangle-fill);
             stroke: var(--triangle-stroke);
@@ -85,7 +95,7 @@
   }
 
   .tab-contents {
-    padding: 0.5rem;
+    padding: 1rem;
     border: 1px solid var(--grey-400);
     border-top: 0;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
@@ -93,7 +103,6 @@
     .alert-guidance {
       background-color: color-mix(in srgb, var(--daqi-color) 15%, transparent);
       color: var(--primary-text-color);
-      font-size: 0.75rem;
 
       .forecast-timestamp {
         text-align: left;
@@ -134,7 +143,7 @@
             align-items: center;
             font-size: 75%;
             background-color: var(--main-colour-200);
-            padding: 2px;
+            padding: 2px 4px;
             border-bottom: 0.5px solid black;
           }
 
@@ -196,14 +205,12 @@
     }
 
     .explanatory-link {
-      font-size: 75%;
       text-align: right;
     }
 
     .pollution-index-notice {
       padding: 1rem;
       background-color: var(--main-colour-200);
-      font-size: 0.75rem;
     }
 
     .predictions {
@@ -212,7 +219,6 @@
       }
 
       .prediction {
-        font-size: 0.875rem;
         border-top: 1px solid var(--grey-200);
 
         &:last-child {
@@ -225,18 +231,18 @@
           justify-content: space-between;
 
           dt {
-            font-weight: bold;
+            font-weight: 600;
           }
 
           dd {
-            margin-left: 0;
             text-align: right;
           }
         }
 
         .guidance {
           margin-top: 0.5rem;
-          padding: 1rem;
+          padding: 1.5rem;
+          background: var(--grey-100);
         }
       }
     }
@@ -252,7 +258,7 @@
     @media (min-width: variables.$mobile-breakpoint) {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      grid-template-rows: auto auto auto 1fr;
+      grid-template-rows: auto auto auto auto 1fr;
 
       > h1 {
         grid-row: 1;
@@ -286,7 +292,11 @@
         grid-row: 2;
         grid-column: 2;
         border-radius: var(--border-radius);
-        margin-right: 1.5rem;
+        margin: 1.5rem 1.5rem 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
       }
 
       div#how-forecasts-are-made {
@@ -295,23 +305,36 @@
         margin: 1.5rem;
 
         details {
-          border: 1px solid var(--grey-100);
-          border-top: none;
-
           summary {
-            border-top: 1px solid var(--grey-400);
-            background: var(--grey-100);
+            border: 1px solid var(--grey-400);
+            border-width: 1px 0;
+          }
+
+          &[open] {
+            border: 1px solid var(--grey-100);
+            border-top: none;
+
+            summary {
+              border-bottom: none;
+            }
           }
         }
       }
 
+      div#info-block {
+        grid-row: 5;
+        grid-column: 1;
+        margin: 1.5rem;
+        margin-bottom: auto;
+      }
+
       div#daqi-scale-info {
-        grid-row: 3 / span 2;
+        grid-row: 3 / span 3;
         grid-column: 2;
         margin-right: 1.5rem;
         margin-top: calc(
-          1.2rem + 1rem
-        ); // 1.2 for the height of the heading, 1 for the margin
+          1.5rem + 2rem - 1px
+        ); // 1.5 for the height of the heading (1.25rem x 1.2), 2 for the margins, 1px nudge
 
         height: fit-content;
         margin-bottom: 1.5rem;

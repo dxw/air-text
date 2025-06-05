@@ -12,5 +12,14 @@
     aside {
       flex: 1;
     }
+
+    ul.consortium-list {
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
   }
 }

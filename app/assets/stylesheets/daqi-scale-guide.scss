@@ -1,4 +1,26 @@
 .scale-guide {
+  .headings {
+    display: flex;
+
+    span {
+      text-align: center;
+      padding: 1rem 0;
+      background: var(--grey-400);
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 100;
+    }
+
+    span:first-child {
+      flex: 2;
+      border-right: 2px solid white;
+    }
+
+    span:last-child {
+      flex: 3;
+    }
+  }
+
   section {
     display: flex;
     flex-direction: column;
@@ -8,11 +30,11 @@
       display: flex;
       border: 1px solid var(--grey-200);
       border-width: 1px 0;
-      margin-top: 1rem;
 
       h3 {
         padding: 0.5rem 0;
         flex: 2;
+        background: white;
       }
 
       span {
@@ -25,16 +47,7 @@
     }
 
     .guidance-block {
-      display: flex;
-      gap: 0.75rem;
-
-      .guidance-icons {
-        flex: 0;
-      }
-
-      .guidance-text {
-        flex: 1;
-      }
+      margin-bottom: 1rem;
     }
   }
 }

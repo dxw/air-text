@@ -39,3 +39,7 @@ Capybara.register_driver :chrome do |app|
   driver(app)
 end
 Capybara.javascript_driver = :chrome
+
+Capybara::Screenshot.register_driver(:chrome) do |driver, path|
+  driver.browser.save_screenshot(path)
+end

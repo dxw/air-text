@@ -2,7 +2,7 @@
 
 .site-footer {
   color: white;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   background-color: var(--main-colour-700);
 
   .footer-content {
@@ -27,6 +27,22 @@
       font-size: 1.25rem;
       align-items: flex-start;
 
+      li {
+        a {
+          padding: 0.5rem 1rem;
+          display: block;
+
+          &:hover {
+            background-color: var(--main-colour-800);
+          }
+
+          &.active {
+            font-weight: bold;
+            text-decoration: underline;
+          }
+        }
+      }
+
       @media (max-width: variables.$mobile-breakpoint) {
         li {
           margin-left: -1rem;
@@ -43,10 +59,14 @@
     @media (max-width: variables.$mobile-breakpoint) {
       display: none;
     }
+
+    svg {
+      max-height: 40px;
+    }
   }
 
   .terms-and-conditions {
-    margin: 1rem 0;
+    margin-top: 1rem;
     font-size: 0; /* Remove whitespace between inline-block elements */
 
     @media (min-width: variables.$mobile-breakpoint) {

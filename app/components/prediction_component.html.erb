@@ -1,11 +1,12 @@
 <div class="prediction <%= css_name %>">
   <dl class="summary">
     <dt class="name"><%= name %></dt>
-    <dd class="display-value"><%= display_value&.html_safe %></dd>
+    <dd class="display-value mr-2"><%= display_value&.html_safe %></dd>
   </dl>
   <% if guidance_visible? %>
-  <div class="guidance <%= guidance_panel_colour %>">
-    <%= render(HealthGuidanceComponent.new(css_name.to_sym, level_label.parameterize(separator: "_").to_sym, classes: ["mb-2"])) %>
+  <div class="guidance">
+    <%= render(HealthGuidanceComponent.new(css_name.to_sym, level_label.parameterize(separator: "_").to_sym, classes: ["mb-3"])) %>
+    <p><%= link_to "Learn more about the #{sentence_name} alert", health_advice_path, class: "a" %></p>
   </div>
   <% end %>
 </div>

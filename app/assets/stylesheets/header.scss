@@ -3,6 +3,10 @@
 .site-header {
   background-color: var(--main-colour-700);
 
+  &:has(.menu-open) {
+    height: 100vh;
+  }
+
   .header-content {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -11,7 +15,7 @@
   hr {
     border: none;
     border-top: 1px solid var(--grey-200);
-    width: 100vw;
+    width: 100%;
     position: absolute;
     left: 0;
   }
@@ -28,7 +32,7 @@
 
       svg {
         max-height: 40px;
-        width: auto;
+        width: 100%;
       }
     }
 
@@ -68,53 +72,59 @@
       }
     }
   }
-}
 
-nav {
-  color: white;
-  width: 100%;
+  nav {
+    color: white;
+    width: 100%;
+    position: relative; // This is needed to prevent the HR from overlapping the nav
 
-  ul {
-    margin: 0;
-    list-style: none;
-    display: none;
+    ul {
+      margin: 0;
+      list-style: none;
+      display: none;
 
-    @media (max-width: variables.$mobile-breakpoint) {
-      flex-direction: column;
-      padding: 1.5rem;
-      font-size: 1.25rem;
+      @media (max-width: variables.$mobile-breakpoint) {
+        flex-direction: column;
+        padding: 1.5rem 0;
+        font-size: 1.25rem;
 
-      &.menu-open {
+        &.menu-open {
+          display: flex;
+        }
+      }
+
+      @media (min-width: variables.$mobile-breakpoint) {
+        flex-direction: row;
+        padding: 0 1.5rem;
         display: flex;
-      }
-    }
-
-    @media (min-width: variables.$mobile-breakpoint) {
-      flex-direction: row;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      text-align: center;
-    }
-
-    li {
-      a {
-        padding: 1.25rem 1rem;
-        display: inline-block;
-
-        &:hover {
-          background-color: var(--main-colour-800);
-        }
-
-        &.active {
-          font-weight: bold;
-          text-decoration: underline;
-        }
+        align-items: center;
+        text-align: center;
       }
 
-      &:has(.active) {
-        @media (min-width: variables.$mobile-breakpoint) {
-          background-color: var(--main-colour-800);
+      li {
+        a {
+          padding: 1.25rem 2.5rem;
+          display: block;
+          font-weight: 500;
+
+          &:focus {
+            background-color: var(--main-colour-800);
+            border-color: var(--main-colour-highlight);
+            outline: 2px solid var(--main-colour-highlight);
+            color: white;
+          }
+
+          &:hover {
+            background-color: var(--main-colour-400);
+            color: black;
+          }
+
+          &.active {
+            font-weight: bold;
+            text-decoration: underline;
+            background-color: var(--main-colour-400);
+            color: black;
+          }
         }
       }
     }

@@ -1,20 +1,22 @@
 <%= render 'form_step' do |f| %>
-  <h3 class="h3">A few final questions</h3>
+  <div class="text-block">
+    <h3>Would you like to help us improve the airTEXT service?</h3>
+  </div>
 
-  <div class="mb-2">
+  <div class="mb-4">
     <%= f.label :reason, "Why are you signing up for airTEXT alerts?" %>
     <%= f.collection_select :reason, SubscriptionForm::REASONS, :first, :second, prompt: "Select..." %>
   </div>
 
-  <div class="mb-2">
-    <%= f.label :source, "How did you hear about airTEXT?" %>
+  <div class="mb-4">
+    <%= f.label :source, "How did you hear about the airTEXT service?" %>
     <%= f.collection_select :source, SubscriptionForm::SOURCES, :first, :second, prompt: "Select..." %>
   </div>
 
-  <div class="mb-2">
-    <%= f.label :research, "May we contact you in the future for research purposes?" %>
-    <%= f.collection_radio_buttons :research, [["Yes, I’m ok to collaborate", true], ["No, thank you", false]], :last, :first do |b| %>
-      <div class="radio-wrapper">
+  <div class="mb-4">
+    <%= f.label :research, "Are you happy to be contacted about your experience of airTEXT?" %>
+    <%= f.collection_radio_buttons :research, [["Yes", true], ["No", false]], :last, :first do |b| %>
+      <div class="radio-wrapper mb-2">
         <%= b.radio_button %>
         <%= b.label %>
       </div>
@@ -23,11 +25,11 @@
 
   <div class="mb-2 checkbox-wrapper">
     <%= f.check_box :terms %>
-    <%= f.label :terms, "I have read and agree to the #{link_to "terms and conditions", terms_and_conditions_path, class: "a"} of the airTEXT service".html_safe %>
+    <%= f.label :terms, "I have read and I agree to the #{link_to "terms and conditions", terms_and_conditions_path, class: "a", data: { "turbo-frame": :_top }}".html_safe %>
   </div>
 
   <div class="mb-6 checkbox-wrapper">
     <%= f.check_box :privacy %>
-    <%= f.label :privacy, "I have read and agree to the #{link_to "privacy policy", privacy_policy_path, class: "a"} of the airTEXT service".html_safe %>
+    <%= f.label :privacy, "I have read and I agree to the #{link_to "privacy policy", privacy_policy_path, class: "a", data: { "turbo-frame": :_top }}".html_safe %>
   </div>
 <% end %>

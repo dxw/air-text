@@ -1,17 +1,30 @@
 :root {
   --daqi-level-1-color: #64ee06;
+  --daqi-level-1-contrast: white;
   --daqi-level-1-5-color: #63d310;
+  --daqi-level-1-5-contrast: white;
   --daqi-level-2-color: #61b61a;
+  --daqi-level-2-contrast: white;
   --daqi-level-2-5-color: #61a323;
+  --daqi-level-2-5-contrast: white;
   --daqi-level-3-color: #388b2b;
+  --daqi-level-3-contrast: white;
   --daqi-level-3-5-color: #096b35;
+  --daqi-level-3-5-contrast: white;
   --daqi-level-4-color: #fbff00;
+  --daqi-level-4-contrast: black;
   --daqi-level-5-color: #facb02;
+  --daqi-level-5-contrast: black;
   --daqi-level-6-color: #faa701;
+  --daqi-level-6-contrast: black;
   --daqi-level-7-color: #fa6501;
+  --daqi-level-7-contrast: white;
   --daqi-level-8-color: #fa2200;
+  --daqi-level-8-contrast: white;
   --daqi-level-9-color: #6b0820;
+  --daqi-level-9-contrast: white;
   --daqi-level-10-color: #000;
+  --daqi-level-10-contrast: white;
   --pollution-layer-opacity: 60%;
   --map-layer-background-color: #ddd;
 }
@@ -19,17 +32,20 @@
 @for $i from 1 through 10 {
   .daqi-level-#{$i} {
     --daqi-color: var(--daqi-level-#{$i}-color);
+    --daqi-contrast: var(--daqi-level-#{$i}-contrast);
   }
 
   .daqi-scale {
+    background: var(--map-layer-background-color);
+
     .daqi-level-#{$i} {
       background-color: color-mix(
         in srgb,
         var(--daqi-color) var(--pollution-layer-opacity),
-        var(--map-layer-background-color)
+        transparent
       );
-      color: white;
-      text-shadow: 0 0 2px black;
+      color: var(--daqi-contrast);
+      font-weight: 500;
     }
   }
 }
@@ -40,12 +56,12 @@
       --first-half: color-mix(
         in srgb,
         var(--daqi-level-#{$i}-color) var(--pollution-layer-opacity),
-        var(--map-layer-background-color)
+        transparent
       );
       --second-half: color-mix(
         in srgb,
         var(--daqi-level-#{$i}-5-color) var(--pollution-layer-opacity),
-        var(--map-layer-background-color)
+        transparent
       );
 
       background: var(--first-half);

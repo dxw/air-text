@@ -1,15 +1,18 @@
 <%= render 'form_step' do |f| %>
-  <div>
-    <h3 class="h3 mb-2">Select your preferred time to receive alerts</h3>
-
-    <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, ->(o) { o.second[:label].html_safe }, prompt: "Select a time", required: true do |b| %>
-    <div class="radio-wrapper mb-1">
-      <%= b.radio_button %>
-      <div>
-        <%= b.label %>
-        <span class="hint"><%= b.object.second[:hint] %></span>
-      </div>
-    </div>
-    <% end %>
+  <div class="text-block mb-2">
+    <h3>Select your preferred time to receive alerts</h3>
+    <p>Text and voicemail alerts are sent at 7am for the current day or 7pm for the next day.</p>
+    <p>Email alerts are sent at 7am only, if the forecast is moderate or above for any of the next 3 days.</p>
+    <p>Select the time you prefer.</p>
   </div>
+
+  <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, ->(o) { o.second[:label].html_safe }, prompt: "Select the time you prefer.", required: true do |b| %>
+  <div class="radio-wrapper mb-2">
+    <%= b.radio_button %>
+    <div>
+      <%= b.label %>
+      <span class="hint"><%= b.object.second[:hint] %></span>
+    </div>
+  </div>
+  <% end %>
 <% end %>

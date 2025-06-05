@@ -1,15 +1,18 @@
-<% content_for :title, 'Air quality forecast' %>
+<% content_for :title, 'Air pollution forecast' %>
 <% content_for :head do %>
    <meta name="turbo-cache-control" content="no-cache">
 <% end %>
 
-<h1 class="h1 px-2 mt-3 mb-2">Air quality forecast</h1>
-<div id="intro" class="text-block px-2">
-  <p>The air quality forecast displays levels of air pollution, ultraviolet (UV) rays, pollen, and temperature over the next three days for London, Surrey, Chelmsford, Maldon, Colchester and Cambridge.</p>
-  <%= link_to("Sign up for air quality alerts", subscriptions_path, class: "button primary-cta") %>
+<div id="intro" class="text-block p-3">
+  <h1>Air pollution forecast</h1>
+  <p>The air you breathe matters.</p>
+  <p>To reduce your exposure to air pollution use the forecast, map, and health guidance to help you plan your routes and outdoor activities.</p>
+  <p>The forecast covers air pollution, pollen, temperature and UV rays.</p>
+  <p>You can also get alerted when air pollution is expected to be higher than usual.</p>
+  <%= link_to("Sign up to get free alerts", subscriptions_path, class: "primary-cta mt-3") %>
 </div>
 
-<div id="forecast" data-controller="map forecast" class="px-2 mb-2">
+<div id="forecast" data-controller="map forecast" class="px-3 mb-2">
   <%= render "forecast_form" %>
   <%= render "forecast_tabs" %>
 
@@ -25,11 +28,22 @@
 <%= render "shared/health_advice" %>
 <%= render "how_forecasts_are_made" %>
 
+<div id="info-block" class="multi-block">
+  <section>
+    <h2 class="h3 mt-0 mb-2">Get free air pollution alerts for where you live, work, travel, and more – choose up to five areas.</h2>
+    <%= link_to "Sign up for free alerts", subscriptions_path, class: "a" %>
+  </section>
+  <section>
+    <h2 class="h3 mt-0 mb-2">Follow the health guidance to reduce the effects of air pollution, pollen, extreme weather, and UV. </h2>
+    <%= link_to "Get health guidance", health_advice_path, class: "a" %>
+  </section>
+</div>
+
 <div id="daqi-scale-info" class="mobile-flyout">
   <%= button_tag("Close", class: "close", data: { action: "click->map#closeDaqiScaleFlyout", controller: "map" }) %>
   <%= render "daqi_scale_guide" %>
 </div>
 
-<div class="mb-2 mx-2">
+<div class="p-3">
   <%= render "shared/back_to_top" %>
 </div>

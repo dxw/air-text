@@ -17,10 +17,10 @@ RSpec.feature "Subscribing to alerts", js: true do
     it "shows a form when I click on the subscribe button" do
       visit root_path
 
-      click_on "Sign up for air quality alerts"
+      click_on "Sign up to get free alerts"
 
-      expect(page).to have_text("Air pollution alert service subscription")
-      expect(page).to have_text("Choose the channels")
+      expect(page).to have_text("Air pollution alert service")
+      expect(page).to have_text("Choose how you’d like to receive your alerts")
     end
 
     it "is accessible" do
@@ -40,17 +40,17 @@ RSpec.feature "Subscribing to alerts", js: true do
       end
 
       it "shows the email field when I select the email option" do
-        expect(page).not_to have_field("Email")
+        expect(page).not_to have_field("Email", type: "email")
 
-        check "Receive email alerts"
+        check "Email"
 
-        expect(page).to have_field("Email")
+        expect(page).to have_field("Email", type: "email")
       end
 
       it "shows the mobile number field when I select the text option" do
         expect(page).not_to have_field("Mobile number")
 
-        check "Receive text alerts"
+        check "Text message"
 
         expect(page).to have_field("Mobile number")
       end
@@ -58,7 +58,7 @@ RSpec.feature "Subscribing to alerts", js: true do
       it "shows the phone number field when I select the voicemail option" do
         expect(page).not_to have_field("Phone number")
 
-        check "Receive voicemail alerts"
+        check "Voicemail"
 
         expect(page).to have_field("Phone number")
       end
@@ -71,28 +71,28 @@ RSpec.feature "Subscribing to alerts", js: true do
         end
 
         it "shows an error if I select email, but don't provide an email address" do
-          check "Receive email alerts"
+          check "Email"
           click_on "Next"
 
           expect(page).to have_text("You must provide an email address")
         end
 
         it "shows an error if I select text, but don't provide a mobile number" do
-          check "Receive text alerts"
+          check "Text message"
           click_on "Next"
 
           expect(page).to have_text("You must provide a mobile number")
         end
 
         it "shows an error if I select voicemail, but don't provide a phone number" do
-          check "Receive voicemail alerts"
+          check "Voicemail"
           click_on "Next"
 
           expect(page).to have_text("You must provide a phone number")
         end
 
         it "does not show an error if I select email and provide an email address" do
-          check "Receive email alerts"
+          check "Email"
           fill_in "Email", with: "hello@example.com"
           click_on "Next"
 
@@ -515,10 +515,10 @@ RSpec.feature "Subscribing to alerts", js: true do
         end
 
         it "does not show an error if I select a time" do
-          choose "Morning – 6am"
+          choose "Morning: 7am"
           click_on "Next"
 
-          expect(page).to have_text("A few final questions")
+          expect(page).to have_text("Would you like to help us improve the airTEXT service?")
         end
       end
     end
@@ -551,7 +551,7 @@ RSpec.feature "Subscribing to alerts", js: true do
           check "subscription_form_privacy"
           click_on "Next"
 
-          expect(page).to have_text("Subscription Confirmation")
+          expect(page).to have_text("Your air pollution alert preferences")
         end
       end
     end
@@ -568,13 +568,13 @@ RSpec.feature "Subscribing to alerts", js: true do
       end
 
       it "shows the confirmation page" do
-        expect(page).to have_text("Subscription Confirmation")
+        expect(page).to have_text("Your air pollution alert preferences")
       end
 
       it "shows a success message when the form is submitted" do
         click_on "Submit"
 
-        expect(page).to have_text("You have successfully subscribed to air pollution alerts")
+        expect(page).to have_text("You are now subscribed to receive air pollution alerts.")
       end
     end
   end

@@ -1,200 +1,210 @@
-<% content_for :title, 'Health advice' %>
+<% content_for :title, 'Health guidance' %>
 
-<article class="p-2">
-  <div class="text-block">
-    <h1 class="mb-2">Health advice</h1>
-
+<article>
+  <div class="text-block p-3">
+    <h1>Health guidance</h1>
+    <p>Air pollution affects us all, especially those who are more vulnerable to its health effects, and those who spend time in high pollution areas. Air pollution can have a bigger effect on older people, children, pregnant people, and those with cardio (heart) and respiratory (lung) conditions.</p>
+    <p>Anyone having symptoms should follow the health guidance to reduce the effects of air pollution, pollen, extreme weather, and UV.</p>
     <div class="mb-2 mobile-only">
-      <%= link_to("Sign up for air quality alerts", subscriptions_path, class: "primary-cta") %>
+      <%= link_to("Sign up for air quality alerts", subscriptions_path, class: "primary-cta mt-3") %>
     </div>
   </div>
 
-  <details>
-    <summary class="p-2">
-      <h2 class="mb-1">Air pollution index and advice</h2>
-    </summary>
-    <div class="text-block p-2">
-      <p>The index used to describe air quality is the <%= link_to('daily air quality index (DAQI)', 'http://uk-air.defra.gov.uk/air-pollution/daqi') %> for the UK. It represents air pollution using a 1 to 10 scale divided into four bands: low, moderate, high, and very high.</p>
+  <div class="details-wrapper">
+    <details class="px-3">
+      <summary class="p-2">
+        <h2 class="mb-1">Air pollution index</h2>
+      </summary>
+      <div class="text-block p-2">
+        <p>The index used to describe air quality is the <%= link_to('daily air quality index (DAQI)', 'http://uk-air.defra.gov.uk/air-pollution/daqi') %> for the UK. It represents air pollution using a 1 to 10 scale divided into four bands: low, moderate, high, and very high.</p>
 
-      <h2>Air pollution advice</h2>
-      <p>The health advice shown below for at-risk individuals and for the general population.<p>
-      <p>It's important that you do not become alarmed or panic when you receive an airTEXT alert. It is designed to help you ensure you have any necessary medication at hand and to prepare your day ahead to reduce your exposure.</p>
+        <h2>Air pollution advice</h2>
+        <p>The daily air quality index (DAQI) describes four levels of air pollution: low, moderate, high and very high.</p>
+        <p>To reduce your exposure to air pollution, the bands have advice for everyone, plus for at-risk individuals including adults and children with heart or lung conditions, and older people.</p>
+        <p>Sign up to receive free airTEXT alerts when there is a moderate, high or very high alert, and follow the health guidance.</p>
 
-      <div>
-        At-risk individuals
-        <p>Adults and children with heart or lung problems are at greater risk of symptoms. Follow your doctor's usual advice about exercising and managing your condition.</p>
-        <p>Susceptible individuals may experience health effects even on Low air pollution days. Anyone experiencing symptoms should follow the guidance provided below.</p>
+<div>
+        <h2>At-risk individuals</h2>
+        <p>Follow your doctor's advice about exercising and managing your condition.</p>
+        <p>Susceptible individuals may experience health effects even on low air pollution days. Anyone having symptoms should follow the guidance provided.</p>
+</div>
+
+        <div class="scale-guide">
+          <div class="headings mt-2">
+            <span>Banding</span>
+            <span>Value</span>
+          </div>
+          <section>
+            <div class="scale daqi-scale">
+              <h3>Low</h3>
+              <span class="daqi-level-1">1</span>
+              <span class="daqi-level-2">2</span>
+              <span class="daqi-level-3">3</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:air_pollution, :low)) %>
+          </section>
+
+          <section class="mt-2">
+            <div class="scale daqi-scale">
+              <h3>Moderate</h3>
+              <span class="daqi-level-4">4</span>
+              <span class="daqi-level-5">5</span>
+              <span class="daqi-level-6">6</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:air_pollution, :moderate)) %>
+          </section>
+
+          <section class="mt-2">
+            <div class="scale daqi-scale">
+              <h3>High</h3>
+              <span class="daqi-level-7">7</span>
+              <span class="daqi-level-8">8</span>
+              <span class="daqi-level-9">9</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:air_pollution, :high)) %>
+          </section>
+
+          <section class="mt-2">
+            <div class="scale daqi-scale">
+              <h3>Very high</h3>
+              <span class="daqi-level-10">10</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:air_pollution, :very_high)) %>
+          </section>
+        </div>
       </div>
+    </details>
 
-      <div class="scale-guide">
-        <section>
-          <div class="scale daqi-scale">
-            <h3>Low</h3>
-            <span class="daqi-level-1">1</span>
-            <span class="daqi-level-2">2</span>
-            <span class="daqi-level-3">3</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:air_pollution, :low)) %>
-        </section>
-
-        <section>
-          <div class="scale daqi-scale">
-            <h3>Moderate</h3>
-            <span class="daqi-level-4">4</span>
-            <span class="daqi-level-5">5</span>
-            <span class="daqi-level-6">6</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:air_pollution, :moderate)) %>
-        </section>
-
-        <section>
-          <div class="scale daqi-scale">
-            <h3>High</h3>
-            <span class="daqi-level-7">7</span>
-            <span class="daqi-level-8">8</span>
-            <span class="daqi-level-9">9</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:air_pollution, :high)) %>
-        </section>
-
-        <section>
-          <div class="scale daqi-scale">
-            <h3>Very high</h3>
-            <span class="daqi-level-10">10</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:air_pollution, :very_high)) %>
-        </section>
+    <details class="px-3">
+      <summary class="p-2">
+        <h2 class="mb-1">Long-term effects of air pollution</h2>
+      </summary>
+      <div class="text-block p-2">
+        <p>While episodes of high air pollution can lead to negative health effects, even regular long-term exposure to air pollution at lower levels can be harmful.</p>
+        <p>Read the <%= link_to('Chief Medical Officer’s annual report on air pollution 2022', 'http://www.hpa.org.uk/webc/HPAwebFile/HPAweb_C/1317137020526') %>.</p>
       </div>
-    </div>
-  </details>
+    </details>
 
-  <details>
-    <summary class="p-2">
-      <h2 class="mb-1">Long-term effects of air pollution</h2>
-    </summary>
-    <div class="text-block p-2">
-      <p>Information on the long-term health effects of air pollution is available in the 2009 Committee on the Medical Effects of Air Pollutants COMEAP report <%= link_to('Long-Term Exposure to Air Pollution: Effect on Mortality', 'http://www.hpa.org.uk/webc/HPAwebFile/HPAweb_C/1317137020526') %>.</p>
-    </div>
-  </details>
+    <details class="px-3">
+      <summary class="p-2">
+        <h2 class="mb-1">The pollen forecast</h2>
+      </summary>
+      <div class="text-block p-2">
+        <p>The pollen forecast may be low, moderate, high or very high.</p>
+        <p>Between late March and September, the pollen count is at its highest, especially when it's warm, humid, and windy.</p>
+        <p>Exposure to pollen grains can cause hay fever (also called seasonal allergenic rhinitis), which can last for months.</p>
+        <div class="scale-guide">
+          <section>
+            <div class="scale">
+              <h3>Low</h3>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:pollen, :low)) %>
+          </section>
 
-  <details>
-    <summary class="p-2">
-      <h2 class="mb-1">Pollen advice</h2>
-    </summary>
-    <div class="text-block p-2">
-      <p>Pollen forecasts are predictors of daily grass pollen. Between late March and September, pollen count is at its highest, potentiated by a warm, humid, and windy atmosphere.</p>
+          <section>
+            <div class="scale">
+              <h3>Moderate</h3>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:pollen, :moderate)) %>
+          </section>
 
-      <div class="scale-guide">
-        <section>
-          <div class="scale">
-            <h3>Low</h3>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:pollen, :low)) %>
-        </section>
+          <section>
+            <div class="scale">
+              <h3>High</h3>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:pollen, :high)) %>
+          </section>
 
-        <section>
-          <div class="scale">
-            <h3>Moderate</h3>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:pollen, :moderate)) %>
-        </section>
+          <section>
+            <div class="scale">
+              <h3>Very high</h3>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:pollen, :very_high)) %>
+          </section>
+        </div>
 
-        <section>
-          <div class="scale">
-            <h3>High</h3>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:pollen, :high)) %>
-        </section>
-
-        <section>
-          <div class="scale">
-            <h3>Very high</h3>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:pollen, :very_high)) %>
-        </section>
+        <p>Learn more about <%= link_to('prevention and treatment of hay fever', 'http://www.nhs.uk/Conditions/Hay-fever/Pages/Introduction.aspx') %></p>
       </div>
+    </details>
 
-      <p>The NHS hay fever website has more <%= link_to('advice on prevention and treatment of hay fever', 'http://www.nhs.uk/Conditions/Hay-fever/Pages/Introduction.aspx') %></p>
-    </div>
-  </details>
+    <details class="px-3">
+      <summary class="p-2">
+        <h2 class="mb-1">Extreme weather advice</h2>
+      </summary>
+      <div class="text-block p-2">
+        <p>The forecasts show the minimum and maximum hourly temperatures predicted over a 24-hour period.</p>
 
-  <details>
-    <summary class="p-2">
-      <h2 class="mb-1">Extreme weather advice</h2>
-    </summary>
-    <div class="text-block p-2">
-      <p>The forecasts show the minimum and maximum hourly temperatures predicted over a 24-hour period.</p>
+        <div class="scale-guide">
+          <section>
+            <div class="scale">
+              <h3>Heatwave</h3>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:temperature, :high_temp)) %>
+          </section>
+          <section>
+            <div class="scale">
+              <h3>Cold weather</h3>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:temperature, :low_temp)) %>
+          </section>
+        </div>
 
-      <div class="scale-guide">
-        <section>
-          <div class="scale">
-            <h3>Heatwave</h3>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:temperature, :high_temp)) %>
-        </section>
-        <section>
-          <div class="scale">
-            <h3>Winter</h3>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:temperature, :low_temp)) %>
-        </section>
+        <p>Learn more about <%= link_to('how to cope in a heatwave', 'http://www.nhs.uk/Livewell/Summerhealth/Pages/Heatwave.aspx') %>.</p>
+        <p>Learn more about <%= link_to('staying well in cold weather', 'http://www.nhs.uk/Livewell/Winterhealth/Pages/Winterhealthhome.aspx') %>.</p>
       </div>
+    </details>
 
-      <p>The NHS Heatwave website has <%= link_to('advice about how to keep cool in hot weather', 'http://www.nhs.uk/Livewell/Summerhealth/Pages/Heatwave.aspx') %>.</p>
-      <p>The NHS Winter Health website has <%= link_to('advice about how to keep warm in cold weather', 'http://www.nhs.uk/Livewell/Winterhealth/Pages/Winterhealthhome.aspx') %>.</p>
-    </div>
-  </details>
+    <details class="px-3">
+      <summary class="p-2">
+        <h2 class="mb-1">Ultraviolet (UV) rays advice</h2>
+      </summary>
+      <div class="text-block p-2">
+        <p>The UV forecasts predict the maximum hourly cloud-adjusted solar UV index over 24 hours. The higher the UV index number, the less time it takes for the sun to damage your skin.</p>
 
-  <details>
-    <summary class="p-2">
-      <h2 class="mb-1">Ultraviolet (UV) rays advice</h2>
-    </summary>
-    <div class="text-block p-2">
-      <p>The UV forecasts predict the maximum hourly cloud-adjusted solar UV index over 24 hours. The higher the UV index number, the less time it takes for the sun to damage your skin.</p>
+        <div class="scale-guide">
+          <section>
+            <div class="scale daqi-scale">
+              <h3>Low</h3>
+              <span class="daqi-level-1">1</span>
+              <span class="daqi-level-2">2</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:uv, :low)) %>
+          </section>
 
-      <div class="scale-guide">
-        <section>
-          <div class="scale daqi-scale">
-            <h3>Low</h3>
-            <span class="daqi-level-1">1</span>
-            <span class="daqi-level-2">2</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:uv, :low)) %>
-        </section>
+          <section>
+            <div class="scale daqi-scale">
+              <h3>Moderate</h3>
+              <span class="daqi-level-3">3</span>
+              <span class="daqi-level-4">4</span>
+              <span class="daqi-level-5">5</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:uv, :moderate)) %>
+          </section>
 
-        <section>
-          <div class="scale daqi-scale">
-            <h3>Moderate</h3>
-            <span class="daqi-level-3">3</span>
-            <span class="daqi-level-4">4</span>
-            <span class="daqi-level-5">5</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:uv, :moderate)) %>
-        </section>
+          <section>
+            <div class="scale daqi-scale">
+              <h3>High</h3>
+              <span class="daqi-level-6">6</span>
+              <span class="daqi-level-7">7</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:uv, :high)) %>
+          </section>
 
-        <section>
-          <div class="scale daqi-scale">
-            <h3>High</h3>
-            <span class="daqi-level-6">6</span>
-            <span class="daqi-level-7">7</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:uv, :high)) %>
-        </section>
+          <section>
+            <div class="scale daqi-scale">
+              <h3>Very high</h3>
+              <span class="daqi-level-8">8+</span>
+            </div>
+            <%= render(HealthGuidanceComponent.new(:uv, :very_high)) %>
+          </section>
+        </div>
 
-        <section>
-          <div class="scale daqi-scale">
-            <h3>Very high</h3>
-            <span class="daqi-level-8">8+</span>
-          </div>
-          <%= render(HealthGuidanceComponent.new(:uv, :very_high)) %>
-        </section>
+        <p><%= link_to('Lear more about sun safety', 'https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/sun-uv-and-cancer/the-uv-index-and-sunburn-risk') %> on the Cancer Research UK website.</p>
       </div>
+    </details>
+  </div>
 
-      <p>Cancer Research UK’s website has more <%= link_to('information and advice about sun safety', 'https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/sun-uv-and-cancer/the-uv-index-and-sunburn-risk') %>.</p>
-    </div>
-  </details>
-
-  <div class="mt-2">
+  <div class="p-3">
     <%= render "shared/back_to_top" %>
   </div>
 </article>

@@ -34,6 +34,7 @@
       border: 1px solid var(--grey-200);
       outline: none;
       font-size: 1rem;
+      color: var(--primary-text-colour);
 
       &:focus {
         border-color: var(--main-colour-700);
@@ -46,6 +47,8 @@
       margin: 0 0.5rem 0 0;
       position: relative;
       top: 1px;
+      transform: scale(1.5);
+      accent-color: black;
     }
 
     .radio-wrapper {
@@ -54,6 +57,7 @@
 
       label {
         margin: 0;
+        cursor: pointer;
       }
 
       .hint {
@@ -65,6 +69,10 @@
     .checkbox-wrapper {
       display: flex;
       align-items: baseline;
+
+      label {
+        cursor: pointer;
+      }
     }
 
     select {
@@ -74,8 +82,7 @@
 
     .switch-row {
       display: flex;
-      gap: 2rem;
-      justify-content: space-between;
+      gap: 0.5rem;
     }
 
     .switch {
@@ -94,6 +101,7 @@
         height: calc(var(--switch-height) + var(--offset));
         border-radius: 9999px;
         border: 1px solid var(--main-colour-700);
+        transform: none;
 
         &:checked {
           background-color: var(--main-colour-700);
@@ -130,7 +138,6 @@
     .buttons {
       display: flex;
       gap: 0.5rem;
-      margin-top: 1rem;
 
       > * {
         flex: 1;

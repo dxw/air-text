@@ -7,12 +7,7 @@
     <hr>
     <nav aria-label="Main navigation">
       <ul data-navigation-target="menuList">
-        <li><%= active_link_to "Air quality forecast", forecast_path %></li>
-        <li><%= active_link_to "Air pollution alerts", alerts_path %></li>
-        <li><%= active_link_to "Alert service", subscriptions_path %></li>
-        <li><%= active_link_to "Health advice", health_advice_path %></li>
-        <li><%= active_link_to "About", about_path %></li>
-        <li><%= active_link_to "Contact", contact_path %></li>
+        <%= render "shared/nav" %>
       </ul>
     </nav>
   </div>

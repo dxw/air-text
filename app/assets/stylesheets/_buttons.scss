@@ -30,6 +30,12 @@
     border-color: var(--main-colour-highlight);
     outline: 2px solid var(--main-colour-highlight);
   }
+
+  &:active {
+    background-color: var(--main-colour-800);
+    border-color: var(--main-colour-800);
+    text-decoration: underline;
+  }
 }
 
 .secondary-cta {
@@ -47,5 +53,10 @@
     background-color: var(--main-colour-300);
     border-color: var(--main-colour-highlight);
     outline: 2px solid var(--main-colour-highlight);
+  }
+
+  &:active {
+    background-color: var(--main-colour-300);
+    text-decoration: underline;
   }
 }
