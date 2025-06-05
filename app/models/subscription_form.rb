@@ -170,7 +170,7 @@ class SubscriptionForm
     end
   end
 
-  def modes
+  def mediums
     [
       ("email" if receive_email),
       ("sms" if receive_sms),
@@ -180,19 +180,19 @@ class SubscriptionForm
 
   def create_subscriptions
     zones.compact.each do |zone|
-      modes.each do |mode|
-        create_subscription(zone, mode)
+      mediums.each do |medium|
+        create_subscription(zone, medium)
       end
     end
   end
 
-  def create_subscription(zone, mode)
+  def create_subscription(zone, medium)
     CercSubscriberApiClient.create_subscription(
       # subscriber_id: subscriber_id,
       zone: zone,
-      mode: mode,
-      phone: (sms_number if mode == "sms") || (voice_number if mode == "voice"),
-      email: (email if mode == "email"),
+      medium: medium,
+      phone: (sms_number if medium == "sms") || (voice_number if medium == "voice"),
+      email: (email if medium == "email"),
       ampm: time,
       subscriber_details: {
         "whySignup" => reason,

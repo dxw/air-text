@@ -593,8 +593,8 @@ def fill_form_up_to(step)
   end
 end
 
-def fill_in_verification_code(mode, code)
-  page.all("[name='subscription_form[verification_code_#{mode}][]']").each_with_index do |input, index|
+def fill_in_verification_code(medium, code)
+  page.all("[name='subscription_form[verification_code_#{medium}][]']").each_with_index do |input, index|
     input.fill_in with: code.slice(index)
   end
 end

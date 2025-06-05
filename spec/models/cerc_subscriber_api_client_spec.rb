@@ -34,7 +34,7 @@ RSpec.describe CercSubscriberApiClient do
     let(:email) { "name@example.com" }
     let(:phone) { "555-555-5555" }
     let(:zone) { "zone" }
-    let(:mode) { "mode" }
+    let(:medium) { "medium" }
     let(:ampm) { "ampm" }
     let(:subscriber_id) { 123 }
     let(:subscriber_details) { {} }
@@ -43,7 +43,7 @@ RSpec.describe CercSubscriberApiClient do
       query = {
         subscriberId: subscriber_id,
         zone: zone,
-        mode: mode,
+        mode: medium,
         phone: phone,
         email: email,
         ampm: ampm,
@@ -52,7 +52,7 @@ RSpec.describe CercSubscriberApiClient do
 
       expect(CercSubscriberApiClient).to receive(:request).with("subscriptions", :post, query)
 
-      CercSubscriberApiClient.create_subscription(subscriber_id: subscriber_id, zone: zone, mode: mode, ampm: ampm, phone: phone, email: email, subscriber_details: subscriber_details)
+      CercSubscriberApiClient.create_subscription(subscriber_id: subscriber_id, zone: zone, medium: medium, ampm: ampm, phone: phone, email: email, subscriber_details: subscriber_details)
     end
   end
 

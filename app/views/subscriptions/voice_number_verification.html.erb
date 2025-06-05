@@ -10,6 +10,6 @@
     <% end %>
   </div>
   <p>You can also 
-  <%= button_tag "resend the code", data: { "subscription-target": "resendVerificationButton", action: "subscription#resendVerification", mode: "voice" }, type: :button, class: "a" %>.
+  <%= button_tag "resend the code", data: { "subscription-target": "resendVerificationButton", action: "subscription#resendVerification", medium: "voice" }, type: :button, class: "a" %>.
   </p>
 <% end %>
