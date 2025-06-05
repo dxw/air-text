@@ -1,8 +1,8 @@
 RSpec.describe CercSubscriberApiClient do
   around do |example|
     env_vars = {
-      CERC_SUBSCRIBE_API_HOST_URL: "https://example.com",
-      CERC_SUBSCRIBE_API_KEY: "ABC123"
+      CERC_SUBSCRIBER_API_HOST_URL: "https://example.com",
+      CERC_SUBSCRIBER_API_KEY: "ABC123"
     }
     ClimateControl.modify(env_vars) { example.run }
   end
