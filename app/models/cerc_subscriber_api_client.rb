@@ -39,7 +39,7 @@ class CercSubscriberApiClient
     private
 
     def request(endpoint, method, query = {})
-      base_url = ENV.fetch("CERC_SUBSCRIBE_API_HOST_URL")
+      base_url = ENV.fetch("CERC_SUBSCRIBER_API_HOST_URL")
       headers = {"x-api-key" => ENV.fetch("CERC_SUBSCRIBER_API_KEY")}
 
       if method == :post
