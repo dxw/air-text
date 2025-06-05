@@ -7,5 +7,10 @@ module HttpStubs
           body:    forecast_response.to_json,
           headers: {"Content-Type" => "application/json"})
     end
+
+    def stub_send_verification_code
+      WebMock.stub_request(:post, %r{/send-verification-code})
+        .to_return(status: 200, body: "success")
+    end
   end
 end

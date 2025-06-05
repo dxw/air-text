@@ -20,6 +20,25 @@ RSpec.describe CercSubscriberApiClient do
     end
   end
 
+  describe ".send_verification_code" do
+    let(:medium) { "email" }
+    let(:verification_code) { "ABC123" }
+    let(:email) { "name@example.com" }
+    let(:phone) { "555-555-5555" }
+
+    it "makes a POST request to the send-verification-code endpoint" do
+      query = {
+        medium: medium,
+        verificationCode: verification_code,
+        expiryString: "15 minutes",
+        email: email,
+        phone: phone
+      }
+      expect(CercSubscriberApiClient).to receive(:request).with("send-verification-code", :post, query)
+      CercSubscriberApiClient.send_verification_code(medium: medium, verification_code: verification_code, email: email, phone: phone)
+    end
+  end
+
   describe ".get_subscriptions" do
     let(:subscriber_id) { 123 }
 

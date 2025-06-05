@@ -9,6 +9,18 @@ class CercSubscriberApiClient
       request("find-subscriber", :get, query)
     end
 
+    def send_verification_code(medium:, verification_code:, email: nil, phone: nil)
+      query = {
+        medium: medium,
+        verificationCode: verification_code,
+        expiryString: "15 minutes",
+        email: email,
+        phone: phone
+      }
+
+      request("send-verification-code", :post, query)
+    end
+
     def get_subscriptions(subscriber_id)
       request("subscriptions/#{subscriber_id}", :get)
     end
@@ -38,12 +50,12 @@ class CercSubscriberApiClient
 
     private
 
-    def request(endpoint, method, query = {})
+    def request(endpoint, method, query = {}, body = nil)
       base_url = ENV.fetch("CERC_SUBSCRIBER_API_HOST_URL")
       headers = {"x-api-key" => ENV.fetch("CERC_SUBSCRIBER_API_KEY")}
 
       if method == :post
-        HTTParty.post("#{base_url}/#{endpoint}", headers: headers, body: query.compact)
+        HTTParty.post("#{base_url}/#{endpoint}", headers: headers, query: query.compact, body: body)
       else
         HTTParty.get("#{base_url}/#{endpoint}", headers: headers, query: query.compact)
       end
