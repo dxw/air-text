@@ -7,7 +7,7 @@ RSpec.feature "About page" do
       Fixtures::API.zone_forecast(day: :tomorrow),
       Fixtures::API.zone_forecast(day: :day_after_tomorrow)
     ]
-    HttpStubs.stub_cerc_api_with(forecasts)
+    HttpStubs.stub_forecasts_api_with(forecasts)
   end
 
   describe "Visit the about page" do

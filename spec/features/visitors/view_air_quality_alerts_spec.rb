@@ -18,7 +18,7 @@ RSpec.feature "Forecasts page - air quality alerts" do
         daqi_value: 10
       )
     ]
-    HttpStubs.stub_cerc_api_with(forecasts)
+    HttpStubs.stub_forecasts_api_with(forecasts)
   end
 
   describe "View air quality alert for today" do

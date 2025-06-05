@@ -10,7 +10,7 @@ RSpec.feature "Subscribing to alerts", js: true do
   end
 
   before do
-    HttpStubs.stub_cerc_api_with(forecasts)
+    HttpStubs.stub_forecasts_api_with(forecasts)
   end
 
   describe "Subscribing to alerts" do
