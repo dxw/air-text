@@ -72,7 +72,7 @@ RSpec.describe CercSubscriberApiClient do
     it "makes a GET request to the base_url and endpoint" do
       endpoint = "find-subscriber"
 
-      expect(HTTParty).to receive(:get).with("https://example.com/#{endpoint}", query: {"key" => "ABC123"})
+      expect(HTTParty).to receive(:get).with("https://example.com/#{endpoint}", headers: {"x-api-key" => "ABC123"}, query: {})
 
       CercSubscriberApiClient.send(:request, endpoint, :get)
     end
@@ -80,7 +80,7 @@ RSpec.describe CercSubscriberApiClient do
     it "makes a POST request to the base_url and endpoint" do
       endpoint = "subscriptions"
 
-      expect(HTTParty).to receive(:post).with("https://example.com/#{endpoint}", body: {"key" => "ABC123"})
+      expect(HTTParty).to receive(:post).with("https://example.com/#{endpoint}", headers: {"x-api-key" => "ABC123"}, body: nil, query: {})
 
       CercSubscriberApiClient.send(:request, endpoint, :post)
     end
