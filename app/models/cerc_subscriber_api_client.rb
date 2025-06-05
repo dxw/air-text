@@ -40,12 +40,12 @@ class CercSubscriberApiClient
 
     def request(endpoint, method, query = {})
       base_url = ENV.fetch("CERC_SUBSCRIBE_API_HOST_URL")
-      query["key"] = ENV.fetch("CERC_SUBSCRIBE_API_KEY")
+      headers = {"x-api-key" => ENV.fetch("CERC_SUBSCRIBER_API_KEY")}
 
       if method == :post
-        HTTParty.post("#{base_url}/#{endpoint}", body: query.compact)
+        HTTParty.post("#{base_url}/#{endpoint}", headers: headers, body: query.compact)
       else
-        HTTParty.get("#{base_url}/#{endpoint}", query: query.compact)
+        HTTParty.get("#{base_url}/#{endpoint}", headers: headers, query: query.compact)
       end
     end
   end
