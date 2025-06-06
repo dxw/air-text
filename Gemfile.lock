@@ -273,8 +273,8 @@ GEM
     psych (5.2.6)
       date
       stringio
-    public_suffix (6.0.1)
-    puffing-billy (4.0.1)
+    public_suffix (6.0.2)
+    puffing-billy (4.0.2)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
