@@ -41,6 +41,14 @@
       }
     }
 
+    input[required] + label {
+      &::after {
+        content: "*";
+        margin-left: 5px;
+        color: var(--warn-color);
+      }
+    }
+
     input[type="checkbox"],
     input[type="radio"] {
       display: inline-block;

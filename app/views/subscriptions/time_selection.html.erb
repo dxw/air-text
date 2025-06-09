@@ -6,7 +6,7 @@
     <p>Select the time you prefer.</p>
   </div>
 
-  <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, ->(o) { o.second[:label].html_safe }, prompt: "Select the time you prefer.", required: true do |b| %>
+  <%= f.collection_radio_buttons :time, SubscriptionForm::TIMES, :first, ->(o) { o.second[:label].html_safe }, prompt: "Select the time you prefer:" do |b| %>
   <div class="radio-wrapper mb-2">
     <%= b.radio_button %>
     <div>
