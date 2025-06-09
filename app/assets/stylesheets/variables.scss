@@ -19,6 +19,7 @@
   --secondary-text-color: var(--grey-400);
   --border-radius: 8px;
   --max-width: 1400px;
+  --warn-color: #fa2200;
 }
 
 $mobile-breakpoint: 1024px; // CSS variables can't currently be used in media queries, so we use SCSS variables instead

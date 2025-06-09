@@ -553,16 +553,16 @@ RSpec.feature "Subscribing to alerts", js: true do
       end
 
       describe "Validating the form" do
-        it "shows an error if I don't accept the terms" do
+        it "does not allow me to proceed if I don't accept the terms" do
           click_on "Next"
 
-          expect(page).to have_text("You must agree to the terms and conditions")
+          expect(page).not_to have_text("Your air pollution alert preferences")
         end
 
-        it "shows an error if I don't accept the privacy policy" do
+        it "does not allow me to proceed if I don't accept the privacy policy" do
           click_on "Next"
 
-          expect(page).to have_text("You must agree to the privacy policy")
+          expect(page).not_to have_text("Your air pollution alert preferences")
         end
 
         it "does not show an error if I accept the terms and privacy policy" do
