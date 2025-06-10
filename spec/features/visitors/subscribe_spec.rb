@@ -173,7 +173,7 @@ RSpec.feature "Subscribing to alerts", js: true do
             expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
               medium: "email",
               verification_code: match(/[A-Z0-9]{6}/),
-              email: @subscription_form.email,
+              email: @subscription_creation_form.email,
               phone: nil
             )
           end
@@ -244,7 +244,7 @@ RSpec.feature "Subscribing to alerts", js: true do
               medium: "sms",
               verification_code: match(/[A-Z0-9]{6}/),
               email: nil,
-              phone: @subscription_form.sms_number
+              phone: @subscription_creation_form.sms_number
             )
           end
         end
@@ -304,7 +304,7 @@ RSpec.feature "Subscribing to alerts", js: true do
               medium: "voice",
               verification_code: match(/[A-Z0-9]{6}/),
               email: nil,
-              phone: @subscription_form.voice_number
+              phone: @subscription_creation_form.voice_number
             )
           end
         end
@@ -566,8 +566,8 @@ RSpec.feature "Subscribing to alerts", js: true do
         end
 
         it "does not show an error if I accept the terms and privacy policy" do
-          check "subscription_form_terms"
-          check "subscription_form_privacy"
+          check "subscription_creation_form_terms"
+          check "subscription_creation_form_privacy"
           click_on "Next"
 
           expect(page).to have_text("Your air pollution alert preferences")
@@ -600,20 +600,20 @@ RSpec.feature "Subscribing to alerts", js: true do
 end
 
 def search_for_location(location)
-  fill_in "subscription_form_zone_search", with: location
+  fill_in "subscription_creation_form_zone_search", with: location
 end
 
 def fill_form_up_to(step)
   allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_wrap_original do |original_method, *args|
     session_data = original_method.call(*args)
-    @subscription_form = FactoryBot.build(:subscription_form, step)
-    session_data[:subscription_form] ||= @subscription_form.attributes
+    @subscription_creation_form = FactoryBot.build(:subscription_creation_form, step)
+    session_data[:subscription_creation_form] ||= @subscription_creation_form.attributes
     session_data
   end
 end
 
 def fill_in_verification_code(medium, code)
-  page.all("[name='subscription_form[verification_code_#{medium}][]']").each_with_index do |input, index|
+  page.all("[name='subscription_creation_form[verification_code_#{medium}][]']").each_with_index do |input, index|
     input.fill_in with: code.slice(index)
   end
 end

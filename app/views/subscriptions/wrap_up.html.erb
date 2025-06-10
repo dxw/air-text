@@ -5,12 +5,12 @@
 
   <div class="mb-4">
     <%= f.label :reason, "Why are you signing up for airTEXT alerts?" %>
-    <%= f.collection_select :reason, SubscriptionForm::REASONS, :first, :second, prompt: "Select..." %>
+    <%= f.collection_select :reason, SubscriptionCreationForm::REASONS, :first, :second, prompt: "Select..." %>
   </div>
 
   <div class="mb-4">
     <%= f.label :source, "How did you hear about the airTEXT service?" %>
-    <%= f.collection_select :source, SubscriptionForm::SOURCES, :first, :second, prompt: "Select..." %>
+    <%= f.collection_select :source, SubscriptionCreationForm::SOURCES, :first, :second, prompt: "Select..." %>
   </div>
 
   <div class="mb-4">
