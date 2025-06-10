@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :subscription_form do
+  factory :subscription_creation_form do
     trait :contact_details_email do
       current_step { "contact_details" }
       receive_email { "1" }

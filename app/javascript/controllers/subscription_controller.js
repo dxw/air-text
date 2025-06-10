@@ -145,7 +145,7 @@ export default class SubscriptionController extends Controller {
 
   selectedZonesTargetConnected() {
     const checkboxes = document.querySelectorAll(
-      "input[name='subscription_form[zones][]']"
+      "input[name='subscription_creation_form[zones][]']"
     );
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener("change", (event) =>

@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def show
-    session[:subscription_form] = nil if params[:reset]
+    session[:subscription_creation_form] = nil if params[:reset]
     load_step
 
     # Validate against the previous step
@@ -65,7 +65,7 @@ class SubscriptionsController < ApplicationController
 
   def update
     load_step
-    session[:subscription_form] = @form.attributes
+    session[:subscription_creation_form] = @form.attributes
     render_wizard @form
   end
 
@@ -105,8 +105,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def load_form
-    @form ||= SubscriptionForm.new(session[:subscription_form])
-    @form.assign_attributes(subscription_params) if params[:subscription_form].present?
+    @form ||= SubscriptionCreationForm.new(session[:subscription_creation_form])
+    @form.assign_attributes(subscription_params) if params[:subscription_creation_form].present?
   end
 
   def load_step
@@ -125,7 +125,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params[:subscription_form].permit(
+    params[:subscription_creation_form].permit(
       :current_step,
       :receive_email,
       :receive_sms,

@@ -1,4 +1,4 @@
-class SubscriptionForm
+class SubscriptionCreationForm
   include ActiveModel::Model
   include ActiveModel::Attributes
   include ActiveRecord::Callbacks
