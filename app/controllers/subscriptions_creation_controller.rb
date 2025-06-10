@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SubscriptionsController < ApplicationController
+class SubscriptionsCreationController < ApplicationController
   include Wicked::Wizard
   before_action :set_steps
   before_action :setup_wizard
