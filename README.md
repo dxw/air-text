@@ -1,29 +1,49 @@
 # airTEXT
 
-This is a rebuild of the airTEXT.info service
+airTEXT provides air pollution, pollen, and UV forecasts for Greater London and
+nearby areas. Users can subscribe to receive air quality alerts via email, SMS,
+or voicemail for their chosen location.
 
-1. [Getting started](/doc/getting-started.md)
+## Set up
 
-## Description of the service
+See [getting started](/doc/getting-started.md)
 
-A service for providing forecasts and personalised alerts on air quality and
-other environmental factors in:
+## Running the application
 
-- Greater London
-- Cambridge
-- the Chelmsford/Colchester area
+To start the Rails server, run:
+
+```bash
+rails server
+```
+
+You can then access the application in your web browser at
+`http://localhost:3000`.
+
+## Updating dependencies
+
+To update Ruby gems, run:
+
+```bash
+bundle update
+```
+
+To update JavaScript dependencies, run:
+
+```bash
+yarn upgrade
+```
+
+### Updating Node.js version
+
+See [doc/upgrading-node.md][] for instructions on how to update the Node.js
+version used in this project.
+
+### Updating Ruby version
+
+See [doc/upgrading-ruby.md][] for instructions on how to update the Ruby version
+used in this project.
 
 ## Terminology
-
-We aim to use and refine a "ubiquitous language" for use throughout the service.
-We believe that this will optimise our communication and minimise our
-misunderstandings and our cognitive load. We will aim use the same terms in:
-
-- the UI of the service
-- the code we write
-- our sketches and mockups
-- our research sessions
-- our documentation and our presentations to partner organisations
 
 See [./doc/terminology.md][]
 
@@ -33,7 +53,7 @@ See [./doc/terminology.md][]
 
 #### Fast feedback loop
 
-These tests (Rspec and Capybara) can be run at maximum speed with:
+These tests (Rspec and Capybara) can be run with:
 
 ```sh
 bundle exec rspec

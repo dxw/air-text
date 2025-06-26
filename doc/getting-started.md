@@ -1,78 +1,79 @@
-# Getting started
+# Set up
 
-We use the
-["Scripts To Rule Them All"](https://github.com/dxw/tech-team-rfcs/blob/main/rfc-023-use-scripts-to-rule-them-all.md)
-pattern to standardise the common commands we have to use.
+## Install Ruby dependencies
 
-Setup the application:
-
-```bash
-$ script/setup
-```
-
-Start the server:
+This project uses Ruby on Rails, so you need to have Ruby installed. You can use
+a version manager like RVM or rbenv to manage your Ruby versions. Make sure you
+have the correct Ruby version specified in the `.ruby-version` file. You can
+check your Ruby version with:
 
 ```bash
-$ script/server
+ruby -v
 ```
 
-Start a console:
+Install bundler to manage Ruby gems:
 
 ```bash
-$ script/console
+gem install bundler
 ```
 
-Run the tests:
+Install the required gems for the project:
 
 ```bash
-$ script/test
+bundle install
 ```
 
-Update application to run for its current checkout:
+## Install JavaScript dependencies
+
+This project uses Yarn for managing JavaScript dependencies. Make sure you have
+Node.js and npm installed. You can check your Node.js version with:
 
 ```bash
-$ script/update
+node -v
 ```
 
-## With Docker
-
-Docker is made available to run these commands locally as containerisation
-[MUST be used on CI and SHOULD be used on live environments](https://github.com/dxw/tech-team-rfcs/blob/main/rfc-013-use-docker-to-deploy-and-run-applications-in-containers.md).
-Using Docker locally provides the strongest parity between development and live.
-It can also be more stable to get running on your machine.
-
-Running the tests regularly should be done without Docker as it is much faster.
-
-### Prerequisites
+And your npm version with:
 
 ```bash
-$ brew install --cask docker
+npm -v
 ```
 
-### Usage
-
-#### Occassional use
-
-Use the `--docker` switch:
+Install Yarn if you haven't already:
 
 ```bash
-$ script/test --docker
+npm install yarn
 ```
 
-#### Regular use
+Then, install the JavaScript dependencies:
 
-You can set `PREFER_DOCKER_FOR_DXW_RAILS=1` in your env to set this preference
-automatically.
+```bash
+yarn install
+```
 
-- Option 1:
-  - Install and use
-    [direnv to set an environment variable on a per codebase basis](https://direnv.net/)
-  - Add `PREFER_DOCKER_FOR_DXW_RAILS=1` to your `.envrc`
-  - Load change with `direnv allow .`
-- Option 2:
-  - Set `PREFER_DOCKER_FOR_DXW_RAILS=1` in your global `.zshrc` or `.bashrc`
-  - Load your change with `source .zshrc`
+## Set up the database
 
-Switches will take priority over any default preference. For example, with
-`PREFER_DOCKER_FOR_DXW_RAILS=1` set you can run `--no-docker` to run without
-Docker.
+This project uses PostgreSQL as the database. Make sure you have PostgreSQL
+installed and running. You can check your PostgreSQL version with:
+
+```bash
+psql --version
+```
+
+Create the database:
+
+```bash
+rails db:setup
+```
+
+The database will be seeded with the zones and zone groups defined in the
+`db/seeds.rb`.
+
+## Set up environment variables
+
+This project uses environment variables for configuration. For local
+development, create a `.env.development.local` file in the root of the project
+and add the necessary environment variables. You can refer to the `.env.example`
+file for guidance on what variables are needed.
+
+On a production server, you should set these environment variables in your
+server's configuration.
