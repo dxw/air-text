@@ -10,7 +10,8 @@ RSpec.feature "Subscribing to alerts", js: true do
   end
 
   before do
-    HttpStubs.stub_cerc_api_with(forecasts)
+    HttpStubs.stub_forecasts_api_with(forecasts)
+    HttpStubs.stub_send_verification_code
   end
 
   describe "Subscribing to alerts" do
@@ -164,11 +165,17 @@ RSpec.feature "Subscribing to alerts", js: true do
 
         context "when I request a new verification code" do
           it "sends a new verification code" do
-            allow(VerificationCode).to receive(:generate).and_call_original
+            allow(CercSubscriberApiClient).to receive(:send_verification_code).and_call_original
+
             click_on "resend the code"
 
             expect(page).to have_text("sent successfully")
-            expect(VerificationCode).to have_received(:generate).with(@subscription_form.email)
+            expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
+              medium: "email",
+              verification_code: match(/[A-Z0-9]{6}/),
+              email: @subscription_form.email,
+              phone: nil
+            )
           end
         end
 
@@ -228,11 +235,17 @@ RSpec.feature "Subscribing to alerts", js: true do
 
         context "when I request a new verification code" do
           it "sends a new verification code" do
-            allow(VerificationCode).to receive(:generate).and_call_original
+            allow(CercSubscriberApiClient).to receive(:send_verification_code).and_call_original
+
             click_on "resend the code"
 
             expect(page).to have_text("sent successfully")
-            expect(VerificationCode).to have_received(:generate).with(@subscription_form.sms_number)
+            expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
+              medium: "sms",
+              verification_code: match(/[A-Z0-9]{6}/),
+              email: nil,
+              phone: @subscription_form.sms_number
+            )
           end
         end
       end
@@ -282,11 +295,17 @@ RSpec.feature "Subscribing to alerts", js: true do
 
         context "when I request a new verification code" do
           it "sends a new verification code" do
-            allow(VerificationCode).to receive(:generate).and_call_original
+            allow(CercSubscriberApiClient).to receive(:send_verification_code).and_call_original
+
             click_on "resend the code"
 
             expect(page).to have_text("sent successfully")
-            expect(VerificationCode).to have_received(:generate).with(@subscription_form.voice_number)
+            expect(CercSubscriberApiClient).to have_received(:send_verification_code).with(
+              medium: "voice",
+              verification_code: match(/[A-Z0-9]{6}/),
+              email: nil,
+              phone: @subscription_form.voice_number
+            )
           end
         end
       end
@@ -527,16 +546,16 @@ RSpec.feature "Subscribing to alerts", js: true do
       end
 
       describe "Validating the form" do
-        it "shows an error if I don't accept the terms" do
+        it "does not allow me to proceed if I don't accept the terms" do
           click_on "Next"
 
-          expect(page).to have_text("You must agree to the terms and conditions")
+          expect(page).not_to have_text("Your air pollution alert preferences")
         end
 
-        it "shows an error if I don't accept the privacy policy" do
+        it "does not allow me to proceed if I don't accept the privacy policy" do
           click_on "Next"
 
-          expect(page).to have_text("You must agree to the privacy policy")
+          expect(page).not_to have_text("Your air pollution alert preferences")
         end
 
         it "does not show an error if I accept the terms and privacy policy" do
@@ -586,8 +605,8 @@ def fill_form_up_to(step)
   end
 end
 
-def fill_in_verification_code(mode, code)
-  page.all("[name='subscription_form[verification_code_#{mode}][]']").each_with_index do |input, index|
+def fill_in_verification_code(medium, code)
+  page.all("[name='subscription_form[verification_code_#{medium}][]']").each_with_index do |input, index|
     input.fill_in with: code.slice(index)
   end
 end

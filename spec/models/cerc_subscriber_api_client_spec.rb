@@ -1,8 +1,8 @@
 RSpec.describe CercSubscriberApiClient do
   around do |example|
     env_vars = {
-      CERC_SUBSCRIBE_API_HOST_URL: "https://example.com",
-      CERC_SUBSCRIBE_API_KEY: "ABC123"
+      CERC_SUBSCRIBER_API_HOST_URL: "https://example.com",
+      CERC_SUBSCRIBER_API_KEY: "ABC123"
     }
     ClimateControl.modify(env_vars) { example.run }
   end
@@ -20,6 +20,25 @@ RSpec.describe CercSubscriberApiClient do
     end
   end
 
+  describe ".send_verification_code" do
+    let(:medium) { "email" }
+    let(:verification_code) { "ABC123" }
+    let(:email) { "name@example.com" }
+    let(:phone) { "555-555-5555" }
+
+    it "makes a POST request to the send-verification-code endpoint" do
+      query = {
+        medium: medium,
+        verificationCode: verification_code,
+        expiryString: "15 minutes",
+        email: email,
+        phone: phone
+      }
+      expect(CercSubscriberApiClient).to receive(:request).with("send-verification-code", :post, query)
+      CercSubscriberApiClient.send_verification_code(medium: medium, verification_code: verification_code, email: email, phone: phone)
+    end
+  end
+
   describe ".get_subscriptions" do
     let(:subscriber_id) { 123 }
 
@@ -34,7 +53,7 @@ RSpec.describe CercSubscriberApiClient do
     let(:email) { "name@example.com" }
     let(:phone) { "555-555-5555" }
     let(:zone) { "zone" }
-    let(:mode) { "mode" }
+    let(:medium) { "medium" }
     let(:ampm) { "ampm" }
     let(:subscriber_id) { 123 }
     let(:subscriber_details) { {} }
@@ -43,7 +62,7 @@ RSpec.describe CercSubscriberApiClient do
       query = {
         subscriberId: subscriber_id,
         zone: zone,
-        mode: mode,
+        mode: medium,
         phone: phone,
         email: email,
         ampm: ampm,
@@ -52,7 +71,7 @@ RSpec.describe CercSubscriberApiClient do
 
       expect(CercSubscriberApiClient).to receive(:request).with("subscriptions", :post, query)
 
-      CercSubscriberApiClient.create_subscription(subscriber_id: subscriber_id, zone: zone, mode: mode, ampm: ampm, phone: phone, email: email, subscriber_details: subscriber_details)
+      CercSubscriberApiClient.create_subscription(subscriber_id: subscriber_id, zone: zone, medium: medium, ampm: ampm, phone: phone, email: email, subscriber_details: subscriber_details)
     end
   end
 
@@ -72,7 +91,7 @@ RSpec.describe CercSubscriberApiClient do
     it "makes a GET request to the base_url and endpoint" do
       endpoint = "find-subscriber"
 
-      expect(HTTParty).to receive(:get).with("https://example.com/#{endpoint}", query: {"key" => "ABC123"})
+      expect(HTTParty).to receive(:get).with("https://example.com/#{endpoint}", headers: {"x-api-key" => "ABC123"}, query: {})
 
       CercSubscriberApiClient.send(:request, endpoint, :get)
     end
@@ -80,7 +99,7 @@ RSpec.describe CercSubscriberApiClient do
     it "makes a POST request to the base_url and endpoint" do
       endpoint = "subscriptions"
 
-      expect(HTTParty).to receive(:post).with("https://example.com/#{endpoint}", body: {"key" => "ABC123"})
+      expect(HTTParty).to receive(:post).with("https://example.com/#{endpoint}", headers: {"x-api-key" => "ABC123"}, body: nil, query: {})
 
       CercSubscriberApiClient.send(:request, endpoint, :post)
     end

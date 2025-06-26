@@ -9,7 +9,7 @@ RSpec.feature "Air quality alerts page" do
           Fixtures::API.zone_forecast(day: :tomorrow),
           Fixtures::API.zone_forecast(day: :day_after_tomorrow)
         ]
-        HttpStubs.stub_cerc_api_with(forecasts)
+        HttpStubs.stub_forecasts_api_with(forecasts)
       end
 
       it "should display a message" do
@@ -41,7 +41,7 @@ RSpec.feature "Air quality alerts page" do
             daqi_value: 10
           )
         ]
-        HttpStubs.stub_cerc_api_with(forecasts)
+        HttpStubs.stub_forecasts_api_with(forecasts)
       end
 
       it "should display the alerts" do

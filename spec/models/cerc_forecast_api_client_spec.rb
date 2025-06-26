@@ -13,9 +13,9 @@ RSpec.describe CercForecastApiClient do
 
       CercForecastApiClient.latest_forecasts("North London")
       expect(HTTParty).to have_received(:get).with("https://example.com/getforecast/all", {
+        headers: {"x-api-key" => "ABC123"},
         query: {
           "zone" => "North London",
-          "key" => "ABC123",
           "numdays" => 3,
           "from" => Date.today
         }
@@ -50,8 +50,8 @@ RSpec.describe CercForecastApiClient do
         CercForecastApiClient.latest_forecasts
 
         expect(HTTParty).to have_received(:get).with("https://example.com/getforecast/all", {
+          headers: {"x-api-key" => "ABC123"},
           query: {
-            "key" => "ABC123",
             "numdays" => 3,
             "from" => Date.today
           }

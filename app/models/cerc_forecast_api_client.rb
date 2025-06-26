@@ -14,8 +14,8 @@ class CercForecastApiClient
 
     def request(endpoint, query = {})
       base_url = ENV.fetch("CERC_FORECAST_API_HOST_URL")
-      query["key"] = ENV.fetch("CERC_FORECAST_API_KEY")
-      HTTParty.get("#{base_url}/#{endpoint}", query: query)
+      headers = {"x-api-key" => ENV.fetch("CERC_FORECAST_API_KEY")}
+      HTTParty.get("#{base_url}/#{endpoint}", headers: headers, query: query)
     end
   end
 end

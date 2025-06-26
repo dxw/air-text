@@ -9,15 +9,27 @@ class CercSubscriberApiClient
       request("find-subscriber", :get, query)
     end
 
+    def send_verification_code(medium:, verification_code:, email: nil, phone: nil)
+      query = {
+        medium: medium,
+        verificationCode: verification_code,
+        expiryString: "15 minutes",
+        email: email,
+        phone: phone
+      }
+
+      request("send-verification-code", :post, query)
+    end
+
     def get_subscriptions(subscriber_id)
       request("subscriptions/#{subscriber_id}", :get)
     end
 
-    def create_subscription(zone:, mode:, ampm:, subscriber_id: nil, phone: nil, email: nil, subscriber_details: nil)
+    def create_subscription(zone:, medium:, ampm:, subscriber_id: nil, phone: nil, email: nil, subscriber_details: nil)
       query = {
         subscriberId: subscriber_id,
         zone: zone,
-        mode: mode,
+        mode: medium,
         phone: phone,
         email: email,
         ampm: ampm,
@@ -38,14 +50,14 @@ class CercSubscriberApiClient
 
     private
 
-    def request(endpoint, method, query = {})
-      base_url = ENV.fetch("CERC_SUBSCRIBE_API_HOST_URL")
-      query["key"] = ENV.fetch("CERC_SUBSCRIBE_API_KEY")
+    def request(endpoint, method, query = {}, body = nil)
+      base_url = ENV.fetch("CERC_SUBSCRIBER_API_HOST_URL")
+      headers = {"x-api-key" => ENV.fetch("CERC_SUBSCRIBER_API_KEY")}
 
       if method == :post
-        HTTParty.post("#{base_url}/#{endpoint}", body: query.compact)
+        HTTParty.post("#{base_url}/#{endpoint}", headers: headers, query: query.compact, body: body)
       else
-        HTTParty.get("#{base_url}/#{endpoint}", query: query.compact)
+        HTTParty.get("#{base_url}/#{endpoint}", headers: headers, query: query.compact)
       end
     end
   end
