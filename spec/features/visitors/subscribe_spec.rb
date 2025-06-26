@@ -379,7 +379,7 @@ RSpec.feature "Subscribing to alerts", js: true do
               find("li", text: "Central London").click
             end
 
-            find("h4", text: "London").click # to expand details tag
+            find("h4", text: /\ALondon\z/).click # to expand details tag
             expect(page).to have_checked_field("Central London")
           end
         end
@@ -447,7 +447,7 @@ RSpec.feature "Subscribing to alerts", js: true do
 
       describe "Selecting zones manually" do
         it "adds a zone when I check the checkbox" do
-          find("summary", text: "London").click
+          find("summary", text: /\ALondon\z/).click
           check "Central London"
 
           within "#zone-tags" do
@@ -458,13 +458,6 @@ RSpec.feature "Subscribing to alerts", js: true do
 
       describe "Validating the form" do
         before do
-          zone_group = ZoneGroup.find_by(name: "London")
-          FactoryBot.create(:zone, name: "City of London", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Westminster", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Camden", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Islington", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Hackney", zone_group: zone_group)
-
           visit subscriptions_path(id: :zone_selection)
         end
 
@@ -475,7 +468,7 @@ RSpec.feature "Subscribing to alerts", js: true do
         end
 
         it "shows an error if I select more than 5 zones" do
-          find("summary", text: "London").click
+          find("summary", text: /\ALondon\z/).click
           check "Central London"
           check "City of London"
           check "Westminster"
@@ -488,7 +481,7 @@ RSpec.feature "Subscribing to alerts", js: true do
         end
 
         it "does not show an error if I select a zone" do
-          find("summary", text: "London").click
+          find("summary", text: /\ALondon\z/).click
           check "Central London"
           click_on "Next"
 

@@ -11,7 +11,7 @@ module Fixtures
         }
       end
 
-      def zone_object(zone_id: 55, forecasts: [])
+      def zone_object(zone_id: Zone::DEFAULT_ZONE_CENTRAL_LONDON_CERC_ID, forecasts: [])
         {
           "forecasts" => forecasts.presence || [zone_forecast(day: :today), zone_forecast(day: :tomorrow), zone_forecast(day: :day_after_tomorrow)],
           "zone_id" => zone_id,

@@ -98,8 +98,8 @@ RSpec.describe CachedForecast do
   end
 
   describe "::latest_for(zone)" do
-    let(:brent) { FactoryBot.create(:zone, name: "Brent") }
-    let(:barnet) { FactoryBot.create(:zone, name: "Barnet") }
+    let(:brent) { Zone.find_by(name: "Brent") }
+    let(:barnet) { Zone.find_by(name: "Barnet") }
 
     let!(:first_brent) {
       FactoryBot.create(:cached_forecast, zone: brent, obtained_at: Time.current - 2.days)
@@ -130,8 +130,8 @@ RSpec.describe CachedForecast do
   end
 
   describe "::latest_for_all_zones" do
-    let(:brent) { FactoryBot.create(:zone, name: "Brent") }
-    let(:barnet) { FactoryBot.create(:zone, name: "Barnet") }
+    let(:brent) { Zone.find_by(name: "Brent") }
+    let(:barnet) { Zone.find_by(name: "Barnet") }
 
     let!(:first_brent) {
       FactoryBot.create(:cached_forecast, zone: brent, obtained_at: Time.current - 2.days)
