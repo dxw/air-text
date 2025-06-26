@@ -1,46 +1,22 @@
 # Terminology
 
-## Purpose
+CERC provides daily **forecasts** for each **zone**. Each forecast consists of 6
+environmental **predictions**:
 
-We aim to use and refine a "ubiquitous language" for use throughout the service.
-We believe that this will optimise our communication and minimise our
-misunderstandings and our cognitive load. We will aim use the same terms in:
+- Air pollution (NO2, PM10, PM2.5, O3, and total), rated on a scale of 1-10
+- UV, rated on a scale of 1-10
+- Pollen, rated on a scale of 1-10
+- Temperature, in degrees Celsius
+- Wind, in mph
+- Rain, in mm
 
-- the UI of the service
-- the code we write
-- our sketches and mockups
-- our research sessions
-- our documentation and our presentations to partner organisations
+We don't use rain or wind predictions in the service.
 
-## Terms
+Several of the numeric predictions are then converted into **labels** of low,
+moderate, high, or very high. This is explained on the health advice page, and
+is based on the [DAQI (Daily Air Quality Index)].
 
-We are provided with daily **`forecasts`** by CERC. Each forecast consists of 6
-environmental **`predictions`**:
-
-- Air pollution
-- UV
-- Pollen
-- Temperature
-- Wind
-- Rain
-
-Each **prediction** has an **`DAQI level`**. This [DAQI (Daily Air Quality
-Index)][] scoring uses the range 1-10:
-
-- low (1-3)
-- moderate (4-6)
-- high (7-9)
-- very high (10)
-
-An **`alert`** is in effect when a particular prediction's DAQI level is above a
-certain threshold e.g. tomorrow the:
-
-- UV prediction has the **moderate** DAQI level
-- pollen prediction has the **low** DAQI level
-- air pollution prediction has the **high** DAQI level (aka an "**Air quality
-  alert**: high")
-
-**Air quality alerts** are air pollution predictions with DAQI leveles above
-"low".
+There is an air quality **alert** when the air pollution prediction for a zone
+is moderate or higher.
 
 [DAQI (Daily Air Quality Index)]: https://uk-air.defra.gov.uk/air-pollution/daqi
