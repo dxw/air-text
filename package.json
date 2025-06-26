@@ -9,9 +9,13 @@
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
     "lint:all:fix": "yarn run lint:js:fix && yarn run lint:css:fix && yarn run lint:format:fix && bundle exec standardrb --fix",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --loader:.geojson=json --outdir=app/assets/builds --public-path=/assets",
+    "build": "yarn run build:js && yarn run build:css",
+    "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --loader:.png=file --loader:.geojson=json --outdir=app/assets/builds --public-path=/assets",
+    "build:js:watch": "yarn run build:js --watch",
     "build:css": "bundle exec rails dartsass:build",
-    "build:css:watch": "bundle exec rails dartsass:watch"
+    "build:css:watch": "bundle exec rails dartsass:watch",
+    "dev": "yarn run build:css:watch && yarn run build:js:watch && yarn run serve",
+    "serve": "bundle exec rails server"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
