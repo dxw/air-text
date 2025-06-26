@@ -1,6 +1,6 @@
 RSpec.describe CercForecastService do
   describe "::latest_forecasts(zone)" do
-    let(:zone) { FactoryBot.create(:zone, cerc_id: 55) }
+    let(:zone) { Zone.find_by(cerc_id: Zone::DEFAULT_ZONE_CENTRAL_LONDON_CERC_ID) }
 
     context "when the cache is stale" do
       let(:latest_forecasts_from_api) { Fixtures::API.all_forecasts }
@@ -58,7 +58,6 @@ RSpec.describe CercForecastService do
     context "when the DUMMY_FORECAST environment variable is set" do
       before do
         allow(CachedForecast).to receive(:stale?).and_return(false)
-        FactoryBot.create(:zone, name: "Central London")
       end
 
       it "returns the dummy forecasts" do

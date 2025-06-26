@@ -8,7 +8,7 @@ FactoryBot.define do
     end
 
     after(:build) do |cached_forecast, evaluator|
-      cached_forecast.zone_id = evaluator.zone&.id || Zone.find_by_name(cached_forecast.data.first.zone[:name]) || FactoryBot.create(:zone).id
+      cached_forecast.zone = evaluator.zone || Zone.find_by_name(cached_forecast.data.first.zone[:name]) || FactoryBot.create(:zone)
     end
   end
 end

@@ -66,9 +66,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  config.before(:example, type: :feature) do
-    zone_group = FactoryBot.create(:zone_group, name: "London")
-    FactoryBot.create(:zone, name: "Central London", cerc_id: 55, zone_group: zone_group)
+  config.before(:example) do
+    Rails.application.load_seed if Zone.all.count.nil?
   end
 end
 

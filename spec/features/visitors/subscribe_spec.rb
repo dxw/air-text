@@ -458,13 +458,6 @@ RSpec.feature "Subscribing to alerts", js: true do
 
       describe "Validating the form" do
         before do
-          zone_group = ZoneGroup.find_by(name: "London")
-          FactoryBot.create(:zone, name: "City of London", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Westminster", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Camden", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Islington", zone_group: zone_group)
-          FactoryBot.create(:zone, name: "Hackney", zone_group: zone_group)
-
           visit subscriptions_path(id: :zone_selection)
         end
 
