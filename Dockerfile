@@ -5,7 +5,7 @@ FROM ruby:3.4.4@sha256:e08e271f196cf578ea73e00baa572d76d2dc5a7d5c2bd1151f90a364c
 LABEL org.opencontainers.image.authors="contact@dxw.com"
 
 # Specify the desired Node.js version
-ENV NODE_VERSION=22.16.0
+ENV NODE_VERSION=22.17.0
 ENV NODE_MAJOR_VERSION=${NODE_VERSION%%.*}
 RUN curl -L https://deb.nodesource.com/setup_${NODE_MAJOR_VERSION}.x | bash -
 RUN apt-get install -y nodejs=${NODE_VERSION}-1nodesource1
