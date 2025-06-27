@@ -15,7 +15,8 @@
     "build:css": "bundle exec rails dartsass:build",
     "build:css:watch": "bundle exec rails dartsass:watch",
     "dev": "yarn run build:css:watch && yarn run build:js:watch && yarn run serve",
-    "serve": "bundle exec rails server"
+    "serve": "bundle exec rails server",
+    "heroku-postbuild": "yarn run build:js"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
