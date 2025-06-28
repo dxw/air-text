@@ -26,7 +26,7 @@
     "eslint-config-prettier": "^10.1.2",
     "globals": "^16.0.0",
     "leaflet": "^1.9.4",
-    "prettier": "^3.0.0",
+    "prettier": "^3.6.0",
     "simplify-geojson": "^1.0.5",
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^38.0.0",
