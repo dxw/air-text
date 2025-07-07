@@ -118,7 +118,7 @@
       {
         "guidance": [
           {
-            "icons": ["indoors"],
+            "icons": ["stay-inside"],
             "html": "<strong>Those with hay fever or allergies</strong> should stay indoors to reduce exposure to pollen."
           },
           {
@@ -132,7 +132,7 @@
       {
         "guidance": [
           {
-            "icons": ["indoors"],
+            "icons": ["stay-inside"],
             "html": "<strong>Those with hay fever or allergies</strong> should stay indoors to reduce exposure to pollen."
           },
           {
