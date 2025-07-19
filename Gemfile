@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby "3.4.4"
+ruby "3.4.5"
 
 gem "active_link_to", "~> 1.0" # Active links with CSS classes
 gem "bootsnap", ">= 1.1.0", require: false
