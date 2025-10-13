@@ -7,8 +7,8 @@ To update the Node version, update the version number in the following files:
 - `package.json`
 - `Dockerfile`
 
-If you don't have that version of node installed, use `nvm` (Node Version
-Manager) to install it:
+### Installing the new Node version with `nvm`
+If you don't have that version of Node installed, you can use `nvm` (Node Version Manager) to install it:
 
 ```bash
 nvm install v22.13.1
@@ -20,7 +20,7 @@ Then set it as the default version:
 nvm alias default v22.13.1
 ```
 
-You may also need to update yarn on your new node version:
+You may also need to update yarn on your new Node version:
 
 ```bash
   npm upgrade yarn
