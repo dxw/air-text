@@ -10,10 +10,8 @@ ENV NODE_MAJOR_VERSION=${NODE_VERSION%%.*}
 RUN curl -L https://deb.nodesource.com/setup_${NODE_MAJOR_VERSION}.x | bash -
 RUN apt-get install -y nodejs=${NODE_VERSION}-1nodesource1
 
-RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN \
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-  tee /etc/apt/sources.list.d/yarn.list
+RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /usr/share/keyrings/yarn-archive-keyring.gpg
+RUN echo "deb [signed-by=/usr/share/keyrings/yarn-archive-keyring.gpg] https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN \
   apt-get update && \
