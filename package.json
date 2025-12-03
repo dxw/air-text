@@ -19,7 +19,7 @@
     "heroku-postbuild": "yarn run build:js"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.26.0",
     "esbuild": "^0.27.0",
     "eslint": "^9.26.0",
