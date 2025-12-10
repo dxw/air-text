@@ -1989,10 +1989,10 @@ known-css-properties@^0.37.0:
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.37.0.tgz#10ebe49b9dbb6638860ff8a002fb65a053f4aec5"
   integrity sha512-JCDrsP4Z1Sb9JwG0aJ8Eo2r7k4Ou5MwmThS/6lcIe1ICyb7UBJKGRIUUdqc2ASdE/42lgz6zFUnzAIhtXnBVrQ==
 
-leaflet.fullscreen@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/leaflet.fullscreen/-/leaflet.fullscreen-4.0.0.tgz#a2517c2c9cb06d2be9d68e2ed0cf8d109867aec6"
-  integrity sha512-wIV7R6yxtlk95/Er31ptCL0MQCmG4OUU4U0SwNeamEb2xBNDIeU8GtWF2S7PaxV/fdfReNmp+QCT9cUPSNIgdw==
+leaflet.fullscreen@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/leaflet.fullscreen/-/leaflet.fullscreen-5.1.1.tgz#41127a6c54be9d6c06cfda3963c653f8f3d03d0f"
+  integrity sha512-7YF1FcLqR3oPLk5NF0h8T/f3/wQYl+m0tYE0NlbQQs67DeWnZhkKUdkDyTIk7Ii3ccZoqaU4j2SHhgNh7jrJqQ==
 
 leaflet.locatecontrol@^0.85.0:
   version "0.85.1"
