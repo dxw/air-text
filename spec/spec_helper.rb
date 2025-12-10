@@ -24,12 +24,9 @@ end
 
 require "webmock/rspec"
 WebMock.disable_net_connect!(allow_localhost: true, allow: [
-  "safebrowsingohttpgateway.googleapis.com", # For Puffing Billy proxy
-  "accounts.google.com", # For Puffing Billy proxy
-  "content-autofill.googleapis.com", # For Puffing Billy proxy
-  "optimizationguide-pa.googleapis.com", # For Puffing Billy proxy
-  "update.googleapis.com", # For Puffing Billy proxy
-  "edgedl.me.gvt1.com", # For Puffing Billy proxy
+  /google\.com/, # For Puffing Billy proxy (Chrome browser requests)
+  /googleapis\.com/, # For Puffing Billy proxy (Chrome browser requests)
+  /gvt1\.com/, # For Puffing Billy proxy (Chrome browser requests)
   "airtext.info",
   "api.maptiler.com"
 ])
