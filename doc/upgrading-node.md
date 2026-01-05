@@ -1,6 +1,6 @@
 ## Updating the Node version
 
-To update the Node version, update the version number in the following files:
+To update the Node version, update the version number in the following files (usually you can just do a find-and-replace globally):
 
 - `.node-version`
 - `.tool-versions`
@@ -20,9 +20,14 @@ Then set it as the default version:
 nvm alias default v22.13.1
 ```
 
-You may also need to update yarn on your new Node version:
+You may need to update yarn on your new Node version:
 
 ```bash
-  npm upgrade yarn
-  yarn install
+  npm upgrade yarn -g
+```
+
+Update the Yarn files:
+
+```bash
+yarn install
 ```
