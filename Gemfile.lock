@@ -189,7 +189,7 @@ GEM
     high_voltage (5.0.0)
     htmlbeautifier (1.4.3)
     http_parser.rb (0.8.0)
-    httparty (0.24.0)
+    httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -237,7 +237,7 @@ GEM
     minitest (5.27.0)
     msgpack (1.8.0)
     multi_json (1.15.0)
-    multi_xml (0.8.0)
+    multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     net-imap (0.4.22)
       date
