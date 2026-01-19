@@ -29,7 +29,7 @@ gem "wicked" # for multi-step forms
 
 group :development do
   gem "better_errors"
-  gem "listen", ">= 3.0.5", "< 3.10"
+  gem "listen", ">= 3.0.5", "< 3.11"
   gem "rails_layout"
   gem "spring"
   gem "spring-commands-rspec"
