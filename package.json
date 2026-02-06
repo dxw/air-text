@@ -42,7 +42,7 @@
     "@maptiler/leaflet-maptilersdk": "^4.0.0",
     "@turf/boolean-point-in-polygon": "^7.1.0",
     "leaflet.fullscreen": "^5.0.0",
-    "leaflet.locatecontrol": "^0.86.0",
+    "leaflet.locatecontrol": "^0.87.0",
     "stimulus-use": "^0.52.2"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
