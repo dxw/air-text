@@ -1317,10 +1317,10 @@ leaflet.fullscreen@^5.0.0:
   resolved "https://registry.yarnpkg.com/leaflet.fullscreen/-/leaflet.fullscreen-5.3.0.tgz#288ce22f356b74e432c6f957883ee03826e2eef8"
   integrity sha512-ZWlu30qf9qNysYtJtI8d1Akw9tpQcELBHvizhlE2vNKlnn0dt7vgg5xM81oalqd5QRf/JyJ1M9fu+I9NjJsS6Q==
 
-leaflet.locatecontrol@^0.86.0:
-  version "0.86.0"
-  resolved "https://registry.yarnpkg.com/leaflet.locatecontrol/-/leaflet.locatecontrol-0.86.0.tgz#c12d08551f680fabe3dfbacc83cac1890317186b"
-  integrity sha512-T3PNMuGbQ6SMqMBn1gDfXXqpNfitwoE1hJ+EYhvZXWwc/rXm434gUlAUD4x/tIz6aKUIId9hvl6jPX03XNup0A==
+leaflet.locatecontrol@^0.87.0:
+  version "0.87.0"
+  resolved "https://registry.yarnpkg.com/leaflet.locatecontrol/-/leaflet.locatecontrol-0.87.0.tgz#c9cb4f96e083b10ee33ef123999c3f1f5ab8eaf9"
+  integrity sha512-kx/kCicuN1GpA1xaa6P6O7bcbpvYo9XbcAuyCcERUNyZtp730noMTEt6+St5OgCH5SpJz5NVsu6XZNOaaNxAMw==
 
 leaflet@^1.9.4:
   version "1.9.4"
