@@ -15,7 +15,7 @@ gem "pry-rails"
 gem "pry-byebug"
 gem "puma", "~> 7.0"
 gem "rollbar"
-gem "rails", "~> 7.2"
+gem "rails", "~> 8.0"
 gem "sprockets-rails", "~> 3.5"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
