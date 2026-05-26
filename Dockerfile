@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Base
 # ------------------------------------------------------------------------------
-FROM ruby:3.4.9@sha256:ec3a4b139bb18412233444c725069d3134c58d8855efc2d9d92aac593e4bc0fb AS base
+FROM ruby:3.4.9@sha256:439b61ca7ef0e20da3848a2d53a7ef9970018517c7cfacd1ab234964c9887b1a AS base
 LABEL org.opencontainers.image.authors="contact@dxw.com"
 
 # Specify the desired Node.js version
