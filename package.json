@@ -38,7 +38,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.10",
-    "@maptiler/geocoding-control": "^2.0.0",
+    "@maptiler/geocoding-control": "^3.0.0",
     "@maptiler/leaflet-maptilersdk": "^4.0.0",
     "@turf/boolean-point-in-polygon": "^7.1.0",
     "leaflet.fullscreen": "^5.0.0",
